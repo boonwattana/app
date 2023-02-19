@@ -1,0 +1,16 @@
+<m-data-table
+(searchEmit)="onSearch($event)"
+[option]="option"
+[dataSource] = "searchResult"
+[tableName]="tableName"
+[searchCondition] = 'searchConditions'
+(editEmit)="onEdit($event)"
+[removeRecord] = "lastRemoveId"
+[moduleName] = moduleName
+(viewEmit)="onView($event)"
+[setCanCreate] = false
+[setCanImport] =false
+[setCanReport] =true
+[setCanDelete] = false
+[setReportName] = "reportName"
+></m-data-table>

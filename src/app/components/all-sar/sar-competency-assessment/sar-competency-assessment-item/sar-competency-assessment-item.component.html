@@ -1,0 +1,97 @@
+<div class="itemCard">
+  <div>
+    <div>
+      <p class="title-item">{{"MODULE.SAR_COMPETENCY_ASSESSMENT"|translate}}</p>
+    </div>
+  </div>
+  <div class="customCard">
+    <button class="group">ข้อมูล ผลการประเมินสมรรถนะสำคัญของผู้เรียน</button>
+    <div class="grid p-fluid form ">
+      <div class="field col-6 md:col-6">
+        <m-dropdown setId="TEACHER_ID" setLabel="ชื่อ-สกุล" [(setModel)]=model.teacherId    [setSelectOption]=teacherDropdown [setViewValue]=model.teacherValue [setReadonly] = "isTeacher" >
+        </m-dropdown>
+      </div>
+      <div class="field col-6 md:col-3">
+        <m-input-text setId="SCHOOLYEAR" setLabel="LABEL.SCHOOLYEAR" [(setModel)]=model.schoolyear   [setRequired]="true"   >
+        </m-input-text>
+      </div>
+      <div class="field col-6 md:col-3">
+        <m-dropdown setId="YEAR_TERM_ID" setLabel="ประจำ ภาคเรียน / ปีการศึกษา" [setRequired]="true" [(setModel)]=model.yearTermId    [setSelectOption]=yearTermDropdown [setViewValue]=model.yearTermValue>>
+        </m-dropdown>
+        
+      </div>
+
+      
+      <table  style="width: 100%;" border="1" >
+        <tr  >  
+          <th style="text-align: center; width:15%;" rowspan="2">วิชา</th>
+          <th style="text-align: center; width:15%;" rowspan="2">ชั้น</th>
+      
+          <th style="text-align: center; width:15%;" rowspan="2">จำนวนนักเรียนที่ประเมิน (คน)  </th>
+          <th style="text-align: center;" colspan="4">ผลการประเมิน(คน)</th>
+        </tr>
+        <tr>
+          <th style="text-align: center;" >ดีเยี่ยม<br>
+            3
+            </th>
+          <th style="text-align: center;" >ดี<br>
+            2
+            </th>
+          <th style="text-align: center;" >ผ่าน<br>
+            1
+            </th>
+            <th style="text-align: center;" >ไม่ผ่าน<br>
+              0
+              </th>
+        </tr>
+        <tr>
+          <td ><m-input-text setId="subject"  [(setModel)]=model.subject     >
+          </m-input-text></td>
+         
+          <td ><m-input-text setId="CLASS"  [(setModel)]=model.class     >
+          </m-input-text></td>
+          <td>   <m-input-number setId="TOTAL_STUDENT"  [(setModel)]=model.totalStudent     >
+          </m-input-number></td>
+   
+          <td>
+            <m-input-number setId="ASSESSMENT4"  setplaceholderText="จำนวน คน" [(setModel)]=model.assessment4     >
+            </m-input-number>
+                <!--    <p-radioButton name="assessment" value="3" [(ngModel)]="model.assessment" inputId="assessment">
+          </p-radioButton>-->
+        </td>
+          <td> 
+            <m-input-number setId="ASSESSMENT3" setplaceholderText="จำนวน คน"  [(setModel)]=model.assessment3     >
+            </m-input-number>
+                 <!--    <p-radioButton name="assessment" value="2" [(ngModel)]="model.assessment" inputId="assessment">
+          </p-radioButton>-->
+        </td>
+          <td> 
+            <m-input-number setId="ASSESSMENT2"  setplaceholderText="จำนวน คน" [(setModel)]=model.assessment2     >
+            </m-input-number>
+                <!--     <p-radioButton name="assessment" value="1" [(ngModel)]="model.assessment" inputId="assessment">
+          </p-radioButton>-->
+        </td>
+          <td> 
+            <m-input-number setId="ASSESSMENT1"  setplaceholderText="จำนวน คน" [(setModel)]=model.assessment1     >
+          </m-input-number>
+          
+              <!--    <p-radioButton name="assessment" value="0" [(ngModel)]="model.assessment" inputId="assessment">
+          </p-radioButton>-->
+        </td>
+        </tr>
+        </table>
+   
+    
+    </div>
+  </div>
+  <div class="grid p-fluid">
+    <div class="field col-12 md:col-2">
+      <m-button setClassName="backBtn" setLabel="LABEL.BACK" (onClick)="onBack()">
+      </m-button>
+    </div>
+    <div *ngIf = !view class="field col-12 md:col-2">
+      <m-button setClassName="saveBtn" setLabel="LABEL.SAVE" (onClick)="onSave()">
+      </m-button>
+    </div>
+  </div>
+</div>

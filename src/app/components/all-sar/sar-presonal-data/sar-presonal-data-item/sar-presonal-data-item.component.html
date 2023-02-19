@@ -1,0 +1,87 @@
+<div class="itemCard">
+  <div>
+    <div>
+      <p class="title-item">{{"MODULE.SAR"|translate}}</p>
+    </div>
+  </div>
+  <div class="customCard">
+    <button class="group">ตอนที่  1  :  ข้อมูลส่วนตัว</button>
+    <div class="grid p-fluid form ">
+      <div class="field col-12 md:col-3">
+        <m-input-text  [setRequired]="true"  setLabel="ประจำปีการศึกษา"
+        setId="SCHOOL_YEAR"  [(setModel)]=model.schoolYear
+       ></m-input-text> 
+      </div>
+      <button class="group">1.1  ข้อมูลทั่วไป  </button>
+   
+      <div class="field col-12 md:col-6">
+        <m-dropdown setId="TEACHER_ID" setLabel="ชื่อ-สกุล" [(setModel)]=model.teacherId  [setReadonly] = "isTeacher"   [setSelectOption]=teacherDropdown [setViewValue]=model.teacherValue>
+        </m-dropdown>
+      </div>
+      
+      <button class="group">วุฒิการศึกษา</button>
+
+
+        <table class="table table-bordered" style="width: 100%;" *ngIf="educationObj!=[]">
+        <tr  *ngFor="let item of educationObj; let i = index;">
+          <td class="field col-12 md:col-2">{{filterEnum(item.educationId,educationDropdown)}}</td>
+          <td class="field col-12 md:col-2">วิชาเอก {{item.educationMajor}}</td>
+          <td class="field col-12 md:col-6">จาก {{item.institutionName}} </td>
+        </tr>
+        </table>
+        
+ 
+  
+      <div class="field col-12 md:col-4"> 
+        <b>ตำแหน่ง </b>&nbsp;{{this.model.positionName}} &nbsp;&nbsp;&nbsp;&nbsp;
+          <b> วิทยฐานะ </b>&nbsp; {{this.model.practitionerLevelNameValue}}
+        </div>
+        <div class="field col-12 md:col-2"> <b> อายุ </b>&nbsp;{{this.model.age}}  ปี   </div>  
+        <div class="field col-12 md:col-2"><b>ปฏิบัติราชการ</b> &nbsp; {{this.model.setInTotalYear}}  ปี
+        </div>
+        <div class="field col-12 md:col-4">  </div>
+
+        <div class="field col-12 md:col-3"> 
+        <m-input-text  [setRequired]="true"  setLabel="เลขที่ตำแหน่ง"
+          setId="POSITION_NUMBER"  [(setModel)]=model.positionNumber
+         ></m-input-text> 
+         </div>
+         <div class="field col-12 md:col-3">   <m-input-text  [setRequired]="true"  setLabel="เงินเดือน(บาท)"
+          setId="SALARY"  [(setModel)]=model.salary
+         ></m-input-text>  </div>  
+         <div class="field col-12 md:col-3">  <m-input-text  [setRequired]="true"  setLabel="เงินวิทยฐานะ(บาท)"
+          setId="PARCTITIONER_MONEY"  [(setModel)]=model.practitionerMoney
+         ></m-input-text> 
+         </div>
+         <div class="field col-12 md:col-3">  </div>
+         <div class="field col-12 md:col-12">  <b>วัน / เดือน / ปี เกิด </b>&nbsp; {{this.model.birthDate}} 
+         </div>
+         <div class="field col-12 md:col-12">     <b>วัน / เดือน / ปี บรรจุเข้ารับราชการ</b>&nbsp; {{this.model.setInDate}} 
+        </div>
+        <div class="field col-12 md:col-12">   <b>ปฏิบัติการสอนกลุ่มสาระการเรียนรู้ </b> &nbsp;{{this.model.subjectGroupValue}}  </div>
+        <div class="field col-12 md:col-12">  <b> ปฎิบัติงานพิเศษ </b>&nbsp;{{this.model.actionWorkSpecial}} </div>
+        <div class="field col-12 md:col-6">      <m-input-text  [setRequired]="true"  setLabel="สังกัดฝ่าย"
+          setId="AFFILIATION"  [(setModel)]=model.affiliation
+         ></m-input-text> </div> 
+         <div class="field col-12 md:col-6"> 
+         </div>
+          <div class="field col-12 md:col-3"> <b>โรงเรียนบุญวัฒนา</b> 
+        </div>
+        <div class="field col-12 md:col-6">       <b>สำนักงานเขตพื้นที่การศึกษามัธยมศึกษา เขต 31</b> 
+
+        </div>
+    </div>
+   
+  </div>
+  <div class="grid p-fluid">
+    <div class="field col-12 md:col-2">
+      <m-button setClassName="backBtn" setLabel="LABEL.BACK" (onClick)="onBack()">
+      </m-button>
+    </div>
+    <div *ngIf = !view class="field col-12 md:col-2">
+      <m-button setClassName="saveBtn" setLabel="LABEL.SAVE" (onClick)="onSave()">
+      </m-button>
+    </div>
+    
+  </div>
+</div>

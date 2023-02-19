@@ -1,0 +1,34 @@
+<div class="itemCard">
+  <div>
+    <div>
+      <p class="title-item">{{"MODULE.YEAR_TERM"|translate}}</p>
+    </div>
+  </div>
+  <div class="customCard">
+    <button class="group">{{"GROUP.GERNERAL_GROUP"|translate}}</button>
+    <div class="grid p-fluid form ">
+      <div class="field col-12 md:col-3">
+        <m-input-text setId="YEAR_TERM" setLabel="LABEL.YEAR_TERM" [(setModel)]=model.year   [setRequired]="true"  >
+        </m-input-text>
+      </div>
+      <div class="field col-12 md:col-3">
+        <m-input-text setId="TERM" setLabel="LABEL.TERM" [(setModel)]=model.term   [setRequired]="true"  >
+        </m-input-text>
+      </div>
+      <div class="field col-12 md:col-12">
+        <m-switch setId="IS_PARENT" setLabel="LABEL.IS_PARENT" [(setModel)]=model.isParent     >
+        </m-switch>
+      </div>
+    </div>
+  </div>
+  <div class="grid p-fluid">
+    <div class="field col-12 md:col-2">
+      <m-button setClassName="backBtn" setLabel="LABEL.BACK" (onClick)="onBack()">
+      </m-button>
+    </div>
+    <div *ngIf = !view class="field col-12 md:col-2">
+      <m-button setClassName="saveBtn" setLabel="LABEL.SAVE" (onClick)="onSave()">
+      </m-button>
+    </div>
+  </div>
+</div>

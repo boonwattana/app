@@ -1,0 +1,35 @@
+<div class="itemCard">
+  <div>
+    <div>
+      <p class="title-item">รายงานผลการปฏิบัติงาน
+        และผลการประเมินตนเองรายบุคคล <br>
+        (Self Assessment Report: SAR)
+        </p>
+    </div>
+  </div>
+  <div class="customCard">
+    <button class="group">รายงานการประเมินตนเอง  (SAR)</button>
+    <div class="grid p-fluid form ">
+      <div class="field col-6 md:col-3">
+        <m-dropdown setId="TEACHER_ID" setLabel="ชื่อ-สกุล" [(setModel)]=model.teacherId  [setRequired]="true"    [setSelectOption]=teacherDropdown [setViewValue]=model.teacherValue [setReadonly] = "isTeacher" >
+        </m-dropdown>
+      </div>
+      <div class="field col-6 md:col-3">
+        <m-input-text setId="SCHOOLYEAR" setLabel="LABEL.SCHOOLYEAR" [(setModel)]=model.schoolyear   [setRequired]="true"  >
+        </m-input-text>
+      </div>
+   
+     
+    </div>
+  </div>
+  <div class="grid p-fluid">
+    <div class="field col-6 md:col-3">
+      <m-button setLabel="LABEL.BACK" (onClick)="onBack()">
+      </m-button>
+    </div>
+    <div class="field col-6 md:col-3">
+      <m-button setLabel="ดำเนินการต่อ" (onClick)="onContinue()">
+      </m-button>
+    </div>
+  </div>
+</div>

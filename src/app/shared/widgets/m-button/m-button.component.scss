@@ -1,0 +1,77 @@
+.custom-button{
+    font-size: 20px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+.backBtn{
+    cursor: pointer;
+    background: #5271ff;
+    color: #fff;
+    padding: 5px 8px;
+    border: 0px solid;
+    font-size: 20px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.backBtn:hover{
+    cursor: pointer;
+    background: #375bfa;
+    color: #fff;
+    padding: 5px 8px;
+    border: 0px solid;
+    font-size: 20px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.saveBtn{
+    cursor: pointer;
+    background: #7ed957;
+    color: #fff;
+    padding: 5px 8px;
+    border: 0px solid;
+    font-size: 20px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.saveBtn:hover{
+    cursor: pointer;
+    background: #65ca3a;
+    color: #fff;
+    padding: 5px 8px;
+    border: 0px solid;
+    font-size: 20px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.uploadBtn{
+    cursor: pointer;
+    background: #7ed957;
+    color: #fff;
+    padding: 5px 8px;
+    border: 0px solid;
+    font-size: 16px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.uploadBtn:hover{
+    cursor: pointer;
+    background: #65ca3a;
+    color: #fff;
+    padding: 5px 8px;
+    border: 0px solid;
+    font-size: 16px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}

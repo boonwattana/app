@@ -1,0 +1,42 @@
+<div class="itemCard">
+  <div>
+    <div>
+      <p class="title-item">{{"MODULE.SAR_UPLOAD_IMG"|translate}}</p>
+    </div>
+  </div>
+  <div class="customCard">
+    <button class="group">อัพโหลดภาคผนวก</button>
+    <div class="grid p-fluid form ">
+      <div class="field col-6 md:col-3">
+        <m-dropdown setId="TEACHER_ID" setLabel="ชื่อ-สกุล" [(setModel)]=model.teacherId    [setSelectOption]=teacherDropdown [setViewValue]=model.teacherValue [setReadonly] = "isTeacher" >
+        </m-dropdown>
+      </div>
+      <div class="field col-6 md:col-3">
+        <m-input-text setId="SCHOOLYEAR" setLabel="LABEL.SCHOOLYEAR" [(setModel)]=model.schoolyear   [setRequired]="true"   >
+        </m-input-text>
+      </div>
+      <div class="field col-6 md:col-12">
+        <m-input-text setId="TITLE_NAME" setLabel="หัวข้อเรื่อง ของภาคผนวก" [(setModel)]=model.titleName     >
+        </m-input-text>
+      </div>
+      <div class="grid p-fluid form ">
+        <div class="con-t-img">
+          <m-images-upload-multiple [setType] = type [setMasterId] = "model.id" setId="IMAGE_HOMEVISIT" setLabel="LABEL.IMAGE_HOMEVISIT" [(setModel)]= model.images>
+          </m-images-upload-multiple>
+      
+        </div>
+      
+      </div>
+    </div>
+  </div>
+  <div class="grid p-fluid">
+    <div class="field col-12 md:col-2">
+      <m-button setClassName="backBtn" setLabel="LABEL.BACK" (onClick)="onBack()">
+      </m-button>
+    </div>
+    <div *ngIf = !view class="field col-12 md:col-2">
+      <m-button setClassName="saveBtn" setLabel="LABEL.SAVE" (onClick)="onSave()">
+      </m-button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,69 @@
+<div class="itemCard">
+
+  <div  class="g-t">
+    <div class="title">{{"MODULE.STUDENT_SUPPORT"|translate}}</div>
+    <button *ngIf ='view' class="edit" (click)="pageEdit()">แก้ไขข้อมูล</button>
+  </div>
+  <div class="customCard">
+    <div class="grid p-fluid form ">
+      <div class="field col-12 md:col-6">
+        <m-calendar setId="START_DATE" setLabel="LABEL.START_DATE" [(setModel)]=model.startDate [setMaxDate] = model.endDate  [setRequired]="true"  >
+        </m-calendar>
+      </div>
+      <div class="field col-12 md:col-6">
+        <m-calendar setId="END_DATE" setLabel="LABEL.END_DATE" [(setModel)]=model.endDate [setMinDate] = model.startDate  [setRequired]="true"  >
+        </m-calendar>
+      </div>
+      <div class="field col-12 md:col-12">
+        <m-input-text setId="ACTIVITY_NAME" setLabel="LABEL.ACTIVITY_NAME" [(setModel)]=model.activityName     >
+        </m-input-text>
+      </div>
+      <div class="field col-12 md:col-6">
+
+        <m-dropdown setId="PERFORMANCE" setLabel="LABEL.PERFORMANCE" [(setModel)]=model.performance    [setSelectOption]=performanceDropdown >
+        </m-dropdown>
+      </div>
+      
+      <div *ngIf = "model.performance == 9" class="field col-12 md:col-6">
+        <m-input-text setId="PERFORMANCE_TEXT" setLabel="LABEL.PERFORMANCE_TEXT" [(setModel)]=model.performanceText     >
+        </m-input-text>
+      </div>
+      <div class="field col-12 md:col-12">
+        <m-input-text setId="DEPARTMENT" setLabel="LABEL.DEPARTMENT" [(setModel)]=model.department     >
+        </m-input-text>
+      </div>
+      <div class="field col-12 md:col-8">
+        <m-input-text setId="RESULT" setLabel="LABEL.RESULT" [(setModel)]=model.result     >
+        </m-input-text>
+      </div>
+      <div class="field col-12 md:col-4">
+        <m-dropdown setId="TEACHER_ID" setLabel="LABEL.TEACHER_ID" [(setModel)]=model.teacherId    [setSelectOption]=teacherDropdown [setViewValue]=model.teacherValue>>
+        </m-dropdown>
+      </div>
+
+      
+      <div class="field col-12 md:col-12">
+        <student-support-has-student-list
+        (removeEmit) = onRemove($event)
+        (addEmit) = onAdd($event)
+        [setView] = view
+        >
+
+        </student-support-has-student-list>
+      </div>
+
+
+
+    </div>
+  </div>
+  <div class="grid p-fluid">
+    <div class="field col-6 md:col-2">
+      <m-button setClassName="backBtn" setLabel="LABEL.BACK" (onClick)="onBack()">
+      </m-button>
+    </div>
+    <div *ngIf = !view class="field col-12 md:col-2">
+      <m-button setClassName="saveBtn" setLabel="LABEL.SAVE" (onClick)="onSave()">
+      </m-button>
+    </div>
+  </div>
+</div>

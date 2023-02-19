@@ -1,0 +1,252 @@
+
+
+  <div class="customCard dataGrid" >
+        <div class="row search-section grid p-fluid" >
+          <div  *ngFor="let d of bindingSearchCondition; let index=index;" class="field col-12 md:col-3" >
+              <m-input-text 
+                *ngIf='(d.inputType == "STRING"  && !d.hidden)'
+                setId="bindingSearchCondition[index].label"
+                setLabel="{{bindingSearchCondition[index].label|translate}}"
+                [(setModel)] = bindingSearchCondition[index].value
+                (setModelChange)="onInputSearch()"
+                  >
+              </m-input-text>
+              <m-calendar
+              *ngIf='(d.inputType == "DATE" && !d.hidden)'
+              [(setModel)] = bindingSearchCondition[index].value
+              setId="bindingSearchCondition[index].label"
+              setLabel="{{bindingSearchCondition[index].label|translate}}"
+              (setModelChange)="onInputSearch()"
+      
+              >
+              </m-calendar>
+              <m-input-number
+              *ngIf='(d.inputType == "DECIMAL"  && !d.hidden)'
+              [(setModel)] = bindingSearchCondition[index].value
+              setId="bindingSearchCondition[index].label"
+              setLabel="{{bindingSearchCondition[index].label|translate}}"
+              (setModelChange)="onInputSearch()"
+      
+              >
+              </m-input-number>
+              <m-dropdown
+              *ngIf='(d.inputType == "ENUM"  && !d.hidden)'
+              [setSelectOption] = d.enumOption
+              [(setModel)] = bindingSearchCondition[index].value
+              setId="bindingSearchCondition[index].label"
+              setLabel="{{bindingSearchCondition[index].label|translate}}"
+              (setModelChange)="onInputSearch()"
+      
+              >
+              </m-dropdown>
+              <m-input-number
+              *ngIf='(d.inputType == "NUMBER"  && !d.hidden)'
+              [(setModel)] = bindingSearchCondition[index].value
+              setId="bindingSearchCondition[index].label"
+              setLabel="{{bindingSearchCondition[index].label|translate}}"tableheader-item
+              (setModelChange)="onInputSearch()"
+      
+              >
+      
+              </m-input-number>
+              <!-- <i (click)="onInputSearch()" class='bx bx-search-alt-2'></i> -->
+          </div>
+          
+          
+        </div>
+    <p-table
+  
+    [value]="bindingDataSource"
+    [scrollable]="true"
+    class="customTable"
+      #dt1
+       currentPageReportTemplate="show  {first} to {last}"
+        responsiveLayout="scroll"
+       scrollDirection = 'both'
+       >
+        <ng-template pTemplate="header">
+            <tr  >
+              <th  
+                class="t-header"
+                *ngFor="
+                  let header of bindingOption.columns;
+                  let i = index 
+                      "
+            (click)="onSort(header)"
+            [style]=header.width
+                >
+                <p *ngIf ="(header.orentation == 'VERTICAL')" class="vertical">
+                  {{header.label|translate}}
+                </p>
+                <p class="horizontal" *ngIf ="(!header.orentation)" >
+                  {{header.label|translate}}
+                </p>
+            
+            <i *ngIf="header.sorting == 0" class="pi pi-sort-amount-down"></i>
+            <i *ngIf="header.sorting == 1" class="pi pi-sort-amount-up"></i>
+                </th>
+                <th *ngIf = !view style='width:80px;'  >
+                  {{"LABEL.ACTION"|translate}}
+                </th>
+            </tr>
+  
+        </ng-template>
+        <ng-template  pTemplate="body" let-row let-rowIndex="rowIndex">
+            <tr>
+               
+                
+                <td 
+                *ngFor="
+                  let col of bindingOption.columns;
+                  let i = index
+                "
+                [style]=col.width
+              >
+                <div
+                *ngIf='(col.type.toString() == "STRING" )'
+                >
+                  {{ row[col.textKey]}}
+                </div>
+                <div
+                *ngIf='(col.type.toString() == "ACTION" )'
+                >
+                  {{ getAction(row[col.textKey]) }}
+                </div>
+                <div
+                *ngIf='(col.type.toString() == "TIME" )'
+                >
+                  {{ getTime(row[col.textKey]) }}
+                </div>
+                <div
+                *ngIf='(col.type.toString() == "EQ_GOOD" )'
+                >
+                  {{ getEqGood(row[col.textKey]) }}
+                </div>
+                <div
+                *ngIf='(col.type.toString() == "EQ_GREET" )'
+                >
+                  {{ getEqGreet(row[col.textKey]) }}
+                </div>
+                <div
+                *ngIf='(col.type.toString() == "EQ_HAPPY" )'
+                >
+                  {{ getEqHappy(row[col.textKey]) }}
+                </div>
+                <div
+                *ngIf='(col.type.toString() == "EQ_SUM" )'
+                >
+                  {{ getEqSum(row[col.textKey]) }}
+                </div>
+                <div
+                *ngIf='(col.type.toString() == "STRESS" )'
+                >
+                  {{ getStress(row[col.textKey]) }}
+                </div>
+                <div
+                *ngIf='(col.type.toString() == "DEPRESSION" )'
+                >
+                  {{ getDepression(row[col.textKey]) }}
+                </div>
+                <div
+                *ngIf='(col.type.toString() == "DEPRESSION_FROM" )'
+                >
+                  {{ getDepressionFrom(row[col.textKey]) }}
+                </div>
+                <div
+                *ngIf='(col.type.toString() == "SUCIED" )'
+                >
+                  {{ getSucied(row[col.textKey]) }}
+                </div>
+                <div
+                *ngIf='(col.type.toString() == "ENUM" )'
+                >
+                  {{ getLabelEnum( row[col.textKey], col.enumOption)|translate}}
+                </div>
+                <div
+                *ngIf='(col.type.toString() == "AGE" )'
+                >
+                  {{ getAge( row[col.textKey])}}
+                </div>
+                <div
+                *ngIf='(col.type.toString() == "BMI" )'
+                >
+                <div *ngIf='(row[col.textKey] != null )' >
+                  <div  class="bmiCard thin" *ngIf='(row[col.textKey] < 18.50  )'>
+                    ผอม
+                </div>
+                <div  class="bmiCard normal" *ngIf='(row[col.textKey] >= 18.50 && row[col.textKey] < 23 )'>
+                  ปกติ
+                 </div>
+                 <div  class="bmiCard prefat" *ngIf='(row[col.textKey] >= 23  && row[col.textKey] < 25  )'>
+                  ท้วม
+                 </div>
+                 <div  class="bmiCard fat" *ngIf='(row[col.textKey] >= 25 && row[col.textKey]<30  )'>
+                  อ้วน
+                 </div>
+                 <div class="bmiCard veryfat" *ngIf='(row[col.textKey] > 30  )'>
+                  อ้วนมาก
+                 </div>
+                </div>
+                
+                </div>
+                <div
+                *ngIf='(col.type.toString() == "DATE" )'
+                >
+                  {{  row[col.textKey] | date :'dd-MM-yyyy'}}
+                </div>
+                <div
+                *ngIf='(col.type.toString() == "DECIMAL" )'
+                >
+                {{  row[col.textKey] |number:'.2-2'}}
+                </div>
+                <div
+                *ngIf='(col.type.toString() == "DECIMAL_2" )'
+                >
+                {{  row[col.textKey] |number:'.2-2'}}
+                </div>
+                <div
+                style="text-align:end;"
+                *ngIf='(col.type.toString() == "DECIMAL_4" )'
+                >
+                  {{  row[col.textKey] |number:'.2-4'}}
+                </div>
+                <div
+                style="text-align:end;"
+                *ngIf='(col.type.toString() == "BOOLEAN" )'
+                >
+                <p-toggleButton id="TABLE_BOOLEAN" 
+                class="input-field" 
+                aria-describedby="username1-help" 
+                [ngModel] = row[col.textKey] 
+                [disabled] = true
+                 >
+                </p-toggleButton>
+                </div>
+              </td>
+              <td *ngIf = !view style='width:80px;' >
+            
+                  <button *ngIf = canCreate  type="button" icon="pi pi-plus" (click)="onEdit(row.id,rowIndex)" class="m-btn-edit-s"  ><i class='bx bx-plus'></i></button>
+                  <button  *ngIf = canDelete     (click)="onDelete(row.id,rowIndex)" class="m-btn-del-s"><i class='bx bx-trash'></i></button>
+  
+                <!-- <button    type="button" icon="pi pi-pencil" (click)="onEdit(d.id,rowIndex)" class="m-btn-edit-s"  ><i class='bx bxs-edit'></i></button>
+                <button   type="button"   (click)="onView(d.id,rowIndex)" class="m-btn-view-s" ><i class='bx bx-share'></i></button>
+                <button  [disabled] = !canDelete     (click)="onDelete(d.id,rowIndex)" class="m-btn-del-s"><i class='bx bx-trash'></i></button> -->
+  <!-- 
+                <button  pButton  type="button" icon="pi pi-pencil" (click)="onEdit(row.id,rowIndex)"  class=" p-button-text createBtn" ></button>
+                <button  pButton type="button"  icon="pi pi-eye" (click)="onView(row.id,rowIndex)" class="p-button-text viewBtn"></button>
+                <button  [disabled] = !canDelete  pButton type="button" icon="pi pi-trash" (click)="onDelete(row.id,rowIndex)" class=" p-button-text deleteBtn"></button>
+               -->
+              </td>
+            </tr>
+        </ng-template>
+    </p-table>
+    <p-paginator
+      (onPageChange)="paginate($event)"
+      [totalRecords]="totalRecord"
+      [rowsPerPageOptions]="[5,10, 20, 30]"
+    ></p-paginator>
+  </div>
+  
+
+
+

@@ -1,0 +1,73 @@
+<div class="itemCard">
+  <div  class="g-t">
+    <div class="title">{{"MODULE.STUDENT_CONSULTANT"|translate}}</div>
+    <button *ngIf ='view' class="edit" (click)="pageEdit()">แก้ไขข้อมูล</button>
+  </div>
+  <div class="customCard">
+    <button class="group">{{"GROUP.GENERAL_GROUP"|translate}}</button>
+    <div class="grid p-fluid form ">
+      <div class="field col-12 md:col-7">
+        <m-dropdown setId="STUDENT_ID" [setReadonly] = true  setLabel="LABEL.STUDENT_ID" [(setModel)]=model.studentId   [setSelectOption]=studentDropdown [setViewValue]=model.studentValue>>
+        </m-dropdown>
+      </div>
+      <div class="field col-12 md:col-5">
+        <m-input-text setId="NICK_NAME" setLabel="LABEL.NICK_NAME" [(setModel)]=model.nickName     >
+        </m-input-text>
+      </div>
+      <div class="field col-12 md:col-7">
+        <m-dropdown setId="CONSULT_TEACHER_ID" setLabel="LABEL.CONSULT_TEACHER_ID" [(setModel)]=model.teacherId   [setRequired]="true" [setSelectOption]=teacherDropdown [setViewValue]=model.teacherValue>>
+        </m-dropdown>
+      </div>
+      <div class="field col-12 md:col-5">
+        <m-calendar setId="ACTIVITY_DATE" setLabel="LABEL.ACTIVITY_DATE" [(setModel)]=model.activityDate     >
+        </m-calendar>
+      </div>
+      <div class="field col-12 md:col-4">
+        <m-time setId="CONSULT_START_TIME" setLabel="LABEL.CONSULT_START_TIME" [(setModel)]=model.startTime     >
+        </m-time>
+      </div>
+      <div class="field col-12 md:col-4">
+        <m-time setId="CONSULT_END_TIME" setLabel="LABEL.CONSULT_END_TIME" [(setModel)]=model.endTime     >
+        </m-time>
+      </div>
+      <div class="field col-12 md:col-4">
+        <m-dropdown setId="CONSULTANT_TYPE" setLabel="LABEL.CONSULTANT_TYPE" [(setModel)]=model.consultantType    [setSelectOption]=consultantTypeDropdown >
+        </m-dropdown>
+      </div>
+      <div class="field col-12 md:col-6">
+        <m-dropdown setId="STORY_TYPE" setLabel="LABEL.STORY_TYPE" [(setModel)]=model.storyType    [setSelectOption]=storyTypeDropdown >
+        </m-dropdown>
+      </div>
+      <div class="field col-12 md:col-6">
+        <m-dropdown setId="RESULT_TYPE" setLabel="LABEL.RESULT_TYPE" [(setModel)]=model.resultType    [setSelectOption]=resultTypeDropdown >
+        </m-dropdown>
+      </div>
+      <div class="field col-12 md:col-4">
+        <m-dropdown setId="SENT_TYPE" setLabel="LABEL.SENT_TYPE" [(setModel)]=model.sentType    [setSelectOption]=sentTypeDropdown >
+        </m-dropdown>
+      </div>
+      <div *ngIf = "model.sentType == 3" class="field col-12 md:col-8">
+        <m-input-text setId="SENT_TEXT" setLabel="LABEL.SENT_TEXT" [(setModel)]=model.sentText     >
+        </m-input-text>
+      </div>
+
+
+      <div class="field col-12 md:col-12">
+        <m-input-text setId="SEND_NOTE" setLabel="LABEL.SEND_NOTE" [(setModel)]=model.sendNote     >
+        </m-input-text>
+      </div>
+
+
+    </div>
+  </div>
+  <div class="grid p-fluid">
+    <div class="field col-6 md:col-2">
+      <m-button setClassName="backBtn" setLabel="LABEL.BACK" (onClick)="onBack()">
+      </m-button>
+    </div>
+    <div *ngIf = !view class="field col-12 md:col-2">
+      <m-button setClassName="saveBtn" setLabel="LABEL.SAVE" (onClick)="onSave()">
+      </m-button>
+    </div>
+  </div>
+</div>

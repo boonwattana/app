@@ -1,0 +1,485 @@
+<!-- <div class="itemCard"> -->
+  <div  class="g-t">
+    <div class="title">{{"MODULE.STUDENT"|translate}}</div>
+    <button *ngIf ='view' class="edit" (click)="pageEdit()">แก้ไขข้อมูล</button>
+  </div>
+  <!-- <div class="m-card"> -->
+  <!-- <div>
+    <div>
+      <p class="title-item">{{"MODULE.STUDENT"|translate}}</p>
+    </div>
+  </div> -->
+  <div class="m-card">
+    <button class="group">{{"GROUP.GENERAL_BASIC_GROUP"|translate}}</button>
+    <div class="grid p-fluid form ">
+      <div class="con-t-img">
+        <m-images-upload [setType] = type [setMasterId] = "id" setId="IMAGE_PROFILE"  setLabel="LABEL.IMAGE_PROFILE" [(setModel)]= model.imageProfile>
+        </m-images-upload>
+
+      </div>
+
+      <div class="field col-4 md:col-2">
+        <m-input-text setId="STUDENT_CODE" setLabel="LABEL.STUDENT_CODE" [(setModel)]=model.studentCode  [setReadonly]="!isAmin" [setRequired]="isAmin"   >
+        </m-input-text>
+      </div>
+
+      <div class="field col-3 md:col-2">
+        <m-input-number setId="STUDENT_NUMBER" setLabel="LABEL.STUDENT_NUMBER" [(setModel)]=model.studentNumber  [setReadonly]="isStudent" [setRequired]="isAmin"   >
+        </m-input-number>
+      </div>
+      
+   
+
+      <div class="field col-5 md:col-3">
+        <m-input-text setId="PERSONAL_CODE" setLabel="LABEL.PERSONAL_CODE" [(setModel)]=model.personalCode     >
+        </m-input-text>
+      </div>
+      <div class="field col-3 md:col-2">
+        <m-dropdown setId="CLASSROOM_TYPE_ID" setLabel="LABEL.CLASSROOM_TYPE_ID" [(setModel)]=model.classroomTypeId    [setSelectOption]=classroomTypeDropdown [setViewValue]=model.classroomTypeValue>>
+        </m-dropdown>
+      </div>
+      <div class="field col-2 md:col-2">
+        <m-dropdown setId="CLASSROOM_ID" setLabel="LABEL.CLASSROOM_ID" [(setModel)]=model.classroomId    [setSelectOption]=classroomDropdown [setViewValue]=model.classroomValue>>
+        </m-dropdown>
+      </div>
+      <div *ngIf = "(model.classroomTypeId == 1||model.classroomTypeId == 2||model.classroomTypeId == 3)" class="field col-2 md:col-2">
+        <m-dropdown setId="CLASSROOM_SPECIAL1" setLabel="LABEL.CLASSROOM_SPECIAL" [(setModel)]=model.classSpecial  [setReadonly]="isStudent"   [setSelectOption]=classSpecial1Dropdown >
+        </m-dropdown>
+      </div>
+      <div *ngIf = "(model.classroomTypeId == 4||model.classroomTypeId == 5||model.classroomTypeId == 6)" class="field col-2 md:col-2">
+        <m-dropdown setId="CLASSROOM_SPECIAL2" setLabel="LABEL.CLASSROOM_SPECIAL" [(setModel)]=model.classSpecial   [setReadonly]="isStudent"  [setSelectOption]=classSpecial2Dropdown >
+        </m-dropdown>
+      </div>
+      <div *ngIf = "(model.classSpecial == 9&&model.classroomTypeId !=null)" class="field col-3 md:col-2">
+        <m-input-text setId="CLASSROOM_SPECIAL2_TEXT" setLabel="LABEL.OTHER" [(setModel)]=model.classSpecialText  [setReadonly]="isStudent"   >
+        </m-input-text>
+      </div>
+      <div class="field col-12 md:col-12">
+    </div>
+
+      <div class="field col-2 md:col-2">
+        <m-dropdown setId="STATUS" setLabel="LABEL.STATUS" [(setModel)]=model.status [setReadonly]="isStudent"  [setSelectOption]=statusDropdown >
+        </m-dropdown>
+      </div>
+      <div *ngIf ="(model.status==2||model.status==3||model.status==4)" class="field col-5 md:col-5">
+        <m-calendar setId="LEAVE_DATE" setLabel="LABEL.LEAVE_DATE" [(setModel)]=model.leaveDate  [setRequired]="false"   >
+        </m-calendar>
+      </div>
+      <div *ngIf ="(model.status==2)" class="field col-5 md:col-5">
+        <m-input-text setId="ReasonResign" setLabel="LABEL.ReasonResign" [(setModel)]=model.reasonResign >
+        </m-input-text>
+      </div>
+      <!-- <button class="group">{{"GROUP.CLASSROOM_GROUP"|translate}}</button> -->
+      <div class="field col-12 md:col-12">
+      </div>
+
+      <div class="field col-12 md:col-12">
+      </div>
+
+      <div class="field col-3 md:col-2">
+        <m-dropdown setId="TITLE" setLabel="LABEL.TITLE" [(setModel)]=model.title   [setRequired]="true" [setSelectOption]=titleDropdown >
+        </m-dropdown>
+      </div>
+
+      <div class="field col-4 md:col-5">
+        <m-input-text setId="FIRSTNAME" setLabel="LABEL.FIRSTNAME" [(setModel)]=model.firstname   [setRequired]="true"  >
+        </m-input-text>
+      </div>
+      <div class="field col-5 md:col-5">
+        <m-input-text setId="LASTNAME" setLabel="LABEL.LASTNAME" [(setModel)]=model.lastname   [setRequired]="true"  >
+        </m-input-text>
+      </div>
+      <div class="field col-3 md:col-2">
+        <m-dropdown setId="TITLE_EN" setLabel="LABEL.TITLE_EN" [(setModel)]=model.titleEn   [setRequired]="true" [setSelectOption]=titleEnDropdown >
+        </m-dropdown>
+      </div>
+      <div class="field col-4 md:col-5">
+        <m-input-text setId="FIRSTNAME_EN" setLabel="LABEL.FIRSTNAME_EN" [(setModel)]=model.firstnameEn  [setRequired]="true"   >
+        </m-input-text>
+      </div>
+      <div class="field col-5 md:col-5">
+        <m-input-text setId="LASTNAME_EN" setLabel="LABEL.LASTNAME_EN" [(setModel)]=model.lastnameEn   [setRequired]="true"  >
+        </m-input-text>
+      </div>
+      <div class="field col-2 md:col-2">
+        <m-dropdown setId="GENDAR_ID" setLabel="LABEL.GENDAR_ID" [(setModel)]=model.gendarId   [setRequired]="true" [setSelectOption]=gendarDropdown [setViewValue]=model.gendarValue>>
+        </m-dropdown>
+      </div>
+      <div class="field col-4 md:col-3">
+        <m-calendar setId="ACCEPT_DATE" setLabel="LABEL.ACCEPT_DATE" [(setModel)]=model.acceptDate    >
+        </m-calendar>
+      </div>
+      <div class="field col-4 md:col-3">
+        <m-calendar setId="BIRTH_DATE" setLabel="LABEL.BIRTH_DATE" [(setModel)]=model.birthDate  [setRequired]="true"   >
+        </m-calendar>
+      </div>
+      <div class="field col-2 md:col-2">
+        <m-dropdown setId="NATIONALITY_ID" setLabel="LABEL.NATIONALITY_ID" [(setModel)]=model.nationalityId  [setRequired]="true"  [setSelectOption]=nationalityDropdown [setViewValue]=model.nationalityValue>>
+        </m-dropdown>
+      </div>
+      <div class="field col-2 md:col-2">
+        <m-dropdown setId="ETHNICITY_ID" setLabel="LABEL.ETHNICITY_ID" [(setModel)]=model.ethnicityId  [setRequired]="true"  [setSelectOption]=ethnicityDropdown [setViewValue]=model.ethnicityValue>>
+        </m-dropdown>
+      </div>
+      <div class="field col-2 md:col-2">
+        <m-dropdown setId="RELIGION_ID" setLabel="LABEL.RELIGION_ID" [(setModel)]=model.religionId [setRequired]="true"   [setSelectOption]=religionDropdown [setViewValue]=model.religionValue>>
+        </m-dropdown>
+      </div>
+      <div class="field col-8 md:col-3">
+        <m-input-text setId="EMAIL" setLabel="LABEL.EMAIL" [(setModel)]=model.email     >
+        </m-input-text>
+      </div>
+      <div class="field col-6 md:col-3">
+        <m-input-text setId="PHONE_NUMBER" setLabel="LABEL.PHONE_NUMBER" [(setModel)]=model.phoneNumber     >
+        </m-input-text>
+      </div>
+      <div class="field col-6 md:col-3">
+        <m-input-text setId="SPECIAL ABILITY" setLabel="LABEL.SPECIAL ABILITY" [(setModel)]=model.specialAbility     >
+        </m-input-text>
+      </div>
+    </div>
+
+    <hr>
+
+    <button class="group">{{"GROUP.BIRTH_PLACE_GROUP"|translate}}</button>
+    <div class="grid p-fluid form ">
+      <div class="field col-4 md:col-3">
+        <m-input-text setId="BIRTH_HOSPITAL" setLabel="LABEL.BIRTH_HOSPITAL" [(setModel)]=model.birthHospital     >
+        </m-input-text>
+      </div>
+      <div class="field col-4 md:col-2">
+        <m-dropdown (setModelChange)="getBirthProvince($event)"  setId="BIRTH_COUNTRY_ID" setLabel="LABEL.BIRTH_COUNTRY_ID" [(setModel)]=model.birthCountryId    [setSelectOption]=birthCountryDropdown [setViewValue]=model.birthCountryValue>>
+        </m-dropdown>
+      </div>
+      <div class="field col-4 md:col-2">
+        <m-dropdown (setModelChange)="getBirthDistrict($event)" setId="BIRTH_PROVINCE_ID" setLabel="LABEL.BIRTH_PROVINCE_ID" [(setModel)]=model.birthProvinceId   [setSelectOption]=birthProvinceDropdown  >
+        </m-dropdown>
+      </div>
+      <div class="field col-4 md:col-3">
+        <m-dropdown (setModelChange)="getBirthSubDistrict($event)" setId="BIRTH_DISTRICT_ID" setLabel="LABEL.BIRTH_DISTRICT_ID" [(setModel)]=model.birthDistrictId   [setSelectOption]=birthDistrictDropdown  >
+        </m-dropdown>
+      </div>
+      <div class="field col-4 md:col-2">
+        <m-dropdown (setModelChange)="getPostCodeChange($event,'birthPostCode')" setId="BIRTH_SUB_DISTRICT_ID" setLabel="LABEL.BIRTH_SUB_DISTRICT_ID" [(setModel)]=model.birthSubDistrictId   [setSelectOption]=birthSubDistrictDropdown  >
+        </m-dropdown>
+      </div>
+      <div class="field col-6 md:col-3">
+        <m-input-text setId="BIRTH_POSTCODE" setLabel="LABEL.POSTCODE" [(setModel)]=model.birthPostCode     >
+        </m-input-text>
+      </div>
+    </div>
+
+    <hr>
+
+
+    <button class="group">{{"GROUP.PERSONAL_ADDRESS_GROUP"|translate}}</button>
+    <div class="grid p-fluid form ">
+      <div class="field col-3 md:col-2">
+        <m-input-text setId="HOUSE_NUMBER" setLabel="LABEL.HOUSE_NUMBER" [(setModel)]=model.houseNumber >
+        </m-input-text>
+      </div>
+      <div class="field col-2 md:col-2">
+        <m-input-text setId="VILLAGE" setLabel="LABEL.VILLAGE" [(setModel)]=model.village     >
+        </m-input-text>
+      </div>
+      <div class="field col-3 md:col-2">
+        <m-input-text setId="ROAD" setLabel="LABEL.ROAD" [(setModel)]=model.road     >
+        </m-input-text>
+      </div>
+      <div class="field col-4 md:col-3">
+        <m-dropdown (setModelChange)="getProvince($event)"  setId="COUNTRY_ID" setLabel="LABEL.COUNTRY_ID" [(setModel)]=model.countryId    [setSelectOption]=countryDropdown [setViewValue]=model.countryValue>>
+        </m-dropdown>
+      </div>
+      <div class="field col-4 md:col-3">
+        <m-dropdown (setModelChange)="getDistrict($event)"  setId="PROVINCE_ID" setLabel="LABEL.PROVINCE_ID" [(setModel)]=model.provinceId   [setSelectOption]=provinceDropdown [setViewValue]=model.provinceValue>>
+        </m-dropdown>
+      </div>
+      <div class="field col-4 md:col-3">
+        <m-dropdown (setModelChange)="getSubDistrict($event)"  setId="DISTRICT_ID" setLabel="LABEL.DISTRICT_ID" [(setModel)]=model.districtId    [setSelectOption]=districtDropdown [setViewValue]=model.districtValue>>
+        </m-dropdown>
+      </div>
+      <div class="field col-4 md:col-3">
+        <m-dropdown (setModelChange)="getPostCodeChange($event,'postCode')" setId="SUB_DISTRICT_ID" setLabel="LABEL.SUB_DISTRICT_ID" [(setModel)]=model.subDistrictId    [setSelectOption]=subDistrictDropdown [setViewValue]=model.subDistrictValue>>
+        </m-dropdown>
+      </div>
+      <div class="field col-4 md:col-3">
+        <m-input-text setId="POSTCODE" setLabel="LABEL.POSTCODE" [(setModel)]=model.postCode     >
+        </m-input-text>
+      </div>
+    </div>
+
+    <hr>
+
+
+    <button class="group">{{"GROUP.CONTRACT_ADDRESS_GROUP"|translate}}</button>
+    <div class="grid p-fluid form ">
+      <div class="field col-3 md:col-2">
+        <m-input-text setId="CONTRACT_HOUSE_NUMBER" setLabel="LABEL.CONTRACT_HOUSE_NUMBER" [(setModel)]=model.contractHouseNumber     >
+        </m-input-text>
+      </div>
+      <div class="field col-2 md:col-2">
+        <m-input-text setId="CONTRACT_VILLAGE" setLabel="LABEL.CONTRACT_VILLAGE" [(setModel)]=model.contractVillage     >
+        </m-input-text>
+      </div>
+      <div class="field col-3 md:col-2">
+        <m-input-text setId="CONTRACT_ROAD" setLabel="LABEL.CONTRACT_ROAD" [(setModel)]=model.contractRoad     >
+        </m-input-text>
+      </div>
+      <div class="field col-4 md:col-3">
+        <m-dropdown (setModelChange)="getContractProvince($event)"  setId="CONTRACT_COUNTRY_ID" setLabel="LABEL.CONTRACT_COUNTRY_ID" [(setModel)]=model.contractCountryId    [setSelectOption]=contractCountryDropdown [setViewValue]=model.contractCountryValue>>
+        </m-dropdown>
+      </div>
+      <div class="field col-4 md:col-3">
+        <m-dropdown (setModelChange)="getContractDistrict($event)"  setId="CONTRACT_PROVINCE_ID" setLabel="LABEL.CONTRACT_PROVINCE_ID" [(setModel)]=model.contractProvinceId    [setSelectOption]=contractProvinceDropdown [setViewValue]=model.contractProvinceValue>>
+        </m-dropdown>
+      </div>
+      <div class="field col-4 md:col-3">
+        <m-dropdown (setModelChange)="getContractSubDistrict($event)"  setId="CONTRACT_DISTRICT_ID" setLabel="LABEL.CONTRACT_DISTRICT_ID" [(setModel)]=model.contractDistrictId    [setSelectOption]=contractDistrictDropdown [setViewValue]=model.contractDistrictValue>>
+        </m-dropdown>
+      </div>
+      <div class="field col-4 md:col-3">
+        <m-dropdown  (setModelChange)="getPostCodeChange($event,'contractPostCode')" setId="CONTRACT_SUB_DISTRICT_ID" setLabel="LABEL.CONTRACT_SUB_DISTRICT_ID" [(setModel)]=model.contractSubDistrictId    [setSelectOption]=contractSubDistrictDropdown [setViewValue]=model.contractSubDistrictValue>>
+        </m-dropdown>
+      </div>
+      <div class="field col-4 md:col-3">
+        <m-input-text setId="CONTRACT_POSTCODE" setLabel="LABEL.POSTCODE" [(setModel)]=model.contractPostCode     >
+        </m-input-text>
+      </div>
+    </div>
+    <hr>
+    <button class="group">{{"GROUP.OLD_SCHOOL_GROUP"|translate}}</button>
+    <div class="grid p-fluid form ">
+      <div class="field col-4 md:col-3">
+        <m-input-text setId="OLD_SCHOOL_NAME" setLabel="LABEL.OLD_SCHOOL_NAME" [(setModel)]=model.oldSchoolName     >
+        </m-input-text>
+      </div>
+      <div class="field col-4 md:col-2">
+        <m-dropdown (setModelChange)="getOldSchoolProvince($event)" setId="OLD_SCHOOL_COUNTRY_ID" setLabel="LABEL.OLD_SCHOOL_COUNTRY_ID" [(setModel)]=model.oldSchoolCountryId   [setSelectOption]=oldSchoolCountryDropdown  >
+        </m-dropdown>
+      </div>
+      <div class="field col-4 md:col-2">
+        <m-dropdown (setModelChange)="getOldSchoolDistrict($event)" setId="OLD_SCHOOL_PROVINCE_ID" setLabel="LABEL.OLD_SCHOOL_PROVINCE_ID" [(setModel)]=model.oldSchoolProvinceId   [setSelectOption]=oldSchoolProvinceDropdown  >
+        </m-dropdown>
+      </div>
+      <div class="field col-4 md:col-3">
+        <m-dropdown (setModelChange)="getOldSchoolSubDistrict($event)" setId="OLD_SCHOOL_DISTRICT_ID" setLabel="LABEL.OLD_SCHOOL_DISTRICT_ID" [(setModel)]=model.oldSchoolDistrictId   [setSelectOption]=oldSchoolDistrictDropdown  >
+        </m-dropdown>
+      </div>
+      <div class="field col-4 md:col-2">
+        <m-dropdown  (setModelChange)="getPostCodeChange($event,'oldSchoolPostCode')" setId="OLD_SCHOOL_SUB_DISTRICT_ID" setLabel="LABEL.OLD_SCHOOL_SUB_DISTRICT_ID" [(setModel)]=model.oldSchoolSubDistrictId  [setSelectOption]=oldSchoolSubDistrictDropdown   >
+        </m-dropdown>
+      </div>
+      <div class="field col-4 md:col-3">
+        <m-input-text setId="OLDSCHOOL_POSTCODE" setLabel="LABEL.POSTCODE" [(setModel)]=model.oldSchoolPostCode     >
+        </m-input-text>
+      </div>
+    </div>
+    <hr>
+    <button class="group">{{"GROUP.CLOSE_FRIEND_IN_CLASS_GROUP"|translate}}</button>
+    <div class="grid p-fluid form ">
+      <div class="field col-6 md:col-3">
+        <m-input-text setId="CLOSE_FRIEND_IN_CLASS" setLabel="LABEL.CLOSE_FRIEND_IN_CLASS" [(setModel)]=model.closeFriendInClass     >
+        </m-input-text>
+      </div>
+      <div class="field col-6 md:col-3">
+        <m-input-text setId="CLOSE_FRIEND_IN_CLASS_NICKNAME" setLabel="LABEL.CLOSE_FRIEND_IN_CLASS_NICKNAME" [(setModel)]=model.closeFriendInClassNickname     >
+        </m-input-text>
+      </div>
+      <div class="field col-6 md:col-3">
+        <m-input-text setId="CLOSE_FRIEND_IN_CLASS_SCHOOL" setLabel="LABEL.CLOSE_FRIEND_IN_CLASS_SCHOOL" [(setModel)]=model.closeFriendInClassSchool     >
+        </m-input-text>
+      </div>
+      <div class="field col-6 md:col-3">
+        <m-input-text setId="CLOSE_FRIEND_IN_CLASS_PHONE" setLabel="LABEL.CLOSE_FRIEND_IN_CLASS_PHONE" [(setModel)]=model.closeFriendInClassPhone     >
+        </m-input-text>
+      </div>
+    </div>
+    <hr>
+    <button class="group">{{"GROUP.CLOSE_FRIEND_OTHER_CLASS_GROUP"|translate}}</button>
+    <div class="grid p-fluid form ">
+      <div class="field col-6 md:col-3">
+        <m-input-text setId="CLOSE_FRIEND_OTHER_CLASS" setLabel="LABEL.CLOSE_FRIEND_OTHER_CLASS" [(setModel)]=model.closeFriendOtherClass     >
+        </m-input-text>
+      </div>
+      <div class="field col-6 md:col-3">
+        <m-input-text setId="CLOSE_FRIEND_OTHER_CLASS_NICKNAME" setLabel="LABEL.CLOSE_FRIEND_OTHER_CLASS_NICKNAME" [(setModel)]=model.closeFriendOtherClassNickname     >
+        </m-input-text>
+      </div>
+      <div class="field col-6 md:col-3">
+        <m-input-text setId="CLOSE_FRIEND_OTHER_CLASS_SCHOOL" setLabel="LABEL.CLOSE_FRIEND_OTHER_CLASS_SCHOOL" [(setModel)]=model.closeFriendOtherClassSchool     >
+        </m-input-text>
+      </div>
+      <div class="field col-6 md:col-3">
+        <m-input-text setId="CLOSE_FRIEND_OTHER_CLASS_PHONE" setLabel="LABEL.CLOSE_FRIEND_OTHER_CLASS_PHONE" [(setModel)]=model.closeFriendOtherClassPhone     >
+        </m-input-text>
+      </div>
+    </div>
+    <hr>
+    <button class="group">{{"GROUP.HEAL_INFOMATION_GROUP"|translate}}</button>
+    <div class="grid p-fluid form ">
+      <div class="field col-6 md:col-2">
+        <m-dropdown setId="BLOOD_TYPE" setLabel="LABEL.BLOOD_TYPE" [(setModel)]=model.bloodType    [setSelectOption]=bloodTypeDropdown >
+        </m-dropdown>
+      </div>
+      <div class="field col-6 md:col-3">
+        <m-input-text setId="CONGENITAL_DISEASE" setLabel="LABEL.CONGENITAL_DISEASE" [(setModel)]=model.congenitalDisease     >
+        </m-input-text>
+      </div>
+      <div class="field col-6 md:col-2">
+        <m-input-number setId="HEIGHT" setLabel="LABEL.HEIGHT" [(setModel)]=model.height     >
+        </m-input-number>
+      </div>
+      <div class="field col-6 md:col-2">
+        <m-input-number setId="WEIGHT" setLabel="LABEL.WEIGHT" [(setModel)]=model.weight     >
+        </m-input-number>
+      </div>
+      <div class="field col-6 md:col-3">
+        <m-input-text setId="DEFECT" setLabel="LABEL.DEFECT" [(setModel)]=model.defect     >
+        </m-input-text>
+      </div>
+    </div>
+    <hr>
+    <button class="group">{{"GROUP.ALIVE_WITH_GROUP"|translate}}</button>
+    <div class="grid p-fluid form ">
+      <div class="field col-12 md:col-6">
+        <m-dropdown setId="ALIVE_WITH_ID" setLabel="LABEL.ALIVE_WITH_ID" [(setModel)]=model.aliveWithId   [setSelectOption]=aliveWithDropdown [setViewValue]=model.aliveWithValue>>
+        </m-dropdown>
+      </div>
+    </div>
+    <hr>
+    <button class="group">{{"GROUP.PARENT_STATUS_GROUP"|translate}}</button>
+    <div class="grid p-fluid form ">
+      <div class="field col-12 md:col-6">
+        <m-dropdown setId="PARENT_STATUS" setLabel="LABEL.PARENT_STATUS" [(setModel)]=model.parentStatus    [setSelectOption]=parentStatusDropdown >
+        </m-dropdown>
+      </div>
+    </div>
+    <hr>
+    
+    <button class="group">{{"GROUP.FATHER_INFOMATION_GROUP"|translate}}</button>
+    <div class="field col-12 md:col-4">
+      <m-button setClassName="saveBtn" *ngIf = !view setLabel="เป็นผู้ปกครอง" (onClick)="fatherIsParent()">
+      </m-button>
+    </div>
+    <div class="grid p-fluid form ">
+      <div class="field col-3 md:col-2">
+        <m-dropdown setId="FATHER_TITLE" setLabel="LABEL.FATHER_TITLE" [(setModel)]=model.fatherTitle    [setSelectOption]=fatherTitleDropdown >
+        </m-dropdown>
+      </div>
+      <div class="field col-4 md:col-3">
+        <m-input-text setId="FATHER_FIRSTNAME" setLabel="LABEL.FATHER_FIRSTNAME" [(setModel)]=model.fatherFirstname     >
+        </m-input-text>
+      </div>
+      <div class="field col-5 md:col-3">
+        <m-input-text setId="FATHER_LASTNAME" setLabel="LABEL.FATHER_LASTNAME" [(setModel)]=model.fatherLastname     >
+        </m-input-text>
+      </div>
+      <div class="field col-6 md:col-4">
+        <m-input-text setId="FATHER_PERSONAL_CODE" setLabel="LABEL.FATHER_PERSONAL_CODE" [(setModel)]=model.fatherPersonalCode     >
+        </m-input-text>
+      </div>
+      <div class="field col-3 md:col-2">
+        <m-dropdown setId="FATHER_BLOOD_TYPE" setLabel="LABEL.FATHER_BLOOD_TYPE" [(setModel)]=model.fatherBloodType    [setSelectOption]=fatherBloodTypeDropdown >
+        </m-dropdown>
+      </div>
+      <div class="field col-3 md:col-3">
+        <m-input-text setId="FATHER_INCOME" setLabel="LABEL.FATHER_INCOME" [(setModel)]=model.fatherIncome     >
+        </m-input-text>
+      </div>
+      <div class="field col-6 md:col-3">
+        <m-input-text setId="FATHER_OCCUPATION" setLabel="LABEL.FATHER_OCCUPATION" [(setModel)]=model.fatherOccupation     >
+        </m-input-text>
+      </div>
+      <div class="field col-6 md:col-3">
+        <m-input-text setId="FATHER_PHONE" setLabel="LABEL.FATHER_PHONE" [(setModel)]=model.fatherPhone     >
+        </m-input-text>
+      </div>
+    </div>
+    <hr>
+    <button class="group">{{"GROUP.MOTHER_INFOMATION_GROUP"|translate}}</button>
+    <div class="field col-12 md:col-4">
+      <m-button setClassName="saveBtn" *ngIf = !view setLabel="เป็นผู้ปกครอง" (onClick)="motherIsParent()">
+      </m-button>
+    </div>
+    <div class="grid p-fluid form ">
+      <div class="field col-3 md:col-2">
+        <m-dropdown setId="MOTHER_TITLE" setLabel="LABEL.MOTHER_TITLE" [(setModel)]=model.motherTitle    [setSelectOption]=motherTitleDropdown >
+        </m-dropdown>
+      </div>
+      <div class="field col-4 md:col-3">
+        <m-input-text setId="MOTHER_FIRSTNAME" setLabel="LABEL.MOTHER_FIRSTNAME" [(setModel)]=model.motherFirstname     >
+        </m-input-text>
+      </div>
+      <div class="field col-5 md:col-3">
+        <m-input-text setId="MOTHER_LASTNAME" setLabel="LABEL.MOTHER_LASTNAME" [(setModel)]=model.motherLastname     >
+        </m-input-text>
+      </div>
+      <div class="field col-6 md:col-4">
+        <m-input-text setId="MOTHER_PERSONAL_CODE" setLabel="LABEL.MOTHER_PERSONAL_CODE" [(setModel)]=model.motherPersonalCode     >
+        </m-input-text>
+      </div>
+      <div class="field col-3 md:col-2">
+        <m-dropdown setId="MOTHER_BLOOD_TYPE" setLabel="LABEL.MOTHER_BLOOD_TYPE" [(setModel)]=model.motherBloodType    [setSelectOption]=motherBloodTypeDropdown >
+        </m-dropdown>
+      </div>
+      <div class="field col-3 md:col-3">
+        <m-input-text setId="MOTHER_INCOME" setLabel="LABEL.MOTHER_INCOME" [(setModel)]=model.motherIncome     >
+        </m-input-text>
+      </div>
+      <div class="field col-6 md:col-3">
+        <m-input-text setId="MOTHER_OCCUPATION" setLabel="LABEL.MOTHER_OCCUPATION" [(setModel)]=model.motherOccupation     >
+        </m-input-text>
+      </div>
+      <div class="field col-6 md:col-3">
+        <m-input-text setId="MOTHER_PHONE" setLabel="LABEL.MOTHER_PHONE" [(setModel)]=model.motherPhone     >
+        </m-input-text>
+      </div>
+    </div>
+    <hr>
+    <button class="group">{{"GROUP.PARENT_INFOMATION_GROUP"|translate}}</button>
+    <div class="grid p-fluid form ">
+      <div class="field col-3 md:col-2">
+        <m-dropdown setId="PARENT_TITLE" setLabel="LABEL.PARENT_TITLE" [(setModel)]=model.parentTitle    [setSelectOption]=parentTitleDropdown >
+        </m-dropdown>
+      </div>
+      <div class="field col-4 md:col-3">
+        <m-input-text setId="PARENT_FIRSTNAME" setLabel="LABEL.PARENT_FIRSTNAME" [(setModel)]=model.parentFirstname     >
+        </m-input-text>
+      </div>
+      <div class="field col-5 md:col-3">
+        <m-input-text setId="PARENT_LASTNAME" setLabel="LABEL.PARENT_LASTNAME" [(setModel)]=model.parentLastname     >
+        </m-input-text>
+      </div>
+      <div class="field col-6 md:col-4">
+        <m-input-text setId="PARENT_PERSONAL_CODE" setLabel="LABEL.PARENT_PERSONAL_CODE" [(setModel)]=model.parentPersonalCode     >
+        </m-input-text>
+      </div>
+      <div class="field col-3 md:col-2">
+        <m-dropdown setId="PARENT_BLOOD_TYPE" setLabel="LABEL.PARENT_BLOOD_TYPE" [(setModel)]=model.parentBloodType    [setSelectOption]=parentBloodTypeDropdown >
+        </m-dropdown>
+      </div>
+      <div class="field col-3 md:col-3">
+        <m-input-text setId="PARENT_INCOME" setLabel="LABEL.PARENT_INCOME" [(setModel)]=model.parentIncome     >
+        </m-input-text>
+      </div>
+      <div class="field col-6 md:col-3">
+        <m-input-text setId="PARENT_OCCUPATION" setLabel="LABEL.PARENT_OCCUPATION" [(setModel)]=model.parentOccupation     >
+        </m-input-text>
+      </div>
+      <div class="field col-6 md:col-3">
+        <m-input-text setId="PARENT_PHONE" setLabel="LABEL.PARENT_PHONE" [(setModel)]=model.parentPhone     >
+        </m-input-text>
+      </div>
+    </div>
+  </div>
+  <div class="grid p-fluid">
+    <div *ngIf = !isStudent class="field col-12 md:col-2">
+      <m-button setClassName="backBtn" setLabel="LABEL.BACK" (onClick)="onBack()">
+      </m-button>
+    </div>
+    <div *ngIf = !view class="field col-12 md:col-2">
+      <m-button setClassName="saveBtn" setLabel="LABEL.SAVE" (onClick)="onSave()">
+      </m-button>
+    </div>
+  </div>
+

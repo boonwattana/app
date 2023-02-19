@@ -1,0 +1,210 @@
+
+<div class="itemCard">
+  <div>
+    <div>
+      <p class="title-item">{{"MODULE.SAR"|translate}} </p>
+    </div>
+  </div>
+  <div class="customCard">
+      <div class="grid p-fluid form ">
+<!--
+        <div class="field col-12 md:col-12">
+          <div class="mian-item pointer" >
+              <div class="font">
+              
+                <span class="link_name pointer"> 
+                  <m-input-text setId="NAME" setLabel="ประจำปีการศึกษา" [(setModel)]=model.schoolyear  [setRequired]="true"  >
+                </m-input-text></span>
+              </div>
+            </div>
+          
+        </div>
+ -->
+          <div class="field col-12 md:col-12">
+              <div class="mian-item pointer" >
+                  <div class="font">
+                  
+                    <span class="link_name pointer">ตอนที่1 ข้อมูลส่วนตัว</span>
+                  </div>
+                </div>
+               <div class="list-menu-sar list-menu-d pointer">
+                <div class="field col-12 md:col-12">
+                  <div class="mian-item pointer" >
+                      <div class="font">
+                      
+                        <span class="link_name pointer">1.1 ข้อมูลทั่วไป</span>
+                      </div>
+                    </div>
+                   <div class="list-menu-sar list-menu-d pointer">
+                    <li class="list-item sar"> <a (click)="goToPath('sar-presonal-data')">ข้อมูลทั่วไป</a></li>
+                    <li class="list-item sar"> <a (click)="goToPath('sar-presonal-leave-data')">ข้อมูลการลาประจำปี</a></li>
+                  </div> 
+                </div>
+                <div class="field col-12 md:col-12">
+                  <div class="mian-item pointer" >
+                      <div class="font">
+                      
+                        <span class="link_name pointer">1.2 ข้อมูลการปฏิบัติหน้าที่</span>
+                      </div>
+                    </div>
+                   <div class="list-menu-sar list-menu-d pointer">
+                    <li class="list-item sar"> <a (click)="goToPath('sar-courses-year-term')">ข้อมูล ปฏิบัติการสอนตลอดปีการศึกษา </a></li>
+                    <li class="list-item sar" > <a (click)="goToPath('sar-activities')">ข้อมูล กิจกรรมพัฒนาผู้เรียนที่ปฏิบัติการพัฒนาผู้เรียนตลอดปีการศึกษา   </a></li>
+                    <li class="list-item sar" > <a (click)="goToPath('sar-advise-class')">ข้อมูล ปฏิบัติหน้าที่ครูที่ปรึกษาตลอดปีการศึกษา   </a></li>
+                    <li class="list-item sar"> <a (click)="goToPath('sar-another-speacial-duty')">ข้อมูล งานพิเศษ ในโรงเรียน/การปฏิบัติหน้าที่อื่น ๆ ที่ได้รับมอบหมาย</a></li>
+                  <!--  <li class="list-item sar"> <a (click)="goToPath('sar-teaching-schedule')">ตารางปฏิบัติการสอน</a></li>--> 
+                
+<!-- 
+                    <li class="list-item sar"> <a (click)="goToPath('sar-courses-year-term')">จำนวนรายวิชา/กิจกรรมเสริมหลักสูตร ระดับชั้น ชั่วโมงเรียนที่ปฏิบัติการสอน</a></li>
+                    <li class="list-item sar"> <a (click)="goToPath('sar-teaching-schedule')">ตารางปฏิบัติการสอน</a></li>
+                    <li class="list-item sar"> <a (click)="goToPath('sar-another-speacial-duty')">การปฏิบัติหน้าที่อื่น ๆ ที่ได้รับมอบหมาย</a></li>
+-->                 
+ </div> 
+                </div>
+             
+                <div class="field col-12 md:col-12">
+                  <div class="mian-item pointer" >
+                      <div class="font">
+                      
+                        <span class="link_name pointer">1.3 การจัดกิจกรรมการเรียนการสอน</span>
+                      </div>
+                    </div>
+                   <div class="list-menu-sar list-menu-d pointer">
+                    <li class="list-item sar"> <a (click)="goToPath('sar-learning-management-plan')">จัดทำแผนการจัดการเรียนรู้</a></li>
+                    <li class="list-item sar"> <a (click)="goToPath('sar-media-production')">ผลิตสื่อ / นวัตกรรม</a></li>
+                    <li class="list-item sar"> <a (click)="goToPath('sar-integrated-learning')">จัดทำหน่วยการเรียนรู้แบบบูรณาการ (เศรษฐกิจพอเพียง,ศาสตร์พระราช,สวนพฤกษศาสตร์)</a></li>
+                    <li class="list-item sar"> <a (click)="goToPath('sar-research-in-class')">จัดทำวิจัยในชั้นเรียน</a></li>
+                    <li class="list-item sar"> <a (click)="goToPath('sar-student-assign')"> การนำ/มอบหมายงาน นักเรียนไปศึกษาค้นคว้า/ใช้แหล่งเรียนรู้นอกโรงเรียน</a></li>
+                    <li class="list-item sar"> <a (click)="goToPath('sar-lecturer-invite')"> เชิญวิทยากรภายนอกมาให้ความรู้แก่นักเรียน</a></li>
+                    <li class="list-item sar"> <a (click)="goToPath('sar-teaching-format')"> รูปแบบ / วิธีการจัดกิจกรรมการเรียนการสอนที่ครูใช้ </a></li>
+                    <li class="list-item sar"> <a (click)="goToPath('sar-teaching-condition')">  สภาพการปฏิบัติงานสอน </a></li>
+                    <li class="list-item sar"> <a (click)="goToPath('sar-self-development')"> การพัฒนาตนเอง</a></li>
+                    <li class="list-item sar"> <a (click)="goToPath('sar-award')">  การได้รับรางวัล / ประกาศเกียรติคุณ / ผลงานดีเด่น / เกียรติประวัติที่ปรากฏต่อสาธารณชนด้านสถานศึกษา / ครู / นักเรียน
+                    </a></li>
+                    <li class="list-item sar"> <a (click)="goToPath('sar-invited-speaker')"> การได้รับเชิญเป็นวิทยากร/กรรมการตัดสินภายในและภายนอกสถานศึกษา </a></li>   
+                  </div> 
+                </div>
+                <div class="field col-12 md:col-12">
+                  <div class="mian-item pointer" >
+                      <div class="font">
+                      
+                        <span class="link_name pointer">1.4 ผลการปฏิบัติงาน</span>
+                      </div>
+                    </div>
+                   <div class="list-menu-sar list-menu-d pointer">
+                    <li class="list-item sar"> <a (click)="goToPath('sar-teaching-result')"> การปฏิบัติหน้าที่จัดกิจกรรมการเรียนการสอนประจำปีการศึกษา </a></li>
+                    <li class="list-item sar"> <a (click)="goToPath('sar-performing-special-duties')"> การปฏิบัติงานหน้าที่พิเศษ</a></li>
+                  </div> 
+                </div>
+                <div class="field col-12 md:col-12">
+                  <div class="mian-item pointer" >
+                      <div class="font">
+                      
+                        <span class="link_name pointer">1.5 ผลการประเมินการสอนของครูโดยนักเรียน</span>
+                      </div>
+                    </div>
+                   <div class="list-menu-sar list-menu-d pointer">
+                    <li class="list-item sar"> <a (click)="goToPath('sar-student-estimate-teaching')">ผลการประเมินการสอนของครูโดยนักเรียน</a></li>
+                    </div> 
+                </div>
+                <div class="field col-12 md:col-12">
+                  <div class="mian-item pointer" >
+                      <div class="font">
+                      
+                        <span class="link_name pointer">1.6 การประเมินตนเองเกี่ยวกับการจัดทำแผนการจัดการเรียนรู้ที่เน้นผู้เรียนเป็นสำคัญ</span>
+                      </div>
+                    </div>
+                   <div class="list-menu-sar list-menu-d pointer">
+                    <li class="list-item sar"> <a (click)="goToPath('sar-self-assessment')">การประเมินตนเองเกี่ยวกับการจัดทำแผนการจัดการเรียนรู้ที่เน้นผู้เรียนเป็นสำคัญ</a></li>
+                    </div> 
+                </div>
+                <div class="field col-12 md:col-12">
+                  <div class="mian-item pointer" >
+                      <div class="font">
+                      
+                        <span class="link_name pointer">1.7 ผลการประเมินผู้เรียน</span>
+                      </div>
+                    </div>
+                   <div class="list-menu-sar list-menu-d pointer">
+                    <li class="list-item sar" > <a  (click)="goToPath('sar-crud-assessment')">ผลการประเมินการอ่านคิด วิเคราะห์และเขียน</a></li>
+                    <li class="list-item sar"  > <a  (click)="goToPath('sar-competency-assessment')">ผลการประเมินคุณลักษณะอันพึงประสงค์</a></li>   </div> 
+                </div>
+              
+         
+            </div>
+            <div class="field col-12 md:col-12">
+              <div class="mian-item pointer" >
+                  <div class="font">
+                  
+                    <span class="link_name pointer">ตอนที่2 ผลการดำเนินงานตามมาตรฐานการศึกษา</span>
+                  </div>
+                </div>
+               <div class="list-menu-sar list-menu-d pointer">
+                <li class="list-item sar"> <a  (click)="goToPath('sar-quality-of-learners')">มาตรฐานที่1 คุณภาพของผู้เรียน</a></li>
+                 <!-- <div class="list-menu-sar list-menu-d pointer">
+                    <li class="list-item sar"> <a  (click)="goToPath('sar-quality-evidence')">หลักฐานร่องรอยที่ดำเนินการ</a></li> 
+                  </div> 
+                  --> 
+             
+                <li class="list-item sar-work"> <a   (click)="goToPath('sar-standard2')">มาตรฐานที่2 กระบวนการบริหารและการจัดการ
+                </a></li>
+                 <!-- 
+                <div class="list-menu-sar list-menu-d pointer">
+                  <li class="list-item sar"> <a  (click)="goToPath('sar-quality-evidence2')">หลักฐานร่องรอยที่ดำเนินการ</a></li> 
+                </div> 
+                 --> 
+                <li class="list-item sar-work"> <a   (click)="goToPath('sar-standard3')">มาตรฐานที่3 กระบวนการจัดการเรียนการสอนที่เน้นผู้เรียนเป็นสำคัญ
+                </a></li>
+                 <!-- 
+                <div class="list-menu-sar list-menu-d pointer">
+                  <li class="list-item sar"> <a  (click)="goToPath('sar-quality-evidence3')">หลักฐานร่องรอยที่ดำเนินการ</a></li> 
+                </div> 
+                 --> 
+                    <!-- 
+                <li class="list-item sar-work"> <a  (click)="goToPath('sar-standard4')" >มาตรฐานที่4  ระบบการประกันคุณภาพภายในที่มีประสิทธิผล
+                </a></li> --> 
+                 <!-- 
+                <div class="list-menu-sar list-menu-d pointer">
+                  <li class="list-item sar"> <a  (click)="goToPath('sar-quality-evidence4')">หลักฐานร่องรอยที่ดำเนินการ</a></li> 
+                </div> 
+                 --> 
+                    <!-- 
+                <li class="list-item sar"> <a  (click)="goToPath('sar-competency-assessment')">ผลการประเมินสมรรถนะสำคัญของผู้เรียน</a></li> 
+                 --> 
+              </div> 
+            </div>
+            <div class="mian-item pointer" >
+              <div class="font">
+              
+                <span class="link_name pointer">รายงานผลการปฏิบัติงาน
+                  และผลการประเมินตนเองรายบุคคล
+                  </span>
+              </div>
+              
+            </div>
+          
+            <div class="list-menu-sar list-menu-d pointer">
+              <li class="list-item sar"> <a (click)="goToPath('sar-upload-img')">อัพโหลดภาคผนวก</a></li>
+              <li class="list-item sar"> <a (click)="goToPath('sar-ordered-position')">รายงาน คำสั่งแต่งตั้งการปฏิบัติหน้าที่  </a></li>
+              <li class="list-item sar"> <a (click)="goToPath('sar-input')">สร้าง รายงานผลการปฏิบัติงาน
+                และผลการประเมินตนเองรายบุคคล</a></li>
+              </div> 
+              <div class="field col-6 md:col-12"  >
+                <p style="color: red;"> *หมายเหตุ: กรุณากรอกข้อมูลด้านบนให้ครบถ้วนก่อนสร้างรายงาน*</p> 
+            </div>
+<!--
+            <div class="field col-12 md:col-12">
+              <div class="mian-item pointer" >
+                  <div class="font">
+                  
+                    <span class="link_name pointer">เพิ่มเติม</span>
+                  </div>
+                </div>
+               <div class="list-menu-sar list-menu-d pointer">
+                <li class="list-item sar"> <a  >ภาคผนวก</a></li>
+              </div> 
+            </div>
+ -->
+      </div>
+  </div>
+</div>

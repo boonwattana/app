@@ -1,0 +1,535 @@
+<div class="itemCard">
+  <div>
+    <div>
+      <p class="title-item">{{"MODULE.SAR_STUDENT_ESTIMATE_TEACHING"|translate}}</p>
+    </div>
+  </div>
+  <div class="customCard">
+    <button class="group"> ตาราง  แสดงร้อยละของระดับการประเมินการสอนของครูโดยนักเรียน</button>
+    <div class="grid p-fluid form ">
+      <div class="field col-6 md:col-3">
+        <m-dropdown setId="TEACHER_ID" setLabel="ชื่อ-สกุล" [(setModel)]=model.teacherId    [setSelectOption]=teacherDropdown [setViewValue]=model.teacherValue [setReadonly] = "isTeacher" >
+        </m-dropdown>
+      </div>
+      <div class="field col-6 md:col-3">
+        <m-input-text setId="SCHOOLYEAR" setLabel="LABEL.SCHOOLYEAR" [(setModel)]=model.schoolyear   [setRequired]="true"   >
+        </m-input-text>
+      </div>
+      <table  style="width: 100%;" border="1" >
+        <tr  >
+          <th style="text-align: center; width: 50%;" rowspan="2">กิจกรรม</th>
+          <th style="text-align: center;" colspan="5">ระดับการประเมิน</th>
+        </tr>
+        <tr  >
+          <th style="text-align: center;" >มากที่สุด</th>
+          <th style="text-align: center;">มาก</th>
+          <th style="text-align: center;" >ปานกลาง</th>
+          <th style="text-align: center;">น้อย </th>
+          <th style="text-align: center;">น้อยที่สุด</th>
+        </tr>
+        <tr>
+          <td  style="text-align: left;">1.  ครูแจ้งผลการเรียนรู้ให้นักเรียนทราบอย่างชัดเจน</td>
+          <td>  
+            <m-input-number setId="choice1_5P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice1_5P     >
+            </m-input-number>
+          </td>
+          <td> 
+            <m-input-number setId="choice1_4P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice1_4P     >
+            </m-input-number>
+          </td>
+          <td> 
+            <m-input-number setId="choice1_3P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice1_3P     >
+            </m-input-number>
+          </td>
+          <td>
+            <m-input-number setId="choice1_2P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice1_2P     >
+            </m-input-number>
+          </td>
+          <td> 
+            <m-input-number setId="choice1_1P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice1_1P     >
+            </m-input-number>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left;">2.  ครูจัดกิจกรรมการเรียนรู้สนุกและน่าสนใจ</td>
+          <td>  
+            <m-input-number setId="choice2_5P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice2_5P     >
+            </m-input-number>
+          </td>
+          <td> 
+            <m-input-number setId="choice2_4P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice2_4P     >
+            </m-input-number>
+          </td>
+          <td> 
+            <m-input-number setId="choice2_3P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice2_3P     >
+            </m-input-number>
+          </td>
+          <td>
+            <m-input-number setId="choice2_2P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice2_2P     >
+            </m-input-number>
+          </td>
+          <td> 
+            <m-input-number setId="choice2_1P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice2_1P     >
+            </m-input-number>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left;">3.  เนื้อหาที่สอนทันสมัยเสมอ</td>
+          <td>  
+            <m-input-number setId="choice3_5P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice3_5P     >
+            </m-input-number>
+          </td>
+          <td> 
+            <m-input-number setId="choice3_4P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice3_4P     >
+            </m-input-number>
+          </td>
+          <td> 
+            <m-input-number setId="choice3_3P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice3_3P     >
+            </m-input-number>
+          </td>
+          <td>
+            <m-input-number setId="choice3_2P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice3_2P     >
+            </m-input-number>
+          </td>
+          <td> 
+            <m-input-number setId="choice3_1P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice3_1P     >
+            </m-input-number>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left;">4.  ครูใช้สื่อประกอบการเรียนการสอนที่เหมาะสมและหลากหลาย</td>
+          <td>  
+            <m-input-number setId="choice4_5P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice4_5P     >
+            </m-input-number>
+          </td>
+          <td> 
+            <m-input-number setId="choice4_4P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice4_4P     >
+            </m-input-number>
+          </td>
+          <td> 
+            <m-input-number setId="choice4_3P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice4_3P     >
+            </m-input-number>
+          </td>
+          <td>
+            <m-input-number setId="choice4_2P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice4_2P     >
+            </m-input-number>
+          </td>
+          <td> 
+            <m-input-number setId="choice4_1P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice4_1P     >
+            </m-input-number>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left;">5.  ครูใช้คำถามซักถามนักเรียนบ่อย ๆ</td>
+          <td>  
+            <m-input-number setId="choice5_5P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice5_5P     >
+            </m-input-number>
+          </td>
+          <td> 
+            <m-input-number setId="choice5_4P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice5_4P     >
+            </m-input-number>
+          </td>
+          <td> 
+            <m-input-number setId="choice5_3P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice5_3P     >
+            </m-input-number>
+          </td>
+          <td>
+            <m-input-number setId="choice5_2P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice5_2P     >
+            </m-input-number>
+          </td>
+          <td> 
+            <m-input-number setId="choice5_1P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice5_1P     >
+            </m-input-number>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left;">6.  ครูประยุกต์สาระที่สอนเข้ากับเหตุการณ์ปัจจุบัน/สภาพแวดล้อม</td>
+          <td>  
+            <m-input-number setId="choice6_5P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice6_5P     >
+            </m-input-number>
+          </td>
+          <td> 
+            <m-input-number setId="choice6_4P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice6_4P     >
+            </m-input-number>
+          </td>
+          <td> 
+            <m-input-number setId="choice6_3P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice6_3P     >
+            </m-input-number>
+          </td>
+          <td>
+            <m-input-number setId="choice6_2P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice6_2P     >
+            </m-input-number>
+          </td>
+          <td> 
+            <m-input-number setId="choice6_1P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice6_1P     >
+            </m-input-number>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left;">7.  ครูส่งเสริมนักเรียนได้ฝึกปฏิบัติจริง มีการจัดการ และ
+            การแก้ปัญหา
+       </td>
+       <td>  
+        <m-input-number setId="choice7_5P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice7_5P     >
+        </m-input-number>
+      </td>
+      <td> 
+        <m-input-number setId="choice7_4P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice7_4P     >
+        </m-input-number>
+      </td>
+      <td> 
+        <m-input-number setId="choice7_3P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice7_3P     >
+        </m-input-number>
+      </td>
+      <td>
+        <m-input-number setId="choice7_2P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice7_2P     >
+        </m-input-number>
+      </td>
+      <td> 
+        <m-input-number setId="choice7_1P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice7_1P     >
+        </m-input-number>
+      </td>
+        </tr>
+        <tr>
+          <td style="text-align: left;">8.  ครูให้นักเรียนฝึกกระบวนการคิด คิดวิเคราะห์  คิดสร้างสรรค์  </td>
+          <td>  
+            <m-input-number setId="choice8_5P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice8_5P     >
+            </m-input-number>
+          </td>
+          <td> 
+            <m-input-number setId="choice8_4P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice8_4P     >
+            </m-input-number>
+          </td>
+          <td> 
+            <m-input-number setId="choice8_3P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice8_3P     >
+            </m-input-number>
+          </td>
+          <td>
+            <m-input-number setId="choice8_2P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice8_2P     >
+            </m-input-number>
+          </td>
+          <td> 
+            <m-input-number setId="choice8_1P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice8_1P     >
+            </m-input-number>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left;">9.  ครูส่งเสริมให้นักเรียนทำงานร่วมกันทั้งเป็นกลุ่มและรายบุคคล</td>
+          <td>  
+            <m-input-number setId="choice9_5P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice9_5P     >
+            </m-input-number>
+          </td>
+          <td> 
+            <m-input-number setId="choice9_4P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice9_4P     >
+            </m-input-number>
+          </td>
+          <td> 
+            <m-input-number setId="choice9_3P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice9_3P     >
+            </m-input-number>
+          </td>
+          <td>
+            <m-input-number setId="choice9_2P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice9_2P     >
+            </m-input-number>
+          </td>
+          <td> 
+            <m-input-number setId="choice9_1P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice9_1P     >
+            </m-input-number>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left;">10. ครูให้นักเรียนแสวงหาความรู้จากแหล่งเรียนรู้ต่าง ๆ</td>
+          <td>  
+            <m-input-number setId="choice10_5P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice10_5P     >
+            </m-input-number>
+          </td>
+          <td> 
+            <m-input-number setId="choice10_4P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice10_4P     >
+            </m-input-number>
+          </td>
+          <td> 
+            <m-input-number setId="choice10_3P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice10_3P     >
+            </m-input-number>
+          </td>
+          <td>
+            <m-input-number setId="choice10_2P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice10_2P     >
+            </m-input-number>
+          </td>
+          <td> 
+            <m-input-number setId="choice10_1P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice10_1P     >
+            </m-input-number>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left;">11. ครูมีการเสริมแรงให้นักเรียนที่ร่วมกิจกรรมการเรียนการสอน</td>
+          <td>  
+            <m-input-number setId="choice11_5P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice11_5P     >
+            </m-input-number>
+          </td>
+          <td> 
+            <m-input-number setId="choice11_4P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice11_4P     >
+            </m-input-number>
+          </td>
+          <td> 
+            <m-input-number setId="choice11_3P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice11_3P     >
+            </m-input-number>
+          </td>
+          <td>
+            <m-input-number setId="choice11_2P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice11_2P     >
+            </m-input-number>
+          </td>
+          <td> 
+            <m-input-number setId="choice11_1P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice11_1P     >
+            </m-input-number>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left;">12. ครูเปิดโอกาสให้นักเรียนซักถามปัญหา</td>
+          <td>  
+            <m-input-number setId="choice12_5P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice12_5P     >
+            </m-input-number>
+          </td>
+          <td> 
+            <m-input-number setId="choice12_4P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice12_4P     >
+            </m-input-number>
+          </td>
+          <td> 
+            <m-input-number setId="choice12_3P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice12_3P     >
+            </m-input-number>
+          </td>
+          <td>
+            <m-input-number setId="choice12_2P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice12_2P     >
+            </m-input-number>
+          </td>
+          <td> 
+            <m-input-number setId="choice12_1P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice12_1P     >
+            </m-input-number>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left;">13. ครูคอยกระตุ้นให้นักเรียนตื่นตัวในการเรียนเสมอ</td>
+          <td>  
+            <m-input-number setId="choice13_5P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice13_5P     >
+            </m-input-number>
+          </td>
+          <td> 
+            <m-input-number setId="choice13_4P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice13_4P     >
+            </m-input-number>
+          </td>
+          <td> 
+            <m-input-number setId="choice13_3P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice13_3P     >
+            </m-input-number>
+          </td>
+          <td>
+            <m-input-number setId="choice13_2P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice13_2P     >
+            </m-input-number>
+          </td>
+          <td> 
+            <m-input-number setId="choice13_1P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice13_1P     >
+            </m-input-number>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left;">14. ครูสอดแทรกคุณธรรมและค่านิยม  12  ประการในวิชาที่สอน</td>
+          <td>  
+            <m-input-number setId="choice14_5P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice14_5P     >
+            </m-input-number>
+          </td>
+          <td> 
+            <m-input-number setId="choice14_4P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice14_4P     >
+            </m-input-number>
+          </td>
+          <td> 
+            <m-input-number setId="choice14_3P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice14_3P     >
+            </m-input-number>
+          </td>
+          <td>
+            <m-input-number setId="choice14_2P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice14_2P     >
+            </m-input-number>
+          </td>
+          <td> 
+            <m-input-number setId="choice14_1P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice14_1P     >
+            </m-input-number>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left;">15. ครูยอมรับความคิดเห็นของนักเรียนที่ต่างไปจากครู</td>
+          <td>  
+            <m-input-number setId="choice15_5P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice15_5P     >
+            </m-input-number>
+          </td>
+          <td> 
+            <m-input-number setId="choice15_4P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice15_4P     >
+            </m-input-number>
+          </td>
+          <td> 
+            <m-input-number setId="choice15_3P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice15_3P     >
+            </m-input-number>
+          </td>
+          <td>
+            <m-input-number setId="choice15_2P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice15_2P     >
+            </m-input-number>
+          </td>
+          <td> 
+            <m-input-number setId="choice15_1P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice15_1P     >
+            </m-input-number>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left;">16. นักเรียนมีส่วนร่วมในการวัดและประเมินผลการเรียน</td>
+          <td>  
+            <m-input-number setId="choice16_5P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice16_5P     >
+            </m-input-number>
+          </td>
+          <td> 
+            <m-input-number setId="choice16_4P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice16_4P     >
+            </m-input-number>
+          </td>
+          <td> 
+            <m-input-number setId="choice16_3P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice16_3P     >
+            </m-input-number>
+          </td>
+          <td>
+            <m-input-number setId="choice16_2P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice16_2P     >
+            </m-input-number>
+          </td>
+          <td> 
+            <m-input-number setId="choice16_1P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice16_1P     >
+            </m-input-number>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left;">17. ครูมีการประเมินผลการเรียนด้วยวิธีการที่หลากหมายและ
+            ยุติธรรม
+      </td>
+       <td>  
+            <m-input-number setId="choice17_5P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice17_5P     >
+            </m-input-number>
+          </td>
+          <td> 
+            <m-input-number setId="choice17_4P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice17_4P     >
+            </m-input-number>
+          </td>
+          <td> 
+            <m-input-number setId="choice17_3P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice17_3P     >
+            </m-input-number>
+          </td>
+          <td>
+            <m-input-number setId="choice17_2P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice17_2P     >
+            </m-input-number>
+          </td>
+          <td> 
+            <m-input-number setId="choice17_1P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice17_1P     >
+            </m-input-number>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left;">18. ครูมีความตั้งใจในการจัดกิจกรรมการเรียนการสอน </td>
+          <td>  
+            <m-input-number setId="choice18_5P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice18_5P     >
+            </m-input-number>
+          </td>
+          <td> 
+            <m-input-number setId="choice18_4P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice18_4P     >
+            </m-input-number>
+          </td>
+          <td> 
+            <m-input-number setId="choice18_3P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice18_3P     >
+            </m-input-number>
+          </td>
+          <td>
+            <m-input-number setId="choice18_2P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice18_2P     >
+            </m-input-number>
+          </td>
+          <td> 
+            <m-input-number setId="choice18_1P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice18_1P     >
+            </m-input-number>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left;">19. บุคลิกภาพ การแต่งกายและการพูดจาของครูเหมาะสม </td>
+          <td>  
+            <m-input-number setId="choice19_5P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice19_5P     >
+            </m-input-number>
+          </td>
+          <td> 
+            <m-input-number setId="choice19_4P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice19_4P     >
+            </m-input-number>
+          </td>
+          <td> 
+            <m-input-number setId="choice19_3P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice19_3P     >
+            </m-input-number>
+          </td>
+          <td>
+            <m-input-number setId="choice19_2P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice19_2P     >
+            </m-input-number>
+          </td>
+          <td> 
+            <m-input-number setId="choice19_1P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice19_1P     >
+            </m-input-number>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left;">20. ครูเข้าสอนและออกชั้นเรียนตรงตามเวลา</td>
+          <td>  
+            <m-input-number setId="choice20_5P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice20_5P     >
+            </m-input-number>
+          </td>
+          <td> 
+            <m-input-number setId="choice20_4P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice20_4P     >
+            </m-input-number>
+          </td>
+          <td> 
+            <m-input-number setId="choice20_3P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice20_3P     >
+            </m-input-number>
+          </td>
+          <td>
+            <m-input-number setId="choice20_2P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice20_2P     >
+            </m-input-number>
+          </td>
+          <td> 
+            <m-input-number setId="choice20_1P"  setplaceholderText="จำนวน(คน)" [(setModel)]=model.choice20_1P     >
+            </m-input-number>
+          </td>
+        </tr>
+      </table>
+      <div class="field col-6 md:col-12">
+        <b>จากผลการประเมินการสอนของครูโดยนักเรียน  พบว่าอยู่ในระดับ  
+        </b>
+      </div>
+      <div class="field col-12 md:col-2"> 
+        <p-radioButton name="result" value="5" [(ngModel)]="model.result" inputId="result">
+      </p-radioButton>
+      <div class="field col-12 md:col-2"> 
+        มากที่สุด
+      </div>
+    </div>
+      <div class="field col-12 md:col-2"> 
+        <p-radioButton name="result" value="4" [(ngModel)]="model.result" inputId="result">
+      </p-radioButton><div class="field col-12 md:col-2"> มาก </div></div>
+      <div class="field col-12 md:col-2"> 
+        <p-radioButton name="result" value="3" [(ngModel)]="model.result" inputId="result">
+      </p-radioButton>
+      <div class="field col-12 md:col-2"> 
+        ปานกลาง
+      </div>
+    </div>
+      <div class="field col-12 md:col-2"> 
+        <p-radioButton name="result" value="2" [(ngModel)]="model.result" inputId="result">
+      </p-radioButton><div class="field col-12 md:col-2"> น้อย </div></div>
+      <div class="field col-12 md:col-2">  <p-radioButton name="result" value="1" [(ngModel)]="model.result" inputId="result">
+      </p-radioButton>
+      <div class="field col-12 md:col-2"> น้อยที่สุด</div>
+   </div>
+    </div>
+  </div>
+  <div class="grid p-fluid">
+    <div class="field col-12 md:col-2">
+      <m-button setClassName="backBtn" setLabel="LABEL.BACK" (onClick)="onBack()">
+      </m-button>
+    </div>
+    <div *ngIf = !view class="field col-12 md:col-2">
+      <m-button setClassName="saveBtn" setLabel="LABEL.SAVE" (onClick)="onSave()">
+      </m-button>
+    </div>
+  </div>
+</div>

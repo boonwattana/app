@@ -1,0 +1,46 @@
+<div class="itemCard">
+  <div  class="g-t">
+    <div class="title">{{"MODULE.STUDENT_SCOLAR"|translate}}</div>
+    <button *ngIf ='view' class="edit" (click)="pageEdit()">แก้ไขข้อมูล</button>
+  </div>
+  <div class="customCard">
+    <button class="group">{{"GROUP.GENERAL_GROUP"|translate}}</button>
+    <div class="grid p-fluid form ">
+      <div class="field col-12 md:col-6">
+        <m-dropdown setId="STUDENT_ID" setLabel="LABEL.STUDENT_ID" [(setModel)]=model.studentId [setReadonly] = true  [setRequired]="true" [setSelectOption]=studentDropdown [setViewValue]=model.studentValue>>
+        </m-dropdown>
+      </div>
+      <div class="field col-12 md:col-6">
+        <m-input-text setId="SCOLAR_NAME" setLabel="LABEL.SCOLAR_NAME" [(setModel)]=model.name   [setRequired]="true"  >
+        </m-input-text>
+      </div>
+      <div class="field col-12 md:col-2">
+        <m-input-number setId="SCOLAR_AMOUNT" setLabel="LABEL.SCOLAR_AMOUNT" [(setModel)]=model.amount     >
+        </m-input-number>
+      </div>
+      <div class="field col-12 md:col-2">
+        <m-input-text setId="YEAR" setLabel="LABEL.YEAR" [(setModel)]=model.year     >
+        </m-input-text>
+      </div>
+
+      <div class="field col-12 md:col-2">
+        <m-input-text setId="INTERM" setLabel="LABEL.INTERM" [(setModel)]=model.inTerm     >
+        </m-input-text>
+      </div>
+      <div class="field col-12 md:col-12">
+        <m-input-text setId="GET_FROM" setLabel="LABEL.GET_FROM" [(setModel)]=model.getFrom     >
+        </m-input-text>
+      </div>
+    </div>
+  </div>
+  <div class="grid p-fluid">
+    <div class="field col-6 md:col-2">
+      <m-button setClassName="backBtn" setLabel="LABEL.BACK" (onClick)="onBack()">
+      </m-button>
+    </div>
+    <div *ngIf = !view class="field col-12 md:col-2">
+      <m-button setClassName="saveBtn" setLabel="LABEL.SAVE" (onClick)="onSave()">
+      </m-button>
+    </div>
+  </div>
+</div>

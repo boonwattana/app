@@ -1,0 +1,75 @@
+<!-- <div
+      class="login-section row"
+      > -->
+
+
+      <div class="login-section">
+        <div class="logoImageSection">
+
+                    <!-- <div class="logoImageSection"> -->
+                        <img src="assets/images/logo_boonwattana.png" class=" logoImage">
+    
+              
+                        <p class="logoName">BOONWATTANA</p>
+            
+                        <p class="logoDescription">SCHOOL</p>
+
+ 
+    
+        </div>
+        <div class="fromlogin">
+                <div class="fromlogin-card">
+                    <div class="ligin-section " *ngIf="!isRegister">
+                        <div class="h-text">ศูนย์ข้อมูล BIGDATA</div>
+                        <div class="login-input ">
+                            <div>ชื่อผู้ใช้</div>
+                            <input id="USER_NAME"  [(ngModel)]=model.username class="input-login">
+                            <div>รหัสผ่าน</div>
+                            <input id="USER_NAME" type="password" [(ngModel)]=model.password  class="input-login">
+                            <!-- <m-input-text setId="USER_NAME" setLabel="LABEL.USER_NAME" [(setModel)]=model.username  [setRequired]="true">
+                            </m-input-text>
+                            <m-input-text setId="PASSWORD" setLabel="LABEL.PASSWORD" [(setModel)]=model.password [setRequired]="true"  [setPassword]="true">
+                            </m-input-text> -->
+                            <!-- <input type="text" required="true"  [(ngModel)] = model.username class="username" placeholder="ที่อยู่อีเมลล์" pInputText /> -->
+                            <button  (click)="submitLogin()" class="btn-ligin" >เข้าสู่ระบบ</button>
+                            <!-- <span class="register" (click)="setRegister(true)">สมัครสมาชิก</span> class="submitBtn" -->
+                        </div>
+                        <div class="social">
+                            <i class="pi pi-facebook" style="    font-size: 30px;" (click)="social('https://www.facebook.com/Boonwattana.School')"></i>
+                            <i class="pi pi-link" style="    font-size: 30px;" (click)="social('https://www.boon.ac.th/main/')"></i>
+                            <i class="pi pi-youtube" style="    font-size: 30px;" (click)="social('https://www.youtube.com/watch?v=uGUcNCMDFdU')"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="ligin-section" *ngIf="isRegister">
+                        <div class="login-input ">
+                            <m-input-text setId="USER_NAME" setLabel="LABEL.USER_NAME" [(setModel)]=register.email  [setRequired]="true" >
+                            </m-input-text>
+        
+                            <m-input-text setId="FIRSTNAME" setLabel="LABEL.FIRSTNAME" [(setModel)]=register.firstname [setRequired]="true" >
+                            </m-input-text>
+        
+                            <m-input-text setId="LASTNAME" setLabel="LABEL.LASTNAME" [(setModel)]=register.lastname [setRequired]="true" >
+                            </m-input-text>
+            
+                            <m-input-text setId="PASSWORD" setLabel="LABEL.PASSWORD" [(setModel)]=register.password  [setRequired]="true" [setPassword]="true">
+                            </m-input-text>
+        
+                            <m-input-text setId="CONFIRM_PASSWORD" setLabel="LABEL.CONFIRM_PASSWORD" [(setModel)]=register.confirmPassword  [setRequired]="true" [setPassword]="true">
+                            </m-input-text>
+        
+                            <button pButton class="submitBtn" (click)="submitRegister()" type="button" label="สมัครสมาชิก" ></button>
+                            <p class="register" (click)="setRegister(false)">เข้าสู่ระบบ</p>
+                        </div>
+        
+                    </div>
+                </div>
+
+
+        </div>
+      </div>
+
+
+
+
+  <!-- </div> -->

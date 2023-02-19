@@ -1,0 +1,33 @@
+export const Operators = {
+    AND: ' AND ',
+    OR: ' OR ',
+    EQUAL: ' = ',
+    NOT_EQUAL: ' != ',
+    NOT: '!',
+    LIKE: 'LIKE',
+    MORTHAN:'>',
+    LESSTHAN: '<',
+    MORTHAN_OR_EQUAL:'>=',
+    LESSTHAN_OR_EQUAL: '<=',
+  };
+  export const StorageKey ={
+    LOGIN_STATE :'LoginState',
+    TOKEN :'Token',
+    USERNAME :'Username',
+    FIRSTNAME :'FirstName',
+    LASTNAME :'LastName',
+    USERFLNAME:'FLName',
+    INFO_ID:'InfoId',
+    USER_TYPE:'UserType',
+    MATCH_PASSWORD:'MatchPassword',
+    CAN_EDIT:"CanEdit",
+    USER_ID:"UserId",
+    CLASSROMM_TYPE_ID:"ClassroomTypeId",
+    CLASSROMM_ID:"ClassroomId",
+    IS_GUID: "IsGuid",
+    CLASSNAME:"ClassName",
+    ROOMNAME:"RoomName",
+    TERM_NAME:"TermName",
+    TERM_ID:"TermId",
+    TIME:"Time"
+  }

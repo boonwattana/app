@@ -1,0 +1,50 @@
+<div class="itemCard">
+  <div>
+    <div>
+      <p class="title-item">{{"MODULE.TEACHERS_DEVELOP"|translate}}</p>
+    </div>
+  </div>
+  <div class="customCard">
+    <button class="group">{{"GROUP.GENERAL_GROUP"|translate}}</button>
+    <div class="grid p-fluid form ">
+      <div class="field col-12 md:col-3">
+        <m-dropdown setId="TEACHER_ID" setLabel="LABEL.TEACHER_ID" [(setModel)]=model.teacherId  [setReadonly] = "isTeacher"   [setRequired]="!isTeacher"   [setSelectOption]=teacherDropdown [setViewValue]=model.teacherValue>>
+        </m-dropdown>
+      </div>
+      <div class="field col-12 md:col-3">
+        <m-input-text setId="EDUCATION_YEAR" setLabel="LABEL.EDUCATION_YEAR" [(setModel)]=model.educationYear     >
+        </m-input-text>
+      </div>
+      <div class="field col-12 md:col-3">
+        <m-input-text setId="SUBJECT_NAME" setLabel="LABEL.SUBJECT_NAME" [(setModel)]=model.subjectName     >
+        </m-input-text>
+      </div>
+      <div class="field col-12 md:col-3">
+        <m-dropdown setId="CURRICULUM_ID" setLabel="LABEL.CURRICULUM_ID" [(setModel)]=model.curriculumId    [setSelectOption]=curriculumDropdown [setViewValue]=model.curriculumValue>>
+        </m-dropdown>
+      </div>
+      <!-- <div class="field col-12 md:col-3">
+        <m-dropdown setId="PRACTICLE_ID" setLabel="LABEL.PRACTICLE_ID" [(setModel)]=model.practicleId    [setSelectOption]=practicleDropdown [setViewValue]=model.practicleValue>>
+        </m-dropdown>
+      </div> -->
+      <div class="field col-12 md:col-3">
+        <m-input-number setId="TOTAL_HOUR" setLabel="LABEL.TOTAL_HOUR" [(setModel)]=model.totalHour     >
+        </m-input-number>
+      </div>
+      <div class="field col-12 md:col-3">
+        <m-input-text setId="INSTITUTION_NAME" setLabel="LABEL.INSTITUTION_NAME" [(setModel)]=model.institutionName     >
+        </m-input-text>
+      </div>
+    </div>
+  </div>
+  <div class="grid p-fluid">
+    <div class="field col-12 md:col-2">
+      <m-button setClassName="backBtn" setLabel="LABEL.BACK" (onClick)="onBack()">
+      </m-button>
+    </div>
+    <div *ngIf = !view class="field col-12 md:col-2">
+      <m-button setClassName="saveBtn" setLabel="LABEL.SAVE" (onClick)="onSave()">
+      </m-button>
+    </div>
+  </div>
+</div>

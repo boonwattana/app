@@ -1,0 +1,18 @@
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+  }
+  th, td {
+    width: 100px;
+    text-align: center;
+    padding: 1%;
+  }
+  .con-t-img{
+    width: 100%;
+    /* text-align: right; */
+    display: flex;
+    justify-content: flex-end;
+}
+.headSection{
+    display: flex;
+}

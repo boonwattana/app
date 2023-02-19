@@ -1,0 +1,20 @@
+<m-data-table
+(searchEmit)="onSearch($event)"
+[option]="option"
+[dataSource] = "searchResult"
+[tableName]="tableName"
+[searchCondition] = 'searchConditions'
+(createEmit) = "onCreate()"
+(editEmit)="onEdit($event)"
+(viewEmit)="onView($event)"
+(deleteEmit)="onDelete($event)"
+[removeRecord] = "lastRemoveId"
+[moduleName] = moduleName
+[setCanCreate] = canCreate
+[setCanDelete] = canDelete
+[setCanImport] = false
+[setCanExport] = false
+></m-data-table>
+<div class="field col-6 md:col-12"  >
+    <p style="color: red;"> *หมายเหตุ: กรุณากรอก1ข้อมูลต่อ1คนต่อ1ภาคเรียน/ปีการศึกษา*</p> 
+</div>

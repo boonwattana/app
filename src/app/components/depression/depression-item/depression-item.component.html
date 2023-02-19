@@ -1,0 +1,182 @@
+<div  class="g-t">
+  <div class="title">{{"MODULE.DEPRESSION"|translate}}</div>
+  <button *ngIf ='view' class="edit" (click)="pageEdit()">แก้ไขข้อมูล</button>
+</div>
+<div class="itemCard">
+  <div *ngIf = (complete&&view) class="customCard">
+    <div class="grid p-fluid form center">
+      <div class="field col-12 md:col-12 header green">บันทึกแบบคัดกรอง/ประเมินโรคซึมเศร้า สำเร็จ</div>
+    </div>
+    <div class="grid p-fluid form">
+      <div class="field col-12 md:col-6 ">
+        <m-dropdown setId="STUDENT_ID" setLabel="LABEL.STUDENT_ID" [(setModel)]=model.studentId [setReadonly] = true    [setSelectOption]=studentDropdown [setViewValue]=model.studentValue>>
+        </m-dropdown>
+      </div>
+      <div class="field col-12 md:col-6 ">
+        <m-dropdown setId="YEAR_TERM_ID" setLabel="LABEL.YEAR_TERM_ID" [(setModel)]=model.yearTermId [setReadonly] = true   [setSelectOption]=yearTermDropdown >
+        </m-dropdown>
+      </div>
+      <div class="field col-12 md:col-12 bold">ผลการประเมิน</div>
+      
+      <div class="field col-8 md:col-6 header-subject"> ผลการประเมินโรคซึมเศร้า</div>
+      <div class="field col-4 md:col-6"> {{getDepression()}} </div>
+      <div class="field col-8 md:col-6 header-subject"> ผลการประเมินการฆ่าตัวตาย</div>
+      <div class="field col-4 md:col-6"> {{getSucuid()}} </div>
+
+
+    </div>
+  </div>
+  <div *ngIf = (!complete&&view) class="customCard">
+    <div class="grid p-fluid form center">
+      <div class="field col-12 md:col-12 header red">ยังไม่บันทึกแบบคัดกรอง/ประเมินโรคซึมเศร้า</div>
+    </div>
+    <div class="grid p-fluid form">
+      <div class="field col-12 md:col-6 ">
+        <m-dropdown setId="STUDENT_ID" setLabel="LABEL.STUDENT_ID" [(setModel)]=model.studentId [setReadonly] = true    [setSelectOption]=studentDropdown [setViewValue]=model.studentValue>>
+        </m-dropdown>
+      </div>
+      <div class="field col-12 md:col-6 ">
+        <m-dropdown setId="YEAR_TERM_ID" setLabel="LABEL.YEAR_TERM_ID" [(setModel)]=model.yearTermId [setReadonly] = true   [setSelectOption]=yearTermDropdown >
+        </m-dropdown>
+      </div>
+
+    </div>
+  </div>
+  <div *ngIf = (!view) class="customCard">
+    <div class="grid p-fluid form ">
+
+      <div class="field field-custom col-6 md:col-6">
+        <m-dropdown setId="STUDENT_ID" setLabel="LABEL.STUDENT_ID" [(setModel)]=model.studentId [setReadonly] = true   [setSelectOption]=studentDropdown [setViewValue]=model.studentValue>>
+        </m-dropdown>
+      </div>
+      <div class="field field-custom col-6 md:col-6">
+        <m-dropdown setId="YEAR_TERM_ID" setLabel="LABEL.YEAR_TERM_ID" [(setModel)]=model.yearTermId [setReadonly] = true   [setSelectOption]=yearTermDropdown >
+        </m-dropdown>
+      </div>
+
+      <div class="field col-12 md:col-12">
+        <p class="p-title left" >แบบคัดกรอง/ประเมินโรคซึมเศร้า (2Q 9Q 8Q)</p>
+        <p class="p-title left" >(อ้างอิง จากกรมสุขภาพจิต)</p>
+        <p  class="p-title color-full" >แบบคัดกรองโรคซึมเศร้าด้วย 2 คำถาม (2Q)</p>
+
+
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-2option setId="DEPRESSION_HEADER1" setOrder = 'LABEL.ORDER'  setLabel="LABEL.2Q" setAction1 = "LABEL.YES" setAction2 = "LABEL.DONT"  [(setModel)]=model.depressionCh12     >
+        </m-input-number-2option>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-2option setId="DEPRESSION_CH_1" setOrder = '1' setV1 = 1  setV2 = 0  setLabel="LABEL.DEPRESSION_CH_1" [(setModel)]=model.depressionCh1  (setModelChange) = modelChange($event)   >
+        </m-input-number-2option>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-2option setId="DEPRESSION_CH_2" setOrder = '2' setV1 = 1  setV2 = 0 setLabel="LABEL.DEPRESSION_CH_2" [(setModel)]=model.depressionCh2   (setModelChange) = modelChange($event)   >
+        </m-input-number-2option>
+      </div>
+      <div *ngIf = "show9q">
+      <div class="field col-12 md:col-12">
+        <p class="p-title color-full" >แบบประเมินโรคซึมเศร้าด้วย 9 คำถาม ( 9Q)</p>
+        <p class="p-title left" >ข้อแนะนำ</p>
+        <p class="p-body" >ข้อแนะนำ ถามด้วยภาษาที่สอดคล้องกับท้องถิ่น หรือเหมาะสมกับผู้ถูกสัมภาษณ์ ควรถามให้ได้คำตอบทีละข้อ  ถ้าไม่เข้าใจให้ถามซ้ำ ไม่ควรอธิบายขยายความเพิ่มเติม พยายามให้ได้คำตอบทุกข้อ จากนั้นรวมคะแนนแล้วแปลผลตามตารางแปลผล พร้อมให้คำแนะนำในการปฏิบัติตัวหรือการดูแลรักษาในขั้นตอนต่อไป หมายเหตุ เน้นการถามเพื่อค้นหาอาการที่มีในระยะ 2 สัปดาห์ที่ผ่านมา </p>
+
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-4option setId="DEPRESSION_CH_3" setOrder = 'LABEL.ORDER'  setLabel="LABEL.HEADER_IN_TWO_WEEK" setAction1 = "LABEL.NEVER" setAction2 = "LABEL.SOMETIME" setAction3 = "LABEL.OPTEN" setAction4 = "LABEL.EVERY"      >
+        </m-input-number-4option>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-4option setId="DEPRESSION_CH_3" setOrder = '1' setV1 = 0  setV2 = 1 setV3 = 2  setV4 = 3  setLabel="LABEL.DEPRESSION_CH_3" [(setModel)]=model.depressionCh3 (setModelChange) = modelChange($event) (setModelChange) = modelChange($event)    >
+        </m-input-number-4option>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-4option setId="DEPRESSION_CH_4" setOrder = '2' setV1 = 0  setV2 = 1 setV3 = 2  setV4 = 3 setLabel="LABEL.DEPRESSION_CH_4" [(setModel)]=model.depressionCh4   (setModelChange) = modelChange($event)   >
+        </m-input-number-4option>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-4option setId="DEPRESSION_CH_5" setOrder = '3' setV1 = 0  setV2 = 1 setV3 = 2  setV4 = 3 setLabel="LABEL.DEPRESSION_CH_5" [(setModel)]=model.depressionCh5   (setModelChange) = modelChange($event)   >
+        </m-input-number-4option>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-4option setId="DEPRESSION_CH_6" setOrder = '4' setV1 = 0  setV2 = 1 setV3 = 2  setV4 = 3 setLabel="LABEL.DEPRESSION_CH_6" [(setModel)]=model.depressionCh6  (setModelChange) = modelChange($event)    >
+        </m-input-number-4option>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-4option setId="DEPRESSION_CH_7" setOrder = '5' setV1 = 0  setV2 = 1 setV3 = 2  setV4 = 3 setLabel="LABEL.DEPRESSION_CH_7" [(setModel)]=model.depressionCh7  (setModelChange) = modelChange($event)    >
+        </m-input-number-4option>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-4option setId="DEPRESSION_CH_8" setOrder = '6' setV1 = 0  setV2 = 1 setV3 = 2  setV4 = 3 setLabel="LABEL.DEPRESSION_CH_8" [(setModel)]=model.depressionCh8   (setModelChange) = modelChange($event)   >
+        </m-input-number-4option>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-4option setId="DEPRESSION_CH_9" setOrder = '7' setV1 = 0  setV2 = 1 setV3 = 2  setV4 = 3 setLabel="LABEL.DEPRESSION_CH_9" [(setModel)]=model.depressionCh9   (setModelChange) = modelChange($event)   >
+        </m-input-number-4option>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-4option setId="DEPRESSION_CH_10" setOrder = '8' setV1 = 0  setV2 = 1 setV3 = 2  setV4 = 3 setLabel="LABEL.DEPRESSION_CH_10" [(setModel)]=model.depressionCh10   (setModelChange) = modelChange($event)   >
+        </m-input-number-4option>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-4option setId="DEPRESSION_CH_11" setOrder = '9' setV1 = 0  setV2 = 1 setV3 = 2  setV4 = 3 setLabel="LABEL.DEPRESSION_CH_11" [(setModel)]=model.depressionCh11  (setModelChange) = modelChange($event)    >
+        </m-input-number-4option>
+      </div>
+    </div>
+    <div *ngIf = "show8q">
+      <div class="field col-12 md:col-12">
+        <p class="p-title color-full" >แบบประเมินการฆ่าตัวตาย (8Q)</p>
+
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-2option-time setId="DEPRESSION_CH_12"  setOrder = 'LABEL.ORDER' setTime = 'LABEL.TIMING' setV1 = 0  setV2 = 1 setLabel="" setAction1 = "LABEL.DONT" setAction2 = "LABEL.YES"  [(setModel)]=model.depressionCh12     >
+        </m-input-number-2option-time>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-2option-time setId="DEPRESSION_CH_12" setOrder = '1' setTime = 'LABEL.LAST_MOUNTH' setV1 = 0  setV2 = 1 setLabel="LABEL.DEPRESSION_CH_12" [(setModel)]=model.depressionCh12   (setModelChange) = modelChange($event)   >
+        </m-input-number-2option-time>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-2option-time setId="DEPRESSION_CH_13" setOrder = '2' setTime = 'LABEL.LAST_MOUNTH' setV1 = 0  setV2 = 2 setLabel="LABEL.DEPRESSION_CH_13" [(setModel)]=model.depressionCh13   (setModelChange) = modelChange($event)   >
+        </m-input-number-2option-time>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-2option-time setId="DEPRESSION_CH_14" setOrder = '3' setTime = 'LABEL.LAST_MOUNTH' setV1 = 0  setV2 = 6 setLabel="LABEL.DEPRESSION_CH_14" [(setModel)]=model.depressionCh14   (setModelChange) = modelChange($event)   >
+        </m-input-number-2option-time>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-2option-time setId="DEPRESSION_CH_15" setOrder = '4' setTime = 'LABEL.LAST_MOUNTH' setV1 = 0  setV2 = 8 setLabel="LABEL.DEPRESSION_CH_15" [(setModel)]=model.depressionCh15  (setModelChange) = modelChange($event)    >
+        </m-input-number-2option-time>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-2option-time setId="DEPRESSION_CH_16" setOrder = '5' setTime = 'LABEL.LAST_MOUNTH' setV1 = 0  setV2 = 8 setLabel="LABEL.DEPRESSION_CH_16" [(setModel)]=model.depressionCh16  (setModelChange) = modelChange($event)    >
+        </m-input-number-2option-time>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-2option-time setId="DEPRESSION_CH_17" setOrder = '6' setTime = 'LABEL.LAST_MOUNTH' setV1 = 0  setV2 = 9 setLabel="LABEL.DEPRESSION_CH_17" [(setModel)]=model.depressionCh17   (setModelChange) = modelChange($event)   >
+        </m-input-number-2option-time>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-2option-time setId="DEPRESSION_CH_18" setOrder = '7' setTime = 'LABEL.LAST_MOUNTH' setV1 = 0  setV2 = 4 setLabel="LABEL.DEPRESSION_CH_18" [(setModel)]=model.depressionCh18   (setModelChange) = modelChange($event)   >
+        </m-input-number-2option-time>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-2option-time setId="DEPRESSION_CH_19" setOrder = '8' setTime = 'LABEL.LAST_MOUNTH' setV1 = 0  setV2 = 10 setLabel="LABEL.DEPRESSION_CH_19" [(setModel)]=model.depressionCh19  (setModelChange) = modelChange($event)    >
+        </m-input-number-2option-time>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-2option-time setId="DEPRESSION_CH_20" setOrder = '9' setTime = 'LABEL.LAST_MOUNTH' setV1 = 0  setV2 = 4 setLabel="LABEL.DEPRESSION_CH_20" [(setModel)]=model.depressionCh20  (setModelChange) = modelChange($event)    >
+        </m-input-number-2option-time>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="grid p-fluid">
+    <div *ngIf = !isStudent class="field col-6 md:col-2">
+      <m-button setClassName="backBtn" setLabel="LABEL.BACK" (onClick)="backTolist()">
+      </m-button>
+    </div>
+    <div *ngIf = !view class="field col-12 md:col-2">
+      <m-button setClassName="saveBtn" setLabel="LABEL.SAVE" (onClick)="onSave()">
+      </m-button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,565 @@
+<div class="itemCard">
+  <div>
+    <div class="headSection">
+      <p class="title-item">{{ "MODULE.TEACHER" | translate }}</p>
+      <button *ngIf="view" class="edit" (click)="pageEdit()">
+        แก้ไขข้อมูล
+      </button>
+    </div>
+  </div>
+  <div class="customCard">
+    <button class="group">{{ "GROUP.GENERAL_GROUP" | translate }}</button>
+    <div class="grid p-fluid form">
+      <div class="con-t-img">
+        <m-images-upload
+          [setType]="type"
+          [setMasterId]="id"
+          setId="TEACHER_PHOTO"
+          setLabel="LABEL.TEACHER_PHOTO"
+          [(setModel)]="model.teacherPhoto"
+        >
+        </m-images-upload>
+
+        <!-- <m-input-text-area setId="TEACHER_PHOTO" setLabel="LABEL.TEACHER_PHOTO" [(setModel)]=model.teacherPhoto     >
+        </m-input-text-area> -->
+      </div>
+      <div class="field col-12 md:col-4">
+        <m-input-text13 setId="POSONAL_CODE" setLabel="LABEL.POSONAL_CODE" [(setModel)]=model.posonalCode  [setRequired]="true"     >
+        </m-input-text13>
+      </div>
+      <div class="field col-12 md:col-4">
+        <m-dropdown setId="STATUS" setLabel="LABEL.STATUS" [(setModel)]=model.status    [setSelectOption]=statusDropdown [setRequired]="true"  >
+        </m-dropdown>
+      </div>
+      <div *ngIf ="(model.status==2||model.status==3||model.status==4)" class="field col-12 md:col-4">
+        <m-calendar setId="ERNLY_DATE" setLabel="LABEL.ERNLY_DATE" [(setModel)]=model.ernlyDate     >
+        </m-calendar>
+      </div>
+ 
+      <div class="field col-12 md:col-12">
+      </div>
+    
+  
+
+
+      <div class="field col-12 md:col-3">
+        <m-input-text
+          setId="TEACHER_CODE"
+          setLabel="LABEL.TEACHER_CODE"
+          [(setModel)]="model.teacherCode"
+          [setRequired]="true"
+        >
+        </m-input-text>
+      </div>
+
+      <div class="field col-12 md:col-12">
+      </div>
+
+      <div class="field col-12 md:col-3">
+        <m-dropdown
+          setId="TITLE"
+          setLabel="LABEL.TITLE"
+          [(setModel)]="model.title"
+          [setSelectOption]="titleDropdown"
+          [setRequired]="true"
+        >
+        </m-dropdown>
+      </div>
+
+      <div class="field col-12 md:col-4">
+        <m-input-text
+          setId="FIRSTNAME"
+          setLabel="LABEL.FIRSTNAME"
+          [(setModel)]="model.firstname"
+          [setRequired]="true"
+        >
+        </m-input-text>
+      </div>
+      <div class="field col-12 md:col-4">
+        <m-input-text setId="LASTNAME" setLabel="LABEL.LASTNAME" [(setModel)]=model.lastname  [setRequired]="true"    >
+        </m-input-text>
+      </div>
+
+      <div class="field col-12 md:col-3">
+        <m-dropdown setId="TITLE_EN" setLabel="LABEL.TITLE_EN" [(setModel)]=model.titleEn    [setSelectOption]=titleEnDropdown [setRequired]="true"  >
+        </m-dropdown>
+      </div>
+  
+
+      <div class="field col-12 md:col-4">
+        <m-input-text setId="FIRSTNAME_EN" setLabel="LABEL.FIRSTNAME_EN" [(setModel)]=model.firstnameEn [setRequired]="true"     >
+        </m-input-text>
+      </div>
+      <div class="field col-12 md:col-4">
+        <m-input-text setId="LASTNAME_EN" setLabel="LABEL.LASTNAME_EN" [(setModel)]=model.lastnameEn [setRequired]="true"     >
+        </m-input-text>
+      </div>
+      <div class="field col-12 md:col-3">
+        <m-calendar
+          setId="BIRTH_DATE"
+          setLabel="LABEL.BIRTH_DATE"
+          [(setModel)]="model.birthDate"
+        >
+        </m-calendar>
+      </div>
+      <div class="field col-12 md:col-3">
+        <m-dropdown
+          setId="GENDAR_ID"
+          setLabel="LABEL.GENDAR_ID"
+          [(setModel)]="model.gendarId"
+          [setSelectOption]="gendarDropdown"
+          [setViewValue]="model.gendarValue"
+          >>
+        </m-dropdown>
+      </div>
+
+      <div class="field col-12 md:col-2">
+        <m-dropdown
+          setId="NATIONALITY_ID"
+          setLabel="LABEL.NATIONALITY_ID"
+          [(setModel)]="model.nationalityId"
+          [setSelectOption]="nationalityDropdown"
+          [setViewValue]="model.nationalityValue"
+          >
+        </m-dropdown>
+      </div>
+      <div class="field col-12 md:col-2">
+        <m-dropdown
+          setId="ETHNICITY_ID"
+          setLabel="LABEL.ETHNICITY_ID"
+          [(setModel)]="model.ethnicityId"
+          [setSelectOption]="ethnicityDropdown"
+          [setViewValue]="model.ethnicityValue"
+          >>
+        </m-dropdown>
+      </div>
+      <div class="field col-12 md:col-2">
+        <m-dropdown
+          setId="RELIGION_ID"
+          setLabel="LABEL.RELIGION_ID"
+          [(setModel)]="model.religionId"
+          [setSelectOption]="religionDropdown"
+          [setViewValue]="model.religionValue"
+          >>
+        </m-dropdown>
+      </div>
+      <!-- <div class="field col-12 md:col-12"></div>
+      <div class="field col-12 md:col-2">
+        <m-switch
+          setId="IS_TEACHER"
+          setLabel="LABEL.IS_TEACHER"
+          [(setModel)]="model.isTeacher"
+        >
+        </m-switch>
+      </div> -->
+      <div class="field col-12 md:col-12"></div>
+      <div class="field col-12 md:col-3">
+        <m-input-text
+          setId="POSITION_NUMBER"
+          setLabel="LABEL.POSITION_NUMBER"
+          [(setModel)]="model.positionNumber"
+        >
+        </m-input-text>
+
+       
+      </div>
+
+      <div class="field col-12 md:col-3">
+        <m-dropdown
+        setId="POSITION_NAME"
+        setLabel="LABEL.POSITION_NAME"
+        [(setModel)]="model.positionName"
+        [setSelectOption]="positionNameDropdown"
+        [setRequired]="true"
+      >>
+      </m-dropdown>
+        <!-- <m-input-text
+          setId="POSITION_NAME"
+          setLabel="LABEL.POSITION_NAME"
+          [(setModel)]="model.positionName"
+        >
+        </m-input-text> -->
+      </div>
+
+      <div class="field col-12 md:col-3">
+        <m-dropdown
+          setId="PRACTITIONER_LEVEL_ID"
+          setLabel="LABEL.PRACTITIONER_LEVEL_ID"
+          [(setModel)]="model.practitionerLevelId"
+          [setSelectOption]="practitionerLevelDropdown"
+          [setViewValue]="model.practitionerLevelValue"
+        >
+        </m-dropdown>
+      </div>
+      <!-- อันดับ -->
+      <div class="field col-12 md:col-3">
+        <m-dropdown
+        setId="PRACTITIONER_NO"
+        setLabel="LABEL.PRACTITIONER_NO"
+        [(setModel)]="model.practitionerNo"
+        [setSelectOption]="practitionerDropdown"
+        [setRequired]="false"
+      >>
+      </m-dropdown>
+        <!-- <m-input-text
+          setId="PRACTITIONER_NO"
+          setLabel="LABEL.PRACTITIONER_NO"
+          [(setModel)]="model.practitionerNo"
+        >
+        </m-input-text> -->
+      </div>
+      <div class="field col-12 md:col-3">
+        <m-dropdown
+          setId="EDUCATION_BACKGROUND_ID"
+          setLabel="LABEL.EDUCATION_BACKGROUND_ID"
+          [(setModel)]="model.educationBackgroundId"
+          [setSelectOption]="educationDropdown"
+        >
+        </m-dropdown>
+      </div>
+
+      <div
+        *ngIf="model.educationBackgroundId == 5"
+        class="field col-12 md:col-3"
+      >
+        <m-input-text
+          setId="EDUCATION_MAJOR_TEXT"
+          setLabel="LABEL.EDUCATION_MAJOR_TEXT"
+          [(setModel)]="model.otherEducationText"
+        >
+        </m-input-text>
+      </div>
+      <div class="field col-12 md:col-3">
+        <m-input-text
+          setId="EDUCATION_MAJOR"
+          setLabel="LABEL.EDUCATION_MAJOR"
+          [(setModel)]="model.educationMajor"
+        >
+        </m-input-text>
+      </div>
+      <div class="field col-12 md:col-3">
+        <m-input-text
+          setId="EDUCATION_MINOR"
+          setLabel="LABEL.EDUCATION_MINOR"
+          [(setModel)]="model.educationMinor"
+        >
+        </m-input-text>
+      </div>
+      <div class="field col-12 md:col-6">
+        <m-calendar
+          setId="SET_IN_DATE"
+          setLabel="LABEL.SET_IN_DATE"
+          [(setModel)]="model.setInDate"
+        >
+        </m-calendar>
+      </div>
+      <div class="field col-12 md:col-6">
+        <m-calendar
+          setId="SET_IN_DATE_SCHOOL"
+          setLabel="LABEL.SET_IN_DATE_SCHOOL"
+          [(setModel)]="model.setInDateSchool"
+        >
+        </m-calendar>
+      </div>
+      <div class="field col-12 md:col-3">
+        <m-dropdown
+          setId="CLASSROOM_TYPE_ID_OWNER"
+          setLabel="LABEL.CLASSROOM_TYPE_ID_OWNER"
+          [(setModel)]="model.classroomTypeId"
+          [setSelectOption]="classroomTypeDropdown"
+          [setViewValue]="model.classroomTypeValue"
+          >>
+        </m-dropdown>
+      </div>
+      <div class="field col-12 md:col-3">
+        <m-dropdown
+          setId="CLASSROOM_ID_OWNER"
+          setLabel="LABEL.CLASSROOM_ID_OWNER"
+          [(setModel)]="model.classroomId"
+          [setSelectOption]="classroomDropdown"
+          [setViewValue]="model.classroomValue"
+          >>
+        </m-dropdown>
+      </div>
+      <div class="field col-12 md:col-3">
+        <m-dropdown
+          setId="ACTION_TEACH"
+          setLabel="LABEL.ACTION_TEACH"
+          [(setModel)]="model.actionTeach"
+          [setSelectOption]="actionTeachDropdown"
+          >
+        </m-dropdown>
+      </div>
+      <div *ngIf = "model.actionTeach == 11" class="field col-12 md:col-3">
+        <m-input-text
+          setId="ACTION_TEACH_TEXT"
+          setLabel="LABEL.ACTION_TEACH_TEXT"
+          [(setModel)]="model.actionTeachText"
+        >
+        </m-input-text>
+      </div>
+
+
+
+
+
+      <div class="field col-12 md:col-12"></div>
+      <div class="field col-12 md:col-4">
+       <div style="font-weight:bolder">สอนระดับชั้น</div> 
+        <m-switch
+          setId="TEACHER_CLASS_1"
+          setLabel="LABEL.TEACHER_CLASS_1"
+          [(setModel)]="model.teacherClass1"
+        >
+        </m-switch>
+      </div>
+      <div class="field col-12 md:col-4">
+        <m-switch
+          setId="TEACHER_CLASS_2"
+          setLabel="LABEL.TEACHER_CLASS_2"
+          [(setModel)]="model.teacherClass2"
+        >
+        </m-switch>
+      </div>
+      <div class="field col-12 md:col-4">
+        <m-switch
+          setId="TEACHER_CLASS_3"
+          setLabel="LABEL.TEACHER_CLASS_3"
+          [(setModel)]="model.teacherClass3"
+        >
+        </m-switch>
+      </div>
+      <div class="field col-12 md:col-4">
+        <m-switch
+          setId="TEACHER_CLASS_4"
+          setLabel="LABEL.TEACHER_CLASS_4"
+          [(setModel)]="model.teacherClass4"
+        >
+        </m-switch>
+      </div>
+      <div class="field col-12 md:col-4">
+        <m-switch
+          setId="TEACHER_CLASS_5"
+          setLabel="LABEL.TEACHER_CLASS_5"
+          [(setModel)]="model.teacherClass5"
+        >
+        </m-switch>
+      </div>
+      <div class="field col-12 md:col-4">
+        <m-switch
+          setId="TEACHER_CLASS_6"
+          setLabel="LABEL.TEACHER_CLASS_6"
+          [(setModel)]="model.teacherClass6"
+        >
+        </m-switch>
+      </div>
+
+      <div class="field col-12 md:col-12"></div>
+
+      <div class="field col-12 md:col-4">
+        <m-dropdown
+          setId="SUBJECT_GROUP_ID"
+          setLabel="LABEL.SUBJECT_GROUP_ID"
+          [(setModel)]="model.subjectGroupId"
+          [setSelectOption]="subjectGroupDropdown"
+          [setViewValue]="model.subjectGroupValue"
+        >
+        </m-dropdown>
+      </div>
+      <!-- <div class="field col-12 md:col-3">
+        <m-input-text setId="SUBJECT_GROUP_ID" setLabel="LABEL.SUBJECT_GROUP_ID" [(setModel)]=model.subjectGroupId     >
+        </m-input-text>
+      </div> -->
+      <!-- <div class="field col-12 md:col-2">
+        <br /> -->
+      
+        <!-- <m-switch
+          setId="IS_OTHER_SUBJECT_GROUP"
+          setLabel="LABEL.IS_OTHER_SUBJECT_GROUP"
+          [(setModel)]="model.isOtherSubjectGroup"
+        >
+        </m-switch> -->
+      <!-- </div> -->
+      <div *ngIf = "(model.subjectGroupId == 0)" class="field col-12 md:col-6">
+        <m-input-text
+          setId="OTHER_SUBJECT"
+          setLabel="LABEL.OTHER_SUBJECT"
+          [(setModel)]="model.subjectGroupText"
+        >
+        </m-input-text>
+      </div>
+
+      <div class="field col-12 md:col-12"></div>
+
+      <div class="field col-12 md:col-12">
+        <m-input-text
+          setId="ACTION_WORK"
+          setLabel="LABEL.ACTION_WORK"
+          [(setModel)]="model.actionWork"
+        >
+        </m-input-text>
+      </div>
+      <div class="field col-12 md:col-12">
+        <m-input-text
+          setId="ACTION_WORK_SPECIAL"
+          setLabel="LABEL.ACTION_WORK_SPECIAL"
+          [(setModel)]="model.actionWorkSpecial"
+        >
+        </m-input-text>
+      </div>
+      <div class="field col-12 md:col-12">
+        <m-input-text
+          setId="ACTION_WORK_SPECIAL2"
+          setLabel="LABEL.ACTION_WORK_SPECIAL2"
+          [(setModel)]="model.actionWorkSpecial2"
+        >
+        </m-input-text>
+      </div>
+      <div class="field col-12 md:col-12">
+        <m-input-text
+          setId="ACTION_WORK_SPECIAL3"
+          setLabel="LABEL.ACTION_WORK_SPECIAL3"
+          [(setModel)]="model.actionWorkSpecial3"
+        >
+        </m-input-text>
+      </div>
+      <div class="field col-12 md:col-12">
+        <m-input-text
+          setId="ACTION_WORK_SPECIAL4"
+          setLabel="LABEL.ACTION_WORK_SPECIAL4"
+          [(setModel)]="model.actionWorkSpecial4"
+        >
+        </m-input-text>
+      </div>
+      <div class="field col-12 md:col-12">
+        <m-dropdown
+          setId="ACTIVITY_STUDENT_ID"
+          setLabel="LABEL.ACTIVITY_STUDENT_ID"
+          [(setModel)]="model.activityStudentId"
+          [setSelectOption]="activityStudentDropdown"
+          [setViewValue]="model.activityStudentValue"
+          >>
+        </m-dropdown>
+      </div>
+
+      <div class="field col-12 md:col-6">
+        <m-input-text
+          setId="TEACHER_EMAIL"
+          setLabel="LABEL.TEACHER_EMAIL"
+          [(setModel)]="model.teacherEmail"
+        >
+        </m-input-text>
+      </div>
+      <div class="field col-12 md:col-6">
+        <m-input-text
+          setId="PHONE_NUMBER"
+          setLabel="LABEL.PHONE_NUMBER"
+          [(setModel)]="model.phoneNumber"
+        >
+        </m-input-text>
+      </div>
+      <!-- <div class="field col-12 md:col-6">
+        <m-input-text setId="FACEBOOK_URL" setLabel="LABEL.FACEBOOK_URL" [(setModel)]=model.facebookUrl     >
+        </m-input-text>
+      </div>
+      <div class="field col-12 md:col-6">
+        <m-input-text setId="LINE_ID" setLabel="LABEL.LINE_ID" [(setModel)]=model.lineId     >
+        </m-input-text>
+      </div> -->
+      <div class="field col-12 md:col-4">
+        <m-input-text
+          setId="HOUSE_NUMBER"
+          setLabel="LABEL.HOUSE_NUMBER"
+          [(setModel)]="model.houseNumber"
+        >
+        </m-input-text>
+      </div>
+      <div class="field col-12 md:col-4">
+        <m-input-text
+          setId="VILLAGE"
+          setLabel="LABEL.VILLAGE"
+          [(setModel)]="model.village"
+        >
+        </m-input-text>
+      </div>
+      <div class="field col-12 md:col-4">
+        <m-input-text
+          setId="ROAD"
+          setLabel="LABEL.ROAD"
+          [(setModel)]="model.road"
+        >
+        </m-input-text>
+      </div>
+      <div class="field col-12 md:col-3">
+        <m-dropdown
+          setId="COUNTRY_ID"
+          (setModelChange)="getProvince($event)"
+          setLabel="LABEL.COUNTRY_ID"
+          [(setModel)]="model.countryId"
+          [setSelectOption]="countryDropdown"
+          [setViewValue]="model.countryValue"
+          >>
+        </m-dropdown>
+      </div>
+      <div class="field col-12 md:col-3">
+        <m-dropdown
+          setId="PROVINCE_ID"
+          (setModelChange)="getDistrict($event)"
+          setLabel="LABEL.PROVINCE_ID"
+          [(setModel)]="model.provinceId"
+          [setSelectOption]="provinceDropdown"
+          [setViewValue]="model.provinceValue"
+          >>
+        </m-dropdown>
+      </div>
+      <div class="field col-12 md:col-3">
+        <m-dropdown
+          setId="DISTRICT_ID"
+          (setModelChange)="getSubDistrict($event)"
+          setLabel="LABEL.DISTRICT_ID"
+          [(setModel)]="model.districtId"
+          [setSelectOption]="districtDropdown"
+          [setViewValue]="model.districtValue"
+          >>
+        </m-dropdown>
+      </div>
+      <div class="field col-12 md:col-3">
+        <m-dropdown
+        (setModelChange)="postCodeChange($event)"
+          setId="SUB_DISTRICT_ID"
+          setLabel="LABEL.SUB_DISTRICT_ID"
+          [(setModel)]="model.subDistrictId"
+          [setSelectOption]="subDistrictDropdown"
+          [setViewValue]="model.subDistrictValue"
+          >>
+        </m-dropdown>
+      </div>
+      <div class="field col-12 md:col-3">
+        <m-input-text
+          setId="POSTCODE"
+          setLabel="LABEL.POSTCODE"
+          [(setModel)]="model.postCode"
+        >
+        </m-input-text>
+      </div>
+    </div>
+  </div>
+  <div class="grid p-fluid">
+    <div class="field col-12 md:col-2">
+      <m-button
+        setClassName="backBtn"
+        setLabel="LABEL.BACK"
+        (onClick)="onBack()"
+      >
+      </m-button>
+    </div>
+    <div *ngIf="!view" class="field col-12 md:col-2">
+      <m-button
+        setClassName="saveBtn"
+        setLabel="LABEL.SAVE"
+        (onClick)="onSave()"
+      >
+      </m-button>
+    </div>
+  </div>
+</div>

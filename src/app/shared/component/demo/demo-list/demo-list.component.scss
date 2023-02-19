@@ -1,0 +1,68 @@
+.box-item{
+  display: flex;
+  // gap: 15px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  background: rgb(255, 255, 255);
+
+}
+
+.con-item{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 15px;
+}
+.detail-item{
+  padding: 10px;
+}
+.number{
+  font-size: 16px;
+  font-weight: 700;
+}
+.demo{
+  display: grid;
+  gap: 15px;
+}
+.title-d{
+  font-size: 25px;
+  margin-top: 25px;
+}
+.com-grat{
+  background: rgb(255, 255, 255);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 10px;
+  padding: 10px;
+  width: 35%;
+}
+.com-grat-2{
+  background: rgb(255, 255, 255);
+  border-radius: 10px;
+  padding: 10px;
+  display: grid;
+  grid-template-columns:  1fr 2fr;
+}
+.conthi-data{
+  display: grid;
+  grid-template-columns: 1fr 1.8fr;
+  gap: 15px;
+}
+.font-red{
+  color: #9e1717;
+}
+.box-name{
+  font-size: 15px;
+}
+.font-size-15{
+  font-size: 13px;
+}
+.big-font{
+  font-size: 18px;
+  font-weight: 700;
+}
+.bold{
+  font-weight: 700;
+}
+.center{
+  text-align: center;
+  font-size: 16px;
+  font-weight: 700;
+}

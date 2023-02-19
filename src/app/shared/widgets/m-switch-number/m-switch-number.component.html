@@ -1,0 +1,37 @@
+<!-- <div class="field">
+    <label for="{{id}}" class="block">{{label}}</label>
+    <p-inputSwitch></p-inputSwitch>
+</div> -->
+
+<div *ngIf="!view" class="field row">
+    <p-toggleButton id="{{id}}" 
+    class="input-field center" 
+    type="username" 
+    [disabled]= disable
+    aria-describedby="username1-help" 
+    (ngModelChange)="onInputChange($event)"  
+    [(ngModel)] = bindingModel 
+    onIcon="pi pi-check"
+     >
+    </p-toggleButton>
+
+</div>
+<div *ngIf="view" class="field row">
+    <p-toggleButton id="{{id}}" 
+    class="input-field center" 
+    type="username" 
+    [disabled]= true
+    aria-describedby="username1-help" 
+    (ngModelChange)="onInputChange($event)"  
+    [(ngModel)] = bindingModel 
+    onIcon="pi pi-check"
+     >
+    </p-toggleButton>
+
+</div>
+<!-- <m-view-only
+    *ngIf="view"
+    [setLabel]="label"
+    [setValue]="getValue()"
+    [setId]="id">
+</m-view-only>  -->

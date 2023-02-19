@@ -1,0 +1,223 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+    margin: 0;
+    padding: 0;
+  }
+  .row {
+    display: flex;
+  }
+  
+.widget{
+  width: 100%;
+  background-color: aquamarine;
+  padding: 0;
+  margin: 0;
+}
+:host ::ng-deep .col-3{
+  width: 100% !important;
+  max-width: 500px !important;
+  margin-left: auto;
+
+}
+.help-text{
+  display: none;
+}
+.invalid{
+  color: crimson;
+}
+// :host ::ng-deep input [readonly]{
+//   background-color: red !important;
+// }
+// .ng-invalid.ng-touched{
+//   // border-color: red !important;
+
+// }
+// :host ::ng-deep .input-invalid
+// {
+//   border-color: crimson;
+// }
+:host ::ng-deep .readonly
+{
+  background-color: crimson;
+}
+// .ng-invalid.submitted{
+//   border-color: red !important;
+
+// }
+
+.column{
+  padding-left: 1px;
+}
+.push {
+margin-left: auto;
+}
+.header{
+font-size: x-large;
+margin-top: 0;
+margin-bottom: 0;
+}
+.paragraph{
+padding-top: 0;
+padding-bottom: 0;
+margin-top: 10px;
+margin-bottom: 18px;
+}
+.show-section{
+padding-left: 10px;
+padding-right: 10px;
+}
+.search-section{
+margin-bottom: 0px;
+}
+.btn-create{
+  margin-top: auto;
+  margin-bottom: auto;
+}
+input[disabled]{
+  background-color: #dfdfdf;
+}
+input[readonly]{
+  background-color: #3a2222;
+}
+.customCard{
+  background-color: white;
+  background-color: #f5f5f5;
+  border-radius: 30px;
+  padding: 15px;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+}
+.dataGrid{
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+input{
+  width:100%;
+}
+.input-text{
+  width: 100%;
+}
+.none{
+  display: none;
+}
+.header-item{
+  font-size: 30px;
+  font-weight: 700;
+  color: #0d53b1;
+}
+.group {
+  background-color: #fcfcfc00;
+  color: rgb(0, 0, 0);
+  // cursor: pointer;
+  padding: 8px;
+  font-size: large;
+  width: 100%;
+  text-align: left;
+  border: none;
+  outline: none;
+  transition: 0.4s;
+  // background: linear-gradient(90deg, rgba(0,125,255,1) 0%, rgba(255,255,255,1) 97%, rgba(255,255,255,1) 100%);
+
+}
+.panel {
+  padding: 0 18px;
+  background-color: white;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
+.active, .accordion:hover {
+  background-color: #ccc;
+}
+.baseCard{
+  color: #fff;
+  padding: 5px;
+}
+
+// .p-inputtext.ng-dirty.ng-invalid {
+//   border-color: #f44336;
+// }
+// .input-field.input-invalid {
+//   border-color: #f44336;
+// }
+// .input-field {
+//   border-color: #f44336;
+// }
+.header-item{
+  margin-top: 20px;
+  margin-bottom: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+// ::ng-deep body {
+//   font-family: 'Calibri', sans-serif;
+//   }
+// :host ::ng-deep body {
+//   font-family: 'Arial';
+//   }
+.itemCard{
+  background-color: white;
+
+
+}
+.rowLabel {
+  display: table;
+}
+.columnLabel {
+  display: table-cell;
+  color: red;
+}
+.backBtn{
+  background-color: #0d53b1;
+  color: #0d53b1;
+}
+.uploadBtn{
+  background-color: #2f001f;
+  color: #2f001f;
+}
+.title-item{
+  margin-left: 10px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  font-size: 30px;
+  color:  #0d53b1;
+  font-weight: 800;
+}
+.edit{
+  margin-top: 10px;
+  height: 40px;
+  border-radius: 5px;
+  border: 0px solid;
+  background:orange;
+  color: #fff;
+  cursor: pointer;
+  font-size: 18px;
+  margin-left: auto;
+}
+.g-t{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.p-title{
+  font-weight: 800;
+  text-align: center;
+  margin-top: 0px;
+  margin-bottom: 5px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+.p-body{
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+.center{
+  font-size: 22px;
+  text-align: center;
+}

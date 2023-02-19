@@ -1,0 +1,208 @@
+<div class="itemCard">
+  <div>
+    <div>
+      <p class="title-item">{{"MODULE.SAR-SELF-ASSESSMENT"|translate}}</p>
+    </div>
+  </div>
+  <div class="customCard">
+    <button class="group">ข้อมูล การประเมินตนเองเกี่ยวกับการจัดทำแผนการจัดการเรียนรู้ที่เน้นผู้เรียนเป็นสำคัญ<br>(เลือกช่องระดับคุณภาพ โดยพิจารณาจากเกณฑ์การประเมินด้านขวามือ)</button>
+    <div class="grid p-fluid form ">
+      <div class="field col-6 md:col-3">
+        <m-dropdown setId="TEACHER_ID" setLabel="ชื่อ-สกุล" [(setModel)]=model.teacherId    [setSelectOption]=teacherDropdown [setViewValue]=model.teacherValue [setReadonly] = "isTeacher" >
+        </m-dropdown>
+      </div>
+      <div class="field col-6 md:col-3">
+        <m-input-text setId="SCHOOLYEAR" setLabel="LABEL.SCHOOLYEAR" [(setModel)]=model.schoolyear   [setRequired]="true"   >
+        </m-input-text>
+      </div>
+       <div class="field col-6 md:col-6"></div>
+
+       <table  style="width: 100%;" border="1" >
+        <tr  >
+          <th style="text-align: center; width:40%;" rowspan="2">ดัชนีชี้วัด</th>
+          <th style="text-align: center;" colspan="4">ระดับคุณภาพบการประเมิน</th>
+          <th style="text-align: center; width:40%;" rowspan="2">เกณฑ์การประเมิน  </th>
+        </tr>
+        <tr  >
+          <th style="text-align: center">4</th>
+          <th style="text-align: center;" >3</th>
+          <th style="text-align: center">2  </th>
+          <th style="text-align: center" >1</th>
+        </tr>
+        <tr  >
+          <td style="text-align: left;">1.  การวิเคราะห์ มาตรฐานฯและ  ตัวชี้วัด/ผลการเรียนรู้
+            (ระดับ 4 มี 5 ข้อ
+            ระดับ 3  มี  4 ข้อ
+            ระดับ 2  มี  3  ข้อ
+            ระดับ 1  มี  1-2  ข้อ)
+       
+       </td>
+          <td style="text-align: center;" >
+            <p-radioButton name="choice1" value="4" [(ngModel)]="model.choice1" inputId="choice1">
+          </p-radioButton></td>
+          <td style="text-align: center"> 
+            <p-radioButton name="choice1" value="3" [(ngModel)]="model.choice1" inputId="choice1">
+            </p-radioButton> </td>
+          <td style="text-align: center">
+            <p-radioButton name="choice1" value="2" [(ngModel)]="model.choice1" inputId="choice1">
+            </p-radioButton></td> 
+          <td style="text-align: center">
+            <p-radioButton name="choice1" value="1" [(ngModel)]="model.choice1" inputId="choice1">
+            </p-radioButton></td> 
+          <td style="text-align: left;">1.  มีการระบุตัวชี้วัด/ผลการเรียนรู้<br>
+            2.  มีการวิเคราะห์ตัวชี้วัด/ผลการเรียนรู้       
+            แยกออกเป็น 3  ด้านคือ  ความรู้  เจตคติ  ทักษะ  (KPA)<br>
+            3.  มีความเหมาะสม สอดคล้องกับกิจกรรมการเรียนรู้<br>
+            4.  สอดคล้องกับผลการเรียนรู้ที่คาดหวัง<br>
+            5.  ครอบคลุมมาตรฐานการศึกษา
+            
+            </td>
+        </tr>
+        <tr  >
+          <td style="text-align: left;">2.  การออกแบบกิจกรรม
+            การเรียนรู้ 
+            (ระดับ 4 มี 5 ข้อ
+            ระดับ 3  มี  4 ข้อ
+            ระดับ 2  มี  3  ข้อ
+            ระดับ 1  มี  1-2  ข้อ)
+       
+       
+       </td>
+            <td style="text-align: center;" >
+            <p-radioButton name="choice2" value="4" [(ngModel)]="model.choice2" inputId="choice2">
+          </p-radioButton></td>
+          <td style="text-align: center"> 
+            <p-radioButton name="choice2" value="3" [(ngModel)]="model.choice2" inputId="choice2">
+            </p-radioButton> </td>
+          <td style="text-align: center">
+            <p-radioButton name="choice2" value="2" [(ngModel)]="model.choice2" inputId="choice2">
+            </p-radioButton></td> 
+          <td style="text-align: center">
+            <p-radioButton name="choice2" value="1" [(ngModel)]="model.choice2" inputId="choice2">
+            </p-radioButton></td>  
+          <td style="text-align: left;">
+            1.  การออกแบบกิจกรรมการเรียนรู้เป็นขั้นตอน<br>
+            2.  แผนการจัดกิจกรรมการเรียนรู้มี<br>
+                 องค์ประกอบครบ 4  ด้าน  (แลกเปลี่ยน    
+                 ประสบการณ์ การสร้างองค์ความรู้     
+                  นำเสนอความรู้  ปฏิบัติ / ประยุกต์ใช้)
+            3.  มีความเหมาะสมกับจุดประสงค์การเรียนรู้<br>
+            4.  มีความสอดคล้องกับจุดประสงค์การเรียนรู้ ทั้ง 3 ด้าน (ความรู้ เจตคติ ทักษะ)<br>
+            5.  สามารถปฏิบัติได้จริง
+            
+            
+            
+            </td>
+        </tr>
+        <tr  >
+          <td style="text-align: left;">3.  การออกแบบปฏิสัมพันธ์
+            (ระดับ 4 มี 5 ข้อ
+          ระดับ 3  มี  4 ข้อ
+          ระดับ 2  มี  3  ข้อ
+          ระดับ 1  มี  1-2  ข้อ)
+     
+       
+       </td>
+            <td style="text-align: center;" >
+            <p-radioButton name="choice3" value="4" [(ngModel)]="model.choice3" inputId="choice3">
+          </p-radioButton></td>
+          <td style="text-align: center"> 
+            <p-radioButton name="choice3" value="3" [(ngModel)]="model.choice3" inputId="choice3">
+            </p-radioButton> </td>
+          <td style="text-align: center">
+            <p-radioButton name="choice3" value="2" [(ngModel)]="model.choice3" inputId="choice3">
+            </p-radioButton></td> 
+          <td style="text-align: center">
+            <p-radioButton name="choice3" value="1" [(ngModel)]="model.choice3" inputId="choice3">
+            </p-radioButton></td>  
+          <td style="text-align: left;">1.  มีการจัดกิจกรรมการเรียนรู้โดยใช้กระบวนการกลุ่ม<br>
+            2.  มีความหลากหลายในการมีส่วนร่วมของผู้เรียน<br>
+            3.  มีการกำหนดบทบาทและกิจกรรมอย่าง ชัดเจน<br>
+            4.  ปฏิบัติจริง<br>
+            5.  ผู้เรียนสนุกสนาน เกิดการเรียนรู้
+            
+            </td>
+        </tr>
+        <tr  >
+          <td style="text-align: left;">4.  การออกแบบประเมินผล
+            (ระดับ 4 มี 5 ข้อ
+             ระดับ 3  มี  4 ข้อ
+             ระดับ 2  มี  3  ข้อ
+             ระดับ 1  มี  1-2  ข้อ)
+        
+       </td>
+            <td style="text-align: center;" >
+            <p-radioButton name="choice4" value="4" [(ngModel)]="model.choice4" inputId="choice4">
+          </p-radioButton></td>
+          <td style="text-align: center"> 
+            <p-radioButton name="choice4" value="3" [(ngModel)]="model.choice4" inputId="choice4">
+            </p-radioButton> </td>
+          <td style="text-align: center">
+            <p-radioButton name="choice4" value="2" [(ngModel)]="model.choice4" inputId="choice4">
+            </p-radioButton></td> 
+          <td style="text-align: center">
+            <p-radioButton name="choice4" value="1" [(ngModel)]="model.choice4" inputId="choice4">
+            </p-radioButton></td>  
+          <td style="text-align: left;">1.  มีการประเมินผลการเรียนในแต่ละแผน     <br>  
+            2.  มีการกำหนดวิธีการประเมินผลหลากหลาย<br>
+            3.  วิธีการประเมินผลสอดคล้องกับจุดประสงค์การเรียนรู้<br>
+            4.  ปฏิบัติจริง<br>
+            5.  นำผลการประเมินมาพัฒนาการเรียนรู้
+            </td>
+        </tr>
+        <tr  >
+          <td style="text-align: left;">5.  การใช้สื่ออุปกรณ์
+            การเรียนรู้
+           (ระดับ 4 มี 5 ข้อ
+            ระดับ 3  มี  4 ข้อ
+            ระดับ 2  มี  3  ข้อ
+            ระดับ 1  มี  1-2  ข้อ)       
+       </td>
+            <td style="text-align: center;" >
+            <p-radioButton name="choice5" value="4" [(ngModel)]="model.choice5" inputId="choice5">
+          </p-radioButton></td>
+          <td style="text-align: center"> 
+            <p-radioButton name="choice5" value="3" [(ngModel)]="model.choice5" inputId="choice5">
+            </p-radioButton> </td>
+          <td style="text-align: center">
+            <p-radioButton name="choice5" value="2" [(ngModel)]="model.choice5" inputId="choice5">
+            </p-radioButton></td> 
+          <td style="text-align: center">
+            <p-radioButton name="choice5" value="1" [(ngModel)]="model.choice5" inputId="choice5">
+            </p-radioButton></td>  
+          <td style="text-align: left;">1.  มีการใช้สื่อ อุปกรณ์หรือแหล่งเรียนรู้<br>
+            2.  มีการกำหนดขั้นตอนหรือวิธีการใช้สื่อ    
+                  หรือแหล่งเรียนรู้ <br>
+            3.  มีการใช้สื่อ อุปกรณ์หรือแหล่งการเรียนรู้
+                 เหมาะสมกับกิจกรรมการเรียนรู้<br>
+            4.  มีสื่อ อุปกรณ์ แหล่งเรียนรู้<br>
+            5.  มีการพัฒนาสื่อ อุปกรณ์ แหล่งเรียนรู้
+            
+            
+            </td>
+        </tr>
+       </table>
+  
+      <div class="field col-6 md:col-6">
+        <m-input-text setId="RESULT" setLabel="สรุป : 	การจัดทำแผนการจัดการเรียนรู้นี้ อยู่ในระดับคุณภาพ" [(setModel)]=model.result     >
+        </m-input-text>
+        เกณฑ์การตัดสิน<br>
+	4     หมายถึง    มีการปฏิบัติอยู่ในระดับดีเยี่ยม <br>
+	3     หมายถึง    มีการปฏิบัติอยู่ในระดับดี <br>
+	2     หมายถึง    มีการปฏิบัติอยู่ในระดับพอใช้ <br>
+	1     หมายถึง    มีการปฏิบัติอยู่ในระดับปรับปรุง <br>
+
+      </div>
+    </div>
+  </div>
+  <div class="grid p-fluid">
+    <div class="field col-12 md:col-2">
+      <m-button setClassName="backBtn" setLabel="LABEL.BACK" (onClick)="onBack()">
+      </m-button>
+    </div>
+    <div *ngIf = !view class="field col-12 md:col-2">
+      <m-button setClassName="saveBtn" setLabel="LABEL.SAVE" (onClick)="onSave()">
+      </m-button>
+    </div>
+  </div>
+</div>

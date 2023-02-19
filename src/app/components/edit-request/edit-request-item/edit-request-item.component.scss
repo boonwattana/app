@@ -1,0 +1,39 @@
+.crad-ingput{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  
+}
+.input-gray{
+  padding: 15px;  
+  width: 350px;
+  border-radius: 5px;
+  background: #d8d8d8;
+  border: 0px solid ;
+
+}
+.mt-20{
+  margin-top: 20px;
+}
+.crad-textarea{
+  border: 0px solid ;
+  border-radius: 7px;
+  padding: 10px;
+}
+
+.title-f{
+  color: #413d31;
+  font-size: 20px;
+}
+.btn-import{
+  padding: 5px 10px;
+  background: #008036;
+  font-size: 18px;
+  color: #fff;
+  border: 0px solid;
+  border-radius: 8px;
+}
+.btn-import{
+  margin-left: 10px;
+}

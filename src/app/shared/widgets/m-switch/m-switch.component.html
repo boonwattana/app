@@ -1,0 +1,45 @@
+<!-- <div class="field">
+    <label for="{{id}}" class="block">{{label}}</label>
+    <p-inputSwitch></p-inputSwitch>
+</div> -->
+
+<div *ngIf="!view" class="field row">
+    <p-toggleButton id="{{id}}" 
+    class="input-field" 
+    type="username" 
+    [disabled]= disable
+    aria-describedby="username1-help" 
+    (ngModelChange)="onInputChange($event)"  
+    [(ngModel)] = model 
+    onIcon="pi pi-check"
+     >
+    </p-toggleButton>
+    <div class="rowLabel">
+        <label class="columnLabel" for="{{id}}" class="block">{{label|translate}}</label>
+        <p *ngIf = "isRequired" class="columnLabel">{{"LABEL.REQURID"|translate}}</p>
+    </div>
+
+</div>
+<div *ngIf="view" class="field row">
+    <p-toggleButton id="{{id}}" 
+    class="input-field" 
+    type="username" 
+    [disabled]= true
+    aria-describedby="username1-help" 
+    (ngModelChange)="onInputChange($event)"  
+    [(ngModel)] = model 
+    onIcon="pi pi-check"
+     >
+    </p-toggleButton>
+    <div class="rowLabel">
+        <label class="columnLabel" for="{{id}}" class="block">{{label|translate}}</label>
+        <p *ngIf = "isRequired" class="columnLabel">{{"LABEL.REQURID"|translate}}</p>
+    </div>
+
+</div>
+<!-- <m-view-only
+    *ngIf="view"
+    [setLabel]="label"
+    [setValue]="getValue()"
+    [setId]="id">
+</m-view-only>  -->

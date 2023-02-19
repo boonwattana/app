@@ -1,0 +1,1172 @@
+<div class="itemCard">
+  <div  class="g-t">
+    <div class="title">{{"MODULE.SDQ_TABLE"|translate}}</div>
+    <button *ngIf ='view' class="edit" (click)="pageEdit()">แก้ไขข้อมูล</button>
+  </div>
+  <div *ngIf = (complete&&view) class="customCard">
+    <div class="grid p-fluid form center">
+      <div class="field col-12 md:col-12 header green">บันทึกแบบประเมิน SDQ สำเร็จ</div>
+    </div>
+    <div class="grid p-fluid form">
+      <div class="field col-12 md:col-6 ">
+        <m-dropdown setId="STUDENT_ID" setLabel="LABEL.STUDENT_ID" [(setModel)]=model.studentId [setReadonly] = true    [setSelectOption]=studentDropdown >
+        </m-dropdown>
+      </div>
+      <div class="field col-12 md:col-6 ">
+        <m-dropdown setId="YEAR_TERM_ID" setLabel="LABEL.YEAR_TERM_ID" [(setModel)]=model.yearTermId [setReadonly] = true   [setSelectOption]=yearTermDropdown >
+        </m-dropdown>
+      </div>
+      <div class="field col-12 md:col-12 bold">ผลการประเมิน</div>
+      
+      <div class="field col-8 md:col-6"> คะแนนรวมพฤติกรรมที่เป็นปัญหา</div>
+      <div class="field col-4 md:col-6"> {{getAll()}} </div>
+      <div class="field col-8 md:col-6"> คะแนนพฤติกรรมด้านอารมณ์</div>
+      <div class="field col-4 md:col-6">{{ getFeel() }}</div>
+      <div class="field col-8 md:col-6"> คะแนนพฤติกรรมความประพฤติ</div>
+      <div class="field col-4 md:col-6"> {{getBehavior()}} </div>
+      <div class="field col-8 md:col-6"> คะแนนพฤติกรรมไม่อยู่นิ่ง</div>
+      <div class="field col-4 md:col-6"> {{getShotThink()}} </div>
+      <div class="field col-8 md:col-6"> คะแนนพฤติกรรมด้านความสัมพันธ์กับเพื่อน</div>
+      <div class="field col-4 md:col-6">{{getRelationship()}} </div>
+      <div class="field col-8 md:col-6"> คะแนนพฤติกรรมด้านสัมพันธภาพทางสังคม</div>
+      <div class="field col-4 md:col-6"> {{getSocial()}} </div>
+    </div>
+  </div>
+  <div *ngIf = (!complete&&view) class="customCard">
+    <div class="grid p-fluid form center">
+      <div class="field col-12 md:col-12 header red">ยังไม่บันทึกแบบประเมิน SDQ</div>
+    </div>
+    <div class="grid p-fluid form">
+      <div class="field col-12 md:col-6 ">
+        <m-dropdown setId="STUDENT_ID" setLabel="LABEL.STUDENT_ID" [(setModel)]=model.studentId [setReadonly] = true    [setSelectOption]=studentDropdown >
+        </m-dropdown>
+      </div>
+      <div class="field col-12 md:col-6 ">
+        <m-dropdown setId="YEAR_TERM_ID" setLabel="LABEL.YEAR_TERM_ID" [(setModel)]=model.yearTermId [setReadonly] = true   [setSelectOption]=yearTermDropdown >
+        </m-dropdown>
+      </div>
+
+    </div>
+  </div>
+  <div *ngIf = (!view) class="customCard">
+    
+    <div class="grid p-fluid form ">
+      <div class="field col-12 md:col-6 ">
+        <m-dropdown setId="STUDENT_ID" setLabel="LABEL.STUDENT_ID" [(setModel)]=model.studentId [setReadonly] = true    [setSelectOption]=studentDropdown >
+        </m-dropdown>
+      </div>
+      <div class="field col-12 md:col-6 ">
+        <m-dropdown setId="YEAR_TERM_ID" setLabel="LABEL.YEAR_TERM_ID" [(setModel)]=model.yearTermId [setReadonly] = true   [setSelectOption]=yearTermDropdown >
+        </m-dropdown>
+      </div>
+      <div class="field col-12 md:col-6"> กรุณากรอกให้ตรงความเป็นจริงที่เกิดขึ้นในช่วง 6 เดือนที่ผ่านมา</div>
+    </div>
+
+    <button class="group">แบบประเมินตนเอง ( SDQ ) ฉบับครูประเมินนักเรียน</button>
+
+    <div class="grid p-fluid form ">
+      <div class="field col-12 md:col-12">
+        <table class="field col-12 md:col-12"  >
+          <tr>
+            <th class="field col-1 md:col-1">
+              ข้อ
+            </th>
+            <th class="field col-6 md:col-6">
+              รายงานการประเมิน
+            </th>
+            <th class="field col-5 md:col-5">
+              คำตอบ
+            </th>
+          </tr>
+
+          <tr>
+            <td class="field col-1 md:col-1">
+              1
+            </td>
+            <td class="field col-6 md:col-6">
+              ห่วงใยความรู้สึกของคนอื่น
+            </td>
+            <td >
+              <div class="field-radiobutton">
+                <div class="center">
+                  <div>
+                    <m-switch-number [setReadonly] = view name="choice01" [setValue]=0 [(setModel)]="model.choice01" inputId="choice01"></m-switch-number>
+                  </div>
+                  <label for="choice01">ไม่จริง</label>
+                </div>
+                <div class="center">
+                  <div>
+                    <m-switch-number [setReadonly] = view name="choice01" [setValue]=1 [(setModel)]="model.choice01" inputId="choice01"></m-switch-number>
+                  </div>
+                  <label for="choice01">ค่อนข้างจริง</label>
+                </div>
+                <div class="center">
+                  <div>
+                      <m-switch-number [setReadonly] = view name="choice01" [setValue]=2 [(setModel)]="model.choice01" inputId="choice01"></m-switch-number>
+                  </div>
+                  <label for="choice01">จริง</label>
+                </div>
+              </div>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="field col-1 md:col-1">
+              2
+            </td>
+            <td class="field col-6 md:col-6">
+              อยู่ไม่นิ่งนั่งนิ่งๆ ไม่ได้
+            </td>
+            <td >
+              <div class="field-radiobutton">
+                <div class="center">
+                  <div>
+                    <m-switch-number [setReadonly] = view name="choice02" [setValue]=0 [(setModel)]="model.choice02" inputId="choice02"></m-switch-number>
+                  </div>
+                  <label for="choice02">ไม่จริง</label>
+                </div>
+                <div class="center">
+                  <div>
+                    <m-switch-number [setReadonly] = view name="choice02" [setValue]=1 [(setModel)]="model.choice02" inputId="choice02"></m-switch-number>
+                  </div>
+                  <label for="choice02">ค่อนข้างจริง</label>
+                </div>
+                <div class="center">
+                  <div>
+                      <m-switch-number [setReadonly] = view name="choice02" [setValue]=2 [(setModel)]="model.choice02" inputId="choice02"></m-switch-number>
+                  </div>
+                  <label for="choice02">จริง</label>
+                </div>
+              </div>
+              <!-- <div class="field-radiobutton">
+                <p-radioButton [disabled] = view name="choice02" value="0" [(ngModel)]="model.choice02" inputId="choice02"></p-radioButton>
+                <label for="choice02">ไม่จริง</label>
+                <p-radioButton [disabled] = view name="choice02" value="1" [(ngModel)]="model.choice02" inputId="choice02"></p-radioButton>
+                <label for="choice02">ค่อนข้างจริง</label>
+                <p-radioButton [disabled] = view name="choice02" value="2" [(ngModel)]="model.choice02" inputId="choice02"></p-radioButton>
+                <label for="choice02">จริง</label>
+              </div> -->
+            </td>
+          </tr>
+          <tr>
+            <td class="field col-1 md:col-1">
+              3
+            </td>
+            <td class="field col-6 md:col-6">
+              มักจะบ่นว่าปวดศีรษะ ปวดท้อง หรือไม่สบาย
+            </td>
+            <td >
+              <div class="field-radiobutton">
+                <div class="center">
+                  <div>
+                    <m-switch-number [setReadonly] = view name="choice03" [setValue]=0 [(setModel)]="model.choice03" inputId="choice03"></m-switch-number>
+                  </div>
+                  <label for="choice03">ไม่จริง</label>
+                </div>
+                <div class="center">
+                  <div>
+                    <m-switch-number [setReadonly] = view name="choice03" [setValue]=1 [(setModel)]="model.choice03" inputId="choice03"></m-switch-number>
+                  </div>
+                  <label for="choice03">ค่อนข้างจริง</label>
+                </div>
+                <div class="center">
+                  <div>
+                      <m-switch-number [setReadonly] = view name="choice03" [setValue]=2 [(setModel)]="model.choice03" inputId="choice03"></m-switch-number>
+                  </div>
+                  <label for="choice03">จริง</label>
+                </div>
+              </div>
+              <!-- <div class="field-radiobutton">
+                <p-radioButton [disabled] = view name="choice03" value="0" [(ngModel)]="model.choice03" inputId="choice03"></p-radioButton>
+                <label for="choice03">ไม่จริง</label>
+                <p-radioButton [disabled] = view name="choice03" value="1" [(ngModel)]="model.choice03" inputId="choice03"></p-radioButton>
+                <label for="choice03">ค่อนข้างจริง</label>
+                <p-radioButton [disabled] = view name="choice03" value="2" [(ngModel)]="model.choice03" inputId="choice03"></p-radioButton>
+                <label for="choice03">จริง</label>
+              </div> -->
+            </td>
+          </tr>
+          <tr>
+            <td class="field col-1 md:col-1">
+              4
+            </td>
+            <td class="field col-6 md:col-6">
+              เต็มใจแบ่งปันสิ่งของให้เพื่อน ( ขนม ,ของเล่น,ดินสอ เป็นต้น )
+            </td>
+            <td >
+              <div class="field-radiobutton">
+                <div class="center">
+                  <div>
+                    <m-switch-number [setReadonly] = view name="choice04" [setValue]=0 [(setModel)]="model.choice04" inputId="choice04"></m-switch-number>
+                  </div>
+                  <label for="choice04">ไม่จริง</label>
+                </div>
+                <div class="center">
+                  <div>
+                    <m-switch-number [setReadonly] = view name="choice04" [setValue]=1 [(setModel)]="model.choice04" inputId="choice04"></m-switch-number>
+                  </div>
+                  <label for="choice04">ค่อนข้างจริง</label>
+                </div>
+                <div class="center">
+                  <div>
+                      <m-switch-number [setReadonly] = view name="choice04" [setValue]=2 [(setModel)]="model.choice04" inputId="choice04"></m-switch-number>
+                  </div>
+                  <label for="choice04">จริง</label>
+                </div>
+              </div>
+              <!-- <div class="field-radiobutton">
+                <p-radioButton [disabled] = view  name="choice04" value="0" [(ngModel)]="model.choice04" inputId="choice04"></p-radioButton>
+                <label for="choice04">ไม่จริง</label>
+                <p-radioButton [disabled] = view name="choice04" value="1" [(ngModel)]="model.choice04" inputId="choice04"></p-radioButton>
+                <label for="choice04">ค่อนข้างจริง</label>
+                <p-radioButton [disabled] = view name="choice04" value="2" [(ngModel)]="model.choice04" inputId="choice04"></p-radioButton>
+                <label for="choice04">จริง</label>
+              </div> -->
+            </td>
+          </tr>
+          <tr>
+            <td class="field col-1 md:col-1">
+              5
+            </td>
+            <td class="field col-6 md:col-6">
+              มักจะอาละวาดหรือโมโหร้าย
+            </td>
+            <td >
+              <div class="field-radiobutton">
+                <div class="center">
+                  <div>
+                    <m-switch-number [setReadonly] = view name="choice05" [setValue]=0 [(setModel)]="model.choice05" inputId="choice05"></m-switch-number>
+                  </div>
+                  <label for="choice05">ไม่จริง</label>
+                </div>
+                <div class="center">
+                  <div>
+                    <m-switch-number [setReadonly] = view name="choice05" [setValue]=1 [(setModel)]="model.choice05" inputId="choice05"></m-switch-number>
+                  </div>
+                  <label for="choice05">ค่อนข้างจริง</label>
+                </div>
+                <div class="center">
+                  <div>
+                      <m-switch-number [setReadonly] = view name="choice05" [setValue]=2 [(setModel)]="model.choice05" inputId="choice05"></m-switch-number>
+                  </div>
+                  <label for="choice05">จริง</label>
+                </div>
+              </div>
+              <!-- <div class="field-radiobutton">
+                <p-radioButton [disabled] = view name="choice05" value="0" [(ngModel)]="model.choice05" inputId="choice05"></p-radioButton>
+                <label for="choice05">ไม่จริง</label>
+                <p-radioButton [disabled] = view name="choice05" value="1" [(ngModel)]="model.choice05" inputId="choice05"></p-radioButton>
+                <label for="choice05">ค่อนข้างจริง</label>
+                <p-radioButton [disabled] = view name="choice05" value="2" [(ngModel)]="model.choice05" inputId="choice05"></p-radioButton>
+                <label for="choice05">จริง</label>
+              </div> -->
+            </td>
+          </tr>
+          <tr>
+            <td class="field col-1 md:col-1">
+              6
+            </td>
+            <td class="field col-6 md:col-6">
+              ค่อนข้างแยกตัว ชอบเล่นคนเดียว
+            </td>
+            <td >
+              <div class="field-radiobutton">
+                <div class="center">
+                  <div>
+                    <m-switch-number [setReadonly] = view name="choice06" [setValue]=0 [(setModel)]="model.choice06" inputId="choice06"></m-switch-number>
+                  </div>
+                  <label for="choice06">ไม่จริง</label>
+                </div>
+                <div class="center">
+                  <div>
+                    <m-switch-number [setReadonly] = view name="choice06" [setValue]=1 [(setModel)]="model.choice06" inputId="choice06"></m-switch-number>
+                  </div>
+                  <label for="choice06">ค่อนข้างจริง</label>
+                </div>
+                <div class="center">
+                  <div>
+                      <m-switch-number [setReadonly] = view name="choice06" [setValue]=2 [(setModel)]="model.choice06" inputId="choice06"></m-switch-number>
+                  </div>
+                  <label for="choice06">จริง</label>
+                </div>
+              </div>
+              <!-- <div class="field-radiobutton">
+                <p-radioButton [disabled] = view name="choice06" value="0" [(ngModel)]="model.choice06" inputId="choice06"></p-radioButton>
+                <label for="choice06">ไม่จริง</label>
+                <p-radioButton [disabled] = view name="choice06" value="1" [(ngModel)]="model.choice06" inputId="choice06"></p-radioButton>
+                <label for="choice06">ค่อนข้างจริง</label>
+                <p-radioButton [disabled] = view name="choice06" value="2" [(ngModel)]="model.choice06" inputId="choice06"></p-radioButton>
+                <label for="choice06">จริง</label>
+              </div> -->
+            </td>
+          </tr>
+          <tr>
+            <td class="field col-1 md:col-1">
+              7
+            </td>
+            <td class="field col-6 md:col-6">
+              เชื่อฟัง มักจะทำตามที่ผู้ใหญ่ต้องการ
+            </td>
+            <td >
+              <div class="field-radiobutton">
+                <div class="center">
+                  <div>
+                    <m-switch-number [setReadonly] = view name="choice07" [setValue]=0 [(setModel)]="model.choice07" inputId="choice07"></m-switch-number>
+                  </div>
+                  <label for="choice07">ไม่จริง</label>
+                </div>
+                <div class="center">
+                  <div>
+                    <m-switch-number [setReadonly] = view name="choice07" [setValue]=1 [(setModel)]="model.choice07" inputId="choice07"></m-switch-number>
+                  </div>
+                  <label for="choice07">ค่อนข้างจริง</label>
+                </div>
+                <div class="center">
+                  <div>
+                      <m-switch-number [setReadonly] = view name="choice07" [setValue]=2 [(setModel)]="model.choice07" inputId="choice07"></m-switch-number>
+                  </div>
+                  <label for="choice07">จริง</label>
+                </div>
+              </div>
+              <!-- <div class="field-radiobutton">
+                <p-radioButton [disabled] = view name="choice07" value="2" [(ngModel)]="model.choice07" inputId="choice07"></p-radioButton>
+                <label for="choice07">ไม่จริง</label>
+                <p-radioButton [disabled] = view name="choice07" value="1" [(ngModel)]="model.choice07" inputId="choice07"></p-radioButton>
+                <label for="choice07">ค่อนข้างจริง</label>
+                <p-radioButton [disabled] = view name="choice07" value="0" [(ngModel)]="model.choice07" inputId="choice07"></p-radioButton>
+                <label for="choice07">จริง</label>
+              </div> -->
+            </td>
+          </tr>
+          <tr>
+            <td class="field col-1 md:col-1">
+              8
+            </td>
+            <td class="field col-6 md:col-6">
+              กังวลใจหลายเรื่อง ดูวิตกกังวลเสมอ
+            </td>
+            <td >
+              <div class="field-radiobutton">
+                <div class="center">
+                  <div>
+                    <m-switch-number [setReadonly] = view name="choice08" [setValue]=0 [(setModel)]="model.choice08" inputId="choice08"></m-switch-number>
+                  </div>
+                  <label for="choice08">ไม่จริง</label>
+                </div>
+                <div class="center">
+                  <div>
+                    <m-switch-number [setReadonly] = view name="choice08" [setValue]=1 [(setModel)]="model.choice08" inputId="choice08"></m-switch-number>
+                  </div>
+                  <label for="choice08">ค่อนข้างจริง</label>
+                </div>
+                <div class="center">
+                  <div>
+                      <m-switch-number [setReadonly] = view name="choice08" [setValue]=2 [(setModel)]="model.choice08" inputId="choice08"></m-switch-number>
+                  </div>
+                  <label for="choice08">จริง</label>
+                </div>
+              </div>
+              <!-- <div class="field-radiobutton">
+                <p-radioButton [disabled] = view name="choice08" value="0" [(ngModel)]="model.choice08" inputId="choice08"></p-radioButton>
+                <label for="choice08">ไม่จริง</label>
+                <p-radioButton [disabled] = view name="choice08" value="1" [(ngModel)]="model.choice08" inputId="choice08"></p-radioButton>
+                <label for="choice08">ค่อนข้างจริง</label>
+                <p-radioButton [disabled] = view name="choice08" value="2" [(ngModel)]="model.choice08" inputId="choice08"></p-radioButton>
+                <label for="choice08">จริง</label>
+              </div> -->
+            </td>
+          </tr>
+          <tr>
+            <td class="field col-1 md:col-1">
+              9
+            </td>
+            <td class="field col-6 md:col-6">
+              เป็นที่พึ่งได้เวลาที่คนอื่นเสียใจ อารมณ์ไม่ดี หรือไม่สบายใจ
+            </td>
+            <td >
+              <div class="field-radiobutton">
+                <div class="center">
+                  <div>
+                    <m-switch-number [setReadonly] = view name="choice09" [setValue]=0 [(setModel)]="model.choice09" inputId="choice09"></m-switch-number>
+                  </div>
+                  <label for="choice09">ไม่จริง</label>
+                </div>
+                <div class="center">
+                  <div>
+                    <m-switch-number [setReadonly] = view name="choice09" [setValue]=1 [(setModel)]="model.choice09" inputId="choice09"></m-switch-number>
+                  </div>
+                  <label for="choice09">ค่อนข้างจริง</label>
+                </div>
+                <div class="center">
+                  <div>
+                      <m-switch-number [setReadonly] = view name="choice09" [setValue]=2 [(setModel)]="model.choice09" inputId="choice09"></m-switch-number>
+                  </div>
+                  <label for="choice09">จริง</label>
+                </div>
+              </div>
+              <!-- <div class="field-radiobutton">
+                <p-radioButton [disabled] = view name="choice09" value="0" [(ngModel)]="model.choice09" inputId="choice09"></p-radioButton>
+                <label for="choice09">ไม่จริง</label>
+                <p-radioButton [disabled] = view name="choice09" value="1" [(ngModel)]="model.choice09" inputId="choice09"></p-radioButton>
+                <label for="choice09">ค่อนข้างจริง</label>
+                <p-radioButton [disabled] = view name="choice09" value="2" [(ngModel)]="model.choice09" inputId="choice09"></p-radioButton>
+                <label for="choice09">จริง</label>
+              </div> -->
+            </td>
+          </tr>
+          <tr>
+            <td class="field col-1 md:col-1">
+              10
+            </td>
+            <td class="field col-6 md:col-6">
+              อยู่ไม่สุข วุ่นวายอย่างมาก
+            </td>
+            <td >
+              <div class="field-radiobutton">
+                <div class="center">
+                  <div>
+                    <m-switch-number [setReadonly] = view name="choice10" [setValue]=0 [(setModel)]="model.choice10" inputId="choice10"></m-switch-number>
+                  </div>
+                  <label for="choice10">ไม่จริง</label>
+                </div>
+                <div class="center">
+                  <div>
+                    <m-switch-number [setReadonly] = view name="choice10" [setValue]=1 [(setModel)]="model.choice10" inputId="choice10"></m-switch-number>
+                  </div>
+                  <label for="choice10">ค่อนข้างจริง</label>
+                </div>
+                <div class="center">
+                  <div>
+                      <m-switch-number [setReadonly] = view name="choice10" [setValue]=2 [(setModel)]="model.choice10" inputId="choice10"></m-switch-number>
+                  </div>
+                  <label for="choice10">จริง</label>
+                </div>
+              </div>
+              <!-- <div class="field-radiobutton">
+                <p-radioButton [disabled] = view name="choice10" value="0" [(ngModel)]="model.choice10" inputId="choice10"></p-radioButton>
+                <label for="choice10">ไม่จริง</label>
+                <p-radioButton [disabled] = view name="choice10" value="1" [(ngModel)]="model.choice10" inputId="choice10"></p-radioButton>
+                <label for="choice10">ค่อนข้างจริง</label>
+                <p-radioButton [disabled] = view name="choice10" value="2" [(ngModel)]="model.choice10" inputId="choice10"></p-radioButton>
+                <label for="choice10">จริง</label>
+              </div> -->
+            </td>
+          </tr>
+          <tr>
+            <td class="field col-1 md:col-1">
+              11
+            </td>
+            <td class="field col-6 md:col-6">
+              มีเพื่อนสนิท
+            </td>
+            <td >
+              <div class="field-radiobutton">
+                <div class="center">
+                  <div>
+                    <m-switch-number [setReadonly] = view name="choice11" [setValue]=0 [(setModel)]="model.choice11" inputId="choice11"></m-switch-number>
+                  </div>
+                  <label for="choice11">ไม่จริง</label>
+                </div>
+                <div class="center">
+                  <div>
+                    <m-switch-number [setReadonly] = view name="choice11" [setValue]=1 [(setModel)]="model.choice11" inputId="choice11"></m-switch-number>
+                  </div>
+                  <label for="choice11">ค่อนข้างจริง</label>
+                </div>
+                <div class="center">
+                  <div>
+                      <m-switch-number [setReadonly] = view name="choice11" [setValue]=2 [(setModel)]="model.choice11" inputId="choice11"></m-switch-number>
+                  </div>
+                  <label for="choice11">จริง</label>
+                </div>
+              </div>
+              <!-- <div class="field-radiobutton">
+                <p-radioButton [disabled] = view name="choice11" value="2" [(ngModel)]="model.choice11" inputId="choice11"></p-radioButton>
+                <label for="choice11">ไม่จริง</label>
+                <p-radioButton [disabled] = view name="choice11" value="1" [(ngModel)]="model.choice11" inputId="choice11"></p-radioButton>
+                <label for="choice11">ค่อนข้างจริง</label>
+                <p-radioButton [disabled] = view name="choice11" value="0" [(ngModel)]="model.choice11" inputId="choice11"></p-radioButton>
+                <label for="choice11">จริง</label>
+              </div> -->
+            </td>
+          </tr>
+          <tr>
+            <td class="field col-1 md:col-1">
+              12
+            </td>
+            <td class="field col-6 md:col-6">
+              มักมีเรื่องทะเลาะวิวาทกับเด็กอื่น หรือรังแกเด็กอื่น
+            </td>
+            <td >
+              <div class="field-radiobutton">
+                <div class="center">
+                  <div>
+                    <m-switch-number [setReadonly] = view name="choice12" [setValue]=0 [(setModel)]="model.choice12" inputId="choice12"></m-switch-number>
+                  </div>
+                  <label for="choice12">ไม่จริง</label>
+                </div>
+                <div class="center">
+                  <div>
+                    <m-switch-number [setReadonly] = view name="choice12" [setValue]=1 [(setModel)]="model.choice12" inputId="choice12"></m-switch-number>
+                  </div>
+                  <label for="choice12">ค่อนข้างจริง</label>
+                </div>
+                <div class="center">
+                  <div>
+                      <m-switch-number [setReadonly] = view name="choice12" [setValue]=2 [(setModel)]="model.choice12" inputId="choice12"></m-switch-number>
+                  </div>
+                  <label for="choice12">จริง</label>
+                </div>
+              </div>
+              <!-- <div class="field-radiobutton">
+                <p-radioButton [disabled] = view name="choice12" value="0" [(ngModel)]="model.choice12" inputId="choice12"></p-radioButton>
+                <label for="choice12">ไม่จริง</label>
+                <p-radioButton [disabled] = view name="choice12" value="1" [(ngModel)]="model.choice12" inputId="choice12"></p-radioButton>
+                <label for="choice12">ค่อนข้างจริง</label>
+                <p-radioButton [disabled] = view name="choice12" value="2" [(ngModel)]="model.choice12" inputId="choice12"></p-radioButton>
+                <label for="choice12">จริง</label>
+              </div> -->
+            </td>
+          </tr>
+          <tr>
+            <td class="field col-1 md:col-1">
+              13
+            </td>
+            <td class="field col-6 md:col-6">
+              ดูไม่มีความสุข ท้อแท้ ร้องไห้บ่อย
+            </td>
+            <td >
+              <div class="field-radiobutton">
+                <div class="center">
+                  <div>
+                    <m-switch-number [setReadonly] = view name="choice13" [setValue]=0 [(setModel)]="model.choice13" inputId="choice13"></m-switch-number>
+                  </div>
+                  <label for="choice13">ไม่จริง</label>
+                </div>
+                <div class="center">
+                  <div>
+                    <m-switch-number [setReadonly] = view name="choice13" [setValue]=1 [(setModel)]="model.choice13" inputId="choice13"></m-switch-number>
+                  </div>
+                  <label for="choice13">ค่อนข้างจริง</label>
+                </div>
+                <div class="center">
+                  <div>
+                      <m-switch-number [setReadonly] = view name="choice13" [setValue]=2 [(setModel)]="model.choice13" inputId="choice13"></m-switch-number>
+                  </div>
+                  <label for="choice13">จริง</label>
+                </div>
+              </div>
+              <!-- <div class="field-radiobutton">
+                <p-radioButton [disabled] = view name="choice13" value="0" [(ngModel)]="model.choice13" inputId="choice13"></p-radioButton>
+                <label for="choice13">ไม่จริง</label>
+                <p-radioButton [disabled] = view name="choice13" value="1" [(ngModel)]="model.choice13" inputId="choice13"></p-radioButton>
+                <label for="choice13">ค่อนข้างจริง</label>
+                <p-radioButton [disabled] = view name="choice13" value="2" [(ngModel)]="model.choice13" inputId="choice13"></p-radioButton>
+                <label for="choice13">จริง</label>
+              </div> -->
+            </td>
+          </tr>
+          <tr>
+            <td class="field col-1 md:col-1">
+              14
+            </td>
+            <td class="field col-6 md:col-6">
+              เป็นที่ชื่นชอบของเพื่อน
+            </td>
+            <td >
+              <div class="field-radiobutton">
+                <div class="center">
+                  <div>
+                    <m-switch-number [setReadonly] = view name="choice14" [setValue]=0 [(setModel)]="model.choice14" inputId="choice14"></m-switch-number>
+                  </div>
+                  <label for="choice14">ไม่จริง</label>
+                </div>
+                <div class="center">
+                  <div>
+                    <m-switch-number [setReadonly] = view name="choice14" [setValue]=1 [(setModel)]="model.choice14" inputId="choice14"></m-switch-number>
+                  </div>
+                  <label for="choice14">ค่อนข้างจริง</label>
+                </div>
+                <div class="center">
+                  <div>
+                      <m-switch-number [setReadonly] = view name="choice14" [setValue]=2 [(setModel)]="model.choice14" inputId="choice14"></m-switch-number>
+                  </div>
+                  <label for="choice14">จริง</label>
+                </div>
+              </div>
+              <!-- <div class="field-radiobutton">
+                <p-radioButton [disabled] = view name="choice14" value="2" [(ngModel)]="model.choice14" inputId="choice14"></p-radioButton>
+                <label for="choice14">ไม่จริง</label>
+                <p-radioButton [disabled] = view name="choice14" value="1" [(ngModel)]="model.choice14" inputId="choice14"></p-radioButton>
+                <label for="choice14">ค่อนข้างจริง</label>
+                <p-radioButton [disabled] = view name="choice14" value="0" [(ngModel)]="model.choice14" inputId="choice14"></p-radioButton>
+                <label for="choice14">จริง</label>
+              </div> -->
+            </td>
+          </tr>
+          <tr>
+            <td class="field col-1 md:col-1">
+              15
+            </td>
+            <td class="field col-6 md:col-6">
+              วอกแวกง่าย สมาธิสั้น
+            </td>
+            <td >
+              <div class="field-radiobutton">
+                <div class="center">
+                  <div>
+                    <m-switch-number [setReadonly] = view name="choice15" [setValue]=0 [(setModel)]="model.choice15" inputId="choice15"></m-switch-number>
+                  </div>
+                  <label for="choice15">ไม่จริง</label>
+                </div>
+                <div class="center">
+                  <div>
+                    <m-switch-number [setReadonly] = view name="choice15" [setValue]=1 [(setModel)]="model.choice15" inputId="choice15"></m-switch-number>
+                  </div>
+                  <label for="choice15">ค่อนข้างจริง</label>
+                </div>
+                <div class="center">
+                  <div>
+                      <m-switch-number [setReadonly] = view name="choice15" [setValue]=2 [(setModel)]="model.choice15" inputId="choice15"></m-switch-number>
+                  </div>
+                  <label for="choice15">จริง</label>
+                </div>
+              </div>
+              <!-- <div class="field-radiobutton">
+                <p-radioButton [disabled] = view name="choice15" value="0" [(ngModel)]="model.choice15" inputId="choice15"></p-radioButton>
+                <label for="choice15">ไม่จริง</label>
+                <p-radioButton [disabled] = view name="choice15" value="1" [(ngModel)]="model.choice15" inputId="choice15"></p-radioButton>
+                <label for="choice15">ค่อนข้างจริง</label>
+                <p-radioButton [disabled] = view name="choice15" value="2" [(ngModel)]="model.choice15" inputId="choice15"></p-radioButton>
+                <label for="choice15">จริง</label>
+              </div> -->
+            </td>
+          </tr>
+          <tr>
+            <td class="field col-1 md:col-1">
+              16
+            </td>
+            <td class="field col-6 md:col-6">
+              เครียดไม่ยอมห่างเวลาอยู่ในสถานการณ์ที่ไม่คุ้น และขาดความเชื่อมั่นในตนเอง
+            </td>
+            <td >
+              <div class="field-radiobutton">
+                <div class="center">
+                  <div>
+                    <m-switch-number [setReadonly] = view name="choice16" [setValue]=0 [(setModel)]="model.choice16" inputId="choice16"></m-switch-number>
+                  </div>
+                  <label for="choice16">ไม่จริง</label>
+                </div>
+                <div class="center">
+                  <div>
+                    <m-switch-number [setReadonly] = view name="choice16" [setValue]=1 [(setModel)]="model.choice16" inputId="choice16"></m-switch-number>
+                  </div>
+                  <label for="choice16">ค่อนข้างจริง</label>
+                </div>
+                <div class="center">
+                  <div>
+                      <m-switch-number [setReadonly] = view name="choice16" [setValue]=2 [(setModel)]="model.choice16" inputId="choice16"></m-switch-number>
+                  </div>
+                  <label for="choice16">จริง</label>
+                </div>
+              </div>
+              <!-- <div class="field-radiobutton">
+                <p-radioButton [disabled] = view name="choice16" value="0" [(ngModel)]="model.choice16" inputId="choice16"></p-radioButton>
+                <label for="choice16">ไม่จริง</label>
+                <p-radioButton [disabled] = view name="choice16" value="1" [(ngModel)]="model.choice16" inputId="choice16"></p-radioButton>
+                <label for="choice16">ค่อนข้างจริง</label>
+                <p-radioButton [disabled] = view name="choice16" value="2" [(ngModel)]="model.choice16" inputId="choice16"></p-radioButton>
+                <label for="choice16">จริง</label>
+              </div> -->
+            </td>
+          </tr>
+          <tr>
+            <td class="field col-1 md:col-1">
+              17
+            </td>
+            <td class="field col-6 md:col-6">
+              ใจดีกับเด็กที่เล็กกว่า
+            </td>
+            <td >
+              <div class="field-radiobutton">
+                <div class="center">
+                  <div>
+                    <m-switch-number [setReadonly] = view name="choice17" [setValue]=0 [(setModel)]="model.choice17" inputId="choice17"></m-switch-number>
+                  </div>
+                  <label for="choice17">ไม่จริง</label>
+                </div>
+                <div class="center">
+                  <div>
+                    <m-switch-number [setReadonly] = view name="choice17" [setValue]=1 [(setModel)]="model.choice17" inputId="choice17"></m-switch-number>
+                  </div>
+                  <label for="choice17">ค่อนข้างจริง</label>
+                </div>
+                <div class="center">
+                  <div>
+                      <m-switch-number [setReadonly] = view name="choice17" [setValue]=2 [(setModel)]="model.choice17" inputId="choice17"></m-switch-number>
+                  </div>
+                  <label for="choice17">จริง</label>
+                </div>
+              </div>
+              <!-- <div class="field-radiobutton">
+                <p-radioButton [disabled] = view name="choice17" value="0" [(ngModel)]="model.choice17" inputId="choice17"></p-radioButton>
+                <label for="choice17">ไม่จริง</label>
+                <p-radioButton [disabled] = view name="choice17" value="1" [(ngModel)]="model.choice17" inputId="choice17"></p-radioButton>
+                <label for="choice17">ค่อนข้างจริง</label>
+                <p-radioButton [disabled] = view name="choice17" value="2" [(ngModel)]="model.choice17" inputId="choice17"></p-radioButton>
+                <label for="choice17">จริง</label>
+              </div> -->
+            </td>
+          </tr>
+          <tr>
+            <td class="field col-1 md:col-1">
+              18
+            </td>
+            <td class="field col-6 md:col-6">
+              ชอบโกหกหรือขี้โกง
+            </td>
+            <td >
+              <div class="field-radiobutton">
+                <div class="center">
+                  <div>
+                    <m-switch-number [setReadonly] = view name="choice18" [setValue]=0 [(setModel)]="model.choice18" inputId="choice18"></m-switch-number>
+                  </div>
+                  <label for="choice18">ไม่จริง</label>
+                </div>
+                <div class="center">
+                  <div>
+                    <m-switch-number [setReadonly] = view name="choice18" [setValue]=1 [(setModel)]="model.choice18" inputId="choice18"></m-switch-number>
+                  </div>
+                  <label for="choice18">ค่อนข้างจริง</label>
+                </div>
+                <div class="center">
+                  <div>
+                      <m-switch-number [setReadonly] = view name="choice18" [setValue]=2 [(setModel)]="model.choice18" inputId="choice18"></m-switch-number>
+                  </div>
+                  <label for="choice18">จริง</label>
+                </div>
+              </div>
+              <!-- <div class="field-radiobutton">
+                <p-radioButton [disabled] = view name="choice18" value="0" [(ngModel)]="model.choice18" inputId="choice18"></p-radioButton>
+                <label for="choice18">ไม่จริง</label>
+                <p-radioButton [disabled] = view name="choice18" value="1" [(ngModel)]="model.choice18" inputId="choice18"></p-radioButton>
+                <label for="choice18">ค่อนข้างจริง</label>
+                <p-radioButton [disabled] = view name="choice18" value="2" [(ngModel)]="model.choice18" inputId="choice18"></p-radioButton>
+                <label for="choice18">จริง</label>
+              </div> -->
+            </td>
+          </tr>
+          <tr>
+            <td class="field col-1 md:col-1">
+              19
+            </td>
+            <td class="field col-6 md:col-6">
+              ถูกเด็กคนอื่นล้อเลียนหรือรังแก
+            </td>
+            <td >
+              <div class="field-radiobutton">
+                <div class="center">
+                  <div>
+                    <m-switch-number [setReadonly] = view name="choice19" [setValue]=0 [(setModel)]="model.choice19" inputId="choice19"></m-switch-number>
+                  </div>
+                  <label for="choice19">ไม่จริง</label>
+                </div>
+                <div class="center">
+                  <div>
+                    <m-switch-number [setReadonly] = view name="choice19" [setValue]=1 [(setModel)]="model.choice19" inputId="choice19"></m-switch-number>
+                  </div>
+                  <label for="choice19">ค่อนข้างจริง</label>
+                </div>
+                <div class="center">
+                  <div>
+                      <m-switch-number [setReadonly] = view name="choice19" [setValue]=2 [(setModel)]="model.choice19" inputId="choice19"></m-switch-number>
+                  </div>
+                  <label for="choice19">จริง</label>
+                </div>
+              </div>
+              <!-- <div class="field-radiobutton">
+                <p-radioButton [disabled] = view name="choice19" value="0" [(ngModel)]="model.choice19" inputId="choice19"></p-radioButton>
+                <label for="choice19">ไม่จริง</label>
+                <p-radioButton [disabled] = view name="choice19" value="1" [(ngModel)]="model.choice19" inputId="choice19"></p-radioButton>
+                <label for="choice19">ค่อนข้างจริง</label>
+                <p-radioButton [disabled] = view name="choice19" value="2" [(ngModel)]="model.choice19" inputId="choice19"></p-radioButton>
+                <label for="choice19">จริง</label>
+              </div> -->
+            </td>
+          </tr>
+          <tr>
+            <td class="field col-1 md:col-1">
+              20
+            </td>
+            <td class="field col-6 md:col-6">
+              ชอบอาสาช่วยเหลือคนอื่น ( พ่อ, แม่, ครู, เด็กคนอื่น )
+            </td>
+            <td >
+              <div class="field-radiobutton">
+                <div class="center">
+                  <div>
+                    <m-switch-number [setReadonly] = view name="choice20" [setValue]=0 [(setModel)]="model.choice20" inputId="choice20"></m-switch-number>
+                  </div>
+                  <label for="choice20">ไม่จริง</label>
+                </div>
+                <div class="center">
+                  <div>
+                    <m-switch-number [setReadonly] = view name="choice20" [setValue]=1 [(setModel)]="model.choice20" inputId="choice20"></m-switch-number>
+                  </div>
+                  <label for="choice20">ค่อนข้างจริง</label>
+                </div>
+                <div class="center">
+                  <div>
+                      <m-switch-number [setReadonly] = view name="choice20" [setValue]=2 [(setModel)]="model.choice20" inputId="choice20"></m-switch-number>
+                  </div>
+                  <label for="choice20">จริง</label>
+                </div>
+              </div>
+              <!-- <div class="field-radiobutton">
+                <p-radioButton [disabled] = view name="choice20" value="0" [(ngModel)]="model.choice20" inputId="choice20"></p-radioButton>
+                <label for="choice20">ไม่จริง</label>
+                <p-radioButton [disabled] = view name="choice20" value="1" [(ngModel)]="model.choice20" inputId="choice20"></p-radioButton>
+                <label for="choice20">ค่อนข้างจริง</label>
+                <p-radioButton [disabled] = view name="choice20" value="2" [(ngModel)]="model.choice20" inputId="choice20"></p-radioButton>
+                <label for="choice20">จริง</label>
+              </div> -->
+            </td>
+          </tr>
+          <tr>
+            <td class="field col-1 md:col-1">
+              21
+            </td>
+            <td class="field col-6 md:col-6">
+              คิดก่อนทำ
+            </td>
+            <td >
+              <div class="field-radiobutton">
+                <div class="center">
+                  <div>
+                    <m-switch-number [setReadonly] = view name="choice21" [setValue]=0 [(setModel)]="model.choice21" inputId="choice21"></m-switch-number>
+                  </div>
+                  <label for="choice21">ไม่จริง</label>
+                </div>
+                <div class="center">
+                  <div>
+                    <m-switch-number [setReadonly] = view name="choice21" [setValue]=1 [(setModel)]="model.choice21" inputId="choice21"></m-switch-number>
+                  </div>
+                  <label for="choice21">ค่อนข้างจริง</label>
+                </div>
+                <div class="center">
+                  <div>
+                      <m-switch-number [setReadonly] = view name="choice21" [setValue]=2 [(setModel)]="model.choice21" inputId="choice21"></m-switch-number>
+                  </div>
+                  <label for="choice21">จริง</label>
+                </div>
+              </div>
+              <!-- <div class="field-radiobutton">
+                <p-radioButton [disabled] = view name="choice21" value="2" [(ngModel)]="model.choice21" inputId="choice21"></p-radioButton>
+                <label for="choice21">ไม่จริง</label>
+                <p-radioButton [disabled] = view name="choice21" value="1" [(ngModel)]="model.choice21" inputId="choice21"></p-radioButton>
+                <label for="choice21">ค่อนข้างจริง</label>
+                <p-radioButton [disabled] = view name="choice21" value="0" [(ngModel)]="model.choice21" inputId="choice21"></p-radioButton>
+                <label for="choice21">จริง</label>
+              </div> -->
+            </td>
+          </tr>
+          <tr>
+            <td class="field col-1 md:col-1">
+              22
+            </td>
+            <td class="field col-6 md:col-6">
+              ขโมยของของที่บ้าน ที่โรงเรียน หรือที่อื่น
+            </td>
+            <td >
+              <div class="field-radiobutton">
+                <div class="center">
+                  <div>
+                    <m-switch-number [setReadonly] = view name="choice22" [setValue]=0 [(setModel)]="model.choice22" inputId="choice22"></m-switch-number>
+                  </div>
+                  <label for="choice22">ไม่จริง</label>
+                </div>
+                <div class="center">
+                  <div>
+                    <m-switch-number [setReadonly] = view name="choice22" [setValue]=1 [(setModel)]="model.choice22" inputId="choice22"></m-switch-number>
+                  </div>
+                  <label for="choice22">ค่อนข้างจริง</label>
+                </div>
+                <div class="center">
+                  <div>
+                      <m-switch-number [setReadonly] = view name="choice22" [setValue]=2 [(setModel)]="model.choice22" inputId="choice22"></m-switch-number>
+                  </div>
+                  <label for="choice22">จริง</label>
+                </div>
+              </div>
+              <!-- <div class="field-radiobutton">
+                <p-radioButton [disabled] = view name="choice22" value="0" [(ngModel)]="model.choice22" inputId="choice22"></p-radioButton>
+                <label for="choice22">ไม่จริง</label>
+                <p-radioButton [disabled] = view name="choice22" value="1" [(ngModel)]="model.choice22" inputId="choice22"></p-radioButton>
+                <label for="choice22">ค่อนข้างจริง</label>
+                <p-radioButton [disabled] = view name="choice22" value="2" [(ngModel)]="model.choice22" inputId="choice22"></p-radioButton>
+                <label for="choice22">จริง</label>
+              </div> -->
+            </td>
+          </tr>
+          <tr>
+            <td class="field col-1 md:col-1">
+              23
+            </td>
+            <td class="field col-6 md:col-6">
+              เข้ากับผู้ใหญ่ได้ดีกว่าเด็กวัยเดียวกัน
+            </td>
+            <td >
+              <div class="field-radiobutton">
+                <div class="center">
+                  <div>
+                    <m-switch-number [setReadonly] = view name="choice23" [setValue]=0 [(setModel)]="model.choice23" inputId="choice23"></m-switch-number>
+                  </div>
+                  <label for="choice23">ไม่จริง</label>
+                </div>
+                <div class="center">
+                  <div>
+                    <m-switch-number [setReadonly] = view name="choice23" [setValue]=1 [(setModel)]="model.choice23" inputId="choice23"></m-switch-number>
+                  </div>
+                  <label for="choice23">ค่อนข้างจริง</label>
+                </div>
+                <div class="center">
+                  <div>
+                      <m-switch-number [setReadonly] = view name="choice23" [setValue]=2 [(setModel)]="model.choice23" inputId="choice23"></m-switch-number>
+                  </div>
+                  <label for="choice23">จริง</label>
+                </div>
+              </div>
+              <!-- <div class="field-radiobutton">
+                <p-radioButton [disabled] = view name="choice23" value="0" [(ngModel)]="model.choice23" inputId="choice23"></p-radioButton>
+                <label for="choice23">ไม่จริง</label>
+                <p-radioButton [disabled] = view name="choice23" value="1" [(ngModel)]="model.choice23" inputId="choice23"></p-radioButton>
+                <label for="choice23">ค่อนข้างจริง</label>
+                <p-radioButton [disabled] = view name="choice23" value="2" [(ngModel)]="model.choice23" inputId="choice23"></p-radioButton>
+                <label for="choice23">จริง</label>
+              </div> -->
+            </td>
+          </tr>
+          <tr>
+            <td class="field col-1 md:col-1">
+             24
+            </td>
+            <td class="field col-6 md:col-6">
+              ขี้กลัว รู้สึกหวาดกลัวได้ง่าย
+            </td>
+            <td >
+              <div class="field-radiobutton">
+                <div class="center">
+                  <div>
+                    <m-switch-number [setReadonly] = view name="choice24" [setValue]=0 [(setModel)]="model.choice24" inputId="choice24"></m-switch-number>
+                  </div>
+                  <label for="choice24">ไม่จริง</label>
+                </div>
+                <div class="center">
+                  <div>
+                    <m-switch-number [setReadonly] = view name="choice24" [setValue]=1 [(setModel)]="model.choice24" inputId="choice24"></m-switch-number>
+                  </div>
+                  <label for="choice24">ค่อนข้างจริง</label>
+                </div>
+                <div class="center">
+                  <div>
+                      <m-switch-number [setReadonly] = view name="choice24" [setValue]=2 [(setModel)]="model.choice24" inputId="choice24"></m-switch-number>
+                  </div>
+                  <label for="choice24">จริง</label>
+                </div>
+              </div>
+              <!-- <div class="field-radiobutton">
+                <p-radioButton [disabled] = view name="choice24" value="0" [(ngModel)]="model.choice24" inputId="choice24"></p-radioButton>
+                <label for="choice24">ไม่จริง</label>
+                <p-radioButton [disabled] = view name="choice24" value="1" [(ngModel)]="model.choice24" inputId="choice24"></p-radioButton>
+                <label for="choice24">ค่อนข้างจริง</label>
+                <p-radioButton [disabled] = view name="choice24" value="2" [(ngModel)]="model.choice24" inputId="choice24"></p-radioButton>
+                <label for="choice24">จริง</label>
+              </div> -->
+            </td>
+          </tr>
+          <tr>
+            <td class="field col-1 md:col-1">
+             25
+            </td>
+            <td class="field col-6 md:col-6">
+              ทำงานได้จนเสร็จ มีความตั้งใจในการทำงาน
+            </td>
+            <td >
+              <div class="field-radiobutton">
+                <div class="center">
+                  <div>
+                    <m-switch-number [setReadonly] = view name="choice25" [setValue]=0 [(setModel)]="model.choice25" inputId="choice25"></m-switch-number>
+                  </div>
+                  <label for="choice25">ไม่จริง</label>
+                </div>
+                <div class="center">
+                  <div>
+                    <m-switch-number [setReadonly] = view name="choice25" [setValue]=1 [(setModel)]="model.choice25" inputId="choice25"></m-switch-number>
+                  </div>
+                  <label for="choice25">ค่อนข้างจริง</label>
+                </div>
+                <div class="center">
+                  <div>
+                      <m-switch-number [setReadonly] = view name="choice25" [setValue]=2 [(setModel)]="model.choice25" inputId="choice25"></m-switch-number>
+                  </div>
+                  <label for="choice25">จริง</label>
+                </div>
+              </div>
+              <!-- <div class="field-radiobutton">
+                <p-radioButton [disabled] = view name="choice25" value="2" [(ngModel)]="model.choice25" inputId="choice25"></p-radioButton>
+                <label for="choice25">ไม่จริง</label>
+                <p-radioButton [disabled] = view name="choice25" value="1" [(ngModel)]="model.choice25" inputId="choice25"></p-radioButton>
+                <label for="choice25">ค่อนข้างจริง</label>
+                <p-radioButton [disabled] = view name="choice25" value="0" [(ngModel)]="model.choice25" inputId="choice25"></p-radioButton>
+                <label for="choice25">จริง</label>
+              </div> -->
+            </td>
+          </tr>
+
+
+
+
+        </table>
+      </div>
+    </div>
+<!--
+    <div class="grid p-fluid form ">
+      <div class="field col-12 md:col-12">
+        <m-input-number setId="STUDENT_ID" setLabel="LABEL.STUDENT_ID" [(setModel)]=model.studentId     >
+        </m-input-number>
+      </div>
+      <div class="field col-6 md:col-3">
+        <m-input-text setId="AT_SEMESTER" setLabel="LABEL.AT_SEMESTER" [(setModel)]=model.atSemester     >
+        </m-input-text>
+      </div>
+      <div class="field col-6 md:col-3">
+        <m-input-text setId="AT_YEAR" setLabel="LABEL.AT_YEAR" [(setModel)]=model.atYear     >
+        </m-input-text>
+      </div>
+      <div class="field col-6 md:col-3">
+        <m-input-number setId="EVALUATE_ID" setLabel="LABEL.EVALUATE_ID" [(setModel)]=model.evaluateId     >
+        </m-input-number>
+      </div>
+      <div class="field col-6 md:col-3">
+        <m-input-number setId="EVALUATE_DATE" setLabel="LABEL.EVALUATE_DATE" [(setModel)]=model.evaluateDate     >
+        </m-input-number>
+      </div>
+      <div class="field col-6 md:col-3">
+        <m-input-number setId="ESTIMATE_TYPE" setLabel="LABEL.ESTIMATE_TYPE" [(setModel)]=model.estimateType     >
+        </m-input-number>
+      </div>
+      <div class="field col-6 md:col-3">
+        <m-input-number setId="CHOICE_01" setLabel="LABEL.CHOICE_01" [(setModel)]=model.choice01     >
+        </m-input-number>
+      </div>
+      <div class="field col-6 md:col-3">
+        <m-input-number setId="CHOICE_02" setLabel="LABEL.CHOICE_02" [(setModel)]=model.choice02     >
+        </m-input-number>
+      </div>
+      <div class="field col-6 md:col-3">
+        <m-input-number setId="CHOICE_03" setLabel="LABEL.CHOICE_03" [(setModel)]=model.choice03     >
+        </m-input-number>
+      </div>
+      <div class="field col-6 md:col-3">
+        <m-input-number setId="CHOICE_04" setLabel="LABEL.CHOICE_04" [(setModel)]=model.choice04     >
+        </m-input-number>
+      </div>
+      <div class="field col-6 md:col-3">
+        <m-input-number setId="CHOICE_05" setLabel="LABEL.CHOICE_05" [(setModel)]=model.choice05     >
+        </m-input-number>
+      </div>
+      <div class="field col-6 md:col-3">
+        <m-input-number setId="CHOICE_06" setLabel="LABEL.CHOICE_06" [(setModel)]=model.choice06     >
+        </m-input-number>
+      </div>
+      <div class="field col-6 md:col-3">
+        <m-input-number setId="CHOICE_07" setLabel="LABEL.CHOICE_07" [(setModel)]=model.choice07     >
+        </m-input-number>
+      </div>
+      <div class="field col-6 md:col-3">
+        <m-input-number setId="CHOICE_08" setLabel="LABEL.CHOICE_08" [(setModel)]=model.choice08     >
+        </m-input-number>
+      </div>
+      <div class="field col-6 md:col-3">
+        <m-input-number setId="CHOICE_09" setLabel="LABEL.CHOICE_09" [(setModel)]=model.choice09     >
+        </m-input-number>
+      </div>
+      <div class="field col-6 md:col-3">
+        <m-input-number setId="CHOICE_10" setLabel="LABEL.CHOICE_10" [(setModel)]=model.choice10     >
+        </m-input-number>
+      </div>
+      <div class="field col-6 md:col-3">
+        <m-input-number setId="CHOICE_11" setLabel="LABEL.CHOICE_11" [(setModel)]=model.choice11     >
+        </m-input-number>
+      </div>
+      <div class="field col-6 md:col-3">
+        <m-input-number setId="CHOICE_12" setLabel="LABEL.CHOICE_12" [(setModel)]=model.choice12     >
+        </m-input-number>
+      </div>
+      <div class="field col-6 md:col-3">
+        <m-input-number setId="CHOICE_13" setLabel="LABEL.CHOICE_13" [(setModel)]=model.choice13     >
+        </m-input-number>
+      </div>
+      <div class="field col-6 md:col-3">
+        <m-input-number setId="CHOICE_14" setLabel="LABEL.CHOICE_14" [(setModel)]=model.choice14     >
+        </m-input-number>
+      </div>
+      <div class="field col-6 md:col-3">
+        <m-input-number setId="CHOICE_15" setLabel="LABEL.CHOICE_15" [(setModel)]=model.choice15     >
+        </m-input-number>
+      </div>
+      <div class="field col-6 md:col-3">
+        <m-input-number setId="CHOICE_16" setLabel="LABEL.CHOICE_16" [(setModel)]=model.choice16     >
+        </m-input-number>
+      </div>
+      <div class="field col-6 md:col-3">
+        <m-input-number setId="CHOICE_17" setLabel="LABEL.CHOICE_17" [(setModel)]=model.choice17     >
+        </m-input-number>
+      </div>
+      <div class="field col-6 md:col-3">
+        <m-input-number setId="CHOICE_18" setLabel="LABEL.CHOICE_18" [(setModel)]=model.choice18     >
+        </m-input-number>
+      </div>
+      <div class="field col-6 md:col-3">
+        <m-input-number setId="CHOICE_19" setLabel="LABEL.CHOICE_19" [(setModel)]=model.choice19     >
+        </m-input-number>
+      </div>
+      <div class="field col-6 md:col-3">
+        <m-input-number setId="CHOICE_20" setLabel="LABEL.CHOICE_20" [(setModel)]=model.choice20     >
+        </m-input-number>
+      </div>
+      <div class="field col-6 md:col-3">
+        <m-input-number setId="CHOICE_21" setLabel="LABEL.CHOICE_21" [(setModel)]=model.choice21     >
+        </m-input-number>
+      </div>
+      <div class="field col-6 md:col-3">
+        <m-input-number setId="CHOICE_22" setLabel="LABEL.CHOICE_22" [(setModel)]=model.choice22     >
+        </m-input-number>
+      </div>
+      <div class="field col-6 md:col-3">
+        <m-input-number setId="CHOICE_23" setLabel="LABEL.CHOICE_23" [(setModel)]=model.choice23     >
+        </m-input-number>
+      </div>
+      <div class="field col-6 md:col-3">
+        <m-input-number setId="CHOICE_24" setLabel="LABEL.CHOICE_24" [(setModel)]=model.choice24     >
+        </m-input-number>
+      </div>
+      <div class="field col-6 md:col-3">
+        <m-input-number setId="CHOICE_25" setLabel="LABEL.CHOICE_25" [(setModel)]=model.choice25     >
+        </m-input-number>
+      </div>
+    </div>
+-->
+
+  </div>
+  <div class="grid p-fluid">
+    <div class="field col-12 md:col-2">
+      <m-button setClassName="backBtn" setLabel="LABEL.BACK" (onClick)="onBack()">
+      </m-button>
+    </div>
+    <div *ngIf = !view class="field col-12 md:col-2">
+      <m-button setClassName="saveBtn" setLabel="LABEL.SAVE" (onClick)="onSave()">
+      </m-button>
+    </div>
+  </div>
+</div>

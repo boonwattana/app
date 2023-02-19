@@ -1,0 +1,27 @@
+<m-data-table
+(searchEmit)="onSearch($event)"
+[option]="option"
+[dataSource] = "searchResult"
+[tableName]="tableName"
+[searchCondition] = 'searchConditions'
+(createEmit) = "onCreate()"
+(editEmit)="onEdit($event)"
+(viewEmit)="onView($event)"
+(deleteEmit)="onDelete($event)"
+[removeRecord] = "lastRemoveId"
+[moduleName] = moduleName
+[setCanCreate] = canCreate
+[setCanDelete] = canDelete
+[setCanExportTH] = true
+[setBindingFieldOption] = bindingFieldOption
+></m-data-table>
+<!-- <m-report
+[option]="reportOptionBySubject"
+[dataSource] = "reportResourceBySubject"
+[moduleName] = moduleNameBySubject
+></m-report>
+<m-report
+[option]="reportOptionSumarize"
+[dataSource] = "reportResourceSumarize"
+[moduleName] = moduleNameSumarize
+></m-report> -->

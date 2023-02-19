@@ -1,0 +1,93 @@
+<div class="itemCard">
+  <div>
+    <div>
+      <p class="title-item">{{"MODULE.SAR_STANDARD4"|translate}}</p>
+    </div>
+  </div>
+  <div class="customCard">
+    <button class="group">ข้อมูล ระบบการประกันคุณภาพภายในที่มีประสิทธิผล</button>
+    <div class="grid p-fluid form ">
+      <div class="field col-6 md:col-3">
+        <m-dropdown setId="TEACHER_ID" setLabel="ชื่อ-สกุล" [(setModel)]=model.teacherId    [setSelectOption]=teacherDropdown [setViewValue]=model.teacherValue [setReadonly] = "isTeacher" >
+        </m-dropdown>
+      </div>
+      <div class="field col-6 md:col-3">
+        <m-input-text setId="SCHOOLYEAR" setLabel="LABEL.SCHOOLYEAR" [(setModel)]=model.schoolyear   [setRequired]="true"   >
+        </m-input-text>
+      </div>
+      <table  style="width: 100%;" border="1" >
+        <tr  >
+          <th style="text-align: center; width:50%;" rowspan="2">ตัวบ่งชี้</th>
+          <th style="text-align: center;" colspan="4">ระดับคุณภาพตัวบ่งชี้/มาตรฐาน</th>
+        </tr>
+        <tr  >
+          <th style="text-align: center">1</th>
+          <th style="text-align: center;" >2</th>
+          <th style="text-align: center">3  </th>
+          <th style="text-align: center" >4</th>
+        </tr>
+        <tr  >
+          <td style="text-align: left;">4.1  สถานศึกษาจัดวางระบบการประกันคุณภาพภายในของสถานศึกษาที่ส่งผลต่อคุณภาพผู้เรียนอย่างเป็นรูปธรรม
+          </td>
+          <td>  <p-radioButton name="choice1" value="1" [(ngModel)]="model.choice1" inputId="choice1">
+          </p-radioButton></td>
+          <td>  <p-radioButton name="choice1" value="2" [(ngModel)]="model.choice1" inputId="choice1">
+          </p-radioButton></td>
+          <td>  <p-radioButton name="choice1" value="3" [(ngModel)]="model.choice1" inputId="choice1">
+          </p-radioButton></td>
+          <td>  <p-radioButton name="choice1" value="4" [(ngModel)]="model.choice1" inputId="choice1">
+          </p-radioButton></td>
+        </tr>
+        <tr  >
+          <td style="text-align: left;">4.2 มีขั้นตอนการประกันคุณภาพภายในชัดเจน  และมีความเป็นไป
+            ได้ในการปฏิบัติ
+         </td>
+                <td>  <p-radioButton name="choice2" value="1" [(ngModel)]="model.choice2" inputId="choice2">
+          </p-radioButton></td>
+          <td>  <p-radioButton name="choice2" value="2" [(ngModel)]="model.choice2" inputId="choice2">
+          </p-radioButton></td>
+          <td>  <p-radioButton name="choice2" value="3" [(ngModel)]="model.choice2" inputId="choice2">
+          </p-radioButton></td>
+          <td>  <p-radioButton name="choice2" value="4" [(ngModel)]="model.choice2" inputId="choice2">
+          </p-radioButton></td>
+        </tr>
+        <tr  >
+          <td style="text-align: left;">4.3 พ่อแม่  ผู้ปกครอง  คณะกรรมการสถานศึกษา  ชุมชน/ท้องถิ่น  และผู้มีส่วนเกี่ยวข้อง  มีความมั่นใจต่อระบบการบริหารและการจัดการของสถานศึกษา   </td>
+                <td>  <p-radioButton name="choice3" value="1" [(ngModel)]="model.choice3" inputId="choice3">
+          </p-radioButton></td>
+          <td>  <p-radioButton name="choice3" value="2" [(ngModel)]="model.choice3" inputId="choice3">
+          </p-radioButton></td>
+          <td>  <p-radioButton name="choice3" value="3" [(ngModel)]="model.choice3" inputId="choice3">
+          </p-radioButton></td>
+          <td>  <p-radioButton name="choice3" value="4" [(ngModel)]="model.choice3" inputId="choice3">
+          </p-radioButton></td>
+        </tr>
+        <tr  >
+          <td style="text-align: left;">
+            <b>สรุปผลการประเมินมาตรฐานที่ 4 </b>
+     
+          </td>
+                <td>  <p-radioButton name="result" value="1" [(ngModel)]="model.result" inputId="result">
+          </p-radioButton></td>
+          <td>  <p-radioButton name="result" value="2" [(ngModel)]="model.result" inputId="result">
+          </p-radioButton></td>
+          <td>  <p-radioButton name="result" value="3" [(ngModel)]="model.result" inputId="result">
+          </p-radioButton></td>
+          <td>  <p-radioButton name="result" value="4" [(ngModel)]="model.result" inputId="result">
+          </p-radioButton></td>
+        </tr>
+        </table>
+ 
+    </div>
+  </div>
+  <div class="grid p-fluid">
+    <div class="field col-12 md:col-2">
+      <m-button setClassName="backBtn" setLabel="LABEL.BACK" (onClick)="onBack()">
+      </m-button>
+    </div>
+    <div *ngIf = !view class="field col-12 md:col-2">
+      <m-button setClassName="saveBtn" setLabel="LABEL.SAVE" (onClick)="onSave()">
+      </m-button>
+    </div>
+  </div>
+</div>

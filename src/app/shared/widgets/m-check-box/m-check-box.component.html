@@ -1,0 +1,13 @@
+<div *ngIf="!view" class="field">
+    <div class="rowLabel">
+        <label class="columnLabel" for="{{id}}" class="block">{{label|translate}}  :</label>
+        <p *ngIf = "isRequired" class="columnLabel">{{"LABEL.REQURID"|translate}}</p>
+    </div>
+    <p-toggleButton [(ngModel)]="model"  onIcon="pi pi-check" ></p-toggleButton>
+</div>
+<m-view-only
+    *ngIf="view"
+    [setLabel]="label"
+    [setValue]="model"
+    [setId]="id">
+</m-view-only> 

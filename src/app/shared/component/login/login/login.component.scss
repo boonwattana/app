@@ -1,0 +1,223 @@
+.logo-section {
+    height: 100%;
+    background-color: whitesmoke;
+
+}
+
+.ligin-section {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    // background-color: whitesmoke;
+    // height: 100%;
+    // padding-top: 2rem;
+    // padding-bottom: 2rem;
+    // padding-left: 4rem;
+    // padding-right: 4rem;
+}
+
+.login-input {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 40px;
+    width: 100%;
+    // margin-top: 2rem;
+    // margin-bottom: 2rem;
+    // padding-top: 3rem;
+    // padding-left: 2rem;
+    // padding-right: 2rem;
+    // height: 90%;
+}
+
+.login-section {
+    position: fixed;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 91.5vh;
+    width: 100%;
+    // padding: 0px;
+    // margin: 0px;
+    // height: 100%;
+}
+
+.logo-section {
+    padding: 0px;
+    margin: 0px;
+
+}
+
+.col {
+    margin: 0px;
+    padding: 0px;
+}
+
+.username {
+    width: 100%;
+    margin-top: 2rem;
+}
+
+.password {
+    width: 100%;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.submitBtn {
+    width: 100%;
+    // padding-left: auto;
+    // padding-right: auto;
+    // margin-left: auto;
+    // margin-right: auto;
+}
+
+.logoImage {
+    // margin-top: 15%;
+    // margin-left: 35%;
+    width: 30%;
+}
+
+.logoImageSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    // padding-left: auto;
+    // padding-right: auto;
+    // align-self: center;
+}
+
+.logoName {
+    color: #004aad;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+    font-size: 40px;
+    padding-right: auto;
+    width: 100%;
+    text-align: center;
+
+}
+
+.logoDescription {
+    color: #004aad;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+    margin-top: 0px;
+    padding-top: 0px;
+    text-align: center;
+}
+
+.register {
+    color: gray;
+    margin: auto;
+    display: table;
+    margin-top: 5px;
+    font-size: 16px;
+}
+
+.confirm-password {
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+.firstname {
+    width: 100%;
+    margin-top: 2rem;
+}
+
+.lastname {
+    width: 100%;
+    margin-top: 2rem;
+}
+
+.submitBtn {
+    margin-top: 2rem;
+}
+
+.fromlogin {
+    // background: #111;
+    background: url("/assets/images/bg-login.jpg") center center / cover;
+    // filter: grayscale(100%);
+    // background-position: ;
+    // padding: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.fromlogin-card {
+    background-color: #f1ebe5;
+    position: relative;
+    width: 500px;
+    padding: 00px;
+    padding-top: 0px;
+    height: 80vh;
+}
+
+.input-login {
+    border: 1px solid #8e8e8e;
+    padding: 15px;
+    text-align: center;
+    background-color: #f1ebe5;
+    font-weight: 700;
+    font-size: 18px;
+    width: 100%;
+}
+
+.input:-internal-autofill-selected {
+    background-color: #f1ebe5;
+}
+
+.social {
+    width: 150px;
+ 
+    font-size: 29px;
+    display: flex;
+    justify-content: space-evenly;  
+    padding-bottom: 20px;
+}
+
+.m-option-export {
+    display: flex;
+}
+
+.btn-ligin {
+    cursor: pointer;
+    padding: 10px 30px;
+    font-size: 20px;
+    background: #004aad;
+    color: #fff;
+    width: 200px;
+    border: 0px solid;
+
+}
+
+.h-text {
+    text-align: center;
+    width: 100%;
+    padding: 10px;
+    color: #fff;
+    background: #004aad;
+    font-size: 20px;
+}
+
+@media (max-width: 1024px) {}
+
+@media (max-width: 768px) {}
+
+@media (max-width: 515px) {
+    .logoImageSection {
+        display: none;
+    }
+
+    .login-section {
+        right: 0px;
+    }
+
+    .fromlogin-card {
+        width: 100vw;
+    }
+}

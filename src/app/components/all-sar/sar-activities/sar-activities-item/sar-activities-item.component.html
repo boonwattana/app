@@ -1,0 +1,55 @@
+<div class="itemCard">
+  <div>
+    <div>
+      <p class="title-item">{{"MODULE.SAR_ACTIVITIES"|translate}}</p>
+    </div>
+  </div>
+  <div class="customCard">
+    <button class="group">ข้อมูล กิจกรรมพัฒนาผู้เรียนที่ปฏิบัติการพัฒนาผู้เรียน</button>
+    <div class="grid p-fluid form ">
+      <div class="field col-6 md:col-3">
+        <m-dropdown setId="TEACHER_ID" setLabel="ชื่อ-สกุล" [(setModel)]=model.teacherId    [setSelectOption]=teacherDropdown [setViewValue]=model.teacherValue [setReadonly] = "isTeacher" >
+        </m-dropdown>
+      </div>
+      <div class="field col-6 md:col-3">
+        <m-input-text setId="SCHOOLYEAR" setLabel="LABEL.SCHOOLYEAR" [(setModel)]=model.schoolyear   [setRequired]="true"   >
+        </m-input-text>
+      </div>
+       <div class="field col-6 md:col-6"></div>
+      <div class="field col-6 md:col-12">
+        <m-input-text setId="ACTIVITIE_NAME" setLabel="กิจกรรมพัฒนาผู้เรียน และชุมนุม" [(setModel)]=model.activitieName     >
+        </m-input-text>
+      </div>
+      <div class="field col-6 md:col-3">
+        <m-input-text setId="CLASS" setLabel="ชั้น /ห้อง" [(setModel)]=model.class     >
+        </m-input-text>
+      </div>
+      <div class="field col-6 md:col-3">
+        <m-input-number setId="TOTAL_STUDENT" setLabel="จำนวนนักเรียน" [(setModel)]=model.totalStudent     >
+        </m-input-number>
+      </div>
+      <div class="field col-6 md:col-6"></div>
+      <div class="field col-6 md:col-2">
+        ไม่ผ่าน<br>
+        <p-radioButton name="PASS_VALUE"  value="0" [(ngModel)]="model.passValue" inputId="passValue">
+        </p-radioButton>
+      </div>
+      <div class="field col-6 md:col-2">
+        ผ่าน<br>
+        <p-radioButton name="PASS_VALUE"   value="1" [(ngModel)]="model.passValue" inputId="passValue">
+        </p-radioButton>
+   
+      </div>
+    </div>
+  </div>
+  <div class="grid p-fluid">
+    <div class="field col-12 md:col-2">
+      <m-button setClassName="backBtn" setLabel="LABEL.BACK" (onClick)="onBack()">
+      </m-button>
+    </div>
+    <div *ngIf = !view class="field col-12 md:col-2">
+      <m-button setClassName="saveBtn" setLabel="LABEL.SAVE" (onClick)="onSave()">
+      </m-button>
+    </div>
+  </div>
+</div>

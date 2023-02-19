@@ -1,0 +1,27 @@
+<div *ngIf="!view && !readonly" class="field " >
+    <div class="rowLabel"  *ngIf="Label">
+        <label class="columnLabel" for="{{id}}" class="block">{{label|translate}}  :</label>
+        <p *ngIf = "isRequired" class="columnLabel">{{"LABEL.REQURID"|translate}}</p>
+    </div>
+    <p-dropdown  
+    class="input-field"
+    [styleClass]="Class" 
+    [options]="selectOption" 
+    (onChange)="onChange($event)" 
+    [(ngModel)]="selectItem" 
+    optionLabel="label" 
+    [filter]="true" 
+    filterBy="label" 
+    [showClear]=showClear 
+    (onClear)="onClear()" 
+    placeholder="โปรดเลือก...">
+
+</p-dropdown>
+</div>
+
+<m-view-only
+    *ngIf="(view || readonly)"
+    [setLabel]="label"
+    [setValue]="getValue()"
+    [setId]="id">
+</m-view-only> 

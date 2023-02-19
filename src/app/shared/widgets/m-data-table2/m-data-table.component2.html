@@ -1,0 +1,120 @@
+<!-- <div class="Search">
+  <div  *ngFor="let d of bindingSearchCondition; let index=index;" class="field col-12 md:col-3" >
+    <m-input-text 
+    *ngIf='(d.inputType == "STRING"  && !d.hidden)'
+    setId="bindingSearchCondition[index].label"
+    setLabel="{{bindingSearchCondition[index].label|translate}}"
+    [(setModel)] = bindingSearchCondition[index].value
+    (setModelChange)="onInputSearch()"
+      >
+  </m-input-text>
+  <m-calendar
+  *ngIf='(d.inputType == "DATE" && !d.hidden)'
+  [(setModel)] = bindingSearchCondition[index].value
+  setId="bindingSearchCondition[index].label"
+  setLabel="{{bindingSearchCondition[index].label|translate}}"
+  (setModelChange)="onInputSearch()"
+
+  >
+  </m-calendar>
+  <m-input-number
+  *ngIf='(d.inputType == "DECIMAL"  && !d.hidden)'
+  [(setModel)] = bindingSearchCondition[index].value
+  setId="bindingSearchCondition[index].label"
+  setLabel="{{bindingSearchCondition[index].label|translate}}"
+  (setModelChange)="onInputSearch()"
+
+  >
+  </m-input-number>
+  <m-dropdown
+  [setLabelType]="false"
+  *ngIf='(d.inputType == "ENUM"  && !d.hidden)'
+  [setSelectOption] = d.enumOption
+  [(setModel)] = bindingSearchCondition[index].value
+  setId="bindingSearchCondition[index].label"
+  setLabel="{{bindingSearchCondition[index].label|translate}}"
+  (setModelChange)="onInputSearch()"
+
+  >
+  </m-dropdown>
+  <m-input-number
+  *ngIf='(d.inputType == "NUMBER"  && !d.hidden)'
+  [(setModel)] = bindingSearchCondition[index].value
+  setId="bindingSearchCondition[index].label"
+  setLabel="{{bindingSearchCondition[index].label|translate}}"
+  (setModelChange)="onInputSearch()"
+
+  >
+
+  </m-input-number>
+</div>
+<i (click)="onInputSearch()" class='bx bx-search-alt-2'></i>
+</div> -->
+  <div class="m-col-bw-2 m-m">
+
+    <div class="btn-grod">
+      <button class="m-btn-add" (click)="createEmit.emit()" *ngIf="canCreate"
+      setLabel="">
+        <i class='bx bx-edit' ></i> <span>{{'LABEL.CREATE'|translate}}</span>
+      </button>
+      <button class="m-btn-import" (click)="getElementById()" *ngIf="canCreate">
+        <i class='bx bx-import' ></i> {{'LABEL.IMPORT'|translate}}
+      </button>
+      <input (change)="myUploader($event)" #fileInput type="file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"  id="selectedFile" style="display: none;" />
+      <!-- <button class="m-btn-del">
+        <i class='bx bx-trash'></i> ลบข้อมูล
+      </button> -->
+    </div>
+    <div>
+      จำนวน <span class="totalRecord">{{totalRecord}}</span> รายการ
+    </div>
+  </div>
+  <div class="m-mt-20 m-col-bw-2 m-m">
+    <div class="m-option">
+      <div>
+        <span>แสดง </span>
+        <select  (change)="onChange($event)" >
+          <option value="5">10</option>
+          <option value="10">10</option>
+          <option value="20">20</option>
+          <option value="30">30</option>
+        </select>
+      </div>
+      <div class="m-option-export">
+        <span>นำออก</span>
+        <!-- <div >CSV</div> -->
+        <div (click)="downloadFile()" class="ob-Ex">Excel</div>
+        <!-- <div>PDF</div> -->
+      </div>
+    </div>
+    <input class="input-search" type="search" placeholder="ค้นหา">
+    
+  </div>
+  <div class="clasdad">
+  <table>
+    <tr>
+      <th *ngFor="let d of bindingOption.columns; let index=index;" [style]="d.width">{{d.label |translate}}</th>
+      <th >{{"LABEL.ACTION"|translate}}</th>
+    </tr>
+    <tr  *ngFor="let d of bindingDataSource; let rowIndex=index;">
+      <td *ngFor="let c of bindingColumn; let index=index;">{{d[c]}}</td>
+      <td style=' width: 170px; padding: 0; '>
+        <div class="o-btn">
+        <button    type="button" icon="pi pi-pencil" (click)="onEdit(d.id,rowIndex)" class="m-btn-edit-s"  ><i class='bx bxs-edit'></i></button>
+        <button   type="button"   (click)="onView(d.id,rowIndex)" class="m-btn-view-s" ><i class='bx bx-share'></i></button>
+        <button  [disabled] = !canDelete     (click)="onDelete(d.id,rowIndex)" class="m-btn-del-s"><i class='bx bx-trash'></i></button>
+      </div>
+      </td>
+      <!-- <td>Maria Anders</td>
+      <td>Germany</td> -->
+    </tr>
+    
+  </table>
+</div>
+  <p-paginator
+  class="kis-table"
+    (onPageChange)="paginate($event)"
+    [totalRecords]="totalRecord"
+    [rowsPerPageOptions]="[10, 20, 30]"
+  ></p-paginator>
+

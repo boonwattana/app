@@ -1,0 +1,24 @@
+<div *ngIf="!view" class="field">
+    <div *ngIf="label" class="rowLabel">
+        <label class="columnLabel" for="{{id}}" class="block">{{label|translate}}  :</label>
+        <p *ngIf = "isRequired" class="columnLabel">{{"LABEL.REQURID"|translate}}</p>
+    </div>
+
+    <input id="{{id}}" 
+    class="input-field" 
+    type="{{inputType}}" 
+    aria-describedby="username1-help" 
+    (ngModelChange)="onInputChange($event)"  
+    [(ngModel)] = setModel 
+    (blur)="setModelChange.emit(setModel)"
+    (keyup.enter)="setModelChange.emit(setModel)"
+    [placeholder]=setplaceholderText
+    pInputText />
+</div>
+<m-view-only
+    *ngIf="view"
+    [setLabel]="label"
+    [setValue]="model"
+    [setId]="id"
+    >
+</m-view-only> 

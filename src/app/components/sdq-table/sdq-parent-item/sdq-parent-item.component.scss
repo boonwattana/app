@@ -1,0 +1,44 @@
+tr:nth-child(odd) {
+    background-color: #fafafa;
+  }
+  th{
+    text-align: left;
+  }
+  .field-radiobutton{
+    justify-content: center;
+   }
+   .center{
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+   }
+   .field{
+    font-size: 16px;
+   }
+   label{
+    padding-top: 0px;
+    margin-top: 0px;
+    font-size: 12px;
+  }
+  .center{
+    justify-content: center;
+  }
+  .header{
+    font-weight: 700;
+
+    font-size: 22px;
+  }
+  .green{
+    color: green;
+  }
+  .bold{
+    font-weight: 700;
+
+  }
+  .red{
+    color: red;
+  }
+  /*table{
+    border: 1px solid black;
+    border-collapse: collapse;
+  }*/

@@ -1,0 +1,30 @@
+<div class="itemCard">
+  <div>
+    <div>
+      <p class="title-item">{{"MODULE.PRACTICLE"|translate}}</p>
+    </div>
+  </div>
+  <div class="customCard">
+    <button class="group">{{"GROUP.GENERAL_GROUP"|translate}}</button>
+    <div class="grid p-fluid form ">
+      <div class="field col-12 md:col-3">
+        <m-input-text setId="NAME" setLabel="LABEL.NAME" [(setModel)]=model.name   [setRequired]="true"  >
+        </m-input-text>
+      </div>
+      <div class="field col-12 md:col-3">
+        <m-input-text setId="DESCRIPTION" setLabel="LABEL.DESCRIPTION" [(setModel)]=model.descrition     >
+        </m-input-text>
+      </div>
+    </div>
+  </div>
+  <div class="grid p-fluid">
+    <div class="field col-12 md:col-2">
+      <m-button setClassName="backBtn" setLabel="LABEL.BACK" (onClick)="onBack()">
+      </m-button>
+    </div>
+    <div *ngIf = !view class="field col-12 md:col-2">
+      <m-button setClassName="saveBtn" setLabel="LABEL.SAVE" (onClick)="onSave()">
+      </m-button>
+    </div>
+  </div>
+</div>

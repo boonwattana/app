@@ -1,0 +1,1197 @@
+<div class="itemCard">
+  <div class="g-t">
+    <div class="title">{{ "MODULE.STUDENT_FILTER" | translate }}</div>
+    <button *ngIf="view" class="edit" (click)="pageEdit()">แก้ไขข้อมูล</button>
+  </div>
+  <div class="customCard">
+    <div class="grid p-fluid form">
+      <div class="field col-12 md:col-6">
+        <m-dropdown
+          setId="STUDENT_ID"
+          setLabel="LABEL.STUDENT_ID"
+          [(setModel)]="model.studentId"
+          [setReadonly]="true"
+          [setRequired]="true"
+          [setSelectOption]="studentDropdown"
+          [setViewValue]="model.studentValue"
+          >>
+        </m-dropdown>
+      </div>
+      <div class="field col-12 md:col-6">
+        <m-dropdown
+          setId="YEAR_TERM_ID"
+          setLabel="LABEL.YEAR_TERM_ID"
+          [(setModel)]="model.yearTermId"
+          [setReadonly]="true"
+          [setRequired]="true"
+          [setSelectOption]="yearTermDropdown"
+          [setViewValue]="model.yearTermValue"
+          >>
+        </m-dropdown>
+      </div>
+    </div>
+    <button class="group">{{ "GROUP.SKILL_GROUP" | translate }}</button>
+    <div class="grid p-fluid form">
+      <div class="field col-12 md:col-12">
+        <m-switch
+          setId="SPECIAL_SKILL"
+          setLabel="LABEL.SPECIAL_SKILL"
+          [(setModel)]="model.specialSkill"
+        >
+        </m-switch>
+      </div>
+      <div *ngIf="model.specialSkill" class="field col-12 md:col-12">
+        <m-input-text
+          setId="SKILL1"
+          setLabel="LABEL.SKILL1"
+          [(setModel)]="model.skill1"
+        >
+        </m-input-text>
+      </div>
+      <div *ngIf="model.specialSkill" class="field col-12 md:col-12">
+        <m-input-text
+          setId="SKILL2"
+          setLabel="LABEL.SKILL2"
+          [(setModel)]="model.skill2"
+        >
+        </m-input-text>
+      </div>
+      <div *ngIf="model.specialSkill" class="field col-12 md:col-12">
+        <m-input-text
+          setId="SKILL3"
+          setLabel="LABEL.SKILL3"
+          [(setModel)]="model.skill3"
+        >
+        </m-input-text>
+      </div>
+    </div>
+    <button class="group">{{ "GROUP.LERN_GROUP" | translate }}</button>
+    <div class="grid p-fluid form">
+      <div class="field col-12 md:col-12">
+        <m-input-number-3option
+          setId="LERN_STATUS"
+          setLabel="LABEL.LERN_STATUS"
+          [(setModel)]="model.lernStatus"
+          (setModelChange)="clearValue('lern', 24)"        >
+        </m-input-number-3option>
+      </div>
+      <div class="field col-12 md:col-4">
+        
+      </div>
+      <div class="field col-12 md:col-4">
+        <span  class="red">*ตัวเลือกสำหรับ เสี่ยง</span
+        >
+        <m-switch
+        setId="LERN1"
+        setLabel="LABEL.LERN1"
+        [(setModel)]="model.lern1"
+        (setModelChange) = 'onLernChange()'
+      >
+      </m-switch>
+      <m-switch
+      setId="LERN3"
+      setLabel="LABEL.LERN3"
+      [(setModel)]="model.lern3"
+      (setModelChange) = 'onLernChange()'
+      >
+    </m-switch>
+    <m-switch
+    setId="LERN5"
+    setLabel="LABEL.LERN5"
+    [(setModel)]="model.lern5"
+    (setModelChange) = 'onLernChange()'
+  >
+  </m-switch>
+  <m-switch
+  setId="LERN7"
+  setLabel="LABEL.LERN7"
+  [(setModel)]="model.lern7"
+  (setModelChange) = 'onLernChange()'
+>
+</m-switch>
+<m-switch
+setId="LERN9"
+setLabel="LABEL.LERN9"
+[(setModel)]="model.lern9"
+(setModelChange) = 'onLernChange()'
+>
+</m-switch>
+<m-switch
+setId="LERN11"
+setLabel="LABEL.LERN11"
+[(setModel)]="model.lern11"
+(setModelChange) = 'onLernChange()'
+>
+</m-switch>
+<m-switch
+setId="LERN13"
+setLabel="LABEL.LERN13"
+[(setModel)]="model.lern13"
+(setModelChange) = 'onLernChange()'
+>
+</m-switch>
+<m-switch
+setId="LERN15"
+setLabel="LABEL.LERN15"
+[(setModel)]="model.lern15"
+(setModelChange) = 'onLernChange()'
+>
+</m-switch>
+<m-switch
+setId="LERN17"
+setLabel="LABEL.LERN17"
+[(setModel)]="model.lern17"
+(setModelChange) = 'onLernChange()'
+>
+</m-switch>
+<m-switch
+setId="LERN18"
+setLabel="LABEL.LERN18"
+[(setModel)]="model.lern18"
+(setModelChange) = 'onLernChange()'
+>
+</m-switch>
+<m-switch
+          setId="LERN19"
+          setLabel="LABEL.LERN19"
+          [(setModel)]="model.lern19"
+          (setModelChange) = 'onLernChange()'
+        >
+        </m-switch>
+
+        <m-switch
+          setId="LERN20"
+          setLabel="LABEL.LERN20"
+          [(setModel)]="model.lern20"
+          (setModelChange) = 'onLernChange()'
+        >
+        </m-switch>
+        <m-switch
+        setId="LERN21"
+        setLabel="LABEL.LERN21"
+        [(setModel)]="model.lern21"
+        (setModelChange) = 'onLernChange()'
+      >
+      </m-switch>
+      <m-switch
+      setId="LERN22"
+      setLabel="LABEL.LERN22"
+      [(setModel)]="model.lern22"
+      (setModelChange) = 'onLernChange()'
+    >
+    </m-switch>
+    <m-switch
+    setId="LERN23"
+    setLabel="LABEL.LERN23"
+    [(setModel)]="model.lern23"
+    (setModelChange) = 'onLernChange()'
+  >
+  </m-switch>
+  <m-switch
+          setId="LERN24"
+          setLabel="LABEL.LERN24"
+          [(setModel)]="model.lern24"
+          (setModelChange) = 'onLernChange()'
+        >
+        </m-switch>
+      </div>
+
+
+      <div class="field col-12 md:col-4">
+        <span  class="red">*ตัวเลือกสำหรับ มีปัญหา</span
+          >
+        <m-switch
+        setId="LERN2"
+        setLabel="LABEL.LERN2"
+        [(setModel)]="model.lern2"
+        (setModelChange) = 'onLernChange()'
+      >
+      </m-switch>
+      <m-switch
+          setId="LERN4"
+          setLabel="LABEL.LERN4"
+          [(setModel)]="model.lern4"
+          (setModelChange) = 'onLernChange()'
+          >
+        </m-switch>
+        <m-switch
+        setId="LERN6"
+        setLabel="LABEL.LERN6"
+        [(setModel)]="model.lern6"
+        (setModelChange) = 'onLernChange()'
+      >
+      </m-switch>
+      <m-switch
+      setId="LERN8"
+      setLabel="LABEL.LERN8"
+      [(setModel)]="model.lern8"
+      (setModelChange) = 'onLernChange()'
+    >
+    </m-switch>
+    <m-switch
+    setId="LERN10"
+    setLabel="LABEL.LERN10"
+    [(setModel)]="model.lern10"
+    (setModelChange) = 'onLernChange()'
+  >
+  </m-switch>
+  <m-switch
+  setId="LERN12"
+  setLabel="LABEL.LERN12"
+  [(setModel)]="model.lern12"
+  (setModelChange) = 'onLernChange()'
+>
+</m-switch>
+<m-switch
+setId="LERN14"
+setLabel="LABEL.LERN14"
+[(setModel)]="model.lern14"
+(setModelChange) = 'onLernChange()'
+>
+</m-switch>
+<m-switch
+setId="LERN16"
+setLabel="LABEL.LERN16"
+[(setModel)]="model.lern16"
+(setModelChange) = 'onLernChange()'
+>
+</m-switch>
+      </div>
+      <div class="field col-12 md:col-6">
+        <span *ngIf="validateState('lern', 24, 'lernStatus')" class="red"
+          >โปรดระบุอย่างน้อย 1 รายการ</span
+        >
+      </div>
+    </div>
+    <button class="group header-group">
+      {{ "GROUP.HEALTY_MIND_GROUP" | translate }}
+    </button>
+    <div class="grid p-fluid form">
+      <button class="group">{{ "GROUP.HEALTY_GROUP" | translate }}</button>
+
+      <div class="field col-12 md:col-12">
+        <m-input-number-3option
+          setId="HEALTY_STATUS"
+          setLabel="LABEL.HEALTY_STATUS"
+          [(setModel)]="model.healtyStatus"
+          (setModelChange)="clearValue('healty', 9)"
+        >
+        </m-input-number-3option>
+      </div>
+      <div class="field col-12 md:col-4">
+
+      </div>
+      <div class="field col-12 md:col-4">
+        <span  class="red">*ตัวเลือกสำหรับ เสี่ยง</span>
+        <m-switch
+            setId="HEALTY1"
+            setLabel="LABEL.HEALTY1"
+            [(setModel)]="model.healty1"
+            (setModelChange) = 'onHealChange()'
+          >
+          </m-switch>
+          <m-switch
+            setId="HEALTY3"
+            setLabel="LABEL.HEALTY3"
+            [(setModel)]="model.healty3"
+            (setModelChange) = 'onHealChange()'
+          >
+          </m-switch>
+          <m-switch
+            setId="HEALTY5"
+            setLabel="LABEL.HEALTY5"
+            [(setModel)]="model.healty5"
+            (setModelChange) = 'onHealChange()'
+          >
+          </m-switch>
+
+
+      </div>
+      <div class="field col-12 md:col-4">
+        <span  class="red">*ตัวเลือกสำหรับ มีปัญหา</span>
+        <m-switch
+        setId="HEALTY2"
+        setLabel="LABEL.HEALTY2"
+        [(setModel)]="model.healty2"
+        (setModelChange) = 'onHealChange()'
+      >
+      </m-switch>
+      <m-switch
+      setId="HEALTY4"
+      setLabel="LABEL.HEALTY4"
+      [(setModel)]="model.healty4"
+      (setModelChange) = 'onHealChange()'
+    >
+    </m-switch>
+    <m-switch
+          setId="HEALTY6"
+          setLabel="LABEL.HEALTY6"
+          [(setModel)]="model.healty6"
+          (setModelChange) = 'onHealChange()'
+        >
+        </m-switch>
+        <m-switch
+          setId="HEALTY7"
+          setLabel="LABEL.HEALTY7"
+          [(setModel)]="model.healty7"
+          (setModelChange) = 'onHealChange()'
+        >
+        </m-switch>
+        <m-switch
+          setId="HEALTY8"
+          setLabel="LABEL.HEALTY8"
+          [(setModel)]="model.healty8"
+          (setModelChange) = 'onHealChange()'
+        >
+        </m-switch>
+        <m-switch
+          setId="HEALTY9"
+          setLabel="LABEL.HEALTY9"
+          [(setModel)]="model.healty9"
+          (setModelChange) = 'onHealChange()'
+        >
+        </m-switch>
+      </div>
+
+      
+      <div class="field col-12 md:col-12">
+        <span *ngIf="validateState('healty', 9, 'healtyStatus')" class="red"
+          >โปรดระบุอย่างน้อย 1 รายการ</span
+        >
+      </div>
+    </div>
+    <div class="grid p-fluid form">
+      <button class="group">
+        {{ "GROUP.HEALTY_FEELING_GROUP" | translate }}
+      </button>
+
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-3filter
+          setId="FEELING_STATUS_HEADER"
+          setOrder="LABEL.ORDER"
+          setLabel="LABEL.FEELING_STATUS_HEADER"
+          setAction1="LABEL.NORMAL"
+          setAction2="LABEL.RISK"
+          setAction3="LABEL.PROBLEM"
+        >
+        </m-input-number-3filter>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-3filter
+          setId="FEELING_STATUS"
+          setOrder="1"
+          setV1="1"
+          setV2="2"
+          setV3="3"
+          setLabel="LABEL.FEELING_STATUS"
+          [(setModel)]="model.feelingStatus"
+        >
+        </m-input-number-3filter>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-3filter
+          setId="BEHAVIOR_STATUS"
+          setOrder="2"
+          setV1="1"
+          setV2="2"
+          setV3="3"
+          setLabel="LABEL.BEHAVIOR_STATUS"
+          [(setModel)]="model.behaviorStatus"
+        >
+        </m-input-number-3filter>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-3filter
+          setId="NO_STAY_STATUS"
+          setOrder="3"
+          setV1="1"
+          setV2="2"
+          setV3="3"
+          setLabel="LABEL.NO_STAY_STATUS"
+          [(setModel)]="model.notStayStatus"
+        >
+        </m-input-number-3filter>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-3filter
+          setId="RELATION_STATUS"
+          setOrder="4"
+          setV1="1"
+          setV2="2"
+          setV3="3"
+          setLabel="LABEL.RELATION_STATUS"
+          [(setModel)]="model.relationStatus"
+        >
+        </m-input-number-3filter>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-3filter
+          setId="SUMARIZE_FEELING_STATUS"
+          setOrder="5"
+          setV1="1"
+          setV2="2"
+          setV3="3"
+          setLabel="LABEL.SUMARIZE_FEELING_STATUS"
+          [(setModel)]="model.sumarizeFeelingStatus"
+        >
+        </m-input-number-3filter>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-2filter
+          setId="SOCIAL_STATUS_HEADER"
+          setOrder="LABEL.ORDER"
+          setLabel="LABEL.SOCIAL_STATUS_HEADER"
+          setAction1="LABEL.STRENGE"
+          setAction2="LABEL.NONE_STRENGE"
+        >
+        </m-input-number-2filter>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-2filter
+          setId="SOCIAL_STATUS"
+          setOrder="1"
+          setV1="1"
+          setV2="2"
+          setLabel="LABEL.SOCIAL_STATUS"
+          [(setModel)]="model.socialStatus"
+        >
+        </m-input-number-2filter>
+      </div>
+      <div class="field col-12 md:col-12">
+        <span *ngIf="validateSDQ()" class="red">โปรดประเมินให้ครบถ้วน</span>
+      </div>
+    </div>
+
+    <div class="grid p-fluid form">
+      <button class="group">{{ "GROUP.SEXUAL_GROUP" | translate }}</button>
+
+      <div class="field col-12 md:col-12">
+        <m-input-number-3option
+          setId="SEXUAL_STATUS"
+          setLabel="LABEL.SEXUAL_STATUS"
+          [(setModel)]="model.sexualStatus"
+          (setModelChange)="clearValue('sexual', 10)"
+          
+        >
+        </m-input-number-3option>
+      </div>
+      <div class="field col-12 md:col-4">
+        
+      </div>
+      <div class="field col-12 md:col-4">
+        <span  class="red">*ตัวเลือกสำหรับ เสี่ยง</span>
+        <m-switch
+          setId="SEXUAL1"
+          setLabel="LABEL.SEXUAL1"
+          [(setModel)]="model.sexual1"
+          (setModelChange) = 'onSexsualChange()'
+        >
+        </m-switch>
+        <m-switch
+          setId="SEXUAL3"
+          setLabel="LABEL.SEXUAL3"
+          [(setModel)]="model.sexual3"
+          (setModelChange) = 'onSexsualChange()'
+        >
+        </m-switch>
+        <m-switch
+          setId="SEXUAL5"
+          setLabel="LABEL.SEXUAL5"
+          [(setModel)]="model.sexual5"
+          (setModelChange) = 'onSexsualChange()'
+        >
+        </m-switch>
+      </div>
+      <div class="field col-12 md:col-4">
+        <span  class="red">*ตัวเลือกสำหรับ มีปัญหา</span>
+        <m-switch
+            setId="SEXUAL2"
+            setLabel="LABEL.SEXUAL2"
+            [(setModel)]="model.sexual2"
+            (setModelChange) = 'onSexsualChange()'
+          >
+          </m-switch>
+          <m-switch
+            setId="SEXUAL4"
+            setLabel="LABEL.SEXUAL4"
+            [(setModel)]="model.sexual4"
+            (setModelChange) = 'onSexsualChange()'
+          >
+          </m-switch>
+          <m-switch
+            setId="SEXUAL6"
+            setLabel="LABEL.SEXUAL6"
+            [(setModel)]="model.sexual6"
+            (setModelChange) = 'onSexsualChange()'
+          >
+          </m-switch>
+          <m-switch
+            setId="SEXUAL7"
+            setLabel="LABEL.SEXUAL7"
+            [(setModel)]="model.sexual7"
+            (setModelChange) = 'onSexsualChange()'
+          >
+          </m-switch>
+          <m-switch
+            setId="SEXUAL8"
+            setLabel="LABEL.SEXUAL8"
+            [(setModel)]="model.sexual8"
+            (setModelChange) = 'onSexsualChange()'
+          >
+          </m-switch>
+          <m-switch
+            setId="SEXUAL9"
+            setLabel="LABEL.SEXUAL9"
+            [(setModel)]="model.sexual9"
+            (setModelChange) = 'onSexsualChange()'
+          >
+          </m-switch>
+          <m-switch
+            setId="SEXUAL10"
+            setLabel="LABEL.SEXUAL10"
+            [(setModel)]="model.sexual10"
+            (setModelChange) = 'onSexsualChange()'
+          >
+          </m-switch>
+      </div>
+      <div class="field col-12 md:col-12">
+        <span *ngIf="validateState('sexual', 10, 'sexualStatus')" class="red"
+          >โปรดระบุอย่างน้อย 1 รายการ</span
+        >
+      </div>
+    </div>
+    <div class="grid p-fluid form">
+      <button class="group">{{ "GROUP.DRUG_GROUP" | translate }}</button>
+
+      <div class="field col-12 md:col-12">
+        <m-input-number-3option
+          setId="DRUG_STATUS"
+          setLabel="LABEL.DRUG_STATUS"
+          [(setModel)]="model.drugStatus"
+          (setModelChange)="clearValue('drug', 13)"
+        >
+        </m-input-number-3option>
+      </div>
+      <div class="field col-12 md:col-4">
+        
+      </div>
+      <div class="field col-12 md:col-4">
+        <span  class="red">*ตัวเลือกสำหรับ เสี่ยง</span>
+<m-switch
+          setId="DRUG1"
+          setLabel="LABEL.DRUG1"
+          [(setModel)]="model.drug1"
+          (setModelChange) = 'onDrugChange()'
+
+        >
+        </m-switch>
+       <m-switch
+          setId="DRUG4"
+          setLabel="LABEL.DRUG4"
+          [(setModel)]="model.drug4"
+          (setModelChange) = 'onDrugChange()'
+        >
+        </m-switch>
+ <m-switch
+          setId="DRUG6"
+          setLabel="LABEL.DRUG6"
+          [(setModel)]="model.drug6"
+          (setModelChange) = 'onDrugChange()'
+        >
+        </m-switch>
+        <m-switch
+        setId="DRUG8"
+        setLabel="LABEL.DRUG8"
+        [(setModel)]="model.drug8"
+        (setModelChange) = 'onDrugChange()'
+      >
+      </m-switch>
+      <m-switch
+      setId="DRUG10"
+      setLabel="LABEL.DRUG10"
+      [(setModel)]="model.drug10"
+      (setModelChange) = 'onDrugChange()'
+    >
+    </m-switch>
+ 
+    <m-switch
+      setId="DRUG12"
+      setLabel="LABEL.DRUG12"
+      [(setModel)]="model.drug12"
+      (setModelChange) = 'onDrugChange()'
+    >
+    </m-switch>
+
+    <m-switch
+      setId="DRUG13"
+      setLabel="LABEL.DRUG13"
+      [(setModel)]="model.drug13"
+      (setModelChange) = 'onDrugChange()'
+    >
+    </m-switch>
+    </div>
+      <div class="field col-12 md:col-4">
+        <span  class="red">*ตัวเลือกสำหรับ มีปัญหา</span>
+
+<m-switch
+          setId="DRUG2"
+          setLabel="LABEL.DRUG2"
+          [(setModel)]="model.drug2"
+          (setModelChange) = 'onDrugChange()'
+        >
+        </m-switch>
+        <m-switch
+          setId="DRUG3"
+          setLabel="LABEL.DRUG3"
+          [(setModel)]="model.drug3"
+          (setModelChange) = 'onDrugChange()'
+        >
+        </m-switch>
+ <m-switch
+          setId="DRUG5"
+          setLabel="LABEL.DRUG5"
+          [(setModel)]="model.drug5"
+          (setModelChange) = 'onDrugChange()'
+        >
+        </m-switch>
+  <m-switch
+          setId="DRUG7"
+          setLabel="LABEL.DRUG7"
+          [(setModel)]="model.drug7"
+          (setModelChange) = 'onDrugChange()'
+        >
+        </m-switch>
+        <m-switch
+        setId="DRUG9"
+        setLabel="LABEL.DRUG9"
+        [(setModel)]="model.drug9"
+        (setModelChange) = 'onDrugChange()'
+      >
+      </m-switch>
+      <m-switch
+          setId="DRUG11"
+          setLabel="LABEL.DRUG11"
+          [(setModel)]="model.drug11"
+          (setModelChange) = 'onDrugChange()'
+        >
+        </m-switch>
+      </div>
+      
+     
+     
+     
+      <div class="field col-12 md:col-12">
+        <span *ngIf="validateState('drug', 13, 'drugStatus')" class="red"
+          >โปรดระบุอย่างน้อย 1 รายการ</span
+        >
+      </div>
+    </div>
+    <div class="grid p-fluid form">
+      <button class="group">{{ "GROUP.GAME_GROUP" | translate }}</button>
+
+      <div class="field col-12 md:col-12">
+        <m-input-number-3option
+          setId="GAME_STATUS"
+          setLabel="LABEL.GAME_STATUS"
+          [(setModel)]="model.gameStatus"
+          (setModelChange)="clearValue('game', 12)"
+        >
+        </m-input-number-3option>
+      </div>
+      <div class="field col-12 md:col-4">
+        
+      </div>
+      <div class="field col-12 md:col-4">
+        <span  class="red">*ตัวเลือกสำหรับ เสี่ยง</span>
+<m-switch
+          setId="GAME1"
+          setLabel="LABEL.GAME1"
+          [(setModel)]="model.game1"
+          (setModelChange) = 'onGameChange()'
+        >
+        </m-switch>
+         <m-switch
+          setId="GAME3"
+          setLabel="LABEL.GAME3"
+          [(setModel)]="model.game3"
+          (setModelChange) = 'onGameChange()'
+        >
+        </m-switch>
+        <m-switch
+          setId="GAME5"
+          setLabel="LABEL.GAME5"
+          [(setModel)]="model.game5"
+          (setModelChange) = 'onGameChange()'
+        >
+        </m-switch>
+     <m-switch
+          setId="GAME7"
+          setLabel="LABEL.GAME7"
+          [(setModel)]="model.game7"
+          (setModelChange) = 'onGameChange()'
+        >
+        </m-switch>
+
+ <m-switch
+          setId="GAME9"
+          setLabel="LABEL.GAME9"
+          [(setModel)]="model.game9"
+          (setModelChange) = 'onGameChange()'
+        >
+        </m-switch>
+        <m-switch
+        setId="GAME11"
+        setLabel="LABEL.GAME11"
+        [(setModel)]="model.game11"
+        (setModelChange) = 'onGameChange()'
+      >
+      </m-switch>
+      </div> 
+ 
+      <div class="field col-12 md:col-4">
+        <span  class="red">*ตัวเลือกสำหรับ มีปัญหา</span>
+ <m-switch
+          setId="GAME2"
+          setLabel="LABEL.GAME2"
+          [(setModel)]="model.game2"
+          (setModelChange) = 'onGameChange()'
+        >
+        </m-switch>
+         <m-switch
+          setId="GAME4"
+          setLabel="LABEL.GAME4"
+          [(setModel)]="model.game4"
+          (setModelChange) = 'onGameChange()'
+        >
+        </m-switch>
+<m-switch
+          setId="GAME6"
+          setLabel="LABEL.GAME6"
+          [(setModel)]="model.game6"
+          (setModelChange) = 'onGameChange()'
+        >
+        </m-switch> 
+         <m-switch
+          setId="GAME8"
+          setLabel="LABEL.GAME8"
+          [(setModel)]="model.game8"
+          (setModelChange) = 'onGameChange()'
+        >
+        </m-switch>  
+          <m-switch
+          setId="GAME10"
+          setLabel="LABEL.GAME10"
+          [(setModel)]="model.game10"
+          (setModelChange) = 'onGameChange()'
+        >
+        </m-switch> 
+        <m-switch
+          setId="GAME12"
+          setLabel="LABEL.GAME12"
+          [(setModel)]="model.game12"
+          (setModelChange) = 'onGameChange()'
+        >
+        </m-switch>
+      </div>
+      <div class="field col-12 md:col-12">
+        <span *ngIf="validateState('game', 12, 'gameStatus')" class="red"
+          >โปรดระบุอย่างน้อย 1 รายการ</span
+        >
+      </div>
+    </div>
+    <button class="group header-group">
+      {{ "GROUP.FAMILY_GROUP" | translate }}
+    </button>
+    <div class="grid p-fluid form">
+      <button class="group">{{ "GROUP.ECONOMIC_GROUP" | translate }}</button>
+
+      <div class="field col-12 md:col-12">
+        <m-input-number-3option
+          setId="ECONOMIC_STATUS"
+          setLabel="LABEL.ECONOMIC_STATUS"
+          [(setModel)]="model.economicStatus"
+          (setModelChange)="clearValue('economic', 6)"
+        >
+        </m-input-number-3option>
+      </div>
+      <div class="field col-12 md:col-4">
+        
+      </div>
+      <div class="field col-12 md:col-4">
+        <span  class="red">*ตัวเลือกสำหรับ เสี่ยง</span>
+           <m-switch onEcoChange
+          setId="ECONOMIC1"
+          setLabel="LABEL.ECONOMIC1"
+          [(setModel)]="model.economic1"
+          (setModelChange) = 'onEcoChange()'
+        >
+        </m-switch>
+        <m-switch
+        setId="ECONOMIC4"
+        setLabel="LABEL.ECONOMIC4"
+        [(setModel)]="model.economic4"
+        (setModelChange) = 'onEcoChange()'
+      >
+      </m-switch>
+      </div>
+      <div class="field col-12 md:col-4">
+        <span  class="red">*ตัวเลือกสำหรับ มีปัญหา</span>
+  <m-switch
+          setId="ECONOMIC2"
+          setLabel="LABEL.ECONOMIC2"
+          [(setModel)]="model.economic2"
+          (setModelChange) = 'onEcoChange()'
+        >
+        </m-switch>
+        <m-switch
+          setId="ECONOMIC3"
+          setLabel="LABEL.ECONOMIC3"
+          [(setModel)]="model.economic3"
+          (setModelChange) = 'onEcoChange()'
+        >
+        </m-switch> 
+        <m-switch
+          setId="ECONOMIC5"
+          setLabel="LABEL.ECONOMIC5"
+          [(setModel)]="model.economic5"
+          (setModelChange) = 'onEcoChange()'
+        >
+        </m-switch>
+            <m-switch
+          setId="ECONOMIC6"
+          setLabel="LABEL.ECONOMIC6"
+          [(setModel)]="model.economic6"
+          (setModelChange) = 'onEcoChange()'
+        >
+        </m-switch>
+      </div>
+      <div class="field col-12 md:col-12">
+        <span *ngIf="validateState('economic', 6, 'economicStatus')" class="red"
+          >โปรดระบุอย่างน้อย 1 รายการ</span
+        >
+      </div>
+    </div>
+    <div class="grid p-fluid form">
+      <button class="group">{{ "GROUP.SECURITY_GROUP" | translate }}</button>
+
+      <div class="field col-12 md:col-12">
+        <m-input-number-3option
+          setId="SECURITY_STATUS"
+          setLabel="LABEL.SECURITY_STATUS"
+          [(setModel)]="model.securityStatus"
+          (setModelChange)="clearValue('security', 13)"
+        >
+        </m-input-number-3option>
+      </div>
+      <div class="field col-12 md:col-4">
+       
+        
+      </div>
+      <div class="field col-12 md:col-4">
+        <span  class="red">*ตัวเลือกสำหรับ เสี่ยง</span>
+ <m-switch 
+          setId="SECURITY1"
+          setLabel="LABEL.SECURITY1"
+          [(setModel)]="model.security1"
+          (setModelChange) = 'onSecurityChange()'
+        >
+        </m-switch>
+
+        <m-switch
+        setId="SECURITY3"
+        setLabel="LABEL.SECURITY3"
+        [(setModel)]="model.security3"
+        (setModelChange) = 'onSecurityChange()'
+      >
+      </m-switch>
+      <m-switch
+      setId="SECURITY6"
+      setLabel="LABEL.SECURITY6"
+      [(setModel)]="model.security6"
+      (setModelChange) = 'onSecurityChange()'
+    >
+    </m-switch>
+    <m-switch
+    setId="SECURITY8"
+    setLabel="LABEL.SECURITY8"
+    [(setModel)]="model.security8"
+    (setModelChange) = 'onSecurityChange()'
+  >
+  </m-switch>
+  <m-switch
+  setId="SECURITY10"
+  setLabel="LABEL.SECURITY10"
+  [(setModel)]="model.security10"
+  (setModelChange) = 'onSecurityChange()'
+>
+</m-switch>
+<m-switch
+setId="SECURITY12"
+setLabel="LABEL.SECURITY12"
+[(setModel)]="model.security12"
+(setModelChange) = 'onSecurityChange()'
+>
+</m-switch>
+<m-switch
+setId="SECURITY13"
+setLabel="LABEL.SECURITY13"
+[(setModel)]="model.security13"
+(setModelChange) = 'onSecurityChange()'
+>
+</m-switch>
+      </div>
+      <div class="field col-12 md:col-4">
+        <span  class="red">*ตัวเลือกสำหรับ มีปัญหา</span>
+ <m-switch
+          setId="SECURITY2"
+          setLabel="LABEL.SECURITY2"
+          [(setModel)]="model.security2"
+          (setModelChange) = 'onSecurityChange()'
+        >
+        </m-switch>
+        <m-switch
+        setId="SECURITY4"
+        setLabel="LABEL.SECURITY4"
+        [(setModel)]="model.security4"
+        (setModelChange) = 'onSecurityChange()'
+      >
+      </m-switch>
+      <m-switch
+      setId="SECURITY5"
+      setLabel="LABEL.SECURITY5"
+      [(setModel)]="model.security5"
+      (setModelChange) = 'onSecurityChange()'
+    >
+    </m-switch>
+    <m-switch
+    setId="SECURITY7"
+    setLabel="LABEL.SECURITY7"
+    [(setModel)]="model.security7"
+    (setModelChange) = 'onSecurityChange()'
+  >
+  </m-switch>
+  <m-switch
+          setId="SECURITY9"
+          setLabel="LABEL.SECURITY9"
+          [(setModel)]="model.security9"
+          (setModelChange) = 'onSecurityChange()'
+        >
+        </m-switch>
+        <m-switch
+        setId="SECURITY11"
+        setLabel="LABEL.SECURITY11"
+        [(setModel)]="model.security11"
+        (setModelChange) = 'onSecurityChange()'
+      >
+      </m-switch>
+      </div> 
+      
+      <div class="field col-12 md:col-12">
+        <span
+          *ngIf="validateState('security', 13, 'securityStatus')"
+          class="red"
+          >โปรดระบุอย่างน้อย 1 รายการ</span
+        >
+      </div>
+    </div>
+    <button class="group header-group">
+      {{ "GROUP.OTHER_GROUP" | translate }}
+    </button>
+
+    <div class="grid p-fluid form">
+      <button class="group">{{ "GROUP.SPECIAL_GROUP" | translate }}</button>
+
+      <div class="field col-12 md:col-12">
+        <m-input-number-3option
+          setId="SPECIAL_STATUS"
+          setLabel="LABEL.SPECIAL_STATUS"
+          [(setModel)]="model.specialStatus"
+          (setModelChange)="clearValue('special1', 11)"
+        >
+        </m-input-number-3option>
+      </div>
+      <div class="field col-12 md:col-4">
+        
+      </div>
+      <div class="field col-12 md:col-4">
+        <span  class="red">*ตัวเลือกสำหรับ เสี่ยง</span>
+        <m-switch
+          setId="SPECIAL1"
+          setLabel="LABEL.SPECIAL1"
+          [(setModel)]="model.special1"
+          (setModelChange) = 'onSpecialChange()'
+        >
+        </m-switch>
+        <m-switch
+        setId="SPECIAL3"
+        setLabel="LABEL.SPECIAL3"
+        [(setModel)]="model.special3"
+        (setModelChange) = 'onSpecialChange()'
+      >
+      </m-switch>
+      <m-switch
+      setId="SPECIAL5"
+      setLabel="LABEL.SPECIAL5"
+      [(setModel)]="model.special5"
+      (setModelChange) = 'onSpecialChange()'
+    >
+    </m-switch>
+    <m-switch
+    setId="SPECIAL7"
+    setLabel="LABEL.SPECIAL7"
+    [(setModel)]="model.special7"
+    (setModelChange) = 'onSpecialChange()'
+  >
+  </m-switch>
+  <m-switch
+  setId="SPECIAL9"
+  setLabel="LABEL.SPECIAL9"
+  [(setModel)]="model.special9"
+  (setModelChange) = 'onSpecialChange()'
+>
+</m-switch>
+<m-switch
+setId="SPECIAL11"
+setLabel="LABEL.SPECIAL11"
+[(setModel)]="model.special11"
+(setModelChange) = 'onSpecialChange()'
+>
+</m-switch>
+      </div>
+      <div class="field col-12 md:col-4">
+        <span  class="red">*ตัวเลือกสำหรับ มีปัญหา</span>
+
+        <m-switch
+        setId="SPECIAL2"
+        setLabel="LABEL.SPECIAL2"
+        [(setModel)]="model.special2"
+        (setModelChange) = 'onSpecialChange()'
+      >
+      </m-switch>
+      <m-switch
+      setId="SPECIAL4"
+      setLabel="LABEL.SPECIAL4"
+      [(setModel)]="model.special4"
+      (setModelChange) = 'onSpecialChange()'
+    >
+    </m-switch>
+    <m-switch
+          setId="SPECIAL6"
+          setLabel="LABEL.SPECIAL6"
+          [(setModel)]="model.special6"
+          (setModelChange) = 'onSpecialChange()'
+        >
+        </m-switch>
+        <m-switch
+          setId="SPECIAL8"
+          setLabel="LABEL.SPECIAL8"
+          [(setModel)]="model.special8"
+          (setModelChange) = 'onSpecialChange()'
+        >
+        </m-switch>
+        <m-switch
+        setId="SPECIAL10"
+        setLabel="LABEL.SPECIAL10"
+        [(setModel)]="model.special10"
+        (setModelChange) = 'onSpecialChange()'
+      >
+      </m-switch>
+      </div>
+      
+   
+      <div *ngIf="model.special11" class="field col-12 md:col-6">
+        <m-input-text
+          setId="SPECIAL_TEXT"
+          setLabel="LABEL.SPECIAL_TEXT"
+          [(setModel)]="model.specialText"
+        >
+        </m-input-text>
+      </div>
+      <div class="field col-12 md:col-12">
+        <span *ngIf="validateState('special', 11, 'specialStatus')" class="red"
+          >โปรดระบุอย่างน้อย 1 รายการ</span
+        >
+      </div>
+    </div>
+    <div class="grid p-fluid form">
+      <button class="group">{{ "GROUP.ELECTRONIC_GROUP" | translate }}</button>
+      <div class="field col-12 md:col-12">
+        <m-input-number-3option
+          setId="ELECTRONIC_STATUS"
+          setLabel="LABEL.ELECTRONIC_STATUS"
+          [(setModel)]="model.electronicStatus"
+          (setModelChange)="clearValue('electronic', 4)"
+        >
+        </m-input-number-3option>
+      </div>
+      <div class="field col-12 md:col-4">
+        
+      </div>
+      <div class="field col-12 md:col-4">
+        <span  class="red">*ตัวเลือกสำหรับ เสี่ยง</span>
+        <m-switch
+          setId="ELECTRONIC1"
+          setLabel="LABEL.ELECTRONIC1"
+          [(setModel)]="model.electronic1"
+          (setModelChange) = 'onElecChange()'
+        >
+        </m-switch>
+        <m-switch
+        setId="ELECTRONIC3"
+        setLabel="LABEL.ELECTRONIC3"
+        [(setModel)]="model.electronic3"
+        (setModelChange) = 'onElecChange()'
+      >
+      </m-switch>
+
+      </div>
+      <div class="field col-12 md:col-4">
+        <span  class="red">*ตัวเลือกสำหรับ มีปัญหา</span>
+        <m-switch
+        setId="ELECTRONIC2"
+        setLabel="LABEL.ELECTRONIC2"
+        [(setModel)]="model.electronic2"
+        (setModelChange) = 'onElecChange()'
+      >
+      </m-switch>
+      <m-switch
+      setId="ELECTRONIC4"
+      setLabel="LABEL.ELECTRONIC4"
+      [(setModel)]="model.electronic4"
+      (setModelChange) = 'onElecChange()'
+    >
+    </m-switch>
+      </div>
+      
+      <div class="field col-12 md:col-12">
+        <span
+          *ngIf="validateState('electronic', 4, 'electronicStatus')"
+          class="red"
+          >โปรดระบุอย่างน้อย 1 รายการ</span
+        >
+      </div>
+      <!-- <div class="field col-12 md:col-6">
+        <m-switch setId="SUMMARIZE" setLabel="LABEL.SUMMARIZE" [(setModel)]=model.summarize     >
+        </m-switch>
+      </div> -->
+    </div>
+  </div>
+  <div class="grid p-fluid">
+    <div class="field col-6 md:col-2">
+      <m-button
+        setClassName="backBtn"
+        setLabel="LABEL.BACK"
+        (onClick)="onBack()"
+      >
+      </m-button>
+    </div>
+    <div *ngIf="!view" class="field col-12 md:col-2">
+      <m-button
+        setClassName="saveBtn"
+        setLabel="LABEL.SAVE"
+        (onClick)="onSave()"
+      >
+      </m-button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,162 @@
+import { Component, ElementRef, EventEmitter, HostBinding, Input, OnInit, Output, Renderer2 } from '@angular/core';
+import { UntypedFormControl, Validators } from '@angular/forms';
+import { ValidateClass } from '../../constants/enum-system';
+import { InputNumberConfigModel } from '../../models/configs';
+import { BaseWidget } from '../base-widget/base-widget';
+
+@Component({
+  selector: 'm-input-number-3option',
+  templateUrl: './m-input-number-3option.component.html',
+  styleUrls: ['./m-input-number-3option.component.scss']
+})
+export class MInputNumber3OptionComponent extends BaseWidget implements OnInit {
+  value1:number = 1
+  value2:number = 2
+  value3:number = 3
+  model1:boolean
+  model2:boolean
+  model3:boolean
+
+
+  label:string =''
+  model:number = undefined
+  helpText:string=''
+  invalidText:string = ''
+  isRequired:boolean = false
+  config:InputNumberConfigModel = {maxDigit:0,minDigit:0}
+  constructor( el: ElementRef, renderer:Renderer2){
+    super(el,renderer)
+  }
+  @Input()
+  set setLabel(label:string){
+    this.label = label
+  }
+
+
+
+  @Input()
+  set setConfig(config:InputNumberConfigModel){
+    this.config= config
+  }
+  @Input()
+  set setV1(value:string){
+    this.value1 = +value
+  }
+  @Input()
+  set setV2(value:string){
+    this.value2 = +value
+  }
+  @Input()
+  set setV3(value:string){
+    this.value2 = +value
+  }
+
+  @Input()
+  set setModel(model:number){    
+    this.model = model
+    switch(model){
+      case this.value1:
+        this.model1 = true
+        this.model2 = false
+        this.model3 = false
+
+        break
+        case this.value2:
+          this.model2 = true
+          this.model1 = false
+          this.model3 = false
+
+          break
+          case this.value3:
+            this.model3 = true
+            this.model2 = false
+            this.model1 = false
+            break
+    }
+    if(this.model){
+      this.addAttribute(ValidateClass.HAS_VALUE)
+    }else{
+      this.removeAttribute(ValidateClass.HAS_VALUE)
+    }   
+  }
+  get setModel(): number {
+    return this.model;
+  }
+  @Input()
+  set setHelpText(helpText:string){
+    this.helpText = helpText
+  }
+  @Input()
+  set setInvalidText(invalidText:string){
+    this.invalidText = invalidText
+  }
+  @Input()
+  set setId(id:string){
+    this.id=id
+  }
+  @Input()
+  set setReadonly(param:boolean){
+    if(param!=false){
+      this.addAttribute(ValidateClass.READONLY)
+      this.addClass(ValidateClass.READONLY)
+    }else{
+      this.removeAttribute(ValidateClass.READONLY)
+      this.removeClass(ValidateClass.READONLY)
+
+    }
+  }
+  @Input()
+  set setRequired(param:boolean){
+    setTimeout(() => {
+      if(param != false){    
+        this.isRequired = true   
+        this.addClass(ValidateClass.REQUIRED)
+      }else{
+        this.removeClass(ValidateClass.REQUIRED)
+      }
+    }, 100);
+
+  }
+  @Output() setModelChange = new EventEmitter<any>();
+
+  ngOnInit(): void {
+  }
+  onInputChange(e:any){
+    this.setModel = e    
+    this.setModelChange.emit(this.setModel )
+  }
+  getValue(){
+    return this.model?.toLocaleString('th-TH',{minimumFractionDigits:this.config.maxDigit,maximumFractionDigits:this.config.maxDigit})
+  }
+  onInputChange1(e:any){ 
+    this.model = this.value1
+    this.model2 = false
+    this.model3 = false
+    if(e){
+      this.setModelChange.emit(this.value1)
+    }else{
+      this.setModelChange.emit(null)
+    }
+    
+  }
+  onInputChange2(e:any){ 
+    this.model1 = false   
+    this.model = this.value2
+    this.model3 = false
+    if(e){
+      this.setModelChange.emit(this.value2)
+    }else{
+      this.setModelChange.emit(null)
+    }
+  }
+  onInputChange3(e:any){ 
+    this.model1 = false   
+    this.model2 = false   
+    this.model = this.value3
+    if(e){
+      this.setModelChange.emit(this.value3)
+    }else{
+      this.setModelChange.emit(null)
+    }
+  }
+}

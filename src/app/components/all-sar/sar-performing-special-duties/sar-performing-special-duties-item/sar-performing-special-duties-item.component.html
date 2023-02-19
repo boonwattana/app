@@ -1,0 +1,213 @@
+<div class="itemCard">
+  <div>
+    <div>
+      <p class="title-item">{{"MODULE.SAR_PERFORMING_SPECIAL_DUTIES"|translate}}</p>
+    </div>
+  </div>
+  <div class="customCard">
+    <button class="group">ข้อมูล การปฏิบัติงานหน้าที่พิเศษ</button>
+    <div class="grid p-fluid form ">
+      <div class="field col-6 md:col-3">
+        <m-dropdown setId="TEACHER_ID" setLabel="ชื่อ-สกุล" [(setModel)]=model.teacherId    [setSelectOption]=teacherDropdown [setViewValue]=model.teacherValue [setReadonly] = "isTeacher" >
+        </m-dropdown>
+      </div>
+      <div class="field col-6 md:col-3">
+        <m-input-text setId="SCHOOLYEAR" setLabel="LABEL.SCHOOLYEAR" [(setModel)]=model.schoolyear   [setRequired]="true"   >
+        </m-input-text>
+      </div>
+       <div class="field col-10 md:col-12">
+        <b> 1)  ฝ่ายวิชาการ </b>
+       </div>
+      
+      <div class="field col-12 md:col-12">
+        <m-input-text setId="GROUP1_TEXT1" setLabel="1.ปฏิบัติหน้าที่หัวหน้ากลุ่มสาระการเรียนรู้" [(setModel)]=model.group1Text1     >
+        </m-input-text>
+      </div>
+      <div class="field col-12 md:col-12">
+        <m-input-text setId="GROUP1_TEXT2" setLabel="2.ปฏิบัติหน้าที่การสอนกลุ่มสาระการเรียนรู้" [(setModel)]=model.group1Text2     >
+        </m-input-text>
+      </div>
+
+      <div class="field col-12 md:col-12">
+        <m-input-text setId="GROUP1_TEXT3" setLabel="3.  การรับนักเรียนเข้าศึกษาต่อระดับชั้นมัธยมศึกษาปีที่" [(setModel)]=model.group1Text3     >
+        </m-input-text>
+      </div>
+
+      <div class="field col-12 md:col-12">
+        <m-input-text setId="GROUP1_TEXT4" setLabel="4. การรับมอบตัวนักเรียนใหม่ระดับชั้นมัธยมศึกษาปีที่" [(setModel)]=model.group1Text4     >
+        </m-input-text>
+      </div>
+      
+      <div class="field col-12 md:col-12">
+        <m-input-text setId="GROUP1_TEXT5" setLabel="5.อื่น ๆ" [(setModel)]=model.group1Text5     >
+        </m-input-text>
+      </div>
+      <div class="field col-6 md:col-12">
+        <b>สรุปได้ว่า ระดับคุณภาพการปฏิบัติงาน</b>
+      </div>
+      <div class="field col-12 md:col-2"> 
+        <p-radioButton name="group1Result" value="3" [(ngModel)]="model.group1Result" inputId="group1Result">
+      </p-radioButton>
+      <div class="field col-12 md:col-2"> 
+        ดี
+      </div>
+    </div>
+      <div class="field col-12 md:col-2"> 
+        <p-radioButton name="group1Result" value="2" [(ngModel)]="model.group1Result" inputId="group1Result">
+      </p-radioButton><div class="field col-12 md:col-2"> พอใช้ </div></div>
+      <div class="field col-12 md:col-2">  <p-radioButton name="group1Result" value="1" [(ngModel)]="model.group1Result" inputId="group1Result">
+      </p-radioButton>
+      <div class="field col-12 md:col-2"> ปรับปรุง</div>
+   </div>
+      
+   <div class="field col-10 md:col-12">
+    <b>	2)  ฝ่ายกิจการนักเรียน 
+    </b>
+   </div>
+      <div class="field col-6 md:col-6">
+        <m-input-text setId="GROUP2_TEXT1" setLabel="1.  การเยี่ยมบ้านนักเรียนชั้นมัธยมศึกษาศึกษาปีที่" setplaceholderText="ชั้น/ห้อง "[(setModel)]=model.group2Text1     >
+        </m-input-text>
+      </div>
+      <div class="field col-6 md:col-6">
+        <m-input-text setId="GROUP2_TEXT2" setLabel="จำนวน" setplaceholderText="จำนวนนักเรียน"[(setModel)]=model.group2Text2     >
+        </m-input-text>
+      </div>
+      <div class="field col-6 md:col-12"><b>2.  ปฏิบัติหน้าที่ครูเวรประจำวันระดับชั้นมัธยมศึกษาปีที่ </b></div>
+      <div class="field col-6 md:col-6">
+        <m-input-text setId="GROUP2_TEXT3" setLabel="3.  ปฏิบัติหน้าที่ครูเวรวันหยุดราชการ (ครั้ง)" setplaceholderText="จำนวนครั้ง"[(setModel)]=model.group2Text3     >
+        </m-input-text>
+      </div>
+      <div class="field col-6 md:col-6"></div>
+      <div class="field col-6 md:col-6">
+        <m-input-text setId="GROUP2_TEXT4" setLabel="4.  ร่วมการประชุมผู้ปกครองนักเรียน (ครั้ง)" setplaceholderText="จำนวนครั้ง"[(setModel)]=model.group2Text4     >
+        </m-input-text>
+      </div>
+      <div class="field col-6 md:col-12">
+        <m-input-text setId="GROUP2_TEXT5" setLabel="5.  อื่น ๆ" [(setModel)]=model.group2Text5     >
+        </m-input-text>
+      </div>
+      <div class="field col-6 md:col-12">
+        <b>สรุปได้ว่า ระดับคุณภาพการปฏิบัติงาน</b>
+      </div>
+      <div class="field col-12 md:col-2"> 
+        <p-radioButton name="group2Result" value="3" [(ngModel)]="model.group2Result" inputId="group2Result">
+      </p-radioButton>
+      <div class="field col-12 md:col-2"> 
+        ดี
+      </div>
+    </div>
+      <div class="field col-12 md:col-2"> 
+        <p-radioButton name="group2Result" value="2" [(ngModel)]="model.group2Result" inputId="group2Result">
+      </p-radioButton><div class="field col-12 md:col-2"> พอใช้ </div></div>
+      <div class="field col-12 md:col-2">  <p-radioButton name="group2Result" value="1" [(ngModel)]="model.group2Result" inputId="group2Result">
+      </p-radioButton>
+      <div class="field col-12 md:col-2"> ปรับปรุง</div>
+   </div>
+   <div class="field col-10 md:col-12">
+    <b>	  	 3)  ฝ่ายบริหารงานทั่วไป
+    </b>
+   </div>
+   <div class="field col-6 md:col-12">
+    <m-input-text setId="GROUP3_TEXT1" setLabel="1. ปฏิบัติงานหน้าที่ดูแลบริเวณ" [(setModel)]=model.group3Text1     >
+    </m-input-text>
+  </div>
+  <div class="field col-6 md:col-12">
+    <m-input-text setId="GROUP3_TEXT2" setLabel="2. อื่นๆ " [(setModel)]=model.group3Text2     >
+    </m-input-text>
+  </div>
+  <div class="field col-6 md:col-12">
+    <b>สรุปได้ว่า ระดับคุณภาพการปฏิบัติงาน</b>
+  </div>
+  <div class="field col-12 md:col-2"> 
+    <p-radioButton name="group3Result" value="3" [(ngModel)]="model.group3Result" inputId="group3Result">
+  </p-radioButton>
+  <div class="field col-12 md:col-2"> 
+    ดี
+  </div>
+</div>
+  <div class="field col-12 md:col-2"> 
+    <p-radioButton name="group3Result" value="2" [(ngModel)]="model.group3Result" inputId="group3Result">
+  </p-radioButton><div class="field col-12 md:col-2"> พอใช้ </div></div>
+  <div class="field col-12 md:col-2">  <p-radioButton name="group3Result" value="1" [(ngModel)]="model.group3Result" inputId="group3Result">
+  </p-radioButton>
+  <div class="field col-12 md:col-2"> ปรับปรุง</div>
+</div>
+   <div class="field col-10 md:col-12">
+    <b>	   4)  ฝ่ายอำนวยการและบุคลากร
+    </b>
+   </div>
+      <div class="field col-6 md:col-6">
+        <m-input-text setId="GROUP4_TEXT1"setplaceholderText="ชั้น/ห้อง" setLabel="1.  ปฏิบัติงานหน้าที่ การรับเงินบำรุงการศึกษานักเรียนชั้นประถมศึกษาปีที่" [(setModel)]=model.group4Text1     >
+        </m-input-text>
+      </div>
+      <div class="field col-6 md:col-4">
+        <m-input-text setId="GROUP4_TEXT2" setLabel=" จำนวน (ครั้ง)" setplaceholderText="จำนวนครั้ง" [(setModel)]=model.group4Text2     >
+        </m-input-text>
+      </div>
+      <div class="field col-6 md:col-12">
+        <m-input-text setId="GROUP4_TEXT3" setLabel="2.  อื่น ๆ" [(setModel)]=model.group4Text3     >
+        </m-input-text>
+      </div>
+      <div class="field col-6 md:col-12">
+        <b>สรุปได้ว่า ระดับคุณภาพการปฏิบัติงาน</b>
+      </div>
+      <div class="field col-12 md:col-2"> 
+        <p-radioButton name="group4Result" value="3" [(ngModel)]="model.group4Result" inputId="group4Result">
+      </p-radioButton>
+      <div class="field col-12 md:col-2"> 
+        ดี
+      </div>
+    </div>
+      <div class="field col-12 md:col-2"> 
+        <p-radioButton name="group4Result" value="2" [(ngModel)]="model.group4Result" inputId="group4Result">
+      </p-radioButton><div class="field col-12 md:col-2"> พอใช้ </div></div>
+      <div class="field col-12 md:col-2">  <p-radioButton name="group4Result" value="1" [(ngModel)]="model.group4Result" inputId="group4Result">
+      </p-radioButton>
+      <div class="field col-12 md:col-2"> ปรับปรุง</div>
+   </div>
+
+   <div class="field col-10 md:col-12">
+    <b>	  5)  ฝ่ายยุทธศาสตร์การพัฒนา
+    </b>
+   </div>
+      <div class="field col-6 md:col-6">
+        <m-input-text setId="GROUP5_TEXT1"setplaceholderText="ปีการศึกษา" setLabel="   1. รายงานผลการประเมินตนเอง  (SAR) ประจำปีการศึกษา  "
+         [(setModel)]=model.group5Text1     >
+        </m-input-text>
+      </div>
+     
+      <div class="field col-6 md:col-12">
+        <m-input-text setId="GROUP5_TEXT2" setLabel="2.  อื่น ๆ" [(setModel)]=model.group5Text2    >
+        </m-input-text>
+      </div>
+      <div class="field col-6 md:col-12">
+        <b>สรุปได้ว่า ระดับคุณภาพการปฏิบัติงาน</b>
+      </div>
+      <div class="field col-12 md:col-2"> 
+        <p-radioButton name="group5Result" value="3" [(ngModel)]="model.group5Result" inputId="group5Result">
+      </p-radioButton>
+      <div class="field col-12 md:col-2"> 
+        ดี
+      </div>
+    </div>
+      <div class="field col-12 md:col-2"> 
+        <p-radioButton name="group5Result" value="2" [(ngModel)]="model.group5Result" inputId="group5Result">
+      </p-radioButton><div class="field col-12 md:col-2"> พอใช้ </div></div>
+      <div class="field col-12 md:col-2">  <p-radioButton name="group5Result" value="1" [(ngModel)]="model.group5Result" inputId="group5Result">
+      </p-radioButton>
+      <div class="field col-12 md:col-2"> ปรับปรุง</div>
+   </div>
+      
+    </div>
+  </div>
+  <div class="grid p-fluid">
+    <div class="field col-12 md:col-2">
+      <m-button setClassName="backBtn" setLabel="LABEL.BACK" (onClick)="onBack()">
+      </m-button>
+    </div>
+    <div *ngIf = !view class="field col-12 md:col-2">
+      <m-button setClassName="saveBtn" setLabel="LABEL.SAVE" (onClick)="onSave()">
+      </m-button>
+    </div>
+  </div>
+</div>

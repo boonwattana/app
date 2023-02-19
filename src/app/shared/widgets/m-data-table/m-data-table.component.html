@@ -1,0 +1,393 @@
+
+
+  <div  class="field col-12 md:col-6">
+    <p class="header-item">{{bindingModuleName|translate}}</p>
+  </div>
+  <div class="customCard dataGrid" >
+  
+  
+        <div class="m-col-bw-2 m-m">
+  
+          <div class="btn-grod">
+   
+            <button class="m-btn-add" (click)="createEmit.emit()" *ngIf="canCreate"
+            setLabel="">
+              <i class='bx bx-edit' ></i> <span>{{'LABEL.CREATE'|translate}}</span>
+            </button>
+            <button class="m-btn-import" (click)="getElementById()" *ngIf="bindingCanImport">
+              <i class='bx bx-import' ></i> {{'LABEL.IMPORT'|translate}}
+            </button>
+            <input (change)="myUploader($event)" #fileInput type="file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"  id="selectedFile" style="display: none;" />
+          </div>
+          <div class="push">
+            จำนวน <span class="totalRecord">{{totalRecord}}</span> รายการ
+          </div>
+        </div>
+          
+        <div class="m-mt-20 m-col-bw-2 m-m">
+          <div class="m-option">
+            <!-- <div>
+              <span>แสดง </span>
+              <select  (change)="onChange($event)" >
+                <option value="5">10</option>
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="30">30</option>
+                <option value="50">50</option>
+              </select>
+            </div> -->
+            <div *ngIf = "canExport" class="m-option-export">
+              <span></span>
+              <!-- <div >CSV</div> -->
+              <div (click)="downloadFile()" class="m-btn-add">Excel(All)</div>
+              <!-- <div>PDF</div> -->
+            </div>
+            <div *ngIf = "canExportTH" class="m-option-export">
+              <span></span>
+              <!-- <div >CSV</div> -->
+              <div (click)="showOptionField()" class="m-btn-add">นำออก Excel(TH)</div>
+              <!-- <div>PDF</div> -->
+            </div>
+            <div class="m-option-export">
+              <span></span>
+              <!-- <div >CSV</div> -->
+              <div (click)="showDialogPdf()" *ngIf = "canReport" class="m-btn-add">พิมพ์รายงาน</div>
+              <!-- <div>PDF</div> -->
+            </div>
+          </div>
+  
+          
+        </div>
+        <div class="row search-section grid p-fluid" >
+          <div  *ngFor="let d of bindingSearchCondition; let index=index;" class="field col-12 md:col-3" >
+              <m-input-text 
+                *ngIf='(d.inputType == "STRING"  && !d.hidden)'
+                setId="bindingSearchCondition[index].label"
+                setLabel="{{bindingSearchCondition[index].label|translate}}"
+                [(setModel)] = bindingSearchCondition[index].value
+                (setModelChange)="onInputSearch()"
+                  >
+              </m-input-text>
+              <m-calendar
+              *ngIf='(d.inputType == "DATE" && !d.hidden)'
+              [(setModel)] = bindingSearchCondition[index].value
+              setId="bindingSearchCondition[index].label"
+              setLabel="{{bindingSearchCondition[index].label|translate}}"
+              (setModelChange)="onInputSearch()"
+      
+              >
+              </m-calendar>
+              <m-input-number
+              *ngIf='(d.inputType == "DECIMAL"  && !d.hidden)'
+              [(setModel)] = bindingSearchCondition[index].value
+              setId="bindingSearchCondition[index].label"
+              setLabel="{{bindingSearchCondition[index].label|translate}}"
+              (setModelChange)="onInputSearch()"
+      
+              >
+              </m-input-number>
+              <m-dropdown
+              *ngIf='(d.inputType == "ENUM"  && !d.hidden)'
+              [setSelectOption] = d.enumOption
+              [(setModel)] = bindingSearchCondition[index].value
+              setId="bindingSearchCondition[index].label"
+              setLabel="{{bindingSearchCondition[index].label|translate}}"
+              (setModelChange)="onInputSearch()"
+      
+              >
+              </m-dropdown>
+              <m-input-number
+              *ngIf='(d.inputType == "NUMBER"  && !d.hidden)'
+              [(setModel)] = bindingSearchCondition[index].value
+              setId="bindingSearchCondition[index].label"
+              setLabel="{{bindingSearchCondition[index].label|translate}}"tableheader-item
+              (setModelChange)="onInputSearch()"
+      
+              >
+      
+              </m-input-number>
+              <!-- <i (click)="onInputSearch()" class='bx bx-search-alt-2'></i> -->
+          </div>
+          
+          
+        </div>
+        <p-paginator
+        (onPageChange)="paginate($event)"
+        [totalRecords]="totalRecord"
+        [first] = paginator?.first 
+        [rows] = paginator?.rows
+        [rowsPerPageOptions]="[5,10, 20, 30,50]"
+      ></p-paginator>
+    <p-table
+  
+    [value]="bindingDataSource"
+    [scrollable]="true"
+    class="customTable"
+      #dt1
+       currentPageReportTemplate="show  {first} to {last}"
+        responsiveLayout="scroll"
+       scrollDirection = 'both'
+       >
+        <ng-template pTemplate="header">
+            <tr  >
+              <th style='width:40px;' >
+                {{"LABEL.INDEX"|translate}}
+              </th>
+              <th  
+                class="t-header"
+                *ngFor="
+                  let header of bindingOption.columns;
+                  let i = index 
+                      "
+            (click)="onSort(header)"
+            [style]=header.width
+                >
+                <p *ngIf ="(header.orentation == 'VERTICAL')" class="vertical">
+                  {{header.label|translate}}
+                </p>
+                <p class="horizontal" *ngIf ="(!header.orentation)" >
+                  {{header.label|translate}}
+                </p>
+            
+            <i *ngIf="header.sorting == 0" class="pi pi-sort-amount-down"></i>
+            <i *ngIf="header.sorting == 1" class="pi pi-sort-amount-up"></i>
+                </th>
+                <th  style='width:130px;'  >
+                  {{"LABEL.ACTION"|translate}}
+                </th>
+            </tr>
+  
+        </ng-template>
+        <ng-template  pTemplate="body" let-row let-rowIndex="rowIndex">
+            <tr>
+                <td style='width:40px;'  >
+                  <div style="padding-left: 15px;">
+                    {{rowIndex+1}}
+                  </div>
+             
+                </td>
+                
+                <td 
+                *ngFor="
+                  let col of bindingOption.columns;
+                  let i = index
+                "
+                [style]=col.width
+              >
+                <div
+                class="display-td"
+                *ngIf='(col.type.toString() == "STRING" )'
+                >
+                  {{ row[col.textKey]}}
+                </div>
+                <div
+                class="display-td"
+
+                *ngIf='(col.type.toString() == "ACTION" )'
+                >
+                  {{ getAction(row[col.textKey]) }}
+                </div>
+                <div
+                *ngIf='(col.type.toString() == "TIME" )'
+                >
+                  {{ getTime(row[col.textKey]) }}
+                </div>
+                <div
+                *ngIf='(col.type.toString() == "EQ_GOOD" )'
+                >
+                  {{ getEqGood(row[col.textKey]) }}
+                </div>
+                <div
+                *ngIf='(col.type.toString() == "EQ_GREET" )'
+                >
+                  {{ getEqGreet(row[col.textKey]) }}
+                </div>
+                <div
+                *ngIf='(col.type.toString() == "EQ_HAPPY" )'
+                >
+                  {{ getEqHappy(row[col.textKey]) }}
+                </div>
+                <div
+                *ngIf='(col.type.toString() == "EQ_SUM" )'
+                >
+                  {{ getEqSum(row[col.textKey]) }}
+                </div>
+                <div
+                *ngIf='(col.type.toString() == "STRESS" )'
+                >
+                  {{ getStress(row[col.textKey]) }}
+                </div>
+                <div
+                *ngIf='(col.type.toString() == "DEPRESSION" )'
+                >
+                  {{ getDepression(row[col.textKey]) }}
+                </div>
+                <div
+                *ngIf='(col.type.toString() == "DEPRESSION_FROM" )'
+                >
+                  {{ getDepressionFrom(row[col.textKey]) }}
+                </div>
+                <div
+                *ngIf='(col.type.toString() == "SUCIED" )'
+                >
+                  {{ getSucied(row[col.textKey]) }}
+                </div>
+                <div
+                *ngIf='(col.type.toString() == "ENUM" )'
+                >
+                  {{ getLabelEnum( row[col.textKey], col.enumOption)|translate}}
+                </div>
+                <div
+                *ngIf='(col.type.toString() == "AGE" )'
+                >
+                  {{ getAge( row[col.textKey])}}
+                </div>
+                <div
+                *ngIf='(col.type.toString() == "BMI" )'
+                >
+                <div *ngIf='(row[col.textKey] != null )' >
+                  <div  class="bmiCard thin" *ngIf='(row[col.textKey] < 18.50  )'>
+                    ผอม
+                </div>
+                <div  class="bmiCard normal" *ngIf='(row[col.textKey] >= 18.50 && row[col.textKey] < 23 )'>
+                  ปกติ
+                 </div>
+                 <div  class="bmiCard prefat" *ngIf='(row[col.textKey] >= 23  && row[col.textKey] < 25  )'>
+                  ท้วม
+                 </div>
+                 <div  class="bmiCard fat" *ngIf='(row[col.textKey] >= 25 && row[col.textKey]<30  )'>
+                  อ้วน
+                 </div>
+                 <div class="bmiCard veryfat" *ngIf='(row[col.textKey] > 30  )'>
+                  อ้วนมาก
+                 </div>
+                </div>
+                
+                </div>
+                <div
+                *ngIf='(col.type.toString() == "DATE" )'
+                >
+                  {{ getDateBuddha(row[col.textKey])}}
+                </div>
+                <div
+                *ngIf='(col.type.toString() == "DECIMAL" )'
+                >
+                {{  row[col.textKey] |number:'.2-2'}}
+                </div>
+                <div
+                *ngIf='(col.type.toString() == "DECIMAL_2" )'
+                >
+                {{  row[col.textKey] |number:'.2-2'}}
+                </div>
+                <div
+                style="text-align:end;"
+                *ngIf='(col.type.toString() == "DECIMAL_4" )'
+                >
+                  {{  row[col.textKey] |number:'.2-4'}}
+                </div>
+                <div
+                style="text-align:end;"
+                *ngIf='(col.type.toString() == "BOOLEAN" )'
+                >
+                <p-toggleButton id="TABLE_BOOLEAN" 
+                class="input-field" 
+                aria-describedby="username1-help" 
+                [ngModel] = row[col.textKey] 
+                [disabled] = true
+                onIcon="pi pi-check">
+                </p-toggleButton>
+                </div>
+              </td>
+              <td class="center" style='width:130px;' >
+                <button   type="button"   (click)="onView(row.id,rowIndex,row)" class="m-btn-view-s" ><i class='bx bx-search'></i></button>
+
+                  <button  *ngIf = canEdit type="button" icon="pi pi-pencil" (click)="onEdit(row.id,rowIndex,row)" class="m-btn-edit-s"  ><i class='bx bxs-edit'></i></button>
+                  <button  *ngIf = canDelete     (click)="onDelete(row.id,rowIndex)" class="m-btn-del-s"><i class='bx bx-trash'></i></button>
+  
+                <!-- <button    type="button" icon="pi pi-pencil" (click)="onEdit(d.id,rowIndex)" class="m-btn-edit-s"  ><i class='bx bxs-edit'></i></button>
+                <button   type="button"   (click)="onView(d.id,rowIndex)" class="m-btn-view-s" ><i class='bx bx-share'></i></button>
+                <button  [disabled] = !canDelete     (click)="onDelete(d.id,rowIndex)" class="m-btn-del-s"><i class='bx bx-trash'></i></button> -->
+  <!-- 
+                <button  pButton  type="button" icon="pi pi-pencil" (click)="onEdit(row.id,rowIndex)"  class=" p-button-text createBtn" ></button>
+                <button  pButton type="button"  icon="pi pi-eye" (click)="onView(row.id,rowIndex)" class="p-button-text viewBtn"></button>
+                <button  [disabled] = !canDelete  pButton type="button" icon="pi pi-trash" (click)="onDelete(row.id,rowIndex)" class=" p-button-text deleteBtn"></button>
+               -->
+              </td>
+            </tr>
+        </ng-template>
+    </p-table>
+
+  </div>
+  <p-dialog [(visible)]="display" class="report-dialog"  header="ตัวเลือกการพิมพ์รายงาน" >
+    <div class="grid p-fluid form ">
+      <div *ngIf = !customYearTerm class="field col-12 md:col-12">
+        <m-dropdown 
+        setId="ํYEARTERM_ID" 
+        setLabel="LABEL.YEARTERM_ID" 
+        [(setModel)]=yearTermId  
+        [setShowClear] = false
+        [setSelectOption]=yearTermOption >
+        </m-dropdown>
+      </div>
+      <div *ngIf = customYearTerm class="field col-12 md:col-12">
+        <m-input-text setId="YEAR_TERM" setLabel="LABEL.YEAR_TERM" [(setModel)]=year   [setRequired]="true"  >
+        </m-input-text>
+      </div>
+      <div *ngIf = customYearTerm class="field col-12 md:col-12">
+        <m-input-text setId="TERM" setLabel="LABEL.TERM" [(setModel)]= term   [setRequired]="true"  >
+        </m-input-text>
+      </div>
+      <div *ngIf = showClass class="field col-12 md:col-12">
+        <m-dropdown 
+        setId="CLASS_ID" 
+        setLabel="LABEL.CLASS_ID" 
+        [(setModel)]=classId  
+        [setReadonly] = isTeacher
+        [setSelectOption]=classOption >
+        </m-dropdown>
+      </div>
+      <div *ngIf = showRoom class="field col-12 md:col-12">
+        <m-dropdown 
+        setId="ROOM_ID" 
+        setLabel="LABEL.ROOM_ID" 
+        [(setModel)]=roomId  
+        [setReadonly] = isTeacher
+        [setSelectOption]=roomOption >
+        </m-dropdown>
+      </div>
+      <div class="flex btn-report">
+        <button class="m-btn-pdf-confirm" (click)="downloadAsPDFNormal()" 
+        setLabel="">
+          <i class='bx bx-import' ></i> <span>{{'LABEL.CONFIRM_EXPORT'|translate}}</span>
+        </button>
+        <button *ngIf =specialReport  class="m-btn-pdf-confirm-all" (click)="downloadAsPDFSpecial()" 
+        setLabel="">
+          <i class='bx bx-import-all' ></i> <span>รายงานส่งต่อภายนอก</span>
+        </button>
+      </div>
+  
+    </div>
+  
+  
+  </p-dialog>
+  <p-dialog [(visible)]="displayField"  header="เลือกหัวข้อที่ต้องการนำออก" [breakpoints]="{'960px': '175vw', '640px': '170vw'}" >
+    <div class="grid p-fluid form ">
+
+      <div  *ngFor="let d of bindingFieldOption; let index=index;" class="field col-12 md:col-3">
+        <m-switch setLabel={{d.th}} [(setModel)]=d.active     >
+        </m-switch>
+        <!-- <m-input-text setId="YEAR_TERM" setLabel="LABEL.YEAR_TERM"   [setRequired]="true"  >
+        </m-input-text> -->
+      </div>
+     
+
+  
+    </div>
+    <button class="m-btn-pdf-confirm" (click)="downloadFileTh()" 
+    setLabel="">
+      <i class='bx bx-import' ></i> <span>นำออก Excel</span>
+    </button>
+  
+  </p-dialog>
+
+

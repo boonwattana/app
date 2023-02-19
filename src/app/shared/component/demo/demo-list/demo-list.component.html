@@ -1,0 +1,99 @@
+<!-- <m-data-table
+(searchEmit)="onSearch($event)"
+[option]="option"
+[dataSource] = "searchResult"
+[tableName]="tableName"
+[searchCondition] = 'searchConditions'
+(createEmit) = "onCreate()"
+(editEmit)="onEdit($event)"
+(viewEmit)="onView($event)"
+(deleteEmit)="onDelete($event)"
+[removeRecord] = "lastRemoveId"
+[moduleName] = "moduleName"
+></m-data-table> -->
+<!-- <p>dashbord</p> -->
+<div class="demo">
+  <div class="title-d bold">ข้อมูลพื้นฐาน <span class="font-red bold">{{model.dataDate}}</span></div>
+  <div class="grid p-fluid form">
+    <div class="field col-12 md:col-4">
+      <div class="box-item">
+        <img src="assets/images/iconpepor.jpg" alt="" width="120px" height="120px">
+        <div class="detail-item">
+          <div class="box-name">จำนวนนักเรียนปีการศึกษา2565</div>
+          <div class="number">{{model.studentCount}}</div>
+        </div>
+      </div>
+    </div>
+    <div class="field col-12 md:col-4">
+      <div class="box-item">
+        <img src="assets/images/Screenshot 2022-09-13 063655.jpg" alt="" width="120px" height="120px">
+        <div class="detail-item">
+          <div class="box-name">
+            จำนวนบุคลากรรวม</div>
+          <div class="number">{{model.teacherCount}}</div>
+        </div>
+      </div>
+    </div>
+    <div class="field col-12 md:col-4">
+      <div class="box-item">
+        <img src="assets/images/Screenshot 2022-09-13 063725.jpg" alt="" width="120px" height="120px">
+        <div class="detail-item">
+          <div class="box-name">จำนวนบุคลากรตามเพศ</div>
+          <div *ngFor = "let item of model.teacherByGendar;let i = index" class="number">{{item.name}} :  {{item.count}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="con-item">
+
+
+
+    <!-- <div class="box-item">
+      <img src="assets/images/Screenshot 2022-09-13 063753.jpg" alt="" width="100px" >
+      <div class="detail-item">
+        <div class="box-name">จำนวนบุคลากรตามหมวด</div>
+        <div class="number">{{model.teacherCount}}</div>
+      </div>
+    </div> -->
+  </div>
+  <div class="grid p-fluid form">
+    <div class="field col-12 md:col-6 lg:col-4"  >
+      <div class="big-font" >ข้อมูลพื้นฐานนักเรียน </div>
+      <div class="font-red big-font">{{model.dataDate}}</div>
+      <br>
+      <div>
+        <div class="font-red" >จำนวนนักเรียนรวม:</div> 
+        <div class="font-red" >จำนวนนักเรียนตามระดับชั้น:</div> 
+        
+
+        <div *ngFor = "let item of model.studentByClass;let i = index" >{{item.name}} :  {{item.count}} </div>
+        <br>
+        <div>
+          <div class="font-red">จำนวนนักเรียนแยกเพศ</div> 
+          <div>
+            <div *ngFor = "let item of model.studentByGendar;let i = index" >{{item.name}} :  {{item.count}}</div>
+            <!-- <div>หญิง</div> -->
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+
+    <div  class="field col-12 md:col-5 lg:col-3" >
+      <canvas #myCanvas baseChart [data]="radarChartData" [options]="radarChartOptions" [type]="radarChartType">
+      </canvas>
+        <p class="center"> สถิติจำนวนนักเรียน 5 ปีย้อนหลัง</p>
+    </div>
+
+    <div  class="field col-12 md:col-7 lg:col-5" >
+      <canvas #myCanvas baseChart [data]="radarChartData2" [options]="radarChartOptions" [type]="radarChartType1">
+    </canvas>
+    <p class="center"> สถิติจำนวนบุคลากร 5 ปีย้อนหลัง</p>
+    </div>
+  </div>
+</div>

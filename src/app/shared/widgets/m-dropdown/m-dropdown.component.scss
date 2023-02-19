@@ -1,0 +1,25 @@
+// .input-gray{
+//   padding: 15px;  
+//   width: 250px;
+//   border-radius: 5px;
+//   background: #d8d8d8;
+//   border: 0px solid ;
+
+// }.input-field::ng-deep
+.field .p-fluid .p-dropdown{
+  padding: 15px !important;
+  
+}
+
+:host {
+  ::ng-deep .input-gray {
+        padding: 10px;  
+  width: 250px;
+  border-radius: 5px;
+  background: #d8d8d8;
+  border: 0px solid ;
+
+  }   
+
+}
+

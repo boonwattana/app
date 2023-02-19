@@ -1,0 +1,54 @@
+<div class="itemCard">
+  <div>
+    <div>
+      <p class="title-item">{{"MODULE.SAR_AWARD"|translate}}</p>
+    </div>
+  </div>
+  <div class="customCard">
+    <button class="group">ข้อมูล การได้รับเชิญเป็นวิทยากร/กรรมการตัดสินภายในและภายนอกสถานศึกษา</button>
+    <div class="grid p-fluid form ">
+  
+      <div class="field col-6 md:col-3">
+        <m-dropdown setId="TEACHER_ID" setLabel="ชื่อ-สกุล" [(setModel)]=model.teacherId    [setSelectOption]=teacherDropdown [setViewValue]=model.teacherValue [setReadonly] = "isTeacher" >
+        </m-dropdown>
+      </div>
+      <div class="field col-6 md:col-3">
+        <m-input-text setId="SCHOOLYEAR" setLabel="LABEL.SCHOOLYEAR" [(setModel)]=model.schoolyear   [setRequired]="true"   >
+        </m-input-text>
+      </div>
+       <div class="field col-6 md:col-6"></div>
+       <div class="field col-6 md:col-6">
+         <m-input-text setId="DATE"setLabel="วัน/เดือน/ปี"   [(setModel)]=model.date     >
+          </m-input-text>
+        </div>
+        <div class="field col-6 md:col-6">
+          <m-input-text setId="AWARD_NAME" setLabel="รางวัล/เกียรติคุณ" [(setModel)]=model.awardName     >
+          </m-input-text>
+    
+        </div>
+        <div class="field col-6 md:col-6">
+   
+          <m-input-text setId="ORGANIZATION" setLabel="หน่วยงานที่มอบ"  [(setModel)]=model.organization     >
+          </m-input-text>
+  
+        </div>
+        <div class="field col-6 md:col-6">
+    
+         <m-input-text setId="EVIDENCE" setLabel="หลักฐาน" [(setModel)]=model.evidence     >
+        </m-input-text> 
+      </div>
+     
+    
+    </div>
+  </div>
+  <div class="grid p-fluid">
+    <div class="field col-12 md:col-2">
+      <m-button setClassName="backBtn" setLabel="LABEL.BACK" (onClick)="onBack()">
+      </m-button>
+    </div>
+    <div *ngIf = !view class="field col-12 md:col-2">
+      <m-button setClassName="saveBtn" setLabel="LABEL.SAVE" (onClick)="onSave()">
+      </m-button>
+    </div>
+  </div>
+</div>

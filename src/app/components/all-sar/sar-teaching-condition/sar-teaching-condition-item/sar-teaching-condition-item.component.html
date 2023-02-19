@@ -1,0 +1,160 @@
+<div class="itemCard">
+  <div>
+    <div>
+      <p class="title-item">{{"MODULE.SAR_TEACHING_CONDITION"|translate}}</p>
+    </div>
+  </div>
+  <div class="customCard">
+    <button class="group">สภาพการปฏิบัติงานสอน เลือก  ในช่องที่ตรงกับความเป็นจริงที่ท่านปฏิบัติอยู่  (ตอบได้มากกว่า 1)
+    </button>
+    <div class="grid p-fluid form ">
+      <div class="field col-6 md:col-3">
+        <m-dropdown setId="TEACHER_ID" setLabel="ชื่อ-สกุล" [(setModel)]=model.teacherId    [setSelectOption]=teacherDropdown [setViewValue]=model.teacherValue [setReadonly] = "isTeacher" >
+        </m-dropdown>
+      </div>
+      <div class="field col-6 md:col-3">
+        <m-input-text setId="SCHOOLYEAR" setLabel="LABEL.SCHOOLYEAR" [(setModel)]=model.schoolyear   [setRequired]="true"   >
+        </m-input-text>
+      </div>
+       <div class="field col-6 md:col-6"></div>
+
+       <table  style="width: 100%;" border="1" >
+        <tr  >
+          <th style="text-align: center;">ที่</th>
+          <th style="text-align: center;">รายการปฏิบัติ</th>
+          <th style="text-align: center;">มากที่สุด  </th>
+          <th style="text-align: center;">มาก  </th>
+          <th style="text-align: center;">ปานกลาง  </th>
+          <th style="text-align: center;">น้อย  </th>
+          <th style="text-align: center;">น้อยที่สุด </th>
+        </tr>
+        <tr>
+          <td>
+            1
+          </td>
+          <td>
+            ตรงตามวุฒิ/สาขาวิชาที่จบการศึกษา
+          </td>
+          <td>
+              <p-radioButton name="choice1" value="5" [(ngModel)]="model.choice1" inputId="choice1"></p-radioButton>
+          </td>
+          <td>
+            <p-radioButton name="choice1" value="4" [(ngModel)]="model.choice1" inputId="choice1"></p-radioButton>
+          </td>
+          <td>
+            <p-radioButton name="choice1" value="3" [(ngModel)]="model.choice1" inputId="choice1"></p-radioButton>
+          </td>
+          <td>
+            <p-radioButton name="choice1" value="2" [(ngModel)]="model.choice1" inputId="choice1"></p-radioButton>
+          </td>
+          <td>
+            <p-radioButton name="choice1" value="1" [(ngModel)]="model.choice1" inputId="choice1"></p-radioButton>
+          </td>
+        </tr>
+        <tr>
+          <td>
+           2
+          </td>
+          <td>
+            ตรงตามความถนัด
+          </td>
+          <td>
+              <p-radioButton name="choice2" value="5" [(ngModel)]="model.choice2" inputId="choice2"></p-radioButton>
+          </td>
+          <td>
+            <p-radioButton name="choice2" value="4" [(ngModel)]="model.choice2" inputId="choice2"></p-radioButton>
+          </td>
+          <td>
+            <p-radioButton name="choice2" value="3" [(ngModel)]="model.choice2" inputId="choice2"></p-radioButton>
+          </td>
+          <td>
+            <p-radioButton name="choice2" value="2" [(ngModel)]="model.choice2" inputId="choice2"></p-radioButton>
+          </td>
+          <td>
+            <p-radioButton name="choice2" value="1" [(ngModel)]="model.choice2" inputId="choice2"></p-radioButton>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            3
+          </td>
+          <td>
+            ตรงตามประสบการณ์การสอน
+          </td>
+          <td>
+            <p-radioButton name="choice3" value="5" [(ngModel)]="model.choice3" inputId="choice3"></p-radioButton>
+          </td>
+          <td>
+            <p-radioButton name="choice3" value="4" [(ngModel)]="model.choice3" inputId="choice3"></p-radioButton>
+          </td>
+          <td>
+            <p-radioButton name="choice3" value="3" [(ngModel)]="model.choice3" inputId="choice3"></p-radioButton>
+          </td>
+          <td>
+            <p-radioButton name="choice3" value="2" [(ngModel)]="model.choice3" inputId="choice3"></p-radioButton>
+          </td>
+          <td>
+            <p-radioButton name="choice3" value="1" [(ngModel)]="model.choice3" inputId="choice3"></p-radioButton>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            4
+          </td>
+          <td>
+            ตรงกับความรู้ความสามารถ
+          </td>
+          <td>
+            <p-radioButton name="choice4" value="5" [(ngModel)]="model.choice4" inputId="choice4"></p-radioButton>
+          </td>
+          <td>
+            <p-radioButton name="choice4" value="4" [(ngModel)]="model.choice4" inputId="choice4"></p-radioButton>
+          </td>
+          <td>
+            <p-radioButton name="choice4" value="3" [(ngModel)]="model.choice4" inputId="choice4"></p-radioButton>
+          </td>
+          <td>
+            <p-radioButton name="choice4" value="2" [(ngModel)]="model.choice4" inputId="choice4"></p-radioButton>
+          </td>
+          <td>
+            <p-radioButton name="choice4" value="1" [(ngModel)]="model.choice4" inputId="choice4"></p-radioButton>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            5
+          </td>
+          <td>
+            ตรงกับความต้องการ/ความสนใจ
+          </td>
+          <td>
+            <p-radioButton name="choice5" value="5" [(ngModel)]="model.choice5" inputId="choice5"></p-radioButton>
+          </td>
+          <td>
+            <p-radioButton name="choice5" value="4" [(ngModel)]="model.choice5" inputId="choice5"></p-radioButton>
+          </td>
+          <td>
+            <p-radioButton name="choice5" value="3" [(ngModel)]="model.choice5" inputId="choice5"></p-radioButton>
+          </td>
+          <td>
+            <p-radioButton name="choice5" value="2" [(ngModel)]="model.choice5" inputId="choice5"></p-radioButton>
+          </td>
+          <td>
+            <p-radioButton name="choice5" value="1" [(ngModel)]="model.choice5" inputId="choice5"></p-radioButton>
+          </td>
+        </tr>
+        </table>
+     
+    </div>
+  </div>
+  <div class="grid p-fluid">
+    <div class="field col-12 md:col-2">
+      <m-button setClassName="backBtn" setLabel="LABEL.BACK" (onClick)="onBack()">
+      </m-button>
+    </div>
+    <div *ngIf = !view class="field col-12 md:col-2">
+      <m-button setClassName="saveBtn" setLabel="LABEL.SAVE" (onClick)="onSave()">
+      </m-button>
+    </div>
+  </div>
+</div>

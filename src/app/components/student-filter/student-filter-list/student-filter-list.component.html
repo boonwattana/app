@@ -1,0 +1,48 @@
+<m-data-table
+(searchEmit)="onSearch($event)"
+[option]="option"
+[dataSource] = "searchResult"
+[tableName]="tableName"
+[searchCondition] = 'searchConditions'
+(createEmit) = "onCreate()"
+(editEmit)="onEdit($event)"
+(viewEmit)="onView($event)"
+(deleteEmit)="onDelete($event)"
+[removeRecord] = "lastRemoveId"
+[moduleName] = moduleName
+[setCanCreate] = false
+[setCanDelete] = canDelete
+[setCanExport] = true
+[canReportClass] = canReportClass
+[canReportRoom] = canReportRoom
+[canReportAll] = canReportAll
+(reportAll) = reportAll()
+(reportRoom) = reportRoom()
+(reportClass) = reportClass()
+[setCanImport] =false
+[setReportName] = reportName
+[setCanReport] =true
+></m-data-table>
+<!-- <m-report-s
+[termName] = termName
+[option]="reportOptionByClassAndRoom"
+[dataSource] = "reportResourceByClassAndRoom"
+[moduleName] = moduleNameByClassAndRoom
+></m-report-s> -->
+<!-- <m-report-s2
+[termName] = termName
+[option]="reportOptionByroom"
+[dataSource] = "reportResourceByroom"
+[moduleName] = moduleNameByroom
+></m-report-s2>
+<m-report-s3
+[termName] = termName
+[option]="reportOptionByclass"
+[dataSource] = "reportResourceByclass"
+[moduleName] = moduleNameByclass
+></m-report-s3> -->
+<!-- <m-report
+[option]="reportOptionSumarize"
+[dataSource] = "reportResourceSumarize"
+[moduleName] = moduleNameSumarize
+></m-report> -->

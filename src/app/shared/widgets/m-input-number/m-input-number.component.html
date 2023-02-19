@@ -1,0 +1,23 @@
+<div *ngIf="!view" class="field ">
+    <div  *ngIf="label" class="rowLabel">
+        <label class="columnLabel" for="{{id}}" class="block">{{label|translate}}  :</label>
+        <p *ngIf = "isRequired" class="columnLabel">{{"LABEL.REQURID"|translate}}</p>
+    </div>
+    <p-inputNumber 
+    class="input-field" 
+    id="{{id}}" 
+    [(ngModel)]="setModel" 
+    [minFractionDigits]="config.minDigit"
+    [maxFractionDigits]="config.maxDigit"
+    (ngModelChange)="onInputChange($event)"  
+    (blur)="setModelChange.emit(setModel)"
+    (keyup.enter)="setModelChange.emit(setModel)"
+    [placeholder]=setplaceholderText
+    ></p-inputNumber>
+</div>
+<m-view-only
+    *ngIf="view"
+    [setLabel]="label"
+    [setValue]="getValue()"
+    [setId]="id">
+</m-view-only> 

@@ -1,0 +1,146 @@
+<div *ngIf="!view" class="grid p-fluid form ">
+   
+    <div class="field col-1 md:col-1">
+        {{order|translate}}
+    </div>
+    <div class="field col-7 md:col-7">
+        {{label|translate}}
+    </div>
+    <div class="field col-1 md:col-1">
+        <div *ngIf="action1">
+            {{action1|translate}}
+        </div>
+
+        <p-toggleButton 
+        class="input-field" 
+        *ngIf="!action1"
+        type="username" 
+        aria-describedby="username1-help" 
+        (ngModelChange)="onInputChange1($event)"  
+        [(ngModel)] = model1 
+         onIcon="pi pi-check" 
+         >
+        </p-toggleButton>
+    </div>
+    <div class="field col-1 md:col-1">
+        <div *ngIf="action2">
+            {{action2|translate}}
+        </div>
+        <p-toggleButton 
+        class="input-field" 
+        *ngIf="!action2"
+        type="username" 
+        aria-describedby="username1-help" 
+        (ngModelChange)="onInputChange2($event)"  
+        [(ngModel)] = model2 
+         onIcon="pi pi-check" 
+         >
+        </p-toggleButton>
+    </div>
+    <div class="field col-1 md:col-1">
+        <div *ngIf="action3">
+            {{action3|translate}}
+        </div>
+        <p-toggleButton 
+        class="input-field" 
+        *ngIf="!action3"
+        type="username" 
+        aria-describedby="username1-help" 
+        (ngModelChange)="onInputChange3($event)"  
+        [(ngModel)] = model3 
+         onIcon="pi pi-check" 
+         >
+        </p-toggleButton>
+    </div>
+    <div class="field col-1 md:col-1">
+        <div *ngIf="action4">
+            {{action4|translate}}
+        </div>
+        <p-toggleButton 
+        class="input-field" 
+        *ngIf="!action4"
+        type="username" 
+        aria-describedby="username1-help" 
+        (ngModelChange)="onInputChange4($event)"  
+        [(ngModel)] = model4 
+         onIcon="pi pi-check" 
+         >
+        </p-toggleButton>
+    </div>
+</div>
+
+
+<div *ngIf="view" class="grid p-fluid form ">
+   
+    <div class="field col-1 md:col-1">
+        {{order|translate}}
+    </div>
+    <div class="field col-7 md:col-7">
+        {{label|translate}}
+    </div>
+    <div class="field col-1 md:col-1">
+        <div *ngIf="action1">
+            {{action1|translate}}
+        </div>
+
+        <p-toggleButton 
+        [disabled] = true
+        class="input-field" 
+        *ngIf="!action1"
+        type="username" 
+        aria-describedby="username1-help" 
+        (ngModelChange)="onInputChange1($event)"  
+        [(ngModel)] = model1 
+         onIcon="pi pi-check" 
+         >
+        </p-toggleButton>
+    </div>
+    <div class="field col-1 md:col-1">
+        <div *ngIf="action2">
+            {{action2|translate}}
+        </div>
+        <p-toggleButton 
+        class="input-field" 
+        *ngIf="!action2"
+        type="username" 
+        [disabled] = true
+        aria-describedby="username1-help" 
+        (ngModelChange)="onInputChange2($event)"  
+        [(ngModel)] = model2 
+         onIcon="pi pi-check" 
+         >
+        </p-toggleButton>
+    </div>
+    <div class="field col-1 md:col-1">
+        <div *ngIf="action3">
+            {{action3|translate}}
+        </div>
+        <p-toggleButton 
+        class="input-field" 
+        *ngIf="!action3"
+        type="username" 
+        [disabled] = true
+        aria-describedby="username1-help" 
+        (ngModelChange)="onInputChange3($event)"  
+        [(ngModel)] = model3 
+         onIcon="pi pi-check" 
+         >
+        </p-toggleButton>
+    </div>
+    <div class="field col-1 md:col-1">
+        <div *ngIf="action4">
+            {{action4|translate}}
+        </div>
+        <p-toggleButton 
+        class="input-field" 
+        *ngIf="!action4"
+        type="username" 
+        [disabled] = true
+        aria-describedby="username1-help" 
+        (ngModelChange)="onInputChange4($event)"  
+        [(ngModel)] = model4 
+         onIcon="pi pi-check" 
+         >
+        </p-toggleButton>
+    </div>
+  </div>

@@ -1,0 +1,25 @@
+
+<div  *ngIf="!view" class="field ">
+    <div class="rowLabel" *ngIf="Label">
+        <label class="columnLabel" for="{{id}}" class="block">{{label|translate}}  :</label>
+        <p *ngIf = "isRequired" class="columnLabel">{{"LABEL.REQURID"|translate}}</p>
+    </div>
+  
+        <div  class="rowLabel">
+            <input multiple="multiple" (change)="myUploader($event)"  type="file" id="selectedFile" style="display: none;" />
+
+            <m-button
+            *ngIf = "!readonly"
+            class="columnLabel"
+            setLabel="LABEL.ADD_FILE"
+            onClick="document.getElementById('selectedFile').click();"
+            >
+              </m-button>
+              <i *ngIf = "fileName" class="columnLabel" (click)="submitDownload()" class='bx bx-import' ></i>
+              <span class="columnLabel">{{fileName}}</span>
+        </div>
+
+
+
+
+</div>

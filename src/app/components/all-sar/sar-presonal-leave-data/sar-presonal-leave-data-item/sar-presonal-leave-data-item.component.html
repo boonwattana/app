@@ -1,0 +1,131 @@
+<div class="itemCard">
+  <div>
+    <div>
+      <p class="title-item">{{"MODULE.SAR"|translate}}</p>
+    </div>
+  </div>
+  <div class="customCard">
+    <button class="group">เพิ่ม ข้อมูลการลาประจำปี
+    
+    </button>
+    <div class="grid p-fluid form " >
+      <div class="field col-6 md:col-6">
+        <m-dropdown setId="TEACHER_ID" setLabel="ชื่อ-สกุล" [(setModel)]=model.teacherId    [setSelectOption]=teacherDropdown [setViewValue]=model.teacherValue [setReadonly] = "isTeacher" >
+        </m-dropdown>
+      </div>
+  <!--    <button class="group"> ตารางที่ 1 แสดงจำนวนวันลา ประจำปีการศึกษา  2561  (1 เมษายน  2561 – 31 มีนาคม 2562)</button> --> 
+  <div class="field col-12 md:col-3">
+    <m-input-text  [setRequired]="true"  setLabel="ปีการศึกษา"
+    setId="SCHOOL_YEAR"  [(setModel)]=model.schoolYear
+   ></m-input-text> 
+  </div>
+
+     
+      <table  style="width: 100%;" border="1" >
+        <tr  >
+          <th style="text-align: center; width:250px;" rowspan="2" >วัน เดือน ปี ที่ลา</th>
+          <th style="text-align: center;" colspan="2">ลาป่วย</th>
+          <th style="text-align: center;"colspan="2">ลากิจ</th>
+          <th style="text-align: center;"colspan="2">ลาอุปสมบท</th>
+          <th style="text-align: center;"colspan="2">ลาคลอด</th>
+          <th style="text-align: center;"colspan="2">มาสาย</th>
+        </tr>
+      
+        <tr  >
+          <th style="text-align: center;">ครั้ง</th>
+          <th style="text-align: center;">วัน</th>
+          <th style="text-align: center;">ครั้ง</th>
+          <th style="text-align: center;">วัน</th>
+          <th style="text-align: center;">ครั้ง</th>
+          <th style="text-align: center;">วัน</th>
+          <th style="text-align: center;">ครั้ง</th>
+          <th style="text-align: center;">วัน</th>
+          <th style="text-align: center;">ครั้ง</th>
+          <th style="text-align: center;">วัน</th>
+        </tr>
+        <tr  >
+          <td style="text-align: center;"> 
+            <m-input-text  [setRequired]="true" 
+            setId="LEAVE_DATE"  [(setModel)]=model.leaveDate
+           ></m-input-text> 
+            
+         </td>
+         
+          <td style="text-align: center;">
+            
+              <m-input-number setId="SICK_LEAVE_TIMES" [(setModel)]=model.sickLeaveTimes     >
+              </m-input-number>
+            
+          </td>
+          <td style="text-align: center;">
+          
+              <m-input-number setId="SICK_LEAVE_DAYS" [(setModel)]=model.sickLeaveDays     >
+              </m-input-number>
+           
+          </td>
+          <td style="text-align: center;">
+       
+              <m-input-number setId="BUSINESS_LEAVE_TIMES"  [(setModel)]=model.businessLeaveTimes     >
+              </m-input-number>
+       
+          </td>
+          <td style="text-align: center;">
+
+              <m-input-number setId="BUSINESS_LEAVE_DAYS"  [(setModel)]=model.businessLeaveDays     >
+              </m-input-number>
+         
+          </td>
+          <td style="text-align: center;">
+            
+              <m-input-number setId="ORDINATION_LEAVE_TIMES" [(setModel)]=model.ordinationLeaveTimes     >
+              </m-input-number>
+         
+          </td>
+          <td style="text-align: center;">
+     
+              <m-input-number setId="ORDINATION_LEAVE_DAYS"  [(setModel)]=model.ordinationLeaveDays     >
+              </m-input-number>
+            
+          </td>
+          <td style="text-align: center;">
+       
+              <m-input-number setId="DELIVER_LEAVE_TIMES"  [(setModel)]=model.deliverLeaveTimes     >
+              </m-input-number>
+         
+          </td>
+          <td style="text-align: center;">
+      
+              <m-input-number setId="DELIVER_LEAVE_DAYS" [(setModel)]=model.deliverLeaveDays     >
+              </m-input-number>
+         
+          </td>
+          <td style="text-align: center;">
+           
+                <m-input-number setId="LATE_TIMES" [(setModel)]=model.lateTimes     >
+                </m-input-number>
+            
+          </td>
+          <td style="text-align: center;">
+         
+              <m-input-number setId="LATE_LEAVE_DAYS" [(setModel)]=model.lateLeaveDays     >
+              </m-input-number>
+       
+          </td>
+        </tr>
+       
+        </table>
+        <div class="field col-12 md:col-12">   </div>
+    </div>
+  
+  </div>
+  <div class="grid p-fluid">
+    <div class="field col-12 md:col-2">
+      <m-button setClassName="backBtn" setLabel="LABEL.BACK" (onClick)="onBack()">
+      </m-button>
+    </div>
+    <div *ngIf = !view class="field col-12 md:col-2">
+      <m-button setClassName="saveBtn" setLabel="LABEL.SAVE" (onClick)="onSave()">
+      </m-button>
+    </div>
+  </div>
+</div>

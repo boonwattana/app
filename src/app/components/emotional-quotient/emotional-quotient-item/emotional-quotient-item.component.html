@@ -1,0 +1,371 @@
+<div  class="g-t">
+  <div class="title">{{"MODULE.EMOTIONAL_QUOTIENT"|translate}}</div>
+  <button *ngIf ='view' class="edit" (click)="pageEdit()">แก้ไขข้อมูล</button>
+</div>
+<div class="itemCard">
+  <div *ngIf = (complete&&view) class="customCard">
+    <div class="grid p-fluid form center">
+      <div class="field col-12 md:col-12 header green">ประเมินความฉลาดทางอารมณ์(EQ) สำเร็จ</div>
+    </div>
+    <div class="grid p-fluid form">
+      <div class="field col-12 md:col-6 ">
+        <m-dropdown setId="STUDENT_ID" setLabel="LABEL.STUDENT_ID" [(setModel)]=model.studentId [setReadonly] = true    [setSelectOption]=studentDropdown [setViewValue]=model.studentValue>>
+        </m-dropdown>
+      </div>
+      <div class="field col-12 md:col-6 ">
+        <m-dropdown setId="YEAR_TERM_ID" setLabel="LABEL.YEAR_TERM_ID" [(setModel)]=model.yearTermId [setReadonly] = true   [setSelectOption]=yearTermDropdown >
+        </m-dropdown>
+      </div>
+      <div class="field col-12 md:col-12 bold">ผลการประเมิน</div>
+      
+      <div class="field col-8 md:col-6 header-subject"> คะแนน EQ รวม</div>
+      <div class="field col-4 md:col-6"> {{getAll()}} </div>
+      <div class="field col-8 md:col-6 body"> 1.องค์ประกอบดี</div>
+      <div class="field col-4 md:col-6 ">{{ getGood() }}</div>
+      <div class="field col-8 md:col-6 body"> 1.1 ควบคุมอารมณ์</div>
+      <div class="field col-4 md:col-6">{{ getFeelHandle() }}</div>
+      <div class="field col-8 md:col-6 body"> 1.2 เห็นอกเห็นใจผู้อื่น</div>
+      <div class="field col-4 md:col-6 ">{{ getSeeFeeling() }}</div>
+      <div class="field col-8 md:col-6 body"> 1.3 รับผิดชอบ</div>
+      <div class="field col-4 md:col-6">{{ getResponbility() }}</div>
+
+      <div class="field col-8 md:col-6 subject"> 2.องค์ประกอบเก่ง</div>
+      <div class="field col-4 md:col-6">{{ getGreet() }}</div>
+      <div class="field col-8 md:col-6 body"> 2.1 มีแรงจูงใจ</div>
+      <div class="field col-4 md:col-6">{{ getMotivation() }}</div>
+      <div class="field col-8 md:col-6 body"> 2.2 ตัดสินใจและแก้ปัญหา</div>
+      <div class="field col-4 md:col-6">{{ getDecide() }}</div>
+      <div class="field col-8 md:col-6 body"> 2.3 สัมพันธภาพกับผู้อื่น</div>
+      <div class="field col-4 md:col-6">{{ getRelationShip() }}</div>
+
+      <div class="field col-8 md:col-6 subject"> 3.องค์ประกอบสุข</div>
+      <div class="field col-4 md:col-6">{{ getHappy() }}</div>
+      <div class="field col-8 md:col-6 body"> 3.1 ภูมิใจในตนเอง</div>
+      <div class="field col-4 md:col-6">{{ getSelftPound() }}</div>
+      <div class="field col-8 md:col-6 body"> 3.2 พึงพอใจในชีวิต</div>
+      <div class="field col-4 md:col-6">{{ getLifeGood() }}</div>
+      <div class="field col-8 md:col-6 body"> 3.3 สุขสงบทางใจ</div>
+      <div class="field col-4 md:col-6">{{ getHeartStay() }}</div>
+
+
+    </div>
+  </div>
+  <div *ngIf = (!complete&&view) class="customCard">
+    <div class="grid p-fluid form center">
+      <div class="field col-12 md:col-12 header red">ยังไม่บันทึกประเมินความฉลาดทางอารมณ์(EQ)</div>
+    </div>
+    <div class="grid p-fluid form">
+      <div class="field col-12 md:col-6 ">
+        <m-dropdown setId="STUDENT_ID" setLabel="LABEL.STUDENT_ID" [(setModel)]=model.studentId [setReadonly] = true    [setSelectOption]=studentDropdown [setViewValue]=model.studentValue>>
+        </m-dropdown>
+      </div>
+      <div class="field col-12 md:col-6 ">
+        <m-dropdown setId="YEAR_TERM_ID" setLabel="LABEL.YEAR_TERM_ID" [(setModel)]=model.yearTermId [setReadonly] = true   [setSelectOption]=yearTermDropdown >
+        </m-dropdown>
+      </div>
+
+    </div>
+  </div>
+  <div *ngIf = (!view) class="customCard">
+    <div class="grid p-fluid form ">
+      <div class="field col-12 md:col-6 ">
+        <m-dropdown setId="STUDENT_ID" setLabel="LABEL.STUDENT_ID" [(setModel)]=model.studentId [setReadonly] = true    [setSelectOption]=studentDropdown [setViewValue]=model.studentValue>>
+        </m-dropdown>
+      </div>
+      <div class="field col-12 md:col-6 ">
+        <m-dropdown setId="YEAR_TERM_ID" setLabel="LABEL.YEAR_TERM_ID" [(setModel)]=model.yearTermId [setReadonly] = true   [setSelectOption]=yearTermDropdown >
+        </m-dropdown>
+      </div>
+      <div class="field col-12 md:col-12">
+        <p class="p-title left" >แบบประเมินความฉลาดทางอารมณ์(EQ) ของกรมสุขภาพจิต</p>
+
+        <p  class="p-body" >ความฉลาดทางอารมณ์ คือ ความสามารถทางอารมณ์ในการดำเนินชีวิตอย่างสร้างสรรค์และมีความสุข การรู้จักความฉลาดทางอารมณ์ของตนเองเพื่อพัฒนาและการใช้ศักยภาพตนเองในการดำเนินชีวิตครอบครัว การทำงานและการอยู่ร่วมกับผู้อื่นได้อย่างมีความสุขและประสบความสำเร็จ กรมสุขภาพจิตได้ตระหนักถึงความสำคัญของความฉลาดทางอารมณ์จึงได้สร้างแบบประเมินเพื่อใช้ประเมินตนเอง </p>
+        <p class="p-body">ระดับความเครียด 1 หมายถึง ไม่รู้สึกเครียด</p>
+        <p class="p-title left" > คำแนะนำ </p>
+        <p class="p-body">  	แบบประเมินนี้เป็นประโยคที่มีข้อความเกี่ยวกับอารมณ์และความรู้สึกที่แสดงออกในลักษณะต่าง ๆ แม้ว่าประโยคอาจไม่ตรงกับที่ท่านเป็นอยู่           ก็ตามให้ท่านเลือกคำตอบที่ตรงกับท่านมากที่สุด ไม่มีคำตอบที่ถูกหรือผิด ดีหรือไม่ดี โปรดตอบตามความเป็นจริงและตอบทุกข้อ เพื่อท่านจะได้รู้จัก    ตนเองและวางแผนพัฒนาตนต่อไป  มีคำตอบ 4 คำตอบ สาหรับข้อความแต่ละประโยคคือ ไม่จริง จริงบางครั้ง ค่อนข้างจริง จริงมาก 
+          โปรดใส่เครื่องหมาย ✔ ในช่องที่ท่านเห็นว่าตรงกับตัวท่านมากที่สุด</p>
+
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-4option setId="EMOTIONAL_QUOTIENT" setOrder = 'LABEL.ORDER'  setLabel="LABEL.EMOTIONAL_QUOTIENT_ORDER" setAction1 = "LABEL.NOT_REAL" setAction2 = "LABEL.SOMETIME_REAL" setAction3 = "LABEL.OPTEN_REAL" setAction4 = "LABEL.REALY"      >
+        </m-input-number-4option>
+      </div>
+
+
+
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-4option setId="EQ_CH_1" (setModelChange) = onModelChange($event) setOrder = '1' setV1 = 1  setV2 = 2 setV3 = 3  setV4 = 4 setLabel="LABEL.EQ_CH_1" [(setModel)]=model.eqCh1     >
+        </m-input-number-4option>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-4option setId="EQ_CH_2" setOrder = '2' setV1 = 1  setV2 = 2 setV3 = 3  setV4 = 4 setLabel="LABEL.EQ_CH_2" [(setModel)]=model.eqCh2   (setModelChange) = onModelChange($event)  >
+        </m-input-number-4option>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-4option setId="EQ_CH_3" setOrder = '3' setV1 = 1  setV2 = 2 setV3 = 3  setV4 = 4 setLabel="LABEL.EQ_CH_3" [(setModel)]=model.eqCh3  (setModelChange) = onModelChange($event)   >
+        </m-input-number-4option>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-4option setId="EQ_CH_4" setOrder = '4' setV1 = 1  setV2 = 2 setV3 = 3  setV4 = 4 setLabel="LABEL.EQ_CH_4" [(setModel)]=model.eqCh4  (setModelChange) = onModelChange($event)   >
+        </m-input-number-4option>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-4option setId="EQ_CH_5" setOrder = '5' setV1 = 1  setV2 = 2 setV3 = 3  setV4 = 4 setLabel="LABEL.EQ_CH_5" [(setModel)]=model.eqCh5  (setModelChange) = onModelChange($event)   >
+        </m-input-number-4option>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-4option setId="EQ_CH_6" setOrder = '6' setV1 = 1  setV2 = 2 setV3 = 3  setV4 = 4 setLabel="LABEL.EQ_CH_6" [(setModel)]=model.eqCh6   (setModelChange) = onModelChange($event)  >
+        </m-input-number-4option>
+      </div>
+      <div class="field field-custom col-12 md:col-12 ">
+        <div class="sum-value">
+          รวม {{sum6}}
+        </div>
+
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-4option setId="EQ_CH_7" setOrder = '7' setV1 = 1  setV2 = 2 setV3 = 3  setV4 = 4 setLabel="LABEL.EQ_CH_7" [(setModel)]=model.eqCh7  (setModelChange) = onModelChange($event)   >
+        </m-input-number-4option>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-4option setId="EQ_CH_8" setOrder = '8' setV1 = 1  setV2 = 2 setV3 = 3  setV4 = 4 setLabel="LABEL.EQ_CH_8" [(setModel)]=model.eqCh8  (setModelChange) = onModelChange($event)   >
+        </m-input-number-4option>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-4option setId="EQ_CH_9" setOrder = '9' setV1 = 1  setV2 = 2 setV3 = 3  setV4 = 4 setLabel="LABEL.EQ_CH_9" [(setModel)]=model.eqCh9   (setModelChange) = onModelChange($event)  >
+        </m-input-number-4option>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-4option setId="EQ_CH_10" setOrder = '10' setV1 = 1  setV2 = 2 setV3 = 3  setV4 = 4 setLabel="LABEL.EQ_CH_10" [(setModel)]=model.eqCh10   (setModelChange) = onModelChange($event)  >
+        </m-input-number-4option>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-4option setId="EQ_CH_11" setOrder = '11' setV1 = 1  setV2 = 2 setV3 = 3  setV4 = 4 setLabel="LABEL.EQ_CH_11" [(setModel)]=model.eqCh11  (setModelChange) = onModelChange($event)   >
+        </m-input-number-4option>
+      </div>
+
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-4option setId="EQ_CH_12" setOrder = '12' setV1 = 1  setV2 = 2 setV3 = 3  setV4 = 4 setLabel="LABEL.EQ_CH_12" [(setModel)]=model.eqCh12  (setModelChange) = onModelChange($event)   >
+        </m-input-number-4option>
+      </div>
+      <div class="field field-custom col-12 md:col-12 ">
+        <div class="sum-value">
+          รวม  {{sum12}}
+        </div>
+
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-4option setId="EQ_CH_13" setOrder = '13' setV1 = 1  setV2 = 2 setV3 = 3  setV4 = 4 setLabel="LABEL.EQ_CH_13" [(setModel)]=model.eqCh13  (setModelChange) = onModelChange($event)   >
+        </m-input-number-4option>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-4option setId="EQ_CH_14" setOrder = '14' setV1 = 1  setV2 = 2 setV3 = 3  setV4 = 4 setLabel="LABEL.EQ_CH_14" [(setModel)]=model.eqCh14   (setModelChange) = onModelChange($event)  >
+        </m-input-number-4option>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-4option setId="EQ_CH_15" setOrder = '15' setV1 = 1  setV2 = 2 setV3 = 3  setV4 = 4 setLabel="LABEL.EQ_CH_15" [(setModel)]=model.eqCh15  (setModelChange) = onModelChange($event)   >
+        </m-input-number-4option>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-4option setId="EQ_CH_16" setOrder = '16' setV1 = 1  setV2 = 2 setV3 = 3  setV4 = 4 setLabel="LABEL.EQ_CH_16" [(setModel)]=model.eqCh16 (setModelChange) = onModelChange($event)    >
+        </m-input-number-4option>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-4option setId="EQ_CH_17" setOrder = '17' setV1 = 1  setV2 = 2 setV3 = 3  setV4 = 4 setLabel="LABEL.EQ_CH_17" [(setModel)]=model.eqCh17   (setModelChange) = onModelChange($event)  >
+        </m-input-number-4option>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-4option setId="EQ_CH_18" setOrder = '18' setV1 = 1  setV2 = 2 setV3 = 3  setV4 = 4 setLabel="LABEL.EQ_CH_18" [(setModel)]=model.eqCh18  (setModelChange) = onModelChange($event)   >
+        </m-input-number-4option>
+      </div>
+      <div class="field field-custom col-12 md:col-12 ">
+        <div class="sum-value">
+          รวม {{sum18}}
+        </div>
+
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-4option setId="EQ_CH_19" setOrder = '19' setV1 = 1  setV2 = 2 setV3 = 3  setV4 = 4 setLabel="LABEL.EQ_CH_19" [(setModel)]=model.eqCh19   (setModelChange) = onModelChange($event)  >
+        </m-input-number-4option>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-4option setId="EQ_CH_20" setOrder = '20' setV1 = 1  setV2 = 2 setV3 = 3  setV4 = 4 setLabel="LABEL.EQ_CH_20" [(setModel)]=model.eqCh20   (setModelChange) = onModelChange($event)  >
+        </m-input-number-4option>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-4option setId="EQ_CH_21" setOrder = '21' setV1 = 1  setV2 = 2 setV3 = 3  setV4 = 4 setLabel="LABEL.EQ_CH_21" [(setModel)]=model.eqCh21  (setModelChange) = onModelChange($event)   >
+        </m-input-number-4option>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-4option setId="EQ_CH_22" setOrder = '22' setV1 = 1  setV2 = 2 setV3 = 3  setV4 = 4 setLabel="LABEL.EQ_CH_22" [(setModel)]=model.eqCh22  (setModelChange) = onModelChange($event)  >
+        </m-input-number-4option>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-4option setId="EQ_CH_23" setOrder = '23' setV1 = 1  setV2 = 2 setV3 = 3  setV4 = 4 setLabel="LABEL.EQ_CH_23" [(setModel)]=model.eqCh23   (setModelChange) = onModelChange($event)  >
+        </m-input-number-4option>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-4option setId="EQ_CH_24" setOrder = '24' setV1 = 1  setV2 = 2 setV3 = 3  setV4 = 4 setLabel="LABEL.EQ_CH_24" [(setModel)]=model.eqCh24  (setModelChange) = onModelChange($event)   >
+        </m-input-number-4option>
+      </div>
+      <div class="field field-custom col-12 md:col-12 ">
+        <div class="sum-value">
+          รวม {{sum24}}
+        </div>
+
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-4option setId="EQ_CH_25" setOrder = '25' setV1 = 1  setV2 = 2 setV3 = 3  setV4 = 4 setLabel="LABEL.EQ_CH_25" [(setModel)]=model.eqCh25  (setModelChange) = onModelChange($event)   >
+        </m-input-number-4option>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-4option setId="EQ_CH_26" setOrder = '26' setV1 = 1  setV2 = 2 setV3 = 3  setV4 = 4 setLabel="LABEL.EQ_CH_26" [(setModel)]=model.eqCh26  (setModelChange) = onModelChange($event)   >
+        </m-input-number-4option>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-4option setId="EQ_CH_27" setOrder = '27' setV1 = 1  setV2 = 2 setV3 = 3  setV4 = 4 setLabel="LABEL.EQ_CH_27" [(setModel)]=model.eqCh27  (setModelChange) = onModelChange($event)   >
+        </m-input-number-4option>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-4option setId="EQ_CH_28" setOrder = '28' setV1 = 1  setV2 = 2 setV3 = 3  setV4 = 4 setLabel="LABEL.EQ_CH_28" [(setModel)]=model.eqCh28   (setModelChange) = onModelChange($event)  >
+        </m-input-number-4option>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-4option setId="EQ_CH_29" setOrder = '29' setV1 = 1  setV2 = 2 setV3 = 3  setV4 = 4 setLabel="LABEL.EQ_CH_29" [(setModel)]=model.eqCh29 (setModelChange) = onModelChange($event)    >
+        </m-input-number-4option>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-4option setId="EQ_CH_30" setOrder = '30' setV1 = 1  setV2 = 2 setV3 = 3  setV4 = 4 setLabel="LABEL.EQ_CH_30" [(setModel)]=model.eqCh30   (setModelChange) = onModelChange($event)  >
+        </m-input-number-4option>
+      </div>
+      <div class="field field-custom col-12 md:col-12 ">
+        <div class="sum-value">
+          รวม {{sum30}}
+        </div>
+
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-4option setId="EQ_CH_31" setOrder = '31' setV1 = 1  setV2 = 2 setV3 = 3  setV4 = 4 setLabel="LABEL.EQ_CH_31" [(setModel)]=model.eqCh31  (setModelChange) = onModelChange($event)   >
+        </m-input-number-4option>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-4option setId="EQ_CH_32" setOrder = '32' setV1 = 1  setV2 = 2 setV3 = 3  setV4 = 4 setLabel="LABEL.EQ_CH_32" [(setModel)]=model.eqCh32   (setModelChange) = onModelChange($event)  >
+        </m-input-number-4option>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-4option setId="EQ_CH_33" setOrder = '33' setV1 = 1  setV2 = 2 setV3 = 3  setV4 = 4 setLabel="LABEL.EQ_CH_33" [(setModel)]=model.eqCh33  (setModelChange) = onModelChange($event)   >
+        </m-input-number-4option>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-4option setId="EQ_CH_34" setOrder = '34' setV1 = 1  setV2 = 2 setV3 = 3  setV4 = 4 setLabel="LABEL.EQ_CH_34" [(setModel)]=model.eqCh34   (setModelChange) = onModelChange($event)  >
+        </m-input-number-4option>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-4option setId="EQ_CH_35" setOrder = '35' setV1 = 1  setV2 = 2 setV3 = 3  setV4 = 4 setLabel="LABEL.EQ_CH_35" [(setModel)]=model.eqCh35  (setModelChange) = onModelChange($event)   >
+        </m-input-number-4option>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-4option setId="EQ_CH_36" setOrder = '36' setV1 = 1  setV2 = 2 setV3 = 3  setV4 = 4 setLabel="LABEL.EQ_CH_36" [(setModel)]=model.eqCh36   (setModelChange) = onModelChange($event)  >
+        </m-input-number-4option>
+      </div>
+      <div class="field field-custom col-12 md:col-12 ">
+        <div class="sum-value">
+          รวม  {{sum36}}
+        </div>
+
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-4option setId="EQ_CH_37" setOrder = '37' setV1 = 1  setV2 = 2 setV3 = 3  setV4 = 4 setLabel="LABEL.EQ_CH_37" [(setModel)]=model.eqCh37  (setModelChange) = onModelChange($event)   >
+        </m-input-number-4option>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-4option setId="EQ_CH_38" setOrder = '38' setV1 = 1  setV2 = 2 setV3 = 3  setV4 = 4 setLabel="LABEL.EQ_CH_38" [(setModel)]=model.eqCh38  (setModelChange) = onModelChange($event)   >
+        </m-input-number-4option>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-4option setId="EQ_CH_39" setOrder = '39' setV1 = 1  setV2 = 2 setV3 = 3  setV4 = 4 setLabel="LABEL.EQ_CH_39" [(setModel)]=model.eqCh39   (setModelChange) = onModelChange($event)  >
+        </m-input-number-4option>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-4option setId="EQ_CH_40" setOrder = '40' setV1 = 1  setV2 = 2 setV3 = 3  setV4 = 4 setLabel="LABEL.EQ_CH_40" [(setModel)]=model.eqCh40   (setModelChange) = onModelChange($event)  >
+        </m-input-number-4option>
+      </div>
+      <div class="field field-custom col-12 md:col-12 ">
+        <div class="sum-value">
+          รวม {{sum40}}
+        </div>
+
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-4option setId="EQ_CH_41" setOrder = '41' setV1 = 1  setV2 = 2 setV3 = 3  setV4 = 4 setLabel="LABEL.EQ_CH_41" [(setModel)]=model.eqCh41  (setModelChange) = onModelChange($event)   >
+        </m-input-number-4option>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-4option setId="EQ_CH_42" setOrder = '42' setV1 = 1  setV2 = 2 setV3 = 3  setV4 = 4 setLabel="LABEL.EQ_CH_42" [(setModel)]=model.eqCh42  (setModelChange) = onModelChange($event)   >
+        </m-input-number-4option>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-4option setId="EQ_CH_43" setOrder = '43' setV1 = 1  setV2 = 2 setV3 = 3  setV4 = 4 setLabel="LABEL.EQ_CH_43" [(setModel)]=model.eqCh43  (setModelChange) = onModelChange($event)   >
+        </m-input-number-4option>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-4option setId="EQ_CH_44" setOrder = '44' setV1 = 1  setV2 = 2 setV3 = 3  setV4 = 4 setLabel="LABEL.EQ_CH_44" [(setModel)]=model.eqCh44  (setModelChange) = onModelChange($event)   >
+        </m-input-number-4option>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-4option setId="EQ_CH_45" setOrder = '45' setV1 = 1  setV2 = 2 setV3 = 3  setV4 = 4 setLabel="LABEL.EQ_CH_45" [(setModel)]=model.eqCh45  (setModelChange) = onModelChange($event)   >
+        </m-input-number-4option>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-4option setId="EQ_CH_46" setOrder = '46' setV1 = 1  setV2 = 2 setV3 = 3  setV4 = 4 setLabel="LABEL.EQ_CH_46" [(setModel)]=model.eqCh46   (setModelChange) = onModelChange($event)  >
+        </m-input-number-4option>
+      </div>
+      <div class="field field-custom col-12 md:col-12 ">
+        <div class="sum-value">
+          รวม {{sum46}}
+        </div>
+
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-4option setId="EQ_CH_47" setOrder = '47' setV1 = 1  setV2 = 2 setV3 = 3  setV4 = 4 setLabel="LABEL.EQ_CH_47" [(setModel)]=model.eqCh47 (setModelChange) = onModelChange($event)  >
+        </m-input-number-4option>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-4option setId="EQ_CH_48" setOrder = '48' setV1 = 1  setV2 = 2 setV3 = 3  setV4 = 4 setLabel="LABEL.EQ_CH_48" [(setModel)]=model.eqCh48  (setModelChange) = onModelChange($event)   >
+        </m-input-number-4option>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-4option setId="EQ_CH_49" setOrder = '49' setV1 = 1  setV2 = 2 setV3 = 3  setV4 = 4 setLabel="LABEL.EQ_CH_49" [(setModel)]=model.eqCh49  (setModelChange) = onModelChange($event)   >
+        </m-input-number-4option>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-4option setId="EQ_CH_50" setOrder = '50' setV1 = 1  setV2 = 2 setV3 = 3  setV4 = 4 setLabel="LABEL.EQ_CH_50" [(setModel)]=model.eqCh50   (setModelChange) = onModelChange($event)  >
+        </m-input-number-4option>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-4option setId="EQ_CH_51" setOrder = '51' setV1 = 1  setV2 = 2 setV3 = 3  setV4 = 4 setLabel="LABEL.EQ_CH_51" [(setModel)]=model.eqCh51  (setModelChange) = onModelChange($event)   >
+        </m-input-number-4option>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-4option setId="EQ_CH_52" setOrder = '52' setV1 = 1  setV2 = 2 setV3 = 3  setV4 = 4 setLabel="LABEL.EQ_CH_52" [(setModel)]=model.eqCh52  (setModelChange) = onModelChange($event)   >
+        </m-input-number-4option>
+      </div>
+      <div class="field field-custom col-12 md:col-12 ">
+        <div class="sum-value">
+          รวม {{sum52}}
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div class="grid p-fluid">
+    <div *ngIf = !isStudent class="field col-6 md:col-2">
+      <m-button setClassName="backBtn" setLabel="LABEL.BACK" (onClick)="backTolist()">
+      </m-button>
+    </div>
+    <div *ngIf = !view class="field col-12 md:col-2">
+      <m-button setClassName="saveBtn" setLabel="LABEL.SAVE" (onClick)="onSave()">
+      </m-button>
+    </div>
+  </div>
+</div>

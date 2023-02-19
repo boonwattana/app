@@ -1,0 +1,508 @@
+<div class="itemCard">
+  <!-- <div>
+    <div>
+      <p class="title-item">{{"MODULE.CHECK_STUDENT"|translate}}</p>
+    </div>
+  </div> -->
+  <div class="g-t">
+    <div class="title">{{ "MODULE.CHECK_STUDENT" | translate }}</div>
+    <button *ngIf="view" class="edit" (click)="pageEdit()">แก้ไขข้อมูล</button>
+  </div>
+  <div class="customCard">
+    <button class="group">{{ "GROUP.STUDENT_CHECK_GROUP" | translate }}</button>
+    <div class="grid p-fluid form">
+      <div class="field col-6 md:col-3">
+        <m-view-only
+          setLabel="LABEL.STUDENT_NAME_VALUE"
+          [setValue]="model.studentValue"
+          setId="STUDENT_NAME_VALUE"
+        >
+        </m-view-only>
+      </div>
+      <div class="field col-6 md:col-2">
+        <m-view-only
+          setLabel="LABEL.CLASSROOM_TYPE_VALUE"
+          [setValue]="model.classroomTypeValue"
+          setId="CLASSROOM_TYPE_VALUE"
+        >
+        </m-view-only>
+      </div>
+      <div class="field col-4 md:col-2">
+        <m-view-only
+          setLabel="LABEL.CLASSROOM_VALUE"
+          [setValue]="model.classroomValue"
+          setId="CLASSROOM_VALUE"
+        >
+        </m-view-only>
+      </div>
+      <div class="field col-4 md:col-2">
+        <m-view-only
+          setLabel="LABEL.BIRTH_DATE_VALUE"
+          [setValue]="model.birthDate"
+          setId="BIRTH_DATE_VALUE"
+        >
+        </m-view-only>
+      </div>
+      <div class="field col-4 md:col-2">
+        <m-view-only
+          setLabel="LABEL.AGE_VALUE"
+          [setValue]="model.age"
+          setId="AGE_VALUE"
+        >
+        </m-view-only>
+      </div>
+      <div class="field col-4 md:col-2">
+        <m-view-only
+          setLabel="LABEL.GENDAR_VALUE"
+          [setValue]="model.gendar"
+          setId="GENDAR_VALUE"
+        >
+        </m-view-only>
+      </div>
+      <div class="field col-4 md:col-10">
+        <m-view-only
+          setLabel="LABEL.BLOOD_TYPE_VALUE"
+          [setValue]="model.bloodTypeValue"
+          setId="BLOOD_TYPE_VALUE"
+        >
+        </m-view-only>
+      </div>
+      <div class="field col-4 md:col-3">
+        <m-dropdown
+          setId="YEAR_TERM_ID"
+          setLabel="LABEL.YEAR_TERM_ID"
+          [(setModel)]="model.yearTermId"
+          [setReadonly]="true"
+          [setSelectOption]="yearTermDropdown"
+        >
+        </m-dropdown>
+      </div>
+      <div class="field col-6 md:col-4">
+        <m-input-text
+          [setRequired]="true"
+          setId="DRUG_FOOD_ALLERGY"
+          setLabel="LABEL.DRUG_FOOD_ALLERGY"
+          [(setModel)]="model.drugFoodAllergy"
+        >
+        </m-input-text>
+      </div>
+      <div class="field col-6 md:col-4">
+        <m-input-text
+          [setRequired]="true"
+          setId="LLINESSES"
+          setLabel="LABEL.LLINESSES"
+          [(setModel)]="model.llinesses"
+        >
+        </m-input-text>
+      </div>
+      <div class="field col-6 md:col-2">
+        <m-input-number
+          setId="WEIGHT"
+          setLabel="LABEL.WEIGHT"
+          [(setModel)]="model.weight"
+        >
+        </m-input-number>
+      </div>
+      <div class="field col-6 md:col-2">
+        <m-input-number
+          setId="HEIGHT"
+          setLabel="LABEL.HEIGHT"
+          [(setModel)]="model.height"
+        >
+        </m-input-number>
+      </div>
+      <div class="field col-6 md:col-2">
+        <m-input-number
+          setId="WAIST"
+          setLabel="LABEL.WAIST"
+          [(setModel)]="model.waist"
+        >
+        </m-input-number>
+      </div>
+      <div class="field col-6 md:col-2">
+        <m-input-number
+          setId="BLOOD_PRESSURE"
+          setLabel="LABEL.BLOOD_PRESSURE"
+          [(setModel)]="model.bloodPressure"
+        >
+        </m-input-number>
+      </div>
+      <div class="field col-6 md:col-2">
+        <m-input-number
+          setId="PLUSE_TIME"
+          setLabel="LABEL.PLUSE_TIME"
+          [(setModel)]="model.pluseTime"
+        >
+        </m-input-number>
+      </div>
+    </div>
+    <button class="group">{{ "GROUP.STUDENT_EYE_GROUP" | translate }}</button>
+    <div class="grid p-fluid form">
+      <div class="field col-4 md:col-4">
+        <m-switch
+          setId="EYS_EXAM"
+          setLabel="LABEL.EYS_EXAM"
+          [(setModel)]="model.eysExam"
+          (setModelChange)="model.glasses = false"
+        >
+        </m-switch>
+      </div>
+      <div class="field col-3 md:col-4">
+        <m-switch
+          setId="GLASSES"
+          (setModelChange)="model.eysExam = false"
+          setLabel="LABEL.GLASSES"
+          [(setModel)]="model.glasses"
+        >
+        </m-switch>
+      </div>
+      <div class="field col-5 md:col-4">
+        <m-switch
+          setId="CONTACT_LENS"
+          setLabel="LABEL.CONTACT_LENS"
+          [(setModel)]="model.contactLens"
+        >
+        </m-switch>
+      </div>
+      <div class="field col-12 md:col-12">
+        <span
+          *ngIf="validateEye([model.eysExam, model.glasses, model.contactLens])"
+          class="red"
+          >โปรดระบุ</span
+        >
+      </div>
+      <div class="field col-3 md:col-4 right">ตาซ้าย</div>
+      <div class="field col-2 md:col-2">
+        <m-switch
+          setId="LEFT_NORMAL"
+          setLabel="LABEL.NORMAL"
+          [(setModel)]="model.leftNormal"
+          (setModelChange)="
+            model.leftShort = false;
+            model.leftLong = false;
+            model.leftBend = false
+          "
+        >
+        </m-switch>
+      </div>
+      <div class="field col-2 md:col-2">
+        <m-switch
+          setId="LEFT_SHORT"
+          setLabel="LABEL.SHORT"
+          [(setModel)]="model.leftShort"
+          (setModelChange)="model.leftNormal = false"
+        >
+        </m-switch>
+      </div>
+      <div class="field col-2 md:col-2">
+        <m-switch
+          setId="LEFT_LONG"
+          setLabel="LABEL.LONG"
+          [(setModel)]="model.leftLong"
+          (setModelChange)="model.leftNormal = false"
+        >
+        </m-switch>
+      </div>
+      <div class="field col-2 md:col-2">
+        <m-switch
+          setId="LEFT_BEND"
+          setLabel="LABEL.BEND"
+          [(setModel)]="model.leftBend"
+          (setModelChange)="model.leftNormal = false"
+        >
+        </m-switch>
+      </div>
+      <div class="field col-4 md:col-4">
+        <span></span>
+      </div>
+      <div class="field col-8 md:col-8">
+        <span
+          *ngIf="
+            validateEye([
+              model.leftNormal,
+              model.leftShort,
+              model.leftLong,
+              model.leftBend
+            ])
+          "
+          class="red"
+          >โปรดระบุ</span
+        >
+      </div>
+      <div class="field col-3 md:col-4 right">ตาขวา</div>
+      <div class="field col-2 md:col-2">
+        <m-switch
+          setId="RIGHT_NORMAL"
+          setLabel="LABEL.NORMAL"
+          [(setModel)]="model.rightNormal"
+          (setModelChange)="
+            model.rightShort = false;
+            model.rightLong = false;
+            model.rightBend = false
+          "
+        >
+        </m-switch>
+      </div>
+      <div class="field col-2 md:col-2">
+        <m-switch
+          setId="RIGHT_SHORT"
+          setLabel="LABEL.SHORT"
+          [(setModel)]="model.rightShort"
+          (setModelChange)="model.rightNormal = false"
+        >
+        </m-switch>
+      </div>
+      <div class="field col-2 md:col-2">
+        <m-switch
+          setId="RIGHT_LONG"
+          setLabel="LABEL.LONG"
+          [(setModel)]="model.rightLong"
+          (setModelChange)="model.rightNormal = false"
+        >
+        </m-switch>
+      </div>
+      <div class="field col-2 md:col-2">
+        <m-switch
+          setId="RIGHT_BEND"
+          setLabel="LABEL.BEND"
+          [(setModel)]="model.rightBend"
+          (setModelChange)="model.rightNormal = false"
+        >
+        </m-switch>
+      </div>
+      <div class="field col-4 md:col-4">
+        <span></span>
+      </div>
+      <div class="field col-8 md:col-8">
+        <span
+          *ngIf="
+            validateEye([
+              model.rightNormal,
+              model.rightShort,
+              model.rightLong,
+              model.rightBend
+            ])
+          "
+          class="red"
+          >โปรดระบุ</span
+        >
+      </div>
+      <div class="field col-2 md:col-12 ml-1">ตาบอดสี</div>
+      <div class="field col-3 md:col-3 ml-1">
+        <m-switch
+          setId="COLOR_BLINDNESS_NORMAL"
+          setLabel="LABEL.NORMAL"
+          [(setModel)]="model.colorBlindnessNormal"
+          (setModelChange)="model.colorBlindnessInNormal = false"
+        >
+        </m-switch>
+      </div>
+      <div class="field col-3 md:col-3">
+        <m-switch
+          setId="COLOR_BLINDNESS_INNORMAL"
+          setLabel="LABEL.INNORMAL"
+          [(setModel)]="model.colorBlindnessInNormal"
+          (setModelChange)="model.colorBlindnessNormal = false"
+        >
+        </m-switch>
+      </div>
+      <div class="field col-12 md:col-12">
+        <span
+          *ngIf="
+            validateEye([
+              model.colorBlindnessNormal,
+              model.colorBlindnessInNormal
+            ])
+          "
+          class="red"
+          >โปรดระบุ</span
+        >
+      </div>
+    </div>
+    <button class="group">{{ "GROUP.STUDENT_BODY_GROUP" | translate }}</button>
+    <div class="grid p-fluid form">
+      <div class="field field-custom col-12 md:col-12">
+        <m-switch-from
+          setId="EXAM_DESC"
+          setLabel="LABEL.EXAM_TITLE"
+          setDescription="LABEL.EXAM_DESC"
+          setAction1="LABEL.ACTION_1"
+          setAction2="LABEL.ACTION_2"
+        >
+        </m-switch-from>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-switch-from
+          setId="HAIR_AND_HEAD"
+          setLabel="LABEL.HAIR_AND_HEAD"
+          setDescription="LABEL.HAIR_AND_HEAD_DESC"
+          [(setModel)]="model.hairAndHead"
+        >
+        </m-switch-from>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-switch-from
+          setId="EYE"
+          setLabel="LABEL.EYE"
+          [(setModel)]="model.eye"
+          setDescription="LABEL.EYE_DESC"
+        >
+        </m-switch-from>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-switch-from
+          setId="EAR"
+          setLabel="LABEL.EAR"
+          [(setModel)]="model.ear"
+          setDescription="LABEL.EAR_DESC"
+        >
+        </m-switch-from>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-switch-from
+          setId="NOSE"
+          setLabel="LABEL.NOSE"
+          [(setModel)]="model.nose"
+          setDescription="LABEL.NOSE_DESC"
+        >
+        </m-switch-from>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-switch-from
+          setId="MOUTH_TONGUE"
+          setLabel="LABEL.MOUTH_TONGUE"
+          [(setModel)]="model.mouthTongue"
+          setDescription="LABEL.MOUTH_TONGUE_DESC"
+        >
+        </m-switch-from>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-switch-from
+          setId="GUM"
+          setLabel="LABEL.GUM"
+          [(setModel)]="model.gum"
+          setDescription="LABEL.GUM_DESC"
+        >
+        </m-switch-from>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-switch-from
+          setId="THROAT_TONSIL"
+          setLabel="LABEL.THROAT_TONSIL"
+          [(setModel)]="model.throatTonsil"
+          setDescription="LABEL.THROAT_TONSIL_DESC"
+        >
+        </m-switch-from>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-switch-from
+          setId="THYROID"
+          setLabel="LABEL.THYROID"
+          [(setModel)]="model.thyroid"
+          setDescription="LABEL.THYROID_DESC"
+        >
+        </m-switch-from>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-switch-from
+          setId="SKIN"
+          setLabel="LABEL.SKIN"
+          [(setModel)]="model.skin"
+          setDescription="LABEL.SKIN_DESC"
+        >
+        </m-switch-from>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-switch-from
+          setId="BONE"
+          setLabel="LABEL.BONE"
+          [(setModel)]="model.bone"
+          setDescription="LABEL.BONE_DESC"
+        >
+        </m-switch-from>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-switch-from
+          setId="SPEAKING_HEARING"
+          setLabel="LABEL.SPEAKING_HEARING"
+          [(setModel)]="model.speakingHearing"
+          setDescription="LABEL.SPEAKING_HEARING_DESC"
+        >
+        </m-switch-from>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-switch-from
+          setId="EAR_LESS"
+          setLabel="LABEL.EAR_LESS"
+          [(setModel)]="model.earLess"
+          setDescription="LABEL.EAR_LESS_DESC"
+        >
+        </m-switch-from>
+      </div>
+      <div class="field col-12 md:col-12">
+        <span *ngIf="validate()" class="red">โปรดประเมินให้ครบถ้วน</span>
+      </div>
+    </div>
+    <button class="group">
+      {{ "GROUP.STUDENT_DENTAL_GROUP" | translate }}
+    </button>
+    <div class="grid p-fluid form">
+      <div class="field col-3 md:col-3">
+        <m-switch
+          setId="DENTAL_CAVITIES"
+          setLabel="LABEL.DENTAL_CAVITIES"
+          [(setModel)]="model.dentalCavities"
+        >
+        </m-switch>
+      </div>
+      <div class="field col-9 md:col-9">
+        <m-input-text
+          setId="DENTAL_CAVITIES_TXT"
+          [(setModel)]="model.dentalCavitiesTxt"
+        >
+        </m-input-text>
+      </div>
+      <div class="field col-3 md:col-3">
+        <m-switch
+          setId="DENTAL_LIMESTONE"
+          setLabel="LABEL.DENTAL_LIMESTONE"
+          [(setModel)]="model.dentalLimestone"
+        >
+        </m-switch>
+      </div>
+      <div class="field col-9 md:col-9">
+        <m-input-text
+          setId="DENTAL_LIMESTONE_TXT"
+          [(setModel)]="model.dentalLimestoneTxt"
+        >
+        </m-input-text>
+      </div>
+      <div class="field col-12 md:col-12">
+        <m-input-text
+          setId="DENTAL_OTHER"
+          setLabel="LABEL.DENTAL_OTHER"
+          [(setModel)]="model.dentalOther"
+        >
+        </m-input-text>
+      </div>
+    </div>
+  </div>
+  <div class="grid p-fluid">
+    <div *ngIf="!isStudent" class="field col-12 md:col-2">
+      <m-button
+        setClassName="backBtn"
+        setLabel="LABEL.BACK"
+        (onClick)="backTolist()"
+      >
+      </m-button>
+    </div>
+    <div *ngIf="!view" class="field col-12 md:col-2">
+      <m-button
+        setClassName="saveBtn"
+        setLabel="LABEL.SAVE"
+        (onClick)="onSave()"
+      >
+      </m-button>
+    </div>
+  </div>
+</div>

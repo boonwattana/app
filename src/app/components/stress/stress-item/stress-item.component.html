@@ -1,0 +1,161 @@
+
+  <div  class="g-t">
+    <div class="title">{{"MODULE.STRESS"|translate}}</div>
+    <button *ngIf ='view' class="edit" (click)="pageEdit()">แก้ไขข้อมูล</button>
+  </div>
+<div class="itemCard">
+  <div *ngIf = (complete&&view) class="customCard">
+    <div class="grid p-fluid form center">
+      <div class="field col-12 md:col-12 header green">บันทึกแบบประเมินความเครียด สำเร็จ</div>
+    </div>
+    <div class="grid p-fluid form">
+      <div class="field col-12 md:col-6 ">
+        <m-dropdown setId="STUDENT_ID" setLabel="LABEL.STUDENT_ID" [(setModel)]=model.studentId [setReadonly] = true    [setSelectOption]=studentDropdown [setViewValue]=model.studentValue>>
+        </m-dropdown>
+      </div>
+      <div class="field col-12 md:col-6 ">
+        <m-dropdown setId="YEAR_TERM_ID" setLabel="LABEL.YEAR_TERM_ID" [(setModel)]=model.yearTermId [setReadonly] = true   [setSelectOption]=yearTermDropdown >
+        </m-dropdown>
+      </div>
+      <div class="field col-12 md:col-12 bold">ผลการประเมิน</div>
+      
+      <div class="field col-8 md:col-6 header-subject"> ระดับของความเครียด</div>
+      <div class="field col-4 md:col-6"> {{getStressLabel()}} </div>
+     
+
+
+    </div>
+  </div>
+  <div *ngIf = (!complete&&view) class="customCard">
+    <div class="grid p-fluid form center">
+      <div class="field col-12 md:col-12 header red">ยังไม่บันทึกแบบประเมินความเครียด</div>
+    </div>
+    <div class="grid p-fluid form">
+      <div class="field col-12 md:col-6 ">
+        <m-dropdown setId="STUDENT_ID" setLabel="LABEL.STUDENT_ID" [(setModel)]=model.studentId [setReadonly] = true    [setSelectOption]=studentDropdown [setViewValue]=model.studentValue>>
+        </m-dropdown>
+      </div>
+      <div class="field col-12 md:col-6 ">
+        <m-dropdown setId="YEAR_TERM_ID" setLabel="LABEL.YEAR_TERM_ID" [(setModel)]=model.yearTermId [setReadonly] = true   [setSelectOption]=yearTermDropdown >
+        </m-dropdown>
+      </div>
+
+    </div>
+  </div>
+  <div *ngIf = (!view) class="customCard">
+    <div class="grid p-fluid form ">
+      <div class="field col-6 md:col-6">
+        <m-dropdown setId="STUDENT_ID" setLabel="LABEL.STUDENT_ID" [(setModel)]=model.studentId  [setReadonly] = true  [setSelectOption]=studentDropdown [setViewValue]=model.studentValue>>
+        </m-dropdown>
+      </div>
+      <div class="field col-6 md:col-6">
+        <m-dropdown setId="YEAR_TERM_ID" setLabel="LABEL.YEAR_TERM_ID" [(setModel)]=model.yearTermId  [setReadonly] = true  [setSelectOption]=yearTermDropdown >
+        </m-dropdown>
+      </div>
+      <div class="field col-12 md:col-12">
+        <p class="p-title" >แบบประเมินความเครียด กรมสุขภาพจิต (SPST - 20)</p>
+        <p class="p-title" >(อ้างอิง จากกรมสุขภาพจิต)</p>
+        <p  class="p-body" >คำชี้แจง : ในระยะ 6 เดือนที่ผ่านมามีเหตุการณ์ในข้อใด เกิดขึ้นกับตัวคุณบ้าง และคุณมีความรู้สึกอย่างไรต่อเหตุการณ์นั้น ถ้าข้อไหนไม่ได้เกิดขึ้นให้ข้ามไปไม่ต้องตอบ</p>
+        <p class="p-body">ระดับความเครียด 1 หมายถึง ไม่รู้สึกเครียด</p>
+        <p class="p-body">ระดับความเครียด 2 หมายถึง รู้สึกเครียดเล็กน้อย</p>
+        <p class="p-body">ระดับความเครียด 3 หมายถึง รู้สึกเครียดปานกลาง</p>
+        <p class="p-body">ระดับความเครียด 4 หมายถึง รู้สึกเครียดมาก</p>
+        <p class="p-body">ระดับความเครียด 5 หมายถึง รู้สึกเครียดมากที่สุด</p>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-5option setId="STRESS_FORM" setOrder = 'LABEL.ORDER' setAction1 = "LABEL.STRESS_FORM_1" setAction2 = "LABEL.STRESS_FORM_2" setAction3 = "LABEL.STRESS_FORM_3" setAction4 = "LABEL.STRESS_FORM_4" setAction5 = "LABEL.STRESS_FORM_5"  setLabel="LABEL.STRESS_FORM"     >
+        </m-input-number-5option>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-5option setId="STRESS_CH_1" setOrder = '1' setV1 = 1  setV2 = 2 setV3 = 3  setV4 = 4 setV5 = 5 setLabel="LABEL.STRESS_CH_1" [(setModel)]=model.stressCh1     >
+        </m-input-number-5option>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-5option setId="STRESS_CH_2" setOrder = '2' setV1 = 1  setV2 = 2 setV3 = 3  setV4 = 4 setV5 = 5 setLabel="LABEL.STRESS_CH_2" [(setModel)]=model.stressCh2     >
+        </m-input-number-5option>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-5option setId="STRESS_CH_3" setOrder = '3' setV1 = 1  setV2 = 2 setV3 = 3  setV4 = 4 setV5 = 5 setLabel="LABEL.STRESS_CH_3" [(setModel)]=model.stressCh3     >
+        </m-input-number-5option>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-5option setId="STRESS_CH_4" setOrder = '4' setV1 = 1  setV2 = 2 setV3 = 3  setV4 = 4 setV5 = 5 setLabel="LABEL.STRESS_CH_4" [(setModel)]=model.stressCh4     >
+        </m-input-number-5option>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-5option setId="STRESS_CH_5" setOrder = '5' setV1 = 1  setV2 = 2 setV3 = 3  setV4 = 4 setV5 = 5 setLabel="LABEL.STRESS_CH_5" [(setModel)]=model.stressCh5     >
+        </m-input-number-5option>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-5option setId="STRESS_CH_6" setOrder = '6' setV1 = 1  setV2 = 2 setV3 = 3  setV4 = 4 setV5 = 5 setLabel="LABEL.STRESS_CH_6" [(setModel)]=model.stressCh6     >
+        </m-input-number-5option>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-5option setId="STRESS_CH_7" setOrder = '7' setV1 = 1  setV2 = 2 setV3 = 3  setV4 = 4 setV5 = 5 setLabel="LABEL.STRESS_CH_7" [(setModel)]=model.stressCh7     >
+        </m-input-number-5option>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-5option setId="STRESS_CH_8" setOrder = '8' setV1 = 1  setV2 = 2 setV3 = 3  setV4 = 4 setV5 = 5 setLabel="LABEL.STRESS_CH_8" [(setModel)]=model.stressCh8     >
+        </m-input-number-5option>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-5option setId="STRESS_CH_9" setOrder = '9' setV1 = 1  setV2 = 2 setV3 = 3  setV4 = 4 setV5 = 5 setLabel="LABEL.STRESS_CH_9" [(setModel)]=model.stressCh9     >
+        </m-input-number-5option>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-5option setId="STRESS_CH_10" setOrder = '10' setV1 = 1  setV2 = 2 setV3 = 3  setV4 = 4 setV5 = 5 setLabel="LABEL.STRESS_CH_10" [(setModel)]=model.stressCh10     >
+        </m-input-number-5option>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-5option setId="STRESS_CH_11" setOrder = '11' setV1 = 1  setV2 = 2 setV3 = 3  setV4 = 4 setV5 = 5 setLabel="LABEL.STRESS_CH_11" [(setModel)]=model.stressCh11     >
+        </m-input-number-5option>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-5option setId="STRESS_CH_12" setOrder = '12' setV1 = 1  setV2 = 2 setV3 = 3  setV4 = 4 setV5 = 5 setLabel="LABEL.STRESS_CH_12" [(setModel)]=model.stressCh12     >
+        </m-input-number-5option>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-5option setId="STRESS_CH_13" setOrder = '13' setV1 = 1  setV2 = 2 setV3 = 3  setV4 = 4 setV5 = 5 setLabel="LABEL.STRESS_CH_13" [(setModel)]=model.stressCh13     >
+        </m-input-number-5option>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-5option setId="STRESS_CH_14" setOrder = '14' setV1 = 1  setV2 = 2 setV3 = 3  setV4 = 4 setV5 = 5 setLabel="LABEL.STRESS_CH_14" [(setModel)]=model.stressCh14     >
+        </m-input-number-5option>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-5option setId="STRESS_CH_15" setOrder = '15' setV1 = 1  setV2 = 2 setV3 = 3  setV4 = 4 setV5 = 5 setLabel="LABEL.STRESS_CH_15" [(setModel)]=model.stressCh15     >
+        </m-input-number-5option>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-5option setId="STRESS_CH_16" setOrder = '16' setV1 = 1  setV2 = 2 setV3 = 3  setV4 = 4 setV5 = 5 setLabel="LABEL.STRESS_CH_16" [(setModel)]=model.stressCh16     >
+        </m-input-number-5option>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-5option setId="STRESS_CH_17" setOrder = '17' setV1 = 1  setV2 = 2 setV3 = 3  setV4 = 4 setV5 = 5 setLabel="LABEL.STRESS_CH_17" [(setModel)]=model.stressCh17     >
+        </m-input-number-5option>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-5option setId="STRESS_CH_18" setOrder = '18' setV1 = 1  setV2 = 2 setV3 = 3  setV4 = 4 setV5 = 5 setLabel="LABEL.STRESS_CH_18" [(setModel)]=model.stressCh18     >
+        </m-input-number-5option>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-5option setId="STRESS_CH_19" setOrder = '19' setV1 = 1  setV2 = 2 setV3 = 3  setV4 = 4 setV5 = 5 setLabel="LABEL.STRESS_CH_19" [(setModel)]=model.stressCh19     >
+        </m-input-number-5option>
+      </div>
+      <div class="field field-custom col-12 md:col-12">
+        <m-input-number-5option setId="STRESS_CH_20" setOrder = '20' setV1 = 1  setV2 = 2 setV3 = 3  setV4 = 4 setV5 = 5 setLabel="LABEL.STRESS_CH_20" [(setModel)]=model.stressCh20     >
+        </m-input-number-5option>
+      </div>
+    </div>
+  </div>
+  <div class="grid p-fluid">
+    <div *ngIf = !isStudent class="field col-6 md:col-2">
+      <m-button setClassName="backBtn" setLabel="LABEL.BACK" (onClick)="backTolist()">
+      </m-button>
+    </div>
+    <div *ngIf = !view class="field col-12 md:col-2">
+      <m-button setClassName="saveBtn" setLabel="LABEL.SAVE" (onClick)="onSave()">
+      </m-button>
+    </div>
+  </div>
+</div>

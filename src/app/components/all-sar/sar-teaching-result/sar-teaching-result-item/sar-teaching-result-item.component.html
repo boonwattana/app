@@ -1,0 +1,121 @@
+<div class="itemCard">
+  <div>
+    <div>
+      <p class="title-item">{{"MODULE.SAR_TEACHING_RESULT"|translate}}</p>
+    </div>
+  </div>
+  <div class="customCard">
+    <button class="group">ข้อมูล การปฏิบัติหน้าที่จัดกิจกรรมการเรียนการสอนประจำปีการศึกษา</button>
+    <div class="grid p-fluid form ">
+      <div class="field col-6 md:col-3">
+        <m-dropdown setId="TEACHER_ID" setLabel="ชื่อ-สกุล" [(setModel)]=model.teacherId    [setSelectOption]=teacherDropdown [setViewValue]=model.teacherValue [setReadonly] = "isTeacher" >
+        </m-dropdown>
+      </div>
+      <div class="field col-6 md:col-3">
+        <m-input-text setId="SCHOOLYEAR" setLabel="ประจำปีการศึกษา" [setRequired]="true" [(setModel)]=model.schoolyear   >
+        </m-input-text>
+        
+      </div>
+      <div class="field col-6 md:col-3">
+        <m-dropdown setId="YEAR_TERM_ID" setLabel="ประจำ ภาคเรียน / ปีการศึกษา" [setRequired]="true" [(setModel)]=model.yearTermId    [setSelectOption]=yearTermDropdown [setViewValue]=model.yearTermValue>>
+        </m-dropdown>
+        
+      </div>
+
+  
+     
+      <table  style="width: 100%;" border="1" >
+        <tr  >
+          <th style="text-align: center;"rowspan="2">รายวิชา</th>
+          <th style="text-align: center;"rowspan="2">ห้อง</th>
+          <th style="text-align: center;" rowspan="2">จำนวนผู้เรียน</th>
+          <th style="text-align: center;" colspan="11">ผลการเรียน (คน)</th>
+        </tr>
+        <tr  >
+          <td style="text-align: center;" >ร</td>
+          <td style="text-align: center;">มส.</td>
+          <td style="text-align: center;">0</td>
+          <td style="text-align: center;" >1</td>
+          <td style="text-align: center;" >1.5</td>
+          <td style="text-align: center;">2</td>
+          <td style="text-align: center;">2.5</td>
+          <td style="text-align: center;" >3</td>
+          <td style="text-align: center;" >3.5</td>
+          <td style="text-align: center;" >4</td>
+          <td style="text-align: center;" >รวม</td>
+        </tr>
+        <tr>
+          <td>
+            <m-input-text setId="SUBJECT_NAME"  [(setModel)]=model.subjectName     >
+            </m-input-text>
+          </td>
+          <td>
+            <m-input-text setId="CLASS" [(setModel)]=model.class     >
+            </m-input-text>
+          </td>
+          <td>
+            <m-input-number setId="TOTAL_STUDENT" [(setModel)]=model.totalStudent     >
+            </m-input-number>
+          </td>
+          <td>
+            <m-input-number setId="RESULT_GRAD_2"  [(setModel)]=model.resultGrad2     >
+            </m-input-number>
+          </td>
+          <td>
+            <m-input-number setId="RESULT_GRAD_1"  [(setModel)]=model.resultGrad1     >
+            </m-input-number>
+          </td>
+          <td>
+            <m-input-number setId="RESULT_GRAD_3"  [(setModel)]=model.resultGrad3     >
+            </m-input-number>
+          </td>
+          <td>
+            <m-input-number setId="RESULT_GRAD_4"  [(setModel)]=model.resultGrad4     >
+            </m-input-number>
+          </td>
+          <td>
+            <m-input-number setId="RESULT_GRAD_5"  [(setModel)]=model.resultGrad5     >
+            </m-input-number>
+          </td>
+          <td>
+            <m-input-number setId="RESULT_GRAD_6" [(setModel)]=model.resultGrad6     >
+            </m-input-number>
+          </td>
+          <td>
+            <m-input-number setId="RESULT_GRAD_7" [(setModel)]=model.resultGrad7     >
+            </m-input-number>
+          </td>
+          <td>
+            <m-input-number setId="RESULT_GRAD_8"  [(setModel)]=model.resultGrad8     >
+            </m-input-number>
+          </td>
+          <td>
+            <m-input-number setId="RESULT_GRAD_9" [(setModel)]=model.resultGrad9     >
+            </m-input-number>
+          </td>
+          <td>
+            <m-input-number setId="RESULT_GRAD_10" [(setModel)]=model.resultGrad10     >
+            </m-input-number>
+          </td>
+          <td>
+            <m-input-number setId="TOTAL_RESULT_GRAD" [(setModel)]=model.totalResultGrad     >
+            </m-input-number>
+          </td>
+        </tr>
+      </table>
+  
+      
+    
+    </div>
+  </div>
+  <div class="grid p-fluid">
+    <div class="field col-12 md:col-2">
+      <m-button setClassName="backBtn" setLabel="LABEL.BACK" (onClick)="onBack()">
+      </m-button>
+    </div>
+    <div *ngIf = !view class="field col-12 md:col-2">
+      <m-button setClassName="saveBtn" setLabel="LABEL.SAVE" (onClick)="onSave()">
+      </m-button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,39 @@
+<div class="itemCard">
+  <div>
+    <div>
+      <p class="title-item">{{"MODULE.SAR_QUALITY_EVIDENCE"|translate}}</p>
+    </div>
+  </div>
+  <div class="customCard">
+    <button class="group">เพิ่มข้อมูล หลักฐานร่องรอยที่ดำเนินการ</button>
+    <div class="grid p-fluid form ">
+      <div class="grid p-fluid form ">
+        <div class="field col-6 md:col-6">
+          <m-dropdown setId="TEACHER_ID" setLabel="ชื่อ-สกุล" [(setModel)]=model.teacherId    [setSelectOption]=teacherDropdown [setViewValue]=model.teacherValue [setReadonly] = "isTeacher" >
+          </m-dropdown>
+        </div>
+        <div class="field col-6 md:col-3">
+          <m-input-text setId="SCHOOLYEAR" setLabel="LABEL.SCHOOLYEAR" [(setModel)]=model.schoolyear   [setRequired]="true"   >
+          </m-input-text>
+        </div>
+      <div class="field col-6 md:col-6">
+        <m-input-text setId="EVIDENCE_NAME"   [setRequired]="true"   setLabel="หลักฐานร่องรอยที่ดำเนินการ" [(setModel)]=model.evidenceName     >
+        </m-input-text>
+      </div>
+      <div class="field col-6 md:col-6">
+        <m-dropdown setId="EVIDENCE_TYPE"   [setRequired]="true"   setLabel="ผลการดำเนินงาน" [(setModel)]=model.evidenceType    [setSelectOption]=evidenceTypeDropdown >
+        </m-dropdown>
+      </div>
+    </div>
+  </div>
+  <div class="grid p-fluid">
+    <div class="field col-12 md:col-2">
+      <m-button setClassName="backBtn" setLabel="LABEL.BACK" (onClick)="onBack()">
+      </m-button>
+    </div>
+    <div *ngIf = !view class="field col-12 md:col-2">
+      <m-button setClassName="saveBtn" setLabel="LABEL.SAVE" (onClick)="onSave()">
+      </m-button>
+    </div>
+  </div>
+</div>

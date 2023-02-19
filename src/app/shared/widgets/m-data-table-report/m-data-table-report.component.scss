@@ -1,0 +1,212 @@
+.title{
+    font-size: 28px;
+    padding: 10px 0px;
+    color:  #0d53b1;
+    font-weight: 700;
+  }
+  
+  .m-card{
+    background: #efefef;
+    padding: 2px;
+    border-radius: 20px;
+  }
+  table {
+    font-family: arial, sans-serif;
+
+  }
+  th {
+    border: 0.5px solid #1a1a1a;
+    background-color: #ffffff;
+    text-align: center;
+    padding-left: 5px;
+    font-size: 11px;
+  }
+  td {
+    border: 0.5px solid #1a1a1a;
+    background-color: #ffffff;
+    text-align: center;
+    padding-left: 5px;
+    width: -moz-fit-content;
+    width: fit-content;
+  }
+  div{
+    font-size: 12px;
+  }
+  .m-col-bw-2{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .m-m{
+    padding: 0px 15px;
+  }
+  .btn-grod{
+    display: flex;
+    gap: 10px;
+  }
+  .m-btn-add{
+    cursor: pointer;
+    background: #5271ff;
+    color: #fff;
+    padding: 5px 8px;
+    border: 0px solid;
+    font-size: 17px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .m-btn-import{
+    cursor: pointer;
+    background: #7ed957;
+    color: #fff;
+    padding: 5px 8px;
+    border: 0px solid;
+    font-size: 17px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .m-btn-pdf{
+    margin-left: 10px;
+    cursor: pointer;
+    background: #2b8803;
+    color: #fff;
+    padding: 5px 8px;
+    border: 0px solid;
+    font-size: 17px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .m-btn-del{
+    cursor: pointer;
+    background: #ff1616;
+    color: #fff;
+    padding: 5px 8px;
+    border: 0px solid;
+    font-size: 17px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .m-mt-20{
+    margin-top: 20px;
+  }
+  .m-option{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+  }
+  .m-option-export{
+    display: flex;
+      align-items: center;
+      gap: 10px;
+  }
+  .input-search{
+    width: 100px;
+  }
+  .kis-table::ng-deep .p-paginator{
+    background: #ffffff00;
+  }
+
+
+
+  .customCard{
+    border-radius: 30px;
+    background-color: #efefef;
+    
+  }
+  .o-btn{
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+
+.ob-Ex{
+    cursor: pointer;
+    background: #fff;
+    padding: 5px;
+}
+.Search{
+    display: flex;
+    flex-wrap: wrap;
+}
+// .clasdad{
+//     width: 72.4w;
+//     overflow-x: scroll;
+// }
+
+@media (max-width: 1024px){
+	
+}
+@media (max-width: 768px){
+	
+}
+
+@media (max-width: 515px){
+  .customTable::ng-deep .p-datatable-scrollable .p-datatable-wrapper{
+  overflow: scroll;
+  width: 91vw;
+}
+    .clasdad{
+        width: 100vw;
+        overflow-x: scroll;
+    }
+    .header-item{
+      font-size: 20px;
+      padding: 10px
+    }
+    .btn-grod{
+      display: flex;
+      gap: 10px;
+      flex-direction: column;
+    }
+}
+.bmiCard{
+  border-radius: 30px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.thin{
+  background-color: gray;
+  color: white;
+}
+.normal{
+  background-color: green;
+  color: white;
+}
+.prefat{
+  background-color: rgb(200, 255, 0);
+  color: black;
+}
+.fat{
+  background-color: yellow;
+  color: black;
+}
+
+.veryfat{
+  background-color: rgb(255, 153, 0);
+  color: black;
+}
+.vertical{
+  position: relative;
+  transform: rotate(180deg);
+  white-space: nowrap;
+  writing-mode: vertical-rl;
+  align-content: start;
+  width: fit-content;
+  align-self: normal;
+}
+.t-header{
+  padding-left: 0px;
+  padding-top: 0px;
+  width: 250px;
+}
+.horizontal{
+  margin-left: 10px;
+}

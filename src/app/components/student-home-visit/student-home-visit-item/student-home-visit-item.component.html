@@ -1,0 +1,701 @@
+<div class="itemCard">
+  <!-- <div>
+    <div>
+      <p class="title-item">{{"MODULE.STUDENT_HOME_VISIT_TITLE"|translate}}</p>
+    </div>
+  </div> -->
+  <div class="g-t">
+    <div class="title">{{ "MODULE.STUDENT_HOME_VISIT_TITLE" | translate }}</div>
+    <button *ngIf="view" class="edit" (click)="pageEdit()">แก้ไขข้อมูล</button>
+  </div>
+  <div class="customCard">
+    <!--SECTION 0 -->
+    <div class="grid p-fluid form">
+      <div class="field col-12 md:col-2">
+        <m-calendar
+          [setRequired]="true"
+          setId="HOME_VISITDAY"
+          setLabel="LABEL.HOME_VISITDAY"
+          [(setModel)]="model.homeVisitday"
+        >
+        </m-calendar>
+      </div>
+      <div class="field col-12 md:col-3">
+        <m-dropdown
+          setId="YEAR_TERM_ID"
+          setLabel="LABEL.YEAR_TERM_ID"
+          [(setModel)]="model.yearTermId"
+          [setReadonly]="true"
+          [setSelectOption]="yearTermDropdown"
+        >
+        </m-dropdown>
+      </div>
+    </div>
+    <!--SECTION 1. ข้อมูลทั่วไป -->
+    <button class="group">
+      {{ "GROUP.VISIT_HOME_GENERAL_GROUP" | translate }}
+    </button>
+    <div class="grid p-fluid form">
+
+      <div class="field col-12 md:col-2">
+      ชื่อ {{filterEnum(model.studentTitle,titleStdDropdown)}} {{ model.studentFirstName }}</div>
+      <div class="field col-12 md:col-1">
+        {{ "LABEL.STUDENT_LAST_NAME" | translate }}
+      </div>
+      <div class="field col-12 md:col-1">{{ model.studentLastName }}</div>
+      <div class="field col-12 md:col-4">
+        {{ "LABEL.STUDENT_CLASS" | translate }} {{ model.studentClass }}
+      </div>
+      <div class="field col-12 md:col-3"></div>
+      <div class="field col-12 md:col-2">
+        ชื่อ {{filterEnum(model.parentTitle,titleParentDropdown)}} {{ model.parentFirstName }}</div>
+      <div class="field col-12 md:col-1">
+        {{ "LABEL.STUDENT_LAST_NAME" | translate }}
+      </div>
+      <div class="field col-12 md:col-1">{{ model.parentLastName }}</div>
+      <div class="field col-12 md:col-7"></div>
+
+      <div class="field col-12 md:col-1">
+        {{ "LABEL.HOUSE_NUMBER" | translate }} {{ model.houseNumber }}
+      </div>
+      <div class="field col-12 md:col-1">
+        {{ "LABEL.VILLAGE" | translate }} {{ model.moo }}
+      </div>
+      <div class="field col-12 md:col-1">
+        {{ "LABEL.SOY" | translate }} {{ model.soy }}
+      </div>
+      <div class="field col-12 md:col-1">
+        {{ "LABEL.ROAD" | translate }} {{ model.street }}
+      </div>
+      <div class="field col-12 md:col-2">
+        {{ "LABEL.SUB_DISTRICT" | translate }} {{ model.subDistrictValue }}
+      </div>
+      <div class="field col-12 md:col-2">
+        {{ "LABEL.DISTRICT" | translate }} {{ model.districtValue }}
+      </div>
+      <div class="field col-12 md:col-2">
+        {{ "LABEL.PROVINCE" | translate }} {{ model.provinceValue }}
+      </div>
+      <div class="field col-12 md:col-2">
+        {{ "LABEL.ZIPCODE" | translate }} {{ model.zipCode }}
+      </div>
+      <div class="field col-12 md:col-4">
+        {{ "LABEL.STUDENT_TEL" | translate }} {{ model.studentTel }}
+      </div>
+      <div class="field col-12 md:col-8"></div>
+      <div class="field col-12 md:col-4">
+        {{ "LABEL.PARENT_TEL" | translate }} {{ model.parentTel }}
+      </div>
+      <div class="field col-12 md:col-8"></div>
+      <div class="field col-12 md:col-4">
+        {{ "LABEL.ADVICER_NAME" | translate }} {{ model.adviserNameValue }}
+      </div>
+
+      <div class="field col-12 md:col-8"></div>
+      <div class="field col-12 md:col-4">
+        <m-input-number
+          setId="GET_MONEY_FOR_SCHOOL"
+          setLabel="LABEL.GET_MONEY_FOR_SCHOOL"
+          [(setModel)]="model.getMoneyForSchool"
+        >
+        </m-input-number>
+      </div>
+      <div class="field col-12 md:col-8"></div>
+    </div>
+    <!--SECTION 2. บรรยากาศ ความสัมพันธ์ภายในครอบครัว และสภาพแวดล้อมในชุมชน -->
+    <button class="group">{{ "GROUP.ENVIROMENT_GROUP" | translate }}</button>
+    <div class="grid p-fluid form">
+      <div class="field col-12 md:col-4">
+        <m-dropdown
+          [setRequired]="true"
+          setId="LIVE_WITH"
+          setLabel="LABEL.STUDENT_LIVE_WITH"
+          [(setModel)]="model.liveWith"
+          [setSelectOption]="liveWithDropdown"
+        >
+        </m-dropdown>
+      </div>
+      <div class="field col-12 md:col-4" *ngIf="model.liveWith == 4">
+        <m-input-text
+          setId="LIVE_WITH_OTHER"
+          setLabel="LABEL.OTHER_SELECT"
+          [(setModel)]="model.liveWithOther"
+        >
+        </m-input-text>
+      </div>
+      <div class="field col-12 md:col-4">
+        <m-input-number
+          setId="TOTAL_HOUSEHOLD_MEMBER"
+          setLabel="LABEL.TOTAL_HOUSEHOLD_MEMBER"
+          [(setModel)]="model.totalHouseholdMember"
+        >
+        </m-input-number>
+      </div>
+      <div class="field col-12 md:col-2">
+        <m-input-number
+          setId="TOTAL_INCLUDE_STUDENT"
+          setLabel="LABEL.TOTAL_INCLUDE_STUDENT"
+          [(setModel)]="model.totalIncludeStudent"
+        >
+        </m-input-number>
+      </div>
+      <div class="field col-12 md:col-2">
+        <m-input-number
+          setId="TOTAL_BROTHER_1"
+          setLabel="LABEL.TOTAL_BROTHER_1"
+          [(setModel)]="model.totalBrother1"
+        >
+        </m-input-number>
+      </div>
+      <div class="field col-12 md:col-2">
+        <m-input-number
+          setId="TOTAL_BRATHER_2"
+          setLabel="LABEL.TOTAL_BRATHER_2"
+          [(setModel)]="model.totalBrather2"
+        >
+        </m-input-number>
+      </div>
+      <div class="field col-12 md:col-2">
+        <m-input-number
+          setId="TOTAL_SISTER_1"
+          setLabel="LABEL.TOTAL_SISTER_1"
+          [(setModel)]="model.totalSister1"
+        >
+        </m-input-number>
+      </div>
+      <div class="field col-12 md:col-2">
+        <m-input-number
+          setId="TOTAL_SISTER_2"
+          setLabel="LABEL.TOTAL_SISTER_2"
+          [(setModel)]="model.totalSister2"
+        >
+        </m-input-number>
+      </div>
+      <div class="field col-12 md:col-4">
+        <m-input-number
+          setId="TOTAL_STUDENT_LEANING"
+          setLabel="LABEL.TOTAL_STUDENT_LEANING"
+          [(setModel)]="model.totalStudentLeaning"
+        >
+        </m-input-number>
+      </div>
+      <div class="field col-12 md:col-4">
+        <m-input-number
+          setId="TOTAL_STUDENT_SCHOOL"
+          setLabel="LABEL.TOTAL_STUDENT_SCHOOL"
+          [(setModel)]="model.totalStudentSchool"
+        >
+        </m-input-number>
+      </div>
+      <div class="field col-12 md:col-4">
+        <m-input-number
+          setId="STUDENT_NUMBER_FAMILY"
+          setLabel="LABEL.STUDENT_NUMBER_FAMILY"
+          [(setModel)]="model.studentNumberFamily"
+        >
+        </m-input-number>
+      </div>
+      <div class="field col-12 md:col-4">
+        <m-dropdown
+          [setRequired]="true"
+          setId="FAMILY_STATUS"
+          setLabel="LABEL.FAMILY_STATUS"
+          [(setModel)]="model.familyStatus"
+          [setSelectOption]="familyStatusDropdown"
+        >
+        </m-dropdown>
+      </div>
+      <div class="field col-12 md:col-8"></div>
+      <div class="field col-12 md:col-8">
+        <m-input-text
+          [setRequired]="true"
+          setId="FATHER_OCCUPATION"
+          setLabel="LABEL.FATHER_JOB"
+          [(setModel)]="model.fatherOccupation"
+        >
+        </m-input-text>
+      </div>
+      <div class="field col-12 md:col-4">
+        <m-input-text
+          setId="FATHER_INCOME"
+          setLabel="LABEL.FATHER_INCOME_PER_MONTH"
+          [(setModel)]="model.fatherIncome"
+        >
+        </m-input-text>
+      </div>
+      <div class="field col-12 md:col-8">
+        <m-input-text
+          [setRequired]="true"
+          setId="MOTHER_OCCUPATION"
+          setLabel="LABEL.MOTHER_JOB"
+          [(setModel)]="model.motherOccupation"
+        >
+        </m-input-text>
+      </div>
+      <div class="field col-12 md:col-4">
+        <m-input-text
+          setId="MOTHER_INCOME"
+          setLabel="LABEL.MOTHER_INCOME_PER_MONTH"
+          [(setModel)]="model.motherIncome"
+        >
+        </m-input-text>
+      </div>
+      <div class="field col-12 md:col-8">
+        <m-input-text
+          [setRequired]="true"
+          setId="PARENT_OCCUPATION"
+          setLabel="LABEL.PARENT_OCCUPATION"
+          [(setModel)]="model.parentOccupation"
+        >
+        </m-input-text>
+      </div>
+      <div class="field col-12 md:col-4">
+        <m-input-text
+          setId="PARENT_INCOME"
+          setLabel="LABEL.PARENT_INCOME_PER_MONTH"
+          [(setModel)]="model.parentIncome"
+        >
+        </m-input-text>
+      </div>
+      <div class="field col-12 md:col-3">
+        <m-dropdown
+          [setRequired]="true"
+          setId="HOW_PARENTS_NURTURE_STUDENTS"
+          setLabel="LABEL.HOW_PARENTS_NURTURE_STUDENTS"
+          [(setModel)]="model.howParentsNurtureStudents"
+          [setSelectOption]="howParentsNurtureStudentsDropdown"
+        >
+        </m-dropdown>
+      </div>
+      <div class="field col-12 md:col-6" >
+        <m-input-text *ngIf="model.howParentsNurtureStudents == 5"
+          setId="HOW_PARENTS_NURTURE_STUDENTS_OTHER"
+          setLabel="LABEL.OTHER_SELECT"
+          [(setModel)]="model.howParentsNurtureStudentsOther"
+        >
+        </m-input-text>
+      </div>
+      <div class="field col-12 md:col-3"></div>
+      <div class="field col-12 md:col-3">
+        <m-dropdown
+          [setRequired]="true"
+          setId="FAMILY_MEMBER_RELATIONSHIPS"
+          setLabel="LABEL.FAMILY_MEMBER_RELATIONSHIPS"
+          [(setModel)]="model.familyMemberRelationships"
+          [setSelectOption]="familyMemberRelationshipsDropdown"
+        >
+        </m-dropdown>
+      </div>
+      <div class="field col-12 md:col-9"></div>
+      <div class="field col-12 md:col-3">
+        <m-dropdown
+          [setRequired]="true"
+          setId="MEMBER_MEET_TOGETHER"
+          setLabel="LABEL.MEMBER_MEET_TOGETHER"
+          [(setModel)]="model.memberMeetTogether"
+          [setSelectOption]="memberMeetTogetherDropdown"
+        >
+        </m-dropdown>
+      </div>
+      <div class="field col-12 md:col-6"  >
+        <m-input-text *ngIf="model.memberMeetTogether == 4"
+          setId="MEMBER_MEET_TOGETHER_OTHER"
+          setLabel="LABEL.OTHER_SELECT"
+          [(setModel)]="model.memberMeetTogetherOther"
+        >
+        </m-input-text>
+      </div>
+      <div class="field col-12 md:col-3"></div>
+      <div class="field col-12 md:col-3">
+        <m-dropdown
+          [setRequired]="true"
+          setId="STUDENT_ARE_CLOSEST"
+          setLabel="LABEL.STUDENT_ARE_CLOSEST"
+          [(setModel)]="model.studentAreClosest"
+          [setSelectOption]="studentAreClosestDropdown"
+        >
+        </m-dropdown>
+      </div>
+      <div class="field col-12 md:col-6">
+        <m-input-text *ngIf="model.studentAreClosest == 7"
+          setId="STUDENT_ARE_CLOSEST_OTHER"
+          setLabel="LABEL.OTHER_SELECT"
+          [(setModel)]="model.studentAreClosestOther"
+        >
+        </m-input-text>
+      </div>
+      <div class="field col-12 md:col-3"></div>
+      <div class="field col-12 md:col-3">
+        <m-dropdown
+          [setRequired]="true"
+          setId="COMMUNITY_ENVIRONMENT"
+          setLabel="LABEL.COMMUNITY_ENVIRONMENT"
+          [(setModel)]="model.communityEnvironment"
+          [setSelectOption]="communityEnvironmentDropdown"
+        >
+        </m-dropdown>
+      </div>
+      <div class="field col-12 md:col-6">
+        <m-input-text *ngIf="model.communityEnvironment == 2"
+          setId="COMMUNITY_ENVIRONMENT_RISK"
+          setLabel="LABEL.COMMUNITY_ENVIRONMENT_RISK"
+          [(setModel)]="model.communityEnvironmentRisk"
+        >
+        </m-input-text>
+      </div>
+    </div>
+    <!--SECTION 3. บันทึกรายละเอียดการเยี่ยมบ้าน -->
+    <button class="group">
+      {{ "GROUP.HOME_VISIT_DETAIL_GROUP" | translate }}
+    </button>
+    <div class="grid p-fluid form">
+      <div class="field col-12 md:col-3">
+        <m-dropdown
+          [setRequired]="true"
+          setId="VISIT_TRAVELED_BY"
+          setLabel="LABEL.VISIT_TRAVELED_BY"
+          [(setModel)]="model.visitTraveledBy"
+          [setSelectOption]="visitTraveledByDropdown"
+        >
+        </m-dropdown>
+      </div>
+      <div class="field col-12 md:col-5">
+        <m-input-text *ngIf="model.visitTraveledBy == 5"
+          setId="VISIT_TRAVELED_BY_OTHER"
+          setLabel="LABEL.OTHER_SELECT"
+          [(setModel)]="model.visitTraveledByOther"
+        >
+        </m-input-text>
+      </div>
+      <div class="field col-12 md:col-3"></div>
+      <div class="field col-12 md:col-3">
+        <m-dropdown
+          [setRequired]="true"
+          setId="RESIDENCE_STATUS"
+          setLabel="LABEL.RESIDENCE_STATUS"
+          [(setModel)]="model.residenceStatus"
+          [setSelectOption]="residenceStatusDropdown"
+        >
+        </m-dropdown>
+      </div>
+      <div class="field col-12 md:col-6">
+        <m-input-text *ngIf="model.residenceStatus == 6"
+          setId="RESIDENCE_STATUS_OTHER"
+          setLabel="LABEL.OTHER_SELECT"
+          [(setModel)]="model.residenceStatusOther"
+        >
+        </m-input-text>
+      </div>
+      <div class="field col-12 md:col-3"></div>
+      <div class="field col-12 md:col-3">
+        <m-dropdown
+          [setRequired]="true"
+          setId="COME_TO_SCHOOL"
+          setLabel="LABEL.COME_TO_SCHOOL"
+          [(setModel)]="model.comeToSchool"
+          [setSelectOption]="comeToSchoolDropdown"
+        >
+        </m-dropdown>
+      </div>
+      <div class="field col-12 md:col-9"></div>
+      <div class="field col-12 md:col-3">
+        <m-dropdown
+          [setRequired]="true"
+          setId="DISTANCE_HOME_AND_SCHOOL"
+          setLabel="LABEL.DISTANCE_HOME_AND_SCHOOL"
+          [(setModel)]="model.distanceHomeAndSchool"
+          [setSelectOption]="distanceHomeAndSchoolDropdown"
+        >
+        </m-dropdown>
+      </div>
+      <div class="field col-12 md:col-9"></div>
+      <div class="field col-12 md:col-3">
+        <m-dropdown
+          [setRequired]="true"
+          setId="ROUTE_OF_TRAVEL_TO_SCHOOL"
+          setLabel="LABEL.OTHER_SELECT"
+          [(setModel)]="model.routeOfTravelToSchool"
+          [setSelectOption]="routeOfTravelToSchoolDropdown"
+        >
+        </m-dropdown>
+      </div>
+      <div class="field col-12 md:col-6">
+        <m-input-text *ngIf="model.routeOfTravelToSchool == 5"
+          setId="ROUTE_OF TRAVEL_TO_SCHOOL_OTHER"
+          setLabel="LABEL.OTHER_SELECT"
+          [(setModel)]="model.routeOfTravelToSchoolOther"
+        >
+        </m-input-text>
+      </div>
+      <div class="field col-12 md:col-3"></div>
+    </div>
+    <!--SECTION 4. ความรับผิดชอบของนักเรียน -->
+    <button class="group">
+      {{ "GROUP.STUDENT_RESPONSIBILITIES_GROUP" | translate }}
+    </button>
+    <div class="grid p-fluid form">
+      <!--ROLE_IN_HOMEบทบาทของนักเรียนในบ้าน เป็นradioเลือกได้1 ไม่ช่วยทำอะไรเลย, หารายได้พิเศษ,ช่วยงานบ้าน -->
+      <div class="field col-12 md:col-6">
+        <m-dropdown
+          [setRequired]="true"
+          setId="ROLE_IN_HOME"
+          setLabel="LABEL.ROLE_IN_HOME"
+          [(setModel)]="model.roleInHome"
+          [setSelectOption]="roleInHomeDropdown"
+        >
+        </m-dropdown>
+      </div>
+      <div class="field col-12 md:col-6"></div>
+      <div class="field col-12 md:col-6">
+        <m-input-text *ngIf="model.roleInHome == 3"
+          setId="ROLE_IN_HOME_OTHER"
+          setLabel="LABEL.ROLE_IN_HOME_DES"
+          [(setModel)]="model.roleInHomeOther"
+        >
+        </m-input-text>
+      </div>
+      <div class="field col-12 md:col-6"></div>
+      <!--HOBBIESงานอดิเรกของนักเรียนเป็นradioเลือกได้1  เล่นกีฬา  อ่านหนังสือ  เล่นเกม  เล่นดนตรี อื่นๆ-->
+      <div class="field col-12 md:col-6">
+        <m-dropdown
+          [setRequired]="true"
+          setId="HOBBIES"
+          setLabel="LABEL.HOBBIES"
+          [(setModel)]="model.hobbies"
+          [setSelectOption]="hobbiesDropdown"
+        >
+        </m-dropdown>
+      </div>
+      <div class="field col-12 md:col-6"></div>
+      <div class="field col-12 md:col-6">
+        <m-input-text *ngIf="model.hobbies == 5"
+          setId="HOBBIES_OTHER"
+          setLabel="LABEL.OTHER_SELECT"
+          [(setModel)]="model.hobbiesOther"
+        >
+        </m-input-text>
+      </div>
+      <div class="field col-12 md:col-6"></div>
+      <!--READ_FREQUENCY, SCHOOL_SUPPLIE_STORAGE_FREQUENCY, WORK_BOOK_CHECKED_FREQUENCY radioเลือกได้1-->
+      <div class="field col-12 md:col-3">ด้านการเรียน</div>
+      <div class="field col-12 md:col-6">
+        <m-dropdown
+          [setRequired]="true"
+          setId="READ_FREQUENCY"
+          setLabel="LABEL.READ_FREQUENCY"
+          [(setModel)]="model.readFrequency"
+          [setSelectOption]="readFrequencyDropdown"
+        >
+        </m-dropdown>
+      </div>
+      <div class="field col-12 md:col-3"></div>
+      <div class="field col-12 md:col-3"></div>
+      <div class="field col-12 md:col-6">
+        <m-dropdown
+          [setRequired]="true"
+          setId="SCHOOL_SUPPLIE_STORAGE_FREQUENCY"
+          setLabel="LABEL.SCHOOL_SUPPLIE_STORAGE_FREQUENCY"
+          [(setModel)]="model.schoolSupplieStorageFrequency"
+          [setSelectOption]="schoolSupplieStorageFrequencyDropdown"
+        >
+        </m-dropdown>
+      </div>
+      <div class="field col-12 md:col-3"></div>
+      <div class="field col-12 md:col-6">
+        <m-dropdown
+          [setRequired]="true"
+          setId="WORK_BOOK_CHECKED_FREQUENCY"
+          setLabel="LABEL.WORK_BOOK_CHECKED_FREQUENCY"
+          [(setModel)]="model.workBookCheckedFrequency"
+          [setSelectOption]="workBookCheckedFrequencyDropdown"
+        >
+        </m-dropdown>
+      </div>
+    </div>
+    <!--SECTION 5.ความคิดเห็นของผู้ปกครอง -->
+    <button class="group">
+      {{ "GROUP.PARENT_COMMENT_GROUP" | translate }}
+    </button>
+    <div class="grid p-fluid form">
+      <div class="field col-12 md:col-12">
+        <m-input-text
+          [setRequired]="true"
+          setId="BEHAVIOR_OF_STUDENT"
+          setLabel="LABEL.BEHAVIOR_OF_STUDENT"
+          [(setModel)]="model.behaviorOfStudent"
+        >
+        </m-input-text>
+      </div>
+      <div class="field col-12 md:col-12">
+        <m-input-text
+          [setRequired]="true"
+          setId="NEEDS_TO_BE_IMPOROVED"
+          setLabel="LABEL.NEEDS_TO_BE_IMPOROVED"
+          [(setModel)]="model.needsToBeImporoved"
+        >
+        </m-input-text>
+      </div>
+      <div class="field col-12 md:col-12">
+        <m-input-text
+          [setRequired]="true"
+          setId="NEED_TO_DEVELOP"
+          setLabel="LABEL.NEED_TO_DEVELOP"
+          [(setModel)]="model.needToDevelop"
+        >
+        </m-input-text>
+      </div>
+      <div class="field col-12 md:col-12">
+        <m-input-text
+          [setRequired]="true"
+          setId="PUNISH_AND_REWARD"
+          setLabel="LABEL.PUNISH_AND_REWARD"
+          [(setModel)]="model.punishAndReward"
+        >
+        </m-input-text>
+      </div>
+      <div class="field col-12 md:col-12">
+        <m-input-text
+          [setRequired]="true"
+          setId="PARENT_MAKE_FRIEND"
+          setLabel="LABEL.PARENT_MAKE_FRIEND"
+          [(setModel)]="model.parentMakeFriend"
+        >
+        </m-input-text>
+      </div>
+      <div class="field col-12 md:col-12">
+        <m-input-text
+          [setRequired]="true"
+          setId="PLAND_TO_FUTURE"
+          setLabel="LABEL.PLAND_TO_FUTURE"
+          [(setModel)]="model.plandToFuture"
+        >
+        </m-input-text>
+      </div>
+      <div class="field col-12 md:col-12">
+        <m-input-text
+          [setRequired]="true"
+          setId="FIND_OUT_INTEREST"
+          setLabel="LABEL.FIND_OUT_INTEREST"
+          [(setModel)]="model.findOutInterest"
+        >
+        </m-input-text>
+      </div>
+    </div>
+    <!--SECTION 6. นักเรียนควรได้รับการช่วยเหลือ-->
+    <button class="group">{{ "GROUP.STUDENT_HELP_GROUP" | translate }}</button>
+    <div class="grid p-fluid form">
+      <div class="field col-6 md:col-6">
+        <!--IS_HELP_STUDENT_NEED จะเป็นradio 2อัน ยังไม่ต้องการความช่วยเหลือ =false ควรได้รับการช่วยเหลือ=true เก็บค่าใสfieldเดียวกัน -->
+        <m-switch
+          setId="IS_HELP_STUDENT_NEED"
+          setLabel="LABEL.IS_HELP_STUDENT_NEED"
+          [(setModel)]="model.isHelpStudentNeed"
+          (setModelChange)="needChange2($event)"
+        >
+        </m-switch>
+      </div>
+      <div class="field col-6 md:col-6">
+        <!--IS_HELP_STUDENT_NEED จะเป็นradio 2อัน ยังไม่ต้องการความช่วยเหลือ =false ควรได้รับการช่วยเหลือ=true เก็บค่าใสfieldเดียวกัน -->
+
+        <m-switch
+          setId="IS_HELP_STUDENT_DONT_NEED"
+          setLabel="LABEL.IS_HELP_STUDENT_DONT_NEED"
+          [(setModel)]="studentDontNeedHelp"
+          (setModelChange)="needChange($event)"
+        >
+        </m-switch>
+      </div>
+      <!--_NEED จะเป็นradio หมดคเก็บค่าเป็นboolean มีfieldของแต่ละตัวแยก -->
+      <div *ngIf="model.isHelpStudentNeed" class="field col-12 md:col-3">
+        <m-switch
+          setId="STUDY_NEED"
+          setLabel="LABEL.STUDY_NEED"
+          [(setModel)]="model.studyNeed"
+        >
+        </m-switch>
+      </div>
+      <div *ngIf="model.isHelpStudentNeed" class="field col-12 md:col-3">
+        <m-switch
+          setId="HEALTH_NEED"
+          setLabel="LABEL.HEALTH_NEED"
+          [(setModel)]="model.healthNeed"
+        >
+        </m-switch>
+      </div>
+      <div *ngIf="model.isHelpStudentNeed" class="field col-12 md:col-3">
+        <m-switch
+          setId="MONEY_NEED"
+          setLabel="LABEL.MONEY_NEED"
+          [(setModel)]="model.moneyNeed"
+        >
+        </m-switch>
+      </div>
+      <div *ngIf="model.isHelpStudentNeed" class="field col-12 md:col-3">
+        <m-switch
+          setId="SPEACIAL_NEED"
+          setLabel="LABEL.SPEACIAL_NEED"
+          [(setModel)]="model.speacialNeed"
+        >
+        </m-switch>
+      </div>
+    </div>
+    <!--SECTION 7. ภาพถ่ายการเยี่ยมบ้าน (อัพโหลดภาพอย่างน้อย 3 ภาพ แต่ไม่เกิน 5 ภาพ)  ยังใช้งานไม่ได้-->
+    <button class="group">{{ "GROUP.HOMEVISIT_IMG_GROUP" | translate }}</button>
+    <div class="grid p-fluid form">
+      <div class="con-t-img">
+        <m-images-upload-multiple
+          [setType]="type"
+          [setMasterId]="model.id"
+          setId="IMAGE_HOMEVISIT"
+          setLabel="LABEL.IMAGE_HOMEVISIT"
+          [(setModel)]="model.images"
+        >
+        </m-images-upload-multiple>
+      </div>
+    </div>
+    <!--SECTION 8. แผนที่แสดงการเดินทางไปบ้านนักเรียน (ปักหมุดโดยกรอกข้อมูลละติจูด – ลองติจูด) -->
+    <button class="group">{{ "GROUP.LOCATION_MAP_GROUP" | translate }}</button>
+    <div class="grid p-fluid form">
+      <div class="field col-12 md:col-12">
+        <m-input-text
+          setId="GOOGLE_MAP"
+          setLabel="LABEL.GOOGLE_MAP"
+          [(setModel)]="model.googleMap"
+        >
+        </m-input-text>
+      </div>
+      <div class="field col-12 md:col-4">
+        <m-input-text setId="LAT" setLabel="LABEL.LAT" [(setModel)]="model.lat">
+        </m-input-text>
+      </div>
+      <div class="field col-12 md:col-4">
+        <m-input-text setId="LON" setLabel="LABEL.LON" [(setModel)]="model.lon">
+        </m-input-text>
+      </div>
+
+      <!--
+      <div class="field col-12 md:col-3">
+        <m-dropdown setId="STUDENT_ID" setLabel="LABEL.STUDENT_ID" [(setModel)]=model.studentId    [setSelectOption]=studentDropdown [setViewValue]=model.studentValue>>
+        </m-dropdown>
+      </div> 
+    --></div>
+  </div>
+  <div class="grid p-fluid">
+    <div class="field col-12 md:col-2">
+      <m-button
+        setClassName="backBtn"
+        setLabel="LABEL.BACK"
+        (onClick)="onBack()"
+      >
+      </m-button>
+    </div>
+    <div *ngIf="!view" class="field col-12 md:col-2">
+      <m-button
+        setClassName="saveBtn"
+        setLabel="LABEL.SAVE"
+        (onClick)="onSave()"
+      >
+      </m-button>
+    </div>
+  </div>
+</div>

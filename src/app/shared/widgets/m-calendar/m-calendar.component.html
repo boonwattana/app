@@ -1,0 +1,35 @@
+<div *ngIf="!view" class="field">
+  <div class="rowLabel">
+    <label class="columnLabel" for="{{id}}" class="block">{{label|translate}}  :</label>
+    <p *ngIf = "isRequired" class="columnLabel">{{"LABEL.REQURID"|translate}}</p>
+</div>
+<p-inputMask 
+mask="99/99/9999" 
+[(ngModel)]="val" 
+placeholder="วว/ดด/ปปปป" 
+(onComplete) = "onInputChange()"
+slotChar="__/__/____">
+
+</p-inputMask>
+
+    <!-- <p-calendar
+    [minDate] = minDate
+    [maxDate] = maxDate
+     [(ngModel)]="model"
+     dateFormat="dd/mm/yy"
+      [showIcon]="true"  
+      [placeholder] = placeholder
+      inputId="icon"
+      [utc]='true'
+      [class]="classBinding"
+      (ngModelChange)="onInputChange($event)"
+      (blur)="setModelChange.emit(setModel)"
+    (keyup.enter)="setModelChange.emit(setModel)"
+      ></p-calendar> -->
+</div>
+<m-view-only
+    *ngIf="view"
+    [setLabel]="label"
+    [setValue]="getValue()"
+    [setId]="id">
+</m-view-only> 

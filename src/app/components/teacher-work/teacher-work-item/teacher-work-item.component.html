@@ -1,0 +1,44 @@
+<div class="itemCard">
+  <div>
+    <div>
+      <p class="title-item">{{"MODULE.TEACHER_WORK"|translate}}</p>
+    </div>
+  </div>
+  <div class="customCard">
+    <button class="group">{{"GROUP.GENERAL_GROUP"|translate}}</button>
+    <div class="grid p-fluid form ">
+      <div class="field col-12 md:col-3">
+        <m-dropdown setId="TEACHER_ID" setLabel="LABEL.TEACHER_ID" [(setModel)]=model.teacherId  [setReadonly] = "isTeacher"   [setRequired]="!isTeacher" [setSelectOption]=teacherDropdown [setViewValue]=model.teacherValue>>
+        </m-dropdown>
+      </div>
+      <div class="field col-12 md:col-12">
+      </div>
+      <div class="field col-12 md:col-3">
+        <m-input-text setId="WORK_YEAR" setLabel="LABEL.WORK_YEAR" [(setModel)]=model.workYear     [setRequired]="true"  >
+        </m-input-text>
+      </div>
+      <div class="field col-12 md:col-12">
+      </div>
+      <div class="field col-12 md:col-12">
+        <m-input-text setId="INSTITUTION_NAME" setLabel="LABEL.INSTITUTION_NAME" [(setModel)]=model.institutionName     [setRequired]="true"  >
+        </m-input-text>
+      </div>
+     
+      <div class="field col-12 md:col-12/">
+        <m-input-text setId="POSITION_NAME" setLabel="LABEL.POSITION_NAME" [(setModel)]=model.positionName    [setRequired]="true"   >
+        </m-input-text>
+      </div>
+
+    </div>
+  </div>
+  <div class="grid p-fluid">
+    <div class="field col-12 md:col-2">
+      <m-button setClassName="backBtn" setLabel="LABEL.BACK" (onClick)="onBack()">
+      </m-button>
+    </div>
+    <div *ngIf = !view class="field col-12 md:col-2">
+      <m-button setClassName="saveBtn" setLabel="LABEL.SAVE" (onClick)="onSave()">
+      </m-button>
+    </div>
+  </div>
+</div>

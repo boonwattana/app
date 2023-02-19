@@ -1,0 +1,43 @@
+
+    <div class="grid p-fluid form ">
+        <div *ngIf = !view class="field col-12 md:col-12">
+            <p class="bold">รายชื่อนักเรียนทั้งหมด :</p>
+            <m-data-table-custom
+            (searchEmit)="onSearchStudent($event)"
+            [option]="optionStudent"
+            [dataSource] = "searchResultStudent"
+            [searchCondition] = 'searchConditionsStudent'
+            (editEmit)="onAddStudent($event)"
+            [setCanCreate] = true
+            [setCanDelete] = false
+            [tableName]="tableNameStudent"
+            ></m-data-table-custom>
+        </div>
+        <div *ngIf = !view class="field col-12 md:col-12">
+            <p class="bold">รายชื่อนักเรียนที่เข้าร่วมกิจกรรม :</p>
+            <m-data-table-custom
+            (searchEmit)="onSearchHasStudent($event)"
+            [option]="optionHasStudent"
+            [dataSource] = "searchResultHasStudent"
+            [searchCondition] = 'searchConditionsHasStudent'
+            [tableName]="tableNameHasStudent"
+            (deleteEmit)="onDeleteHasStudent($event)"
+            [setCanCreate] = false
+            [setCanDelete] = true
+            ></m-data-table-custom>
+        </div>
+        <div *ngIf = view class="field col-12 md:col-12">
+            <p class="bold">รายชื่อนักเรียนที่เข้าร่วมกิจกรรม :</p>
+            <m-data-table-custom
+            (searchEmit)="onSearchHasStudent($event)"
+            [option]="optionHasStudent"
+            [dataSource] = "searchResultHasStudent"
+            [searchCondition] = 'searchConditionsHasStudent'
+            [tableName]="tableNameHasStudent"
+            (deleteEmit)="onDeleteHasStudent($event)"
+            [setCanCreate] = false
+            [setCanDelete] = true
+            ></m-data-table-custom>
+        </div>
+    </div>
+

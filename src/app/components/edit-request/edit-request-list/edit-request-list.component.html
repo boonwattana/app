@@ -1,0 +1,23 @@
+<!-- <div class="title">{{"MODULE.EDIT_REQUEST"|translate}}</div>
+<div class="m-card"> -->
+<m-data-table
+(searchEmit)="onSearch($event)"
+[option]="option"
+[dataSource] = "searchResult"
+[tableName]="tableName"
+[searchCondition] = 'searchConditions'
+(createEmit) = "onCreate()"
+(editEmit)="onEdit($event)"
+(viewEmit)="onView($event)"
+(deleteEmit)="onDelete($event)"
+[removeRecord] = "lastRemoveId"
+[moduleName] = moduleName
+[setCanCreate] = canCreate
+[setCanDelete] = canDelete
+[setCanCreate] = canCreate
+></m-data-table>
+<!-- </div> -->
+
+
+
+

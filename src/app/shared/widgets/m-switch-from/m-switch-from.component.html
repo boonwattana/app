@@ -1,0 +1,82 @@
+
+    <div *ngIf="!view" class="grid p-fluid form ">
+   
+        <div class="field col-3 md:col-3">
+            {{label|translate}}
+        </div>
+        <div class="field col-5 md:col-5">
+            {{description|translate}}
+        </div>
+        <div class="field col-2 md:col-2">
+            <div *ngIf="action1">
+                {{action1|translate}}
+            </div>
+
+            <p-toggleButton 
+            class="input-field" 
+            *ngIf="!action1"
+            type="username" 
+            aria-describedby="username1-help" 
+            (ngModelChange)="onInputChange1($event)"  
+            [(ngModel)] = model1 
+            onIcon="pi pi-check"
+             >
+            </p-toggleButton>
+        </div>
+        <div class="field col-2 md:col-2">
+            <div *ngIf="action2">
+                {{action2|translate}}
+            </div>
+            <p-toggleButton 
+            class="input-field" 
+            *ngIf="!action2"
+            type="username" 
+            aria-describedby="username1-help" 
+            (ngModelChange)="onInputChange2($event)"  
+            [(ngModel)] = model2 
+            onIcon="pi pi-check"
+             >
+            </p-toggleButton>
+        </div>
+      </div>
+    <div *ngIf="view" class="grid p-fluid form ">
+        <div class="field col-3 md:col-3">
+            {{label|translate}}
+        </div>
+        <div class="field col-5 md:col-5">
+            {{description|translate}}
+        </div>
+        <div class="field col-2 md:col-2">
+            <div *ngIf="action1">
+                {{action1|translate}}
+            </div>
+
+            <p-toggleButton 
+            class="input-field" 
+            *ngIf="!action1"
+            type="username" 
+            [disabled] = true
+            aria-describedby="username1-help" 
+            (ngModelChange)="onInputChange1($event)"  
+            [(ngModel)] = model1 
+            onIcon="pi pi-check"
+                >
+            </p-toggleButton>
+        </div>
+        <div class="field col-2 md:col-2">
+            <div *ngIf="action2">
+                {{action2|translate}}
+            </div>
+            <p-toggleButton 
+            class="input-field" 
+            *ngIf="!action2"
+            type="username" 
+            [disabled] = true
+            aria-describedby="username1-help" 
+            (ngModelChange)="onInputChange2($event)"  
+            [(ngModel)] = model2 
+             onIcon="pi pi-check" 
+                >
+            </p-toggleButton>
+        </div>
+    </div>

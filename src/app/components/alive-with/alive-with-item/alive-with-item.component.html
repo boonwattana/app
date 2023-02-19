@@ -1,0 +1,30 @@
+<div class="itemCard">
+  <div>
+    <div>
+      <p class="title-item">{{"MODULE.ALIVE_WITH"|translate}}</p>
+    </div>
+  </div>
+  <div class="customCard">
+    <button class="group">{{"GROUP.GENERAL_ALIVE_WITH_GROUP"|translate}}</button>
+    <div class="grid p-fluid form ">
+      <div class="field col-12 md:col-3">
+        <m-input-text setId="ALIVE_WITH_NAME" setLabel="LABEL.ALIVE_WITH_NAME" [(setModel)]=model.aliveWithName   [setRequired]="true"  >
+        </m-input-text>
+      </div>
+      <div class="field col-12 md:col-3">
+        <m-input-text setId="ALIVE_WITH_DESCRIPTION" setLabel="LABEL.ALIVE_WITH_DESCRIPTION" [(setModel)]=model.aliveWithDescription     >
+        </m-input-text>
+      </div>
+    </div>
+  </div>
+  <div class="grid p-fluid">
+    <div class="field col-12 md:col-2">
+      <m-button setClassName="backBtn" setLabel="LABEL.BACK" (onClick)="onBack()">
+      </m-button>
+    </div>
+    <div *ngIf = !view class="field col-12 md:col-2">
+      <m-button setClassName="saveBtn" setLabel="LABEL.SAVE" (onClick)="onSave()">
+      </m-button>
+    </div>
+  </div>
+</div>

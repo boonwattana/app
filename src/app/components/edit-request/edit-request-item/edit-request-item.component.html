@@ -1,0 +1,80 @@
+<!-- <div class="itemCard">
+  <div>
+    <div>
+      <p class="title-item">{{"MODULE.EDIT_REQUEST"|translate}}</p>
+    </div>
+  </div>
+  <div class="customCard">
+    <button class="group">{{"GROUP.GENERAL_REQUEST_EDIT_GROUP"|translate}}</button>
+    <div class="grid p-fluid form ">
+      <div *ngIf = "isAmin" class="field col-6 md:col-3">
+        <m-input-text  setId="REQUESTER_ID" setLabel="LABEL.REQUESTER_ID" [(setModel)]=model.requestValue [setReadonly]="isAmin"   [setRequired]=!isAmin   >
+        </m-input-text>
+      </div>
+      <div class="field col-12 md:col-3">
+        <m-dropdown setClass="input-gray" setId="EDIT_FIELD_ID" setLabel="LABEL.EDIT_FIELD_ID" [(setModel)]=model.editFieldId [setReadonly]="isAmin"   [setRequired]=!isAmin [setSelectOption]=editFieldDropdown [setViewValue]=model.editFieldValue>>
+        </m-dropdown>
+      </div>
+      <div class="field col-12 md:col-3">
+        <m-input-text setId="CHANGE_TO" setLabel="LABEL.CHANGE_TO" [(setModel)]=model.changeTo [setReadonly]="isAmin"   [setRequired]=!isAmin   >
+        </m-input-text>
+      </div>
+      <div class="field col-12 md:col-12">
+        <m-file-upload [(setFileName)]=model.fileName setId="DOCUMENT_URL" [setReadonly]="isAmin" setLabel="LABEL.DOCUMENT_URL" [(setModel)]=model.documentUrl     >
+        </m-file-upload>
+      </div>
+      <div class="field col-12 md:col-3">
+        <m-dropdown setId="EDIT_REQUEST_STATUS" setLabel="LABEL.EDIT_REQUEST_STATUS" [(setModel)]=model.editRequestStatus  [setReadonly]="true"  [setSelectOption]=statusDropdown >
+        </m-dropdown>
+      </div>
+    </div>
+  </div>
+  <div class="grid p-fluid">
+    <div class="field col-12 md:col-2">
+      <m-button setClassName="backBtn" setLabel="LABEL.BACK" (onClick)="onBack()">
+      </m-button>
+    </div>
+    <div class="field col-12 md:col-2">
+      <m-button *ngIf = "!isAmin" setLabel="LABEL.SAVE" (onClick)="onSave()">
+      </m-button>
+    </div>
+
+    <div *ngIf = "isAmin" class="field col-6 md:col-2">
+      <m-button setLabel="LABEL.REJECT" (onClick)="onReject()">
+      </m-button>
+    </div>
+    <div *ngIf = "isAmin" class="field col-6 md:col-2">
+      <m-button setLabel="LABEL.APPROVE" (onClick)="onApprove()">
+      </m-button>
+    </div>
+  </div>
+</div> -->
+
+
+<div class="title">{{"MODULE.EDIT_REQUEST"|translate}}</div>
+<div class="m-card">
+  <div class="crad-ingput" *ngIf = "isAmin">
+    <span class="title-f">{{"LABEL.REQUESTER_ID" | translate}}</span>
+    <input class="input-gray" [(ngModel)]=model.requestValue >
+  </div>
+  <div class="crad-ingput mt-20">
+    <span class="title-f">{{"LABEL.EDIT_FIELD_ID" | translate}}</span>
+    <m-dropdown [setLabelType]="false" setClass="input-gray" setId="EDIT_FIELD_ID" setLabel="LABEL.EDIT_FIELD_ID" [(setModel)]=model.editFieldId [setReadonly]="isAmin"   [setRequired]=!isAmin [setSelectOption]=editFieldDropdown [setViewValue]=model.editFieldValue>>
+    </m-dropdown>
+  </div>
+  <div class="crad-ingput mt-20">
+    <span class="title-f">{{"LABEL.CHANGE_TO" | translate}}</span>
+    <textarea cols="3" rows="7" class="crad-textarea" [(ngModel)]=model.changeTo placeholder="กรุณาพิมพ์ข้อมูลที่ต้องการแก้ไข้"></textarea>
+  </div>
+  <div class="crad-ingput mt-20">
+    <span class="title-f">เอกสารยืนยัน</span>
+    <m-file-upload  setLabelType="false" setClass="input-gray" [(setFileName)]=model.fileName setId="DOCUMENT_URL" [setReadonly]="isAmin" setLabel="LABEL.DOCUMENT_URL" [(setModel)]=model.documentUrl     >
+    </m-file-upload>
+
+  </div>
+  <div class=" mt-20" >
+    <button *ngIf = "!isAmin" setLabel="LABEL.SAVE" (click)="onSave()" class="btn-import"> <i class='bx bx-import' ></i> ส่งแก้ไขข้อมูล</button>
+    <button *ngIf = "isAmin" setLabel="LABEL.SAVE" (click)="onReject()" class="btn-import"> <i class='bx bx-import' ></i> {{'LABEL.REJECT'| translate}}</button>
+    <button *ngIf = "isAmin" setLabel="LABEL.SAVE" (click)="onApprove()" class="btn-import"> <i class='bx bx-import' ></i> {{'LABEL.APPROVE'| translate}}</button>
+  </div>
+</div>

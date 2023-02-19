@@ -1,0 +1,46 @@
+<div class="itemCard">
+  <div>
+    <div>
+      <p class="title-item">{{"MODULE.USERS"|translate}}</p>
+    </div>
+  </div>
+  <div class="customCard">
+    <div class="grid p-fluid form ">
+      <div class="field col-12 md:col-6">
+        <m-input-text setId="USERNAME" setLabel="LABEL.USERNAME" [(setModel)]=model.username [setReadonly]=isUpdateMode  [setRequired]="true"  >
+        </m-input-text>
+      </div>
+      <div class="field col-12 md:col-6">
+        <m-input-text setId="PASSWORD" setLabel="LABEL.PASSWORD" [(setModel)]=model.password  [setPassword] = "true"  >
+        </m-input-text>
+      </div>
+
+      <div class="field col-12 md:col-4">
+        <m-input-text setId="FIRSTNAME" setLabel="LABEL.FIRSTNAME" [(setModel)]=model.firstname     >
+        </m-input-text>
+      </div>
+      <div class="field col-12 md:col-4">
+        <m-input-text setId="LASTNAME" setLabel="LABEL.LASTNAME" [(setModel)]=model.lastname     >
+        </m-input-text>
+      </div>
+      <div class="field col-12 md:col-4">
+        <m-dropdown setId="TYPE" setLabel="LABEL.TYPE" [(setModel)]=model.type (setModelChange)="onTypeChange($event)"   [setRequired]="true" [setSelectOption]=typeDropdown >
+        </m-dropdown>
+      </div>
+      <div class="field col-12 md:col-4">
+        <m-switch setId="IS_GUID" setLabel="LABEL.IS_GUID" [setReadonly]="isTeacher"  [(setModel)]=model.isGuid     >
+        </m-switch>
+      </div>
+    </div>
+  </div>
+  <div class="grid p-fluid">
+    <div class="field col-12 md:col-2">
+      <m-button setClassName="backBtn" setLabel="LABEL.BACK" (onClick)="onBack()">
+      </m-button>
+    </div>
+    <div *ngIf = !view class="field col-12 md:col-2">
+      <m-button setClassName="saveBtn" setLabel="LABEL.SAVE" (onClick)="onSave()">
+      </m-button>
+    </div>
+  </div>
+</div>

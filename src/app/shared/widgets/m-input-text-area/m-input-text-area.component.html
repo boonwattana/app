@@ -1,0 +1,7 @@
+<div class="field">
+    <div class="rowLabel"  *ngIf="label">
+        <label class="columnLabel" for="{{id}}" class="block">{{label|translate}}  :</label>
+        <p *ngIf = "isRequired" class="columnLabel">{{"LABEL.REQURID"|translate}}</p>
+    </div>
+    <textarea [(ngModel)]="model" [formControl] = "inputForm" pInputTextarea></textarea>
+</div>

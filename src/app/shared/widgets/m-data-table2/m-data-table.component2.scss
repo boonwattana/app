@@ -1,0 +1,172 @@
+.title{
+    font-size: 28px;
+    padding: 10px 0px;
+    color:  #0d53b1;
+    font-weight: 700;
+  }
+  .m-card{
+    background: #efefef;
+    padding: 20px;
+    border-radius: 20px;
+  }
+  table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  td, th {
+    border: 15px solid #efefef;
+    text-align: left;
+    background-color: #ffffff;
+    border-radius: 20px;
+    padding: 14px;
+  }
+  .m-col-bw-2{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .m-m{
+    padding: 0px 15px;
+  }
+  .btn-grod{
+    display: flex;
+    gap: 10px;
+  }
+  .m-btn-add{
+    cursor: pointer;
+    background: #5271ff;
+    color: #fff;
+    padding: 5px 8px;
+    border: 0px solid;
+    font-size: 17px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .m-btn-import{
+    cursor: pointer;
+    background: #7ed957;
+    color: #fff;
+    padding: 5px 8px;
+    border: 0px solid;
+    font-size: 17px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .m-btn-del{
+    cursor: pointer;
+    background: #ff1616;
+    color: #fff;
+    padding: 5px 8px;
+    border: 0px solid;
+    font-size: 17px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .m-mt-20{
+    margin-top: 20px;
+  }
+  .m-option{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+  }
+  .m-option-export{
+    display: flex;
+      align-items: center;
+      gap: 10px;
+  }
+  .input-search{
+    width: 100px;
+  }
+  .kis-table::ng-deep .p-paginator{
+    background: #ffffff00;
+  }
+  .input-search{
+    padding: 10px;
+    border: 0px solid;
+    width: 150px;
+    text-align: center;
+  }
+  .totalRecord{
+    background: #fed513;
+    padding: 5px;
+    border-radius: 10px;
+  }
+  .m-btn-del-s{
+    cursor: pointer;
+    background: #ff1616;
+    color: #fff;
+    padding: 3px;
+    border: 0px solid;
+    font-size: 30px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .m-btn-edit-s{
+    cursor: pointer;
+    background: #034cae;
+    color: #fff;
+    padding: 3px;
+    border: 0px solid;
+    font-size: 30px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .m-btn-view-s{
+    cursor: pointer;
+    background: #ffd300;
+    color: #fff;
+    padding: 3px;
+    border: 0px solid;
+    font-size: 30px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .o-btn{
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+
+.ob-Ex{
+    cursor: pointer;
+    background: #fff;
+    padding: 5px;
+}
+.Search{
+    display: flex;
+    flex-wrap: wrap;
+}
+// .clasdad{
+//     width: 72.4w;
+//     overflow-x: scroll;
+// }
+
+@media (max-width: 1024px){
+	
+}
+@media (max-width: 768px){
+	
+}
+
+@media (max-width: 515px){
+    .clasdad{
+        width: 100vw;
+        overflow-x: scroll;
+    }
+}

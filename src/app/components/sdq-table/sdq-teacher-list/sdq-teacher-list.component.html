@@ -1,0 +1,110 @@
+<m-data-table
+(searchEmit)="onSearch($event)"
+[option]="option"
+[dataSource] = "searchResult"
+[tableName]="tableName"
+[searchCondition] = 'searchConditions'
+(editEmit)="onEdit($event)"
+(viewEmit)="onView($event)"
+[removeRecord] = "lastRemoveId"
+[moduleName] = moduleName
+[setCanCreate] = false
+[setCanDelete] = false
+[setCanImport] =false
+[setCanReport] =true
+[setReportName] = "reportName"
+></m-data-table>
+<br>
+<div class="customCard">
+    <div class="grid p-fluid form ">
+        <div class="field col-12 md:col-6">
+            <table class="table table-bordered" >
+                <tr>
+                    <th >ด้าน</th>
+                    <th>ปกติ (คน)</th>
+                    <th>เสี่ยง(คน)</th>
+                    <th>มีปัญหา(คน)</th>
+                </tr>
+                <tr>
+                    <th>
+                         ด้านที่1
+                    </th>
+                    <td>
+                        {{sum01_normal}}
+                   </td>
+                   <td>
+                    {{sum01_risk}}
+                </td>
+                <td>
+                    {{sum01_bad}}
+                </td>
+                </tr>
+                <tr>
+                    <th>
+                         ด้านที่2
+                    </th>
+                    <td>
+                        {{sum02_normal}}
+                   </td>
+                   <td>
+                    {{sum02_risk}}   
+                </td>
+                <td>
+                    {{sum02_bad}}   
+                </td>
+                </tr>
+                <tr>
+                    <th>
+                         ด้านที่3
+                    </th>
+                    <td>
+                        {{sum03_normal}}
+                   </td>
+                   <td>
+                    {{sum03_risk}}
+                </td>
+                <td>
+                    {{sum03_bad}} 
+                </td>
+                </tr>
+                <tr>
+                    <th>
+                         ด้านที่4
+                    </th>
+                    <td>
+                        {{sum04_normal}}
+                   </td>
+                   <td>
+                    {{sum04_risk}}
+                </td>
+                <td>
+                    {{sum04_bad}}
+                </td>
+                </tr>
+                <tr>
+                    <th>
+                         รวม4ด้าน
+                    </th>
+                    <td>
+                        {{sum_normal}}
+                   </td>
+                   <td>
+                        {{sum_risk}}
+                </td>
+                <td>
+                        {{sum_bad}}
+                </td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="field col-12 md:col-6">
+            <br>
+            <b> สัมพันธ์ทางสังคม </b> <br>
+            มีจุดแข็ง จำนวน {{sum05_strong}} คน<br>
+            ไม่มีจุดแข็ง จำนวน {{sum05_weak}} คน<br>
+            รวม จำนวน {{sum05}} คน
+        </div>
+    </div>
+
+</div>

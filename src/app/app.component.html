@@ -1,0 +1,613 @@
+<div class="progressSpiner" *ngIf="loaderService.isLoading | async">
+  <p-progressSpinner></p-progressSpinner>
+</div>
+<div class="tableContent">
+  <div>
+    <div class="home-content" [ngStyle]="{ background: status() }">
+      <div class="conthi">
+        <!-- {{ stetus()}} -->
+        <div>
+          <!-- <i class='bx bx-menu'></i> -->
+          <div class="logoImageSection">
+            <!-- <img src="assets/images/logo_boonwattana.png" class="mr-2 logoImage"> -->
+            <div (click)="openmenuliftDestop()" class="con-menu-i-destop">
+              <i class="bx bx-menu"></i>
+            </div>
+            <div class="con-menu-i" (click)="openmenulift()">
+              <i class="bx bx-menu"></i>
+            </div>
+            <img
+              (click)="navigateTo('dashbord')"
+              src="assets/images/logo_boonwattana.png"
+              height="40"
+              style="zoom: 1.3"
+            />
+            <span class="namelogo">BOONWATTANA</span>
+          </div>
+        </div>
+
+        <div class="con-thia-user">
+          <!-- <div class="row " > -->
+          <!-- <p class="userName alignRight push"  >{{username}}</p> -->
+          <div class="login-menu" *ngIf="showLoginBtn">
+            <div
+              (click)="login()"
+              style="cursor: pointer"
+              class="logout list-menu"
+            >
+              เข้าสู่ระบบ
+            </div>
+          </div>
+          <span class="line-1">{{ username }} </span>
+          <img
+            src="assets/images/user.svg"
+            height="40"
+            style="cursor: pointer"
+            (click)="openmenuuser()"
+          />
+          <div class="user-menu" id="user-menu" *ngIf="isLogged">
+            <div
+              (click)="logout()"
+              style="cursor: pointer"
+              class="logout list-menu"
+            >
+              ออกจากระบบ
+            </div>
+          </div>
+
+          <!-- <i class='bx bx-exit' (click)="logout()"></i> -->
+          <!-- </div> -->
+        </div>
+      </div>
+    </div>
+    <!-- <div></div> -->
+    <div class="page-layout">
+      <div class="sidebar-left">
+        <div id="teacher" *ngIf="showTeacherMenuOnly">
+          <div
+            class="mian-item pointer"
+            (click)="openmenusub('.list-menu-student')"
+          >
+            <div>
+              <i class="bx bx-user"></i>
+              <span class="link_name">{{ "MENU.STUDENT" | translate }}</span>
+            </div>
+            <i class="bx bxs-down-arrow"></i>
+          </div>
+          <div class="list-menu-student list-menu-d pointer">
+            <!-- <li class="list-item"> <a class="link_name">{{"MENU.STUDENT"|translate}}</a></li> -->
+            <li class="list-item student">
+              <a (click)="navigateTo('student')">{{
+                "MENU.STUDENT_DATA" | translate
+              }}</a>
+            </li>
+          </div>
+        </div>
+        <div id="student" *ngIf="showStudentMenu">
+          <div
+            class="mian-item pointer"
+            (click)="openmenusub('.list-menu-student')"
+          >
+            <div>
+              <i class="bx bx-user"></i>
+              <span class="link_name">{{ "MENU.STUDENT" | translate }}</span>
+            </div>
+            <i class="bx bxs-down-arrow"></i>
+          </div>
+          <div class="list-menu-student list-menu-d pointer">
+            <!-- <li class="list-item"> <a class="link_name">{{"MENU.STUDENT"|translate}}</a></li> -->
+            <li class="list-item student">
+              <a (click)="navigateTo('student')">{{
+                "MENU.STUDENT_DATA" | translate
+              }}</a>
+            </li>
+            <li class="list-item edit-request" *ngIf="canRequest">
+              <a (click)="navigateTo('edit-request')">{{
+                "MENU.EDIT_REQUEST" | translate
+              }}</a>
+            </li>
+          </div>
+        </div>
+        <div id="student-care" *ngIf="showStudentMenuOnly">
+          <div
+            class="mian-item pointer"
+            (click)="openmenusub('.list-menu-student-care')"
+          >
+            <div>
+              <i class="bx bx-user"></i>
+              <span class="link_name">{{
+                "MENU.STUDENT_CARE" | translate
+              }}</span>
+            </div>
+            <i class="bx bxs-down-arrow"></i>
+          </div>
+          <div class="list-menu-student-care list-menu-d pointer">
+            <!-- <li class="list-item"> <a class="link_name">{{"MENU.STUDENT"|translate}}</a></li> -->
+            <li class="list-item sdq-table" *ngIf="isForStudentMenu">
+              <a (click)="navigateTo('sdq-table')">{{
+                "MENU.SDQ_FOR_STUDENT" | translate
+              }}</a>
+            </li>
+            <li class="list-item sdq-parent" *ngIf="isForStudentMenu">
+              <a (click)="navigateTo('sdq-parent')">{{
+                "MENU.SDQ_FOR_PARENT_MENU" | translate
+              }}</a>
+            </li>
+            <li class="list-item emotional-quotient">
+              <a (click)="navigateTo('emotional-quotient')">{{
+                "MENU.EMOTIONAL_QUOTIENT" | translate
+              }}</a>
+            </li>
+            <li class="list-item check-student">
+              <a (click)="navigateTo('check-student')">{{
+                "MENU.CHECK_STUDENT" | translate
+              }}</a>
+            </li>
+            <li class="list-item stress">
+              <a (click)="navigateTo('stress')">{{
+                "MENU.STRESS" | translate
+              }}</a>
+            </li>
+            <li class="list-item depression">
+              <a (click)="navigateTo('depression')">{{
+                "MENU.DEPRESSION" | translate
+              }}</a>
+            </li>
+          </div>
+        </div>
+
+        <!-- <div id="account"  > -->
+        <div id="account" *ngIf="showAccountMenu">
+          <div
+            class="mian-item pointer"
+            (click)="openmenusub('.list-menu-account')"
+          >
+            <div>
+              <i class="bx bx-user"></i>
+              <span class="link_name">{{
+                "MENU.STUDENT_DATA_ACCOUNT" | translate
+              }}</span>
+            </div>
+            <i class="bx bxs-down-arrow"></i>
+          </div>
+          <div class="list-menu-account list-menu-d pointer">
+            <li class="list-item student-account">
+              <a (click)="navigateTo('student')">{{
+                "MENU.STUDENT_DATA_ACCOUNT_ADD" | translate
+              }}</a>
+            </li>
+            <li class="list-item student-account-report">
+              <a (click)="navigateTo('student-report')">{{
+                "MENU.STUDENT_DATA_ACCOUNT_REPORT" | translate
+              }}</a>
+            </li>
+          </div>
+        </div>
+        <div id="teacher" *ngIf="showTeacherMenu">
+          <div
+            class="mian-item pointer"
+            (click)="openmenusub('.list-menu-teacher')"
+          >
+            <div class="font">
+              <i class="bx bx-user"></i>
+              <span class="link_name">{{ "MENU.TEACHER" | translate }}</span>
+            </div>
+            <i class="bx bxs-down-arrow"></i>
+          </div>
+          <div class="list-menu-teacher list-menu-d">
+            <!-- <li class="list-item"> <a class="link_name">{{"MENU.STUDENT"|translate}}</a></li> -->
+            <li class="list-item teacher pointer">
+              <a (click)="navigateTo('teacher')">{{
+                "MENU.TEACHER" | translate
+              }}</a>
+            </li>
+            <li class="list-item teacher-work pointer">
+              <a (click)="navigateTo('teacher-work')">{{
+                "MENU.TEACHER_WORK" | translate
+              }}</a>
+            </li>
+            <li class="list-item teachers-develop pointer">
+              <a (click)="navigateTo('teachers-develop')">{{
+                "MENU.TEACHER_DEVELOP" | translate
+              }}</a>
+            </li>
+            <li class="list-item education-background pointer">
+              <a (click)="navigateTo('education-background')">{{
+                "MENU.EDUCATION_BACKGROUND" | translate
+              }}</a>
+            </li>
+            <li class="list-item teaching-schedule pointer">
+              <a (click)="navigateTo('teaching-schedule')">{{
+                "MENU.TEACHING_SCHEDULE" | translate
+              }}</a>
+            </li>
+          </div>
+        </div>
+        <div id="teacher_care" *ngIf="showTeacherMenuOnly">
+          <div
+            class="mian-item pointer"
+            (click)="openmenusub('.list-menu-teacher-care')"
+          >
+            <div>
+              <i class="bx bx-user"></i>
+              <span class="link_name">{{
+                "MENU.STUDENT_CARE" | translate
+              }}</span>
+            </div>
+            <i class="bx bxs-down-arrow"></i>
+          </div>
+          <div class="list-menu-teacher-care list-menu-d pointer">
+            <li class="list-item student-home-visit">
+              <a (click)="navigateTo('student-home-visit')">{{
+                "MENU.HOME_VISIT_RECORD" | translate
+              }}</a>
+            </li>
+            <li class="list-item student-filter">
+              <a (click)="navigateTo('student-filter')">{{
+                "MENU.STEP_2" | translate
+              }}</a>
+            </li>
+            <li class="list-item check-student">
+              <a (click)="navigateTo('check-student')">{{
+                "MENU.CHECK_STUDENT" | translate
+              }}</a>
+            </li>
+            <li class="list-item student-scolar">
+              <a (click)="navigateTo('student-scolar')">{{
+                "MENU.SAVE_SCHOLA" | translate
+              }}</a>
+            </li>
+            <li class="list-item sdq">
+              <a (click)="navigateTo('sdq-teacher')">{{
+                "MENU.SDQ_FOR_TEACHER_MENU" | translate
+              }}</a>
+            </li>
+            <li class="list-item stress">
+              <a (click)="navigateTo('stress')">{{
+                "MENU.STRESS" | translate
+              }}</a>
+            </li>
+            <li class="list-item depression" *ngIf="showMenuGuid">
+              <a (click)="navigateTo('depression')">{{
+                "MENU.DEPRESSION" | translate
+              }}</a>
+            </li>
+          </div>
+        </div>
+        <!-- <div id="human" > -->
+        <div id="human" *ngIf="showHumanMenu">
+          <div
+            class="mian-item pointer"
+            (click)="openmenusub('.list-menu-human')"
+          >
+            <div class="font">
+              <i class="bx bx-user"></i>
+              <span class="link_name">{{ "MENU.HUMAN" | translate }}</span>
+            </div>
+            <i class="bx bxs-down-arrow"></i>
+          </div>
+          <div class="list-menu-human list-menu-d">
+            <li class="list-item teacher-add">
+              <a (click)="navigateTo('teacher')">{{
+                "MENU.TEACHER_ADD" | translate
+              }}</a>
+            </li>
+            <li class="list-item teacher-report">
+              <a (click)="navigateTo('teacher-report')">{{
+                "MENU.TEACHER_REPORT" | translate
+              }}</a>
+            </li>
+          </div>
+        </div>
+        <!-- SAR  -->
+        <div id="sar" *ngIf="showTeacherMenu">
+          <div
+            class="mian-item pointer"
+            (click)="openmenusub('.list-menu-sar')"
+          >
+            <div class="font">
+              <i class="bx bx-user"></i>
+              <span class="link_name pointer">{{
+                "MENU.SAR" | translate
+              }}</span>
+            </div>
+            <i class="bx bxs-down-arrow"></i>
+          </div>
+          <div class="list-menu-sar list-menu-d pointer">
+            <li class="list-item sar">
+              <a (click)="navigateTo('sar-main-menu')">{{
+                "MENU.SAR_FORM" | translate
+              }}</a>
+            </li>
+            <li class="list-item sar-work">
+              <a (click)="navigateTo('sar')">{{
+                "MENU.SAR_REPORT" | translate
+              }}</a>
+            </li>
+          </div>
+        </div>
+        <!-- งานดูแลช่วยเหลือนักเรียน-->
+        <div id="studentCare" *ngIf="showStudentCare">
+          <div
+            class="mian-item pointer"
+            (click)="openmenusub('.list-menu-student-care')"
+          >
+            <div class="font">
+              <i class="bx bx-user"></i>
+              <span class="link_name">{{
+                "MENU.STUDENT_CARE" | translate
+              }}</span>
+            </div>
+            <i class="bx bxs-down-arrow"></i>
+          </div>
+          <div class="list-menu-student-care list-menu-d pointer">
+            <!-- <li class="list-item"> <a class="link_name">{{"MENU.STUDENT"|translate}}</a></li> -->
+            <li class="list-item-head">
+              <a>{{ "MENU.STEP_1" | translate }}</a>
+            </li>
+            <a class="list-item-a student-home-visit">
+              <a (click)="navigateTo('student-home-visit')">{{
+                "MENU.HOME_VISIT_RECORD" | translate
+              }}</a></a
+            >
+            <a class="list-item-a check-student">
+              <a (click)="navigateTo('check-student')">{{
+                "MENU.CHECK_STUDENT" | translate
+              }}</a></a
+            >
+            <a class="list-item-a sdq-teacher">
+              <a (click)="navigateTo('sdq-teacher')">{{
+                "MENU.SDQ_FOR_TEACHER_MENU" | translate
+              }}</a></a
+            >
+
+            <a class="list-item-a stress">
+              <a (click)="navigateTo('stress')">{{
+                "MENU.STRESS" | translate
+              }}</a></a
+            >
+            <a class="list-item-a emotional-quotient">
+              <a (click)="navigateTo('emotional-quotient')">{{
+                "MENU.EMOTIONAL_QUOTIENT" | translate
+              }}</a></a
+            >
+            <a class="list-item-a depression">
+              <a (click)="navigateTo('depression')">{{
+                "MENU.DEPRESSION" | translate
+              }}</a></a
+            >
+            <li class="list-item-head student-filter">
+              <a (click)="navigateTo('student-filter')">{{
+                "MENU.STEP_2" | translate
+              }}</a>
+            </li>
+            <li class="list-item-head student-support">
+              <a (click)="navigateTo('student-support')">{{
+                "MENU.STEP_3" | translate
+              }}</a>
+            </li>
+            <li class="list-item-head">
+              <a>{{ "MENU.STEP_4" | translate }}</a>
+            </li>
+            <a class="list-item-a student-consultant">
+              <a (click)="navigateTo('student-consultant')">{{
+                "MENU.SAVE_CONSULTANS" | translate
+              }}</a></a
+            >
+            <a class="list-item-a student-scolar">
+              <a (click)="navigateTo('student-scolar')">{{
+                "MENU.SAVE_SCHOLA" | translate
+              }}</a></a
+            >
+            <a class="list-item-a student-help">
+              <a (click)="navigateTo('student-help')">{{
+                "MENU.SAVE_FIX_AND_HELP" | translate
+              }}</a></a
+            >
+            <li class="list-item-head">
+              <a>{{ "MENU.STEP_5" | translate }}</a>
+            </li>
+            <a class="list-item-a student-send-to">
+              <a (click)="navigateTo('student-send-to')">{{
+                "MENU.SEND_FORM" | translate
+              }}</a></a
+            >
+          </div>
+        </div>
+
+        <div id="setting" *ngIf="this.userType === 'Admin'">
+          <div
+            class="mian-item pointer"
+            (click)="openmenusub('.list-menu-admin')"
+          >
+            <div>
+              <i class="bx bx-customize"></i>
+              <span class="link_name">{{ "MENU.SETTING" | translate }}</span>
+            </div>
+            <i class="bx bxs-down-arrow"></i>
+          </div>
+          <div class="list-menu-admin list-menu-d">
+            <li class="list-item religion">
+              <a (click)="navigateTo('religion')">{{
+                "MENU.RELIGION" | translate
+              }}</a>
+            </li>
+            <li class="list-item nationality">
+              <a (click)="navigateTo('nationality')">{{
+                "MENU.NATIONALITY" | translate
+              }}</a>
+            </li>
+            <li class="list-item ethnicity">
+              <a (click)="navigateTo('ethnicity')">{{
+                "MENU.ETHNICITY" | translate
+              }}</a>
+            </li>
+            <li class="list-item classroom-type">
+              <a (click)="navigateTo('classroom-type')">{{
+                "MENU.CLASSROOM_TYPE" | translate
+              }}</a>
+            </li>
+            <li class="list-item classroom">
+              <a (click)="navigateTo('classroom')">{{
+                "MENU.CLASSROOM" | translate
+              }}</a>
+            </li>
+            <li class="list-item gendar">
+              <a (click)="navigateTo('gendar')">{{
+                "MENU.GENDAR" | translate
+              }}</a>
+            </li>
+            <li class="list-item parent-status">
+              <a (click)="navigateTo('parent-status')">{{
+                "MENU.PARENT_STATUS" | translate
+              }}</a>
+            </li>
+            <li class="list-item alive-with">
+              <a (click)="navigateTo('alive-with')">{{
+                "MENU.ALIVE_WITH" | translate
+              }}</a>
+            </li>
+            <li class="list-item country">
+              <a (click)="navigateTo('country')">{{
+                "MENU.COUNTRY" | translate
+              }}</a>
+            </li>
+            <li class="list-item province">
+              <a (click)="navigateTo('province')">{{
+                "MENU.PROVINCE" | translate
+              }}</a>
+            </li>
+            <li class="list-item district">
+              <a (click)="navigateTo('district')">{{
+                "MENU.DISTRICT" | translate
+              }}</a>
+            </li>
+            <li class="list-item sub-district">
+              <a (click)="navigateTo('sub-district')">{{
+                "MENU.SUB_DISTRICT" | translate
+              }}</a>
+            </li>
+            <li class="list-item edit-field">
+              <a (click)="navigateTo('edit-field')">{{
+                "MENU.EDIT_FIELD" | translate
+              }}</a>
+            </li>
+            <li class="list-item active-time">
+              <a (click)="navigateTo('active-time')">{{
+                "MENU.ACTIVE_TIME" | translate
+              }}</a>
+            </li>
+            <li class="list-item year-term">
+              <a (click)="navigateTo('year-term')">{{
+                "MENU.YEAR_TERM" | translate
+              }}</a>
+            </li>
+            <li class="list-item curriculum">
+              <a (click)="navigateTo('curriculum')">{{
+                "MENU.CURRICULUM" | translate
+              }}</a>
+            </li>
+            <li class="list-item practitioner-level">
+              <a (click)="navigateTo('practitioner-level')">{{
+                "MENU.PRACTITIONER_LEVEL" | translate
+              }}</a>
+            </li>
+            <li class="list-item activity-student">
+              <a (click)="navigateTo('activity-student')">{{
+                "MENU.ACTIVITY_STUDENT" | translate
+              }}</a>
+            </li>
+            <li class="list-item practicle">
+              <a (click)="navigateTo('practicle')">{{
+                "MENU.PRACTICLE" | translate
+              }}</a>
+            </li>
+            <li class="list-item users">
+              <a (click)="navigateTo('users')">{{
+                "MENU.USERS" | translate
+              }}</a>
+            </li>
+          </div>
+        </div>
+      </div>
+      <div class="sidebar-left1"></div>
+
+      <!-- <div   class="sidebar close hide">
+      <div class="logo-details">
+        <img  class="logo_icon"  src="favicon.ico">
+  
+        <span  class="logo_name">Boonwattana</span>
+      </div>
+      <ul class="nav-links">
+          
+      
+        <li>
+          <div class="iocn-link">
+            <a >
+              <i class='bx bx-user'></i>
+              <span class="link_name">{{"MENU.STUDENT"|translate}}</span>
+            </a>
+            <i class='bx bxs-chevron-down arrow' ></i>
+          </div>
+          <ul class="sub-menu">
+            <li><a class="link_name">{{"MENU.STUDENT"|translate}}</a></li>
+            <li><a  (click)="navigateTo('student')" >{{"MENU.STUDENT_DATA"|translate}}</a></li>
+            <li><a *ngIf="canRequest" (click)="navigateTo('edit-request')" >{{"MENU.EDIT_REQUEST"|translate}}</a></li>
+     
+          </ul>
+        </li>
+        <li class="setting" >
+          <div  class="iocn-link">
+            <a >
+              <i class='bx bx-customize'></i>
+              <span class="link_name">{{"MENU.SETTING"|translate}}</span>
+            </a>
+            <i class='bx bxs-chevron-down arrow' ></i>
+          </div>
+          <ul class="sub-menu">
+            <li><a class="link_name" >{{"MENU.SETTING"|translate}}</a></li>
+            <li><a (click)="navigateTo('religion')">{{"MENU.RELIGION"|translate}}</a></li>
+            <li><a (click)="navigateTo('nationality')">{{"MENU.NATIONALITY"|translate}}</a></li>
+            <li><a (click)="navigateTo('ethnicity')">{{"MENU.ETHNICITY"|translate}}</a></li>
+            <li><a (click)="navigateTo('classroom-type')">{{"MENU.CLASSROOM_TYPE"|translate}}</a></li>
+            <li><a (click)="navigateTo('classroom')">{{"MENU.CLASSROOM"|translate}}</a></li>
+            <li><a (click)="navigateTo('gendar')">{{"MENU.GENDAR"|translate}}</a></li>
+            <li><a (click)="navigateTo('parent-status')">{{"MENU.PARENT_STATUS"|translate}}</a></li>
+            <li><a (click)="navigateTo('alive-with')">{{"MENU.ALIVE_WITH"|translate}}</a></li>
+            <li><a (click)="navigateTo('country')">{{"MENU.COUNTRY"|translate}}</a></li>
+            <li><a (click)="navigateTo('province')">{{"MENU.PROVINCE"|translate}}</a></li>
+            <li><a (click)="navigateTo('district')">{{"MENU.DISTRICT"|translate}}</a></li>
+            <li><a (click)="navigateTo('sub-district')">{{"MENU.SUB_DISTRICT"|translate}}</a></li>
+            <li><a (click)="navigateTo('edit-field')">{{"MENU.EDIT_FIELD"|translate}}</a></li>
+            <li><a (click)="navigateTo('active-time')">{{"MENU.ACTIVE_TIME"|translate}}</a></li>
+          </ul>
+        </li>
+  </ul>
+    </div> -->
+      <section class="home-section">
+        <!-- <div class="home-content">
+          <div
+          class="grid p-fluid"
+          >
+            <div class="field col-12 md:col-8">
+              <i class='bx bx-menu'></i>
+            </div>
+            <div class="field col-12 md:col-4">
+              <div class="row " >
+                  <p class="userName alignRight push"  >{{username}}</p>
+                  <img src="assets/images/user.svg" height="40" class="mr-2">
+                  <i class='bx bx-exit' (click)="logout()"></i>
+              </div>
+            </div> 
+           </div>
+      </div> -->
+
+        <router-outlet></router-outlet>
+      </section>
+    </div>
+  </div>
+  <p-toast></p-toast>
+  <!-- <p-progressBar *ngIf="loaderService.isLoading|async" [showValue]="false" class="progressBar" [value]="loadValue" [style]="{'height': '2px'}"></p-progressBar>
+  <p-progressBar *ngIf="!(loaderService.isLoading|async)" [showValue]="false" class="progressBar" [value]="0" [style]="{'height': '2px'}"></p-progressBar> -->
+  <p-confirmDialog header="Confirmation" width="425"></p-confirmDialog>
+</div>

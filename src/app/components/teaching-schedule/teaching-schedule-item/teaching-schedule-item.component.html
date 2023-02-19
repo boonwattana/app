@@ -1,0 +1,358 @@
+
+<div class="itemCard">
+  <div>
+    <div class="headSection">
+      <p class="title-item">{{"MODULE.TEACHING_SCHEDULE"|translate}}</p>
+      <button *ngIf="view" class="edit" (click)="pageEdit()">แก้ไขข้อมูล</button>
+
+    </div>
+  </div>
+  
+  <div class="customCard">
+    <button class="group">ตารางสอน {{filterEnum(model.teacher_title,titleDropdown)}} {{model.teacher_firstname}} {{model.teacher_lastname}} ภาคเรียนที่ {{model.term}}/{{model.year}} โรงเรียนบุญวัฒนา</button>
+    <div class="grid p-fluid form ">
+
+      <div class="field col-12 md:col-12">
+        <table class="table table-bordered" style="width: 100%;" >
+            <tr>
+                <th>คาบที่ </th>
+                <td>คาบ 1</td>
+                <td>คาบ 2</td>
+                <td>คาบ 3</td>
+                <td>คาบ 4</td>
+                <td>คาบ 5</td>
+                <td>คาบ 6</td>
+                <td>คาบ 7</td>
+                <td>คาบ 8</td>
+                <td>คาบ 9</td>
+                <td>คาบ 10</td>
+            </tr>
+            <tr>
+              <th>เวลา</th>
+              <td>08.40-09.20</td>
+              <td>09.20-10.00</td>
+              <td>10.10-10.50</td>
+              <td>10.50-11.30</td>
+              <td>11.50-12.30</td>
+              <td>12.30-13.10</td>
+              <td>13.20-14.00</td>
+              <td>14.00-14.40</td>
+              <td>14.50-15.30</td>
+              <td>15.30-16.10</td>
+          </tr>
+          <tr>
+            <th>จันทร์</th>
+            <td> 
+              <m-input-text setplaceholderText="รหัสวิชา, อื่นๆ" setId="MON_SUBJECT_ID_01"  [(setModel)]=model.monSubjectId01 ></m-input-text> 
+              <m-input-text setplaceholderText="ชั้น" setId="MON_CLASS_01"  [(setModel)]=model.monClass01 ></m-input-text> 
+              <m-input-text setplaceholderText="สถานที่" setId="MON_SUBJECT_NAME_01"  [(setModel)]=model.monSubjectName01 ></m-input-text> 
+            </td>
+            <td> 
+              <m-input-text setplaceholderText="รหัสวิชา, อื่นๆ" setId="MON_SUBJECT_ID_02"  [(setModel)]=model.monSubjectId02 ></m-input-text> 
+              <m-input-text setplaceholderText="ชั้น" setId="MON_CLASS_02"  [(setModel)]=model.monClass02 ></m-input-text> 
+              <m-input-text setplaceholderText="สถานที่" setId="MON_SUBJECT_NAME_02"  [(setModel)]=model.monSubjectName02 ></m-input-text> 
+            </td>
+            <td> 
+              <m-input-text setplaceholderText="รหัสวิชา, อื่นๆ" setId="MON_SUBJECT_ID_03"  [(setModel)]=model.monSubjectId03 ></m-input-text> 
+              <m-input-text setplaceholderText="ชั้น" setId="MON_CLASS_03"  [(setModel)]=model.monClass03 ></m-input-text> 
+              <m-input-text setplaceholderText="สถานที่" setId="MON_SUBJECT_NAME_03"  [(setModel)]=model.monSubjectName03 ></m-input-text> 
+            </td>
+           
+            <td> 
+              <m-input-text setplaceholderText="รหัสวิชา, อื่นๆ" setId="MON_SUBJECT_ID_04"  [(setModel)]=model.monSubjectId04 ></m-input-text> 
+              <m-input-text setplaceholderText="ชั้น" setId="MON_CLASS_04"  [(setModel)]=model.monClass04 ></m-input-text> 
+              <m-input-text setplaceholderText="สถานที่" setId="MON_SUBJECT_NAME_04"  [(setModel)]=model.monSubjectName04 ></m-input-text> 
+            </td>
+           
+            <td> 
+              <m-input-text setplaceholderText="รหัสวิชา, อื่นๆ" setId="MON_SUBJECT_ID_05"  [(setModel)]=model.monSubjectId05 ></m-input-text> 
+              <m-input-text setplaceholderText="ชั้น" setId="MON_CLASS_05"  [(setModel)]=model.monClass05 ></m-input-text> 
+              <m-input-text setplaceholderText="สถานที่" setId="MON_SUBJECT_NAME_05"  [(setModel)]=model.monSubjectName05 ></m-input-text> 
+            </td>
+           
+            <td> 
+              <m-input-text setplaceholderText="รหัสวิชา, อื่นๆ" setId="MON_SUBJECT_ID_06"  [(setModel)]=model.monSubjectId06 ></m-input-text> 
+              <m-input-text setplaceholderText="ชั้น" setId="MON_CLASS_06"  [(setModel)]=model.monClass06 ></m-input-text> 
+              <m-input-text setplaceholderText="สถานที่" setId="MON_SUBJECT_NAME_06"  [(setModel)]=model.monSubjectName06 ></m-input-text> 
+            </td>
+           
+            <td> 
+              <m-input-text setplaceholderText="รหัสวิชา, อื่นๆ" setId="MON_SUBJECT_ID_07"  [(setModel)]=model.monSubjectId07 ></m-input-text> 
+              <m-input-text setplaceholderText="ชั้น" setId="MON_CLASS_07"  [(setModel)]=model.monClass07 ></m-input-text> 
+              <m-input-text setplaceholderText="สถานที่" setId="MON_SUBJECT_NAME_07"  [(setModel)]=model.monSubjectName07 ></m-input-text> 
+            </td>
+           
+            <td> 
+              <m-input-text setplaceholderText="รหัสวิชา, อื่นๆ" setId="MON_SUBJECT_ID_08"  [(setModel)]=model.monSubjectId08 ></m-input-text> 
+              <m-input-text setplaceholderText="ชั้น" setId="MON_CLASS_08"  [(setModel)]=model.monClass08 ></m-input-text> 
+              <m-input-text setplaceholderText="สถานที่" setId="MON_SUBJECT_NAME_08"  [(setModel)]=model.monSubjectName08 ></m-input-text> 
+            </td>
+           
+            <td> 
+              <m-input-text setplaceholderText="รหัสวิชา, อื่นๆ" setId="MON_SUBJECT_ID_09"  [(setModel)]=model.monSubjectId09 ></m-input-text> 
+              <m-input-text setplaceholderText="ชั้น" setId="MON_CLASS_09"  [(setModel)]=model.monClass09 ></m-input-text> 
+              <m-input-text setplaceholderText="สถานที่" setId="MON_SUBJECT_NAME_09"  [(setModel)]=model.monSubjectName09 ></m-input-text> 
+            </td>
+           
+           <td> 
+              <m-input-text setplaceholderText="รหัสวิชา, อื่นๆ" setId="MON_SUBJECT_ID_10"  [(setModel)]=model.monSubjectId10 ></m-input-text> 
+              <m-input-text setplaceholderText="ชั้น" setId="MON_CLASS_10"  [(setModel)]=model.monClass10 ></m-input-text> 
+              <m-input-text setplaceholderText="สถานที่" setId="MON_SUBJECT_NAME_10"  [(setModel)]=model.monSubjectName10 ></m-input-text> 
+            </td>
+           
+        </tr>
+        <tr>
+          <th>อังคาร</th>
+          <td> 
+            <m-input-text setplaceholderText="รหัสวิชา, อื่นๆ" setId="TUE_SUBJECT_ID_01"  [(setModel)]=model.tueSubjectId01 ></m-input-text> 
+            <m-input-text setplaceholderText="ชั้น" setId="TUE_CLASS_01"  [(setModel)]=model.tueClass01 ></m-input-text> 
+            <m-input-text setplaceholderText="สถานที่" setId="TUE_SUBJECT_NAME_01"  [(setModel)]=model.tueSubjectName01 ></m-input-text> 
+          </td>
+          <td> 
+            <m-input-text setplaceholderText="รหัสวิชา, อื่นๆ" setId="TUE_SUBJECT_ID_02"  [(setModel)]=model.tueSubjectId02 ></m-input-text> 
+            <m-input-text setplaceholderText="ชั้น" setId="TUE_CLASS_02"  [(setModel)]=model.tueClass02 ></m-input-text> 
+            <m-input-text setplaceholderText="สถานที่" setId="TUE_SUBJECT_NAME_02"  [(setModel)]=model.tueSubjectName02 ></m-input-text> 
+          </td>
+          <td> 
+            <m-input-text setplaceholderText="รหัสวิชา, อื่นๆ" setId="TUE_SUBJECT_ID_03"  [(setModel)]=model.tueSubjectId03 ></m-input-text> 
+            <m-input-text setplaceholderText="ชั้น" setId="TUE_CLASS_03"  [(setModel)]=model.tueClass03 ></m-input-text> 
+            <m-input-text setplaceholderText="สถานที่" setId="TUE_SUBJECT_NAME_03"  [(setModel)]=model.tueSubjectName03 ></m-input-text> 
+          </td>
+         
+          <td> 
+            <m-input-text setplaceholderText="รหัสวิชา, อื่นๆ" setId="TUE_SUBJECT_ID_04"  [(setModel)]=model.tueSubjectId04 ></m-input-text> 
+            <m-input-text setplaceholderText="ชั้น" setId="TUE_CLASS_04"  [(setModel)]=model.tueClass04 ></m-input-text> 
+            <m-input-text setplaceholderText="สถานที่" setId="TUE_SUBJECT_NAME_04"  [(setModel)]=model.tueSubjectName04 ></m-input-text> 
+          </td>
+         
+          <td> 
+            <m-input-text setplaceholderText="รหัสวิชา, อื่นๆ" setId="TUE_SUBJECT_ID_05"  [(setModel)]=model.tueSubjectId05 ></m-input-text> 
+            <m-input-text setplaceholderText="ชั้น" setId="TUE_CLASS_05"  [(setModel)]=model.tueClass05 ></m-input-text> 
+            <m-input-text setplaceholderText="สถานที่" setId="TUE_SUBJECT_NAME_05"  [(setModel)]=model.tueSubjectName05 ></m-input-text> 
+          </td>
+         
+          <td> 
+            <m-input-text setplaceholderText="รหัสวิชา, อื่นๆ" setId="TUE_SUBJECT_ID_06"  [(setModel)]=model.tueSubjectId06 ></m-input-text> 
+            <m-input-text setplaceholderText="ชั้น" setId="TUE_CLASS_06"  [(setModel)]=model.tueClass06 ></m-input-text> 
+            <m-input-text setplaceholderText="สถานที่" setId="TUE_SUBJECT_NAME_06"  [(setModel)]=model.tueSubjectName06 ></m-input-text> 
+          </td>
+         
+          <td> 
+            <m-input-text setplaceholderText="รหัสวิชา, อื่นๆ" setId="TUE_SUBJECT_ID_07"  [(setModel)]=model.tueSubjectId07 ></m-input-text> 
+            <m-input-text setplaceholderText="ชั้น" setId="TUE_CLASS_07"  [(setModel)]=model.tueClass07 ></m-input-text> 
+            <m-input-text setplaceholderText="สถานที่" setId="TUE_SUBJECT_NAME_07"  [(setModel)]=model.tueSubjectName07 ></m-input-text> 
+          </td>
+         
+          <td> 
+            <m-input-text setplaceholderText="รหัสวิชา, อื่นๆ" setId="TUE_SUBJECT_ID_08"  [(setModel)]=model.tueSubjectId08 ></m-input-text> 
+            <m-input-text setplaceholderText="ชั้น" setId="TUE_CLASS_08"  [(setModel)]=model.tueClass08 ></m-input-text> 
+            <m-input-text setplaceholderText="สถานที่" setId="TUE_SUBJECT_NAME_08"  [(setModel)]=model.tueSubjectName08 ></m-input-text> 
+          </td>
+         
+          <td> 
+            <m-input-text setplaceholderText="รหัสวิชา, อื่นๆ" setId="TUE_SUBJECT_ID_09"  [(setModel)]=model.tueSubjectId09 ></m-input-text> 
+            <m-input-text setplaceholderText="ชั้น" setId="TUE_CLASS_09"  [(setModel)]=model.tueClass09 ></m-input-text> 
+            <m-input-text setplaceholderText="สถานที่" setId="TUE_SUBJECT_NAME_09"  [(setModel)]=model.tueSubjectName09 ></m-input-text> 
+          </td>
+         
+         <td> 
+            <m-input-text setplaceholderText="รหัสวิชา, อื่นๆ" setId="TUE_SUBJECT_ID_10"  [(setModel)]=model.tueSubjectId10 ></m-input-text> 
+            <m-input-text setplaceholderText="ชั้น" setId="TUE_CLASS_10"  [(setModel)]=model.tueClass10 ></m-input-text> 
+            <m-input-text setplaceholderText="สถานที่" setId="TUE_SUBJECT_NAME_10"  [(setModel)]=model.tueSubjectName10 ></m-input-text> 
+          </td>
+      </tr>
+      <tr>
+        <th>พุธ</th>
+        <td> 
+          <m-input-text setplaceholderText="รหัสวิชา, อื่นๆ" setId="WED_SUBJECT_ID_01"  [(setModel)]=model.wedSubjectId01 ></m-input-text> 
+          <m-input-text setplaceholderText="ชั้น" setId="WED_CLASS_01"  [(setModel)]=model.wedClass01 ></m-input-text> 
+          <m-input-text setplaceholderText="สถานที่" setId="WED_SUBJECT_NAME_01"  [(setModel)]=model.wedSubjectName01 ></m-input-text> 
+        </td>
+        <td> 
+          <m-input-text setplaceholderText="รหัสวิชา, อื่นๆ" setId="WED_SUBJECT_ID_02"  [(setModel)]=model.wedSubjectId02 ></m-input-text> 
+          <m-input-text setplaceholderText="ชั้น" setId="WED_CLASS_02"  [(setModel)]=model.wedClass02 ></m-input-text> 
+          <m-input-text setplaceholderText="สถานที่" setId="WED_SUBJECT_NAME_02"  [(setModel)]=model.wedSubjectName02 ></m-input-text> 
+        </td>
+        <td> 
+          <m-input-text setplaceholderText="รหัสวิชา, อื่นๆ" setId="WED_SUBJECT_ID_03"  [(setModel)]=model.wedSubjectId03 ></m-input-text> 
+          <m-input-text setplaceholderText="ชั้น" setId="WED_CLASS_03"  [(setModel)]=model.wedClass03 ></m-input-text> 
+          <m-input-text setplaceholderText="สถานที่" setId="WED_SUBJECT_NAME_03"  [(setModel)]=model.wedSubjectName03 ></m-input-text> 
+        </td>
+       
+        <td> 
+          <m-input-text setplaceholderText="รหัสวิชา, อื่นๆ" setId="WED_SUBJECT_ID_04"  [(setModel)]=model.wedSubjectId04 ></m-input-text> 
+          <m-input-text setplaceholderText="ชั้น" setId="WED_CLASS_04"  [(setModel)]=model.wedClass04 ></m-input-text> 
+          <m-input-text setplaceholderText="สถานที่" setId="WED_SUBJECT_NAME_04"  [(setModel)]=model.wedSubjectName04 ></m-input-text> 
+        </td>
+       
+        <td> 
+          <m-input-text setplaceholderText="รหัสวิชา, อื่นๆ" setId="WED_SUBJECT_ID_05"  [(setModel)]=model.wedSubjectId05 ></m-input-text> 
+          <m-input-text setplaceholderText="ชั้น" setId="WED_CLASS_05"  [(setModel)]=model.wedClass05 ></m-input-text> 
+          <m-input-text setplaceholderText="สถานที่" setId="WED_SUBJECT_NAME_05"  [(setModel)]=model.wedSubjectName05 ></m-input-text> 
+        </td>
+       
+        <td> 
+          <m-input-text setplaceholderText="รหัสวิชา, อื่นๆ" setId="WED_SUBJECT_ID_06"  [(setModel)]=model.wedSubjectId06 ></m-input-text> 
+          <m-input-text setplaceholderText="ชั้น" setId="WED_CLASS_06"  [(setModel)]=model.wedClass06 ></m-input-text> 
+          <m-input-text setplaceholderText="สถานที่" setId="WED_SUBJECT_NAME_06"  [(setModel)]=model.wedSubjectName06 ></m-input-text> 
+        </td>
+       
+        <td> 
+          <m-input-text setplaceholderText="รหัสวิชา, อื่นๆ" setId="WED_SUBJECT_ID_07"  [(setModel)]=model.wedSubjectId07 ></m-input-text> 
+          <m-input-text setplaceholderText="ชั้น" setId="WED_CLASS_07"  [(setModel)]=model.wedClass07 ></m-input-text> 
+          <m-input-text setplaceholderText="สถานที่" setId="WED_SUBJECT_NAME_07"  [(setModel)]=model.wedSubjectName07 ></m-input-text> 
+        </td>
+       
+        <td> 
+          <m-input-text setplaceholderText="รหัสวิชา, อื่นๆ" setId="WED_SUBJECT_ID_08"  [(setModel)]=model.wedSubjectId08 ></m-input-text> 
+          <m-input-text setplaceholderText="ชั้น" setId="WED_CLASS_08"  [(setModel)]=model.wedClass08 ></m-input-text> 
+          <m-input-text setplaceholderText="สถานที่" setId="WED_SUBJECT_NAME_08"  [(setModel)]=model.wedSubjectName08 ></m-input-text> 
+        </td>
+       
+        <td> 
+          <m-input-text setplaceholderText="รหัสวิชา, อื่นๆ" setId="WED_SUBJECT_ID_09"  [(setModel)]=model.wedSubjectId09 ></m-input-text> 
+          <m-input-text setplaceholderText="ชั้น" setId="WED_CLASS_09"  [(setModel)]=model.wedClass09 ></m-input-text> 
+          <m-input-text setplaceholderText="สถานที่" setId="WED_SUBJECT_NAME_09"  [(setModel)]=model.wedSubjectName09 ></m-input-text> 
+        </td>
+       
+       <td> 
+          <m-input-text setplaceholderText="รหัสวิชา, อื่นๆ" setId="WED_SUBJECT_ID_10"  [(setModel)]=model.wedSubjectId10 ></m-input-text> 
+          <m-input-text setplaceholderText="ชั้น" setId="WED_CLASS_10"  [(setModel)]=model.wedClass10 ></m-input-text> 
+          <m-input-text setplaceholderText="สถานที่" setId="WED_SUBJECT_NAME_10"  [(setModel)]=model.wedSubjectName10 ></m-input-text> 
+        </td>
+    </tr>
+    <tr>
+      <th>พฤหัสบดี</th>
+      <td> 
+        <m-input-text setplaceholderText="รหัสวิชา, อื่นๆ" setId="THURS_SUBJECT_ID_01"  [(setModel)]=model.thursSubjectId01 ></m-input-text> 
+        <m-input-text setplaceholderText="ชั้น" setId="THURS_CLASS_01"  [(setModel)]=model.thursClass01 ></m-input-text> 
+        <m-input-text setplaceholderText="สถานที่" setId="THURS_SUBJECT_NAME_01"  [(setModel)]=model.thursSubjectName01 ></m-input-text> 
+      </td>
+      <td> 
+        <m-input-text setplaceholderText="รหัสวิชา, อื่นๆ" setId="THURS_SUBJECT_ID_02"  [(setModel)]=model.thursSubjectId02 ></m-input-text> 
+        <m-input-text setplaceholderText="ชั้น" setId="THURS_CLASS_02"  [(setModel)]=model.thursClass02 ></m-input-text> 
+        <m-input-text setplaceholderText="สถานที่" setId="THURS_SUBJECT_NAME_02"  [(setModel)]=model.thursSubjectName02 ></m-input-text> 
+      </td>
+      <td> 
+        <m-input-text setplaceholderText="รหัสวิชา, อื่นๆ" setId="THURS_SUBJECT_ID_03"  [(setModel)]=model.thursSubjectId03 ></m-input-text> 
+        <m-input-text setplaceholderText="ชั้น" setId="THURS_CLASS_03"  [(setModel)]=model.thursClass03 ></m-input-text> 
+        <m-input-text setplaceholderText="สถานที่" setId="THURS_SUBJECT_NAME_03"  [(setModel)]=model.thursSubjectName03 ></m-input-text> 
+      </td>
+     
+      <td> 
+        <m-input-text setplaceholderText="รหัสวิชา, อื่นๆ" setId="THURS_SUBJECT_ID_04"  [(setModel)]=model.thursSubjectId04 ></m-input-text> 
+        <m-input-text setplaceholderText="ชั้น" setId="THURS_CLASS_04"  [(setModel)]=model.thursClass04 ></m-input-text> 
+        <m-input-text setplaceholderText="สถานที่" setId="THURS_SUBJECT_NAME_04"  [(setModel)]=model.thursSubjectName04 ></m-input-text> 
+      </td>
+     
+      <td> 
+        <m-input-text setplaceholderText="รหัสวิชา, อื่นๆ" setId="THURS_SUBJECT_ID_05"  [(setModel)]=model.thursSubjectId05 ></m-input-text> 
+        <m-input-text setplaceholderText="ชั้น" setId="THURS_CLASS_05"  [(setModel)]=model.thursClass05 ></m-input-text> 
+        <m-input-text setplaceholderText="สถานที่" setId="THURS_SUBJECT_NAME_05"  [(setModel)]=model.thursSubjectName05 ></m-input-text> 
+      </td>
+     
+      <td> 
+        <m-input-text setplaceholderText="รหัสวิชา, อื่นๆ" setId="THURS_SUBJECT_ID_06"  [(setModel)]=model.thursSubjectId06 ></m-input-text> 
+        <m-input-text setplaceholderText="ชั้น" setId="THURS_CLASS_06"  [(setModel)]=model.thursClass06 ></m-input-text> 
+        <m-input-text setplaceholderText="สถานที่" setId="THURS_SUBJECT_NAME_06"  [(setModel)]=model.thursSubjectName06 ></m-input-text> 
+      </td>
+     
+      <td> 
+        <m-input-text setplaceholderText="รหัสวิชา, อื่นๆ" setId="THURS_SUBJECT_ID_07"  [(setModel)]=model.thursSubjectId07 ></m-input-text> 
+        <m-input-text setplaceholderText="ชั้น" setId="THURS_CLASS_07"  [(setModel)]=model.thursClass07 ></m-input-text> 
+        <m-input-text setplaceholderText="สถานที่" setId="THURS_SUBJECT_NAME_07"  [(setModel)]=model.thursSubjectName07 ></m-input-text> 
+      </td>
+     
+      <td> 
+        <m-input-text setplaceholderText="รหัสวิชา, อื่นๆ" setId="THURS_SUBJECT_ID_08"  [(setModel)]=model.thursSubjectId08 ></m-input-text> 
+        <m-input-text setplaceholderText="ชั้น" setId="THURS_CLASS_08"  [(setModel)]=model.thursClass08 ></m-input-text> 
+        <m-input-text setplaceholderText="สถานที่" setId="THURS_SUBJECT_NAME_08"  [(setModel)]=model.thursSubjectName08 ></m-input-text> 
+      </td>
+     
+      <td> 
+        <m-input-text setplaceholderText="รหัสวิชา, อื่นๆ" setId="THURS_SUBJECT_ID_09"  [(setModel)]=model.thursSubjectId09 ></m-input-text> 
+        <m-input-text setplaceholderText="ชั้น" setId="THURS_CLASS_09"  [(setModel)]=model.thursClass09 ></m-input-text> 
+        <m-input-text setplaceholderText="สถานที่" setId="THURS_SUBJECT_NAME_09"  [(setModel)]=model.thursSubjectName09 ></m-input-text> 
+      </td>
+     
+     <td> 
+        <m-input-text setplaceholderText="รหัสวิชา, อื่นๆ" setId="THURS_SUBJECT_ID_10"  [(setModel)]=model.thursSubjectId10 ></m-input-text> 
+        <m-input-text setplaceholderText="ชั้น" setId="THURS_CLASS_10"  [(setModel)]=model.thursClass10 ></m-input-text> 
+        <m-input-text setplaceholderText="สถานที่" setId="THURS_SUBJECT_NAME_10"  [(setModel)]=model.thursSubjectName10 ></m-input-text> 
+      </td>
+  </tr>
+  <tr>
+    <th>ศุกร์</th>
+    <td> 
+      <m-input-text setplaceholderText="รหัสวิชา, อื่นๆ" setId="FIR_SUBJECT_ID_01"  [(setModel)]=model.firSubjectId01 ></m-input-text> 
+      <m-input-text setplaceholderText="ชั้น" setId="FIR_CLASS_01"  [(setModel)]=model.firClass01 ></m-input-text> 
+      <m-input-text setplaceholderText="สถานที่" setId="FIR_SUBJECT_NAME_01"  [(setModel)]=model.firSubjectName01 ></m-input-text> 
+    </td>
+    <td> 
+      <m-input-text setplaceholderText="รหัสวิชา, อื่นๆ" setId="FIR_SUBJECT_ID_02"  [(setModel)]=model.firSubjectId02 ></m-input-text> 
+      <m-input-text setplaceholderText="ชั้น" setId="FIR_CLASS_02"  [(setModel)]=model.firClass02 ></m-input-text> 
+      <m-input-text setplaceholderText="สถานที่" setId="FIR_SUBJECT_NAME_02"  [(setModel)]=model.firSubjectName02 ></m-input-text> 
+    </td>
+    <td> 
+      <m-input-text setplaceholderText="รหัสวิชา, อื่นๆ" setId="FIR_SUBJECT_ID_03"  [(setModel)]=model.firSubjectId03 ></m-input-text> 
+      <m-input-text setplaceholderText="ชั้น" setId="FIR_CLASS_03"  [(setModel)]=model.firClass03 ></m-input-text> 
+      <m-input-text setplaceholderText="สถานที่" setId="FIR_SUBJECT_NAME_03"  [(setModel)]=model.firSubjectName03 ></m-input-text> 
+    </td>
+   
+    <td> 
+      <m-input-text setplaceholderText="รหัสวิชา, อื่นๆ" setId="FIR_SUBJECT_ID_04"  [(setModel)]=model.firSubjectId04 ></m-input-text> 
+      <m-input-text setplaceholderText="ชั้น" setId="FIR_CLASS_04"  [(setModel)]=model.firClass04 ></m-input-text> 
+      <m-input-text setplaceholderText="สถานที่" setId="FIR_SUBJECT_NAME_04"  [(setModel)]=model.firSubjectName04 ></m-input-text> 
+    </td>
+   
+    <td> 
+      <m-input-text setplaceholderText="รหัสวิชา, อื่นๆ" setId="FIR_SUBJECT_ID_05"  [(setModel)]=model.firSubjectId05 ></m-input-text> 
+      <m-input-text setplaceholderText="ชั้น" setId="FIR_CLASS_05"  [(setModel)]=model.firClass05 ></m-input-text> 
+      <m-input-text setplaceholderText="สถานที่" setId="FIR_SUBJECT_NAME_05"  [(setModel)]=model.firSubjectName05 ></m-input-text> 
+    </td>
+   
+    <td> 
+      <m-input-text setplaceholderText="รหัสวิชา, อื่นๆ" setId="FIR_SUBJECT_ID_06"  [(setModel)]=model.firSubjectId06 ></m-input-text> 
+      <m-input-text setplaceholderText="ชั้น" setId="FIR_CLASS_06"  [(setModel)]=model.firClass06 ></m-input-text> 
+      <m-input-text setplaceholderText="สถานที่" setId="FIR_SUBJECT_NAME_06"  [(setModel)]=model.firSubjectName06 ></m-input-text> 
+    </td>
+   
+    <td> 
+      <m-input-text setplaceholderText="รหัสวิชา, อื่นๆ" setId="FIR_SUBJECT_ID_07"  [(setModel)]=model.firSubjectId07 ></m-input-text> 
+      <m-input-text setplaceholderText="ชั้น" setId="FIR_CLASS_07"  [(setModel)]=model.firClass07 ></m-input-text> 
+      <m-input-text setplaceholderText="สถานที่" setId="FIR_SUBJECT_NAME_07"  [(setModel)]=model.firSubjectName07 ></m-input-text> 
+    </td>
+   
+    <td> 
+      <m-input-text setplaceholderText="รหัสวิชา, อื่นๆ" setId="FIR_SUBJECT_ID_08"  [(setModel)]=model.firSubjectId08 ></m-input-text> 
+      <m-input-text setplaceholderText="ชั้น" setId="FIR_CLASS_08"  [(setModel)]=model.firClass08 ></m-input-text> 
+      <m-input-text setplaceholderText="สถานที่" setId="FIR_SUBJECT_NAME_08"  [(setModel)]=model.firSubjectName08 ></m-input-text> 
+    </td>
+   
+    <td> 
+      <m-input-text setplaceholderText="รหัสวิชา, อื่นๆ" setId="FIR_SUBJECT_ID_09"  [(setModel)]=model.firSubjectId09 ></m-input-text> 
+      <m-input-text setplaceholderText="ชั้น" setId="FIR_CLASS_09"  [(setModel)]=model.firClass09 ></m-input-text> 
+      <m-input-text setplaceholderText="สถานที่" setId="FIR_SUBJECT_NAME_09"  [(setModel)]=model.firSubjectName09 ></m-input-text> 
+    </td>
+   
+   <td> 
+      <m-input-text setplaceholderText="รหัสวิชา, อื่นๆ" setId="FIR_SUBJECT_ID_10"  [(setModel)]=model.firSubjectId10 ></m-input-text> 
+      <m-input-text setplaceholderText="ชั้น" setId="FIR_CLASS_10"  [(setModel)]=model.firClass10 ></m-input-text> 
+      <m-input-text setplaceholderText="สถานที่" setId="FIR_SUBJECT_NAME_10"  [(setModel)]=model.firSubjectName10 ></m-input-text> 
+    </td>
+</tr>
+        </table>
+    </div>
+    </div>
+  </div>
+  <div class="grid p-fluid">
+    <div *ngIf = onBackViewDisplay class="field col-12 md:col-2">
+      <m-button setClassName="backBtn" setLabel="LABEL.BACK" (onClick)="onBackView()">
+      </m-button>
+    </div>
+    <div *ngIf = !view class="field col-12 md:col-2">
+      <m-button setClassName="saveBtn" setLabel="LABEL.SAVE" (onClick)="onSave()">
+      </m-button>
+    </div>
+  </div>
+</div>

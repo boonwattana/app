@@ -1,0 +1,45 @@
+.image-upload{
+    width: 100px;
+    height: 100px;
+}
+// .row {
+//     display: flex;
+//     overflow: scroll;
+
+//     background-color: aqua;
+//   }
+
+  .contain{
+    display: flex;
+
+  }
+.item{
+    margin: 2px;
+    border: 2px;
+    border-color: black;
+    flex-shrink: 0;
+
+}
+.remove{
+  color: red;
+  position:absolute;
+  align-items: center;
+  margin-top: 5px;
+  margin-left: 75%;
+  font-size: 20px;
+
+}
+.contain-item{
+  position:relative;
+
+}
+img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover
+}
+.select-image-btn{
+  width: 100px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}

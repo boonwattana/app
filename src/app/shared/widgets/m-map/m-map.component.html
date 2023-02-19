@@ -1,0 +1,7 @@
+<div class="field">
+    <div class="rowLabel">
+        <label class="columnLabel" for="{{id}}" class="block">{{label|translate}}  :</label>
+        <p *ngIf = "isRequired" class="columnLabel">{{"LABEL.REQURID"|translate}}</p>
+    </div>
+    <p-gmap [formControl] = "inputForm" [options]="options" [style]="{'width':'100%','height':'320px'}" ></p-gmap>
+    </div>

@@ -1,0 +1,55 @@
+<!-- <div class="field col-12 md:col-6">
+  <p class="header-item">{{bindingModuleName|translate}}</p>
+</div>
+
+<div class="customCard dataGrid" >
+  <p-table
+  [value]="bindingDataSource"
+  [scrollable]="true"
+  class="customTable"
+    #dt1
+     currentPageReportTemplate="show  {first} to {last}"
+      responsiveLayout="scroll"
+     scrollDirection = 'both'
+     >
+      <ng-template pTemplate="header">
+          <tr  >
+            <th  
+              class="t-header"
+              *ngFor="
+                let header of bindingOption.columns;
+                let i = index 
+                    "
+          [style]=header.width
+              >
+              <p class="horizontal" >
+                {{header.label|translate}}
+              </p>
+          
+              </th>
+              
+          </tr>
+
+      </ng-template>
+      <ng-template  pTemplate="body" let-row let-rowIndex="rowIndex">
+          <tr>
+              <td 
+              *ngFor="
+                let col of bindingOption.columns;
+                let i = index
+              "
+              [style]=col.width
+            >
+              <div
+              
+              >
+              <p class="text-th">{{ row[col.textKey]}}</p>
+                
+              </div>
+              
+            </td>
+          </tr>
+      </ng-template>
+  </p-table>
+</div>
+ -->

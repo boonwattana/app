@@ -1,0 +1,49 @@
+<div class="itemCard">
+  <div  class="g-t">
+    <div class="title">{{"MODULE.STUDENT_HELP"|translate}}</div>
+    <button *ngIf ='view' class="edit" (click)="pageEdit()">แก้ไขข้อมูล</button>
+  </div>
+  <div class="customCard">
+    <button class="group">{{"GROUP.GENERAL_GROUP"|translate}}</button>
+    <div class="grid p-fluid form ">
+      <div class="field col-12 md:col-4">
+        <m-dropdown setId="STUDENT_ID" setLabel="LABEL.STUDENT_ID" [setReadonly] = true [(setModel)]=model.studentId   [setRequired]="true" [setSelectOption]=studentDropdown [setViewValue]=model.studentValue>>
+        </m-dropdown>
+      </div>
+      <div class="field col-12 md:col-3">
+        <m-input-text setId="NICK_NAME" setLabel="LABEL.NICK_NAME" [(setModel)]=model.nickName   [setRequired]="true"  >
+        </m-input-text>
+      </div>
+      <div class="field col-12 md:col-5">
+        <m-input-text setId="ACTIVITY_NAME" setLabel="LABEL.ACTIVITY_NAME" [(setModel)]=model.activityName   [setRequired]="true"  >
+        </m-input-text>
+      </div>
+      <div class="field col-12 md:col-6">
+        <m-calendar setId="START_DATE" setLabel="LABEL.START_DATE" [(setModel)]=model.startDate     >
+        </m-calendar>
+      </div>
+      <div class="field col-12 md:col-6">
+        <m-calendar setId="END_DATE" setLabel="LABEL.END_DATE" [(setModel)]=model.endDate     >
+        </m-calendar>
+      </div>
+      <div class="field col-12 md:col-4">
+        <m-dropdown setId="RESULT_HELP_TYPE" setLabel="LABEL.RESULT_HELP_TYPE" [(setModel)]=model.resultHelpType    [setSelectOption]=resultHelpTypeDropdown >
+        </m-dropdown>
+      </div>
+      <div *ngIf = "(model.resultHelpType == 2)" class="field col-12 md:col-8">
+        <m-input-text setId="RESULT_TEXT" setLabel="LABEL.RESULT_TEXT" [(setModel)]=model.resultText     >
+        </m-input-text>
+      </div>
+    </div>
+  </div>
+  <div class="grid p-fluid">
+    <div class="field col-6 md:col-2">
+      <m-button setClassName="backBtn" setLabel="LABEL.BACK" (onClick)="onBack()">
+      </m-button>
+    </div>
+    <div *ngIf = !view class="field col-12 md:col-2">
+      <m-button setClassName="saveBtn" setLabel="LABEL.SAVE" (onClick)="onSave()">
+      </m-button>
+    </div>
+  </div>
+</div>

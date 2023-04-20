@@ -24,7 +24,7 @@ export class DemoListComponent extends BaseListComponent<DemoListModel>{
   radarChartOptions: ChartConfiguration['options'] = {
     responsive: true,
   };
-   radarChartLabels: string[] = [ 'ปีการศึกษา 2561', 'ปีการศึกษา 2562', 'ปีการศึกษา 2563', 'ปีการศึกษา 2564', 'ปีการศึกษา 2565' ];
+   radarChartLabels: string[] = [ 'ปีการศึกษา 2562', 'ปีการศึกษา 2563', 'ปีการศึกษา 2564', 'ปีการศึกษา 2565', 'ปีการศึกษา 2566' ];
 
    radarChartData: ChartData<'radar'> = {
     labels: this.radarChartLabels,

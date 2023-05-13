@@ -41,6 +41,8 @@ export class StudentFilterItemComponent
   formValidate: boolean = true;
   ngOnDestroy(): void {}
   ngAfterViewInit(): void {
+    console.log('isUpdateMode',this.isUpdateMode);
+    
     if (this.isUpdateMode) {
       this.getById();
     } else {
@@ -61,10 +63,15 @@ export class StudentFilterItemComponent
     // this.electronicStatusDropdown = this.dropdownService.getElectronicStatusDropdown()
   }
   getById(): void {
-    this.service.getItem(this.id).subscribe((result) => {
+    this.service.getItem(this.id).subscribe((result) => {      
       if (result) {
         this.isUpdateMode = result.isUpdateMode;
+        console.log(result);
+        
         this.model = result;
+        if(!this.isUpdateMode){
+          this.setInitialCreatingData();
+        }
       }
 
       this.onAsyncRunner(result);
@@ -86,7 +93,6 @@ export class StudentFilterItemComponent
   }
   async setInitialCreatingData() {
     this.service.initial().subscribe((result) => {
-      this.model = result;
       this.model.lernStatus = 1
       this.model.healtyStatus = 1
       this.model.sexualStatus = 1
@@ -101,6 +107,8 @@ export class StudentFilterItemComponent
   }
   onSave(): void {
     this.calSum();
+    console.log(this.validateField());
+    console.log(this.customValidate());
     this.onSubmit(this.validateField() && this.customValidate());
   }
   calSum() {
@@ -219,7 +227,7 @@ export class StudentFilterItemComponent
     return !valid;
   }
   customValidate() {
-    let valid = true;
+    let valid = true;    
     const validList = [
       this.model.lernStatus,
       this.model.healtyStatus,
@@ -231,15 +239,15 @@ export class StudentFilterItemComponent
       this.model.specialStatus,
       this.model.electronicStatus,
       !this.validateSDQ(),
-      !this.validateState("electronic", 4, "electronicStatus"),
-      !this.validateState("special", 11, "specialStatus"),
-      !this.validateState("security", 13, "securityStatus"),
-      !this.validateState("economic", 6, "economicStatus"),
-      !this.validateState("game", 12, "gameStatus"),
-      !this.validateState("drug", 13, "drugStatus"),
-      !this.validateState("sexual", 10, "sexualStatus"),
-      !this.validateState("healty", 9, "healtyStatus"),
-      !this.validateState("lern", 24, "lernStatus"),
+      // !this.validateState("electronic", 4, "electronicStatus"),
+      // !this.validateState("special", 11, "specialStatus"),
+      // !this.validateState("security", 13, "securityStatus"),
+      // !this.validateState("economic", 6, "economicStatus"),
+      // !this.validateState("game", 12, "gameStatus"),
+      // !this.validateState("drug", 13, "drugStatus"),
+      // !this.validateState("sexual", 10, "sexualStatus"),
+      // !this.validateState("healty", 9, "healtyStatus"),
+      // !this.validateState("lern", 24, "lernStatus"),
     ];
     validList.forEach((el) => {
       if (!el) {

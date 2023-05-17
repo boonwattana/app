@@ -108,6 +108,8 @@
             </li>
           </div>
         </div>
+
+
         <div id="student-care" *ngIf="showStudentMenuOnly">
           <div
             class="mian-item pointer"
@@ -527,6 +529,17 @@
                 "MENU.USERS" | translate
               }}</a>
             </li>
+          </div>
+        </div>
+        <div id="change">
+          <div
+            class="mian-item pointer"
+            (click)="changePassword()"
+          >
+            <div>
+              <i class="bx bx-user"></i>
+              <span class="link_name">เปลี่ยนรหัสผ่าน</span>
+            </div>
           </div>
         </div>
       </div>

@@ -293,6 +293,12 @@ export class AppComponent  implements OnInit {
   login(){
     this.router.navigate(['/login']);
   }
+  changePassword(){
+    this.displayService.setEditMode()
+
+    this.router.navigate(['/change-password']);
+
+  }
   openmenusub(className:string){
     
     const element = (<HTMLElement>this.el.nativeElement).querySelector(

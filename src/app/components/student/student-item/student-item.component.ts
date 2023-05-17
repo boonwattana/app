@@ -301,11 +301,15 @@ export class StudentItemComponent extends BaseItemComponent<StudentItemModel> im
 
       if (canEdit) {
         this.toItem('student', +infoId, false);
+        window.location.reload();
+
       } else {
         this.router.navigate([`edit-request`]);
       }
     } else {
       this.toItem('student', +infoId, false);
+      window.location.reload();
+
     }
 
 

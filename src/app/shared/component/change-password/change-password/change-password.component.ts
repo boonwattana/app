@@ -8,6 +8,7 @@ import { UserDataService } from 'src/app/shared/services/user-data.service';
 import { BaseItemComponent } from '../../base-item/base-item.component';
 import { ChangePasswordModel } from '../change-password-model';
 import { ChangePasswordService } from '../change-password.service';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-change-password',
@@ -22,7 +23,8 @@ export class ChangePasswordComponent extends BaseItemComponent<ChangePasswordMod
     router: Router , 
     route:ActivatedRoute,
     private readonly changePasswordService:ChangePasswordService,
-    private readonly userDataService:UserDataService
+    private readonly userDataService:UserDataService,
+    private messageService: MessageService
     ) { 
       super(el,renderer,router,route)
     }
@@ -56,14 +58,20 @@ export class ChangePasswordComponent extends BaseItemComponent<ChangePasswordMod
   onSave(): void {
     if(this.model.newPassword){
       if(this.model.newPassword.length<6){
-       this.addValidateText('รหัสผ่านต้องมากกว่า 6 ตัวอักษร')
+        this.messageService.add({severity:'error', summary:'403',  detail:'รหัสผ่านต้องมากกว่า 6 ตัวอักษร'});
       }else{
-        this.changePasswordService.changePassword(this.model).subscribe(result=>{
-          if(result){
-           this.router.navigate(['/student'])
-    
-          }
-        })
+        if(this.model.newPassword != this.model.confirmNewPassword){
+          this.messageService.add({severity:'error', summary:'403',  detail:'โปรดระบุรหัสผ่านให้เหมือนกันทั้งสองช่อง'});
+
+        }else{
+          this.changePasswordService.changePassword(this.model).subscribe(result=>{
+            if(result){
+             this.router.navigate(['/student'])
+      
+            }
+          })
+        }
+
       }
     }else{
       this.addValidateText('ไม่สามารถเว้นว่างได้')

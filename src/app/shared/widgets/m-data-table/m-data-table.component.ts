@@ -762,7 +762,7 @@ export class MDataTableComponent implements OnInit,OnChanges {
     if (value > 0 && value < 140) {
       des = "ต่ำกว่าปกติ";
     }
-    if (value >= 140 && value <= 140) {
+    if (value >= 140 && value <= 170) {
       des = "เกณฑ์ปกติ";
     }
     if (value > 170) {

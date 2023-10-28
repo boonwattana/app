@@ -726,7 +726,7 @@ export class MDataTableComponent implements OnInit,OnChanges {
     if (value >= 45 && value <= 57) {
       des = "เกณฑ์ปกติ";
     }
-    if (value > 170) {
+    if (value > 57) {
       des = "สูงกว่าปกติ";
     }
     return des;
@@ -739,7 +739,7 @@ export class MDataTableComponent implements OnInit,OnChanges {
     if (value >= 48 && value <= 58) {
       des = "เกณฑ์ปกติ";
     }
-    if (value > 170) {
+    if (value > 58) {
       des = "สูงกว่าปกติ";
     }
     return des;
